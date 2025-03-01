@@ -1,0 +1,6 @@
+#ifndef SERVICE_BACKEND_LIBRARY_H
+#define SERVICE_BACKEND_LIBRARY_H
+
+void hello();
+
+#endif //SERVICE_BACKEND_LIBRARY_H
