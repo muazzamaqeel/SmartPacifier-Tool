@@ -43,21 +43,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "library::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-library-Debug-483c3da2fe831bfc1480.json",
+					"jsonFile" : "target-library-Debug-87bad345e4fcdb594b14.json",
 					"name" : "library",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "publisher::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-publisher-Debug-bd7f946bd16bd93e84ae.json",
+					"jsonFile" : "target-publisher-Debug-85efdba0bb335fe2c9f1.json",
 					"name" : "publisher",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "subscriber::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-subscriber-Debug-d49bb3ea54983607cc5b.json",
+					"jsonFile" : "target-subscriber-Debug-9b986cb7563a945ad86a.json",
 					"name" : "subscriber",
 					"projectIndex" : 0
 				}

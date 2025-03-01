@@ -1,9 +1,18 @@
 {
-	"archive" : {},
+	"archive" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64",
+				"role" : "flags"
+			}
+		]
+	},
 	"artifacts" : 
 	[
 		{
-			"path" : "liblibrary.a"
+			"path" : "library.lib"
 		}
 	],
 	"backtrace" : 1,
@@ -25,7 +34,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 25,
+				"line" : 43,
 				"parent" : 0
 			}
 		]
@@ -36,10 +45,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi"
 				},
 				{
-					"fragment" : "-std=gnu++17"
+					"fragment" : "-std:c++17"
 				}
 			],
 			"language" : "CXX",
@@ -59,7 +68,7 @@
 	],
 	"id" : "library::@6890427a1f51a3e7e1df",
 	"name" : "library",
-	"nameOnDisk" : "liblibrary.a",
+	"nameOnDisk" : "library.lib",
 	"paths" : 
 	{
 		"build" : ".",
