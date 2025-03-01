@@ -15,7 +15,9 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -30,7 +32,9 @@
 					"name" : "service_backend",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -38,9 +42,23 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "service_backend::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-service_backend-Debug-06734214f9240173d3d5.json",
-					"name" : "service_backend",
+					"id" : "library::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-library-Debug-483c3da2fe831bfc1480.json",
+					"name" : "library",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "publisher::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-publisher-Debug-bd7f946bd16bd93e84ae.json",
+					"name" : "publisher",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "subscriber::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-subscriber-Debug-d49bb3ea54983607cc5b.json",
+					"name" : "subscriber",
 					"projectIndex" : 0
 				}
 			]

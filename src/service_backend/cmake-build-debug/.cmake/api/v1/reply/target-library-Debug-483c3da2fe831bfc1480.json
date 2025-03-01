@@ -1,14 +1,9 @@
 {
+	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "libservice_backend.dll"
-		},
-		{
-			"path" : "libservice_backend.dll.a"
-		},
-		{
-			"path" : "libservice_backend.pdb"
+			"path" : "liblibrary.a"
 		}
 	],
 	"backtrace" : 1,
@@ -30,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
@@ -42,12 +37,9 @@
 			[
 				{
 					"fragment" : "-g -fdiagnostics-color=always"
-				}
-			],
-			"defines" : 
-			[
+				},
 				{
-					"define" : "service_backend_EXPORTS"
+					"fragment" : "-std=gnu++17"
 				}
 			],
 			"language" : "CXX",
@@ -65,24 +57,9 @@
 			]
 		}
 	],
-	"id" : "service_backend::@6890427a1f51a3e7e1df",
-	"link" : 
-	{
-		"commandFragments" : 
-		[
-			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
-			}
-		],
-		"language" : "CXX"
-	},
-	"name" : "service_backend",
-	"nameOnDisk" : "libservice_backend.dll",
+	"id" : "library::@6890427a1f51a3e7e1df",
+	"name" : "library",
+	"nameOnDisk" : "liblibrary.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -96,6 +73,13 @@
 			[
 				0
 			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
 		}
 	],
 	"sources" : 
@@ -105,7 +89,12 @@
 			"compileGroupIndex" : 0,
 			"path" : "library.cpp",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "library.h",
+			"sourceGroupIndex" : 1
 		}
 	],
-	"type" : "SHARED_LIBRARY"
+	"type" : "STATIC_LIBRARY"
 }
