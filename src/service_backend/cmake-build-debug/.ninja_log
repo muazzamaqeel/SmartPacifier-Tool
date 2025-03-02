@@ -1,6 +1,6 @@
 # ninja log v5
 1655	1953	7626264859356285	external/nng/CMakeFiles/nng.dir/src/sp/protocol/survey0/respond.c.obj	e3a6b3d43850db2c
-1	4616	7626265435637086	build.ninja	a662dd4fd3e0900b
+5	1609	7626290051369211	build.ninja	a662dd4fd3e0900b
 7	237	7626264842324795	external/nng/CMakeFiles/nng.dir/src/platform/windows/win_clock.c.obj	aa0ad65cafcff83c
 3977	4501	7626264884966332	CMakeFiles/service_backend.dir/src/main.cpp.obj	43c603e666dafc21
 3541	3803	7626264877976595	external/nng/CMakeFiles/nng.dir/src/core/pipe.c.obj	fb3825aabfe44a68
@@ -91,5 +91,8 @@
 4077	4290	7626264882884645	external/nng/CMakeFiles/nng.dir/src/nng.c.obj	79e3b7a2c43bcd60
 4290	4711	7626264886814469	external/nng/nng.dll	660da6733b005225
 4290	4711	7626264886814469	external/nng/nng.lib	660da6733b005225
-5	1609	7626265435637086	build.ninja	a662dd4fd3e0900b
 5	270	7626265440337120	bin/service_backend.exe	1dec9fe69d07841e
+57	634	7626290123906786	CMakeFiles/service_backend.dir/src/mqtt_handler.cpp.obj	b2600b86a37e98d2
+66	640	7626290123957172	CMakeFiles/service_backend.dir/src/nng_handler.cpp.obj	260536e43d47cd57
+40	1620	7626290133784378	CMakeFiles/service_backend.dir/src/main.cpp.obj	43c603e666dafc21
+1620	1987	7626290136451210	bin/service_backend.exe	1dec9fe69d07841e
