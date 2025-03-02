@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "external/nng/src/sp/transport/ipc",
+		"source" : "external/nng/src/sp/transport/ipc"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "external/nng/src/sp/protocol/pair1",
+		"source" : "external/nng/src/sp/protocol/pair1"
+	}
+}

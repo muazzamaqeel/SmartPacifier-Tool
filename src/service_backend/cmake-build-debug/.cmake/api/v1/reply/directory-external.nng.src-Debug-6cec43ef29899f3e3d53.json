@@ -1,0 +1,117 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"external/nng/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 52,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 60,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 72,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 96,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Library",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"external/nng/nng.lib"
+			],
+			"targetId" : "nng::@1319e4789cf05fb061de",
+			"targetIndex" : 26,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Tools",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"external/nng/nng.dll"
+			],
+			"targetId" : "nng::@1319e4789cf05fb061de",
+			"targetIndex" : 26,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Library",
+			"destination" : "lib/cmake/nng",
+			"exportName" : "nng-target",
+			"exportTargets" : 
+			[
+				{
+					"id" : "nng::@1319e4789cf05fb061de",
+					"index" : 26
+				}
+			],
+			"paths" : 
+			[
+				"external/nng/src/CMakeFiles/Export/d87375d16a0077a564141998d30cc197/nng-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Headers",
+			"destination" : "include",
+			"paths" : 
+			[
+				"external/nng/src/../include/nng"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Library",
+			"destination" : "lib/cmake/nng",
+			"paths" : 
+			[
+				"cmake-build-debug/external/nng/src/nng-config.cmake",
+				"cmake-build-debug/external/nng/src/nng-config-version.cmake",
+				"external/nng/cmake/FindMbedTLS.cmake",
+				"external/nng/cmake/FindwolfSSL.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "external/nng/src",
+		"source" : "external/nng/src"
+	}
+}
