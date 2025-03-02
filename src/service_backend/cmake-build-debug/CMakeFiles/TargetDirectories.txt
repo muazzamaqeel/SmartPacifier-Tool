@@ -1,5 +1,0 @@
-C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CMakeFiles/subscriber.dir
-C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CMakeFiles/publisher.dir
-C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CMakeFiles/library.dir
-C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CMakeFiles/rebuild_cache.dir
