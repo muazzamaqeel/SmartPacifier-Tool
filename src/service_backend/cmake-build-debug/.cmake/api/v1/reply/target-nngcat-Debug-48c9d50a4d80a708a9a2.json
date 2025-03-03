@@ -1,0 +1,397 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "external/nng/src/tools/nngcat/nngcat.exe"
+		},
+		{
+			"path" : "external/nng/src/tools/nngcat/nngcat.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"install",
+			"target_link_libraries",
+			"add_definitions",
+			"include_directories",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"external/nng/src/tools/nngcat/CMakeLists.txt",
+			"CMakeLists.txt",
+			"external/nng/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 12,
+				"parent" : 4
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 224,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 150,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 164,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 136,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 273,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 76,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 124,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 275,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 274,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 279,
+				"parent" : 6
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS    /Ob0 /Od /RTC1 -MDd -Zi"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "ASIO_STANDALONE"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_ENABLE_IPV6"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_ENABLE_STATS"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_BUS0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_CONDVAR=1"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_PAIR0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_PAIR1"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_PUB0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_PULL0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_PUSH0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_REP0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_REQ0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_RESPONDENT0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_SNPRINTF=1"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_STRNLEN=1"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_SUB0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_SURVEYOR0"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_HAVE_TIMESPEC_GET=1"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "NNG_LITTLE_ENDIAN=1"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "NNG_MAX_EXPIRE_THREADS=8"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "NNG_MAX_POLLER_THREADS=8"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "NNG_MAX_TASKQ_THREADS=16"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "NNG_PLATFORM_WINDOWS"
+				},
+				{
+					"backtrace" : 12,
+					"define" : "NNG_PRIVATE"
+				},
+				{
+					"backtrace" : 13,
+					"define" : "NNG_RESOLV_CONCURRENCY=4"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_SUPP_HTTP"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_FDC"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_INPROC"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_IPC"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_TCP"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_TLS"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_UDP"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "NNG_TRANSPORT_WS"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "_CRT_RAND_S"
+				},
+				{
+					"backtrace" : 15,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 16,
+					"define" : "_WIN32_WINNT=0x0600"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 17,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/boost_asio/asio/include"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/nng/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/nng/include"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "99"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "nng::@1319e4789cf05fb061de"
+		}
+	],
+	"id" : "nngcat::@41fa1cbb2e161dca4fc4",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files (x86)/service_backend"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/DWIN32 /D_WINDOWS    /Ob0 /Od /RTC1 -MDd -Zi",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "external\\nng\\nng.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "nngcat",
+	"nameOnDisk" : "nngcat.exe",
+	"paths" : 
+	{
+		"build" : "external/nng/src/tools/nngcat",
+		"source" : "external/nng/src/tools/nngcat"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/tools/nngcat/nngcat.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
