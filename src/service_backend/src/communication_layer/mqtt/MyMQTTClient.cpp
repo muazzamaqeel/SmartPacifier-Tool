@@ -1,4 +1,5 @@
 #include "MyMQTTClient.h"
+#include <iostream>
 
 MyMQTTClient::MyMQTTClient(const char* id, const char* host, int port)
         : mosquittopp(id), host_(host), port_(port)
@@ -18,8 +19,7 @@ void MyMQTTClient::on_connect(int rc) {
     if (rc == 0) {
         std::cout << "Connected successfully to the MQTT broker." << std::endl;
         // Subscribe to a topic (for example, "test/topic").
-        subscribe(nullptr, "test/topic");
-        // Print a message indicating waiting for incoming data.
+        subscribe(nullptr, "Pacifier/#");
         std::cout << "Waiting for data at host: " << host_ << ", port: " << port_ << std::endl;
     } else {
         std::cerr << "Connection failed with code: " << rc << std::endl;

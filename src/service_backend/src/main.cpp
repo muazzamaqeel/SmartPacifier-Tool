@@ -1,5 +1,5 @@
-#include <mosquittopp.h>
 #include "communication_layer/mqtt/MyMQTTClient.h"
+#include <mosquittopp.h>
 #include <iostream>
 
 int main() {
