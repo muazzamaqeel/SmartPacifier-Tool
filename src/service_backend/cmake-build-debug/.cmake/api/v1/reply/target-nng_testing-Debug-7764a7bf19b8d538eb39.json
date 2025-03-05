@@ -1,0 +1,2701 @@
+{
+	"archive" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64",
+				"role" : "flags"
+			}
+		]
+	},
+	"artifacts" : 
+	[
+		{
+			"path" : "external/nng/nng_testing.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_compile_definitions",
+			"nng_defines_if",
+			"nng_check_sym",
+			"add_definitions",
+			"include_directories",
+			"target_include_directories",
+			"target_sources",
+			"nng_sources",
+			"nng_headers",
+			"nng_sources_if"
+		],
+		"files" : 
+		[
+			"external/nng/CMakeLists.txt",
+			"external/nng/cmake/NNGHelpers.cmake",
+			"external/nng/src/sp/protocol/bus0/CMakeLists.txt",
+			"external/nng/src/platform/windows/CMakeLists.txt",
+			"external/nng/src/sp/protocol/pair0/CMakeLists.txt",
+			"external/nng/src/sp/protocol/pair1/CMakeLists.txt",
+			"external/nng/src/sp/protocol/pubsub0/CMakeLists.txt",
+			"external/nng/src/sp/protocol/pipeline0/CMakeLists.txt",
+			"external/nng/src/sp/protocol/reqrep0/CMakeLists.txt",
+			"external/nng/src/sp/protocol/survey0/CMakeLists.txt",
+			"external/nng/src/core/CMakeLists.txt",
+			"external/nng/src/supplemental/http/CMakeLists.txt",
+			"external/nng/src/sp/transport/socket/CMakeLists.txt",
+			"external/nng/src/sp/transport/inproc/CMakeLists.txt",
+			"external/nng/src/sp/transport/ipc/CMakeLists.txt",
+			"external/nng/src/sp/transport/tcp/CMakeLists.txt",
+			"external/nng/src/sp/transport/tls/CMakeLists.txt",
+			"external/nng/src/sp/transport/udp/CMakeLists.txt",
+			"external/nng/src/sp/transport/ws/CMakeLists.txt",
+			"CMakeLists.txt",
+			"external/nng/src/CMakeLists.txt",
+			"external/nng/src/testing/CMakeLists.txt",
+			"external/nng/src/sp/CMakeLists.txt",
+			"external/nng/src/supplemental/tls/CMakeLists.txt",
+			"external/nng/src/supplemental/websocket/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 119,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 116,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 4
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 15,
+				"parent" : 6
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 7
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 15,
+				"parent" : 9
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 146,
+				"parent" : 10
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 4,
+				"line" : 15,
+				"parent" : 12
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 13
+			},
+			{
+				"file" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 5,
+				"line" : 15,
+				"parent" : 15
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 16
+			},
+			{
+				"file" : 6
+			},
+			{
+				"command" : 2,
+				"file" : 6,
+				"line" : 15,
+				"parent" : 18
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 19
+			},
+			{
+				"file" : 7
+			},
+			{
+				"command" : 2,
+				"file" : 7,
+				"line" : 18,
+				"parent" : 21
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 22
+			},
+			{
+				"command" : 2,
+				"file" : 7,
+				"line" : 15,
+				"parent" : 21
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 24
+			},
+			{
+				"file" : 8
+			},
+			{
+				"command" : 2,
+				"file" : 8,
+				"line" : 18,
+				"parent" : 26
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 27
+			},
+			{
+				"command" : 2,
+				"file" : 8,
+				"line" : 15,
+				"parent" : 26
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 29
+			},
+			{
+				"file" : 9
+			},
+			{
+				"command" : 2,
+				"file" : 9,
+				"line" : 18,
+				"parent" : 31
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 32
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 17,
+				"parent" : 9
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 146,
+				"parent" : 34
+			},
+			{
+				"file" : 10
+			},
+			{
+				"command" : 3,
+				"file" : 10,
+				"line" : 14,
+				"parent" : 36
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 146,
+				"parent" : 37
+			},
+			{
+				"command" : 2,
+				"file" : 6,
+				"line" : 18,
+				"parent" : 18
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 39
+			},
+			{
+				"command" : 2,
+				"file" : 9,
+				"line" : 15,
+				"parent" : 31
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 41
+			},
+			{
+				"command" : 3,
+				"file" : 3,
+				"line" : 16,
+				"parent" : 9
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 146,
+				"parent" : 43
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 224,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 150,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 164,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 136,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 273,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 93,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 124,
+				"parent" : 0
+			},
+			{
+				"file" : 11
+			},
+			{
+				"command" : 2,
+				"file" : 11,
+				"line" : 19,
+				"parent" : 52
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 53
+			},
+			{
+				"file" : 12
+			},
+			{
+				"command" : 2,
+				"file" : 12,
+				"line" : 14,
+				"parent" : 55
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 56
+			},
+			{
+				"file" : 13
+			},
+			{
+				"command" : 2,
+				"file" : 13,
+				"line" : 15,
+				"parent" : 58
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 59
+			},
+			{
+				"file" : 14
+			},
+			{
+				"command" : 2,
+				"file" : 14,
+				"line" : 15,
+				"parent" : 61
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 62
+			},
+			{
+				"file" : 15
+			},
+			{
+				"command" : 2,
+				"file" : 15,
+				"line" : 15,
+				"parent" : 64
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 65
+			},
+			{
+				"file" : 16
+			},
+			{
+				"command" : 2,
+				"file" : 16,
+				"line" : 15,
+				"parent" : 67
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 68
+			},
+			{
+				"file" : 17
+			},
+			{
+				"command" : 2,
+				"file" : 17,
+				"line" : 14,
+				"parent" : 70
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 71
+			},
+			{
+				"file" : 18
+			},
+			{
+				"command" : 2,
+				"file" : 18,
+				"line" : 18,
+				"parent" : 73
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 74
+			},
+			{
+				"command" : 2,
+				"file" : 18,
+				"line" : 19,
+				"parent" : 73
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 97,
+				"parent" : 76
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 275,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 274,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 279,
+				"parent" : 0
+			},
+			{
+				"file" : 19
+			},
+			{
+				"command" : 5,
+				"file" : 19,
+				"line" : 13,
+				"parent" : 81
+			},
+			{
+				"file" : 20
+			},
+			{
+				"command" : 6,
+				"file" : 20,
+				"line" : 17,
+				"parent" : 83
+			},
+			{
+				"file" : 21
+			},
+			{
+				"command" : 6,
+				"file" : 21,
+				"line" : 19,
+				"parent" : 85
+			},
+			{
+				"command" : 6,
+				"file" : 20,
+				"line" : 50,
+				"parent" : 83
+			},
+			{
+				"command" : 8,
+				"file" : 20,
+				"line" : 11,
+				"parent" : 83
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 88
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 88
+			},
+			{
+				"command" : 9,
+				"file" : 20,
+				"line" : 12,
+				"parent" : 83
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 91
+			},
+			{
+				"command" : 9,
+				"file" : 20,
+				"line" : 13,
+				"parent" : 83
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 93
+			},
+			{
+				"command" : 9,
+				"file" : 20,
+				"line" : 14,
+				"parent" : 83
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 30,
+				"parent" : 95
+			},
+			{
+				"command" : 8,
+				"file" : 10,
+				"line" : 20,
+				"parent" : 36
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 97
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 29,
+				"parent" : 9
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 157
+			},
+			{
+				"command" : 10,
+				"file" : 2,
+				"line" : 14,
+				"parent" : 6
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 179
+			},
+			{
+				"command" : 10,
+				"file" : 4,
+				"line" : 14,
+				"parent" : 12
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 181
+			},
+			{
+				"command" : 10,
+				"file" : 5,
+				"line" : 14,
+				"parent" : 15
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 183
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 183
+			},
+			{
+				"command" : 10,
+				"file" : 7,
+				"line" : 14,
+				"parent" : 21
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 186
+			},
+			{
+				"command" : 10,
+				"file" : 7,
+				"line" : 17,
+				"parent" : 21
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 188
+			},
+			{
+				"command" : 10,
+				"file" : 6,
+				"line" : 14,
+				"parent" : 18
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 190
+			},
+			{
+				"command" : 10,
+				"file" : 6,
+				"line" : 17,
+				"parent" : 18
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 192
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 192
+			},
+			{
+				"command" : 10,
+				"file" : 8,
+				"line" : 14,
+				"parent" : 26
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 195
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 195
+			},
+			{
+				"command" : 10,
+				"file" : 8,
+				"line" : 17,
+				"parent" : 26
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 198
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 198
+			},
+			{
+				"command" : 10,
+				"file" : 9,
+				"line" : 14,
+				"parent" : 31
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 201
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 201
+			},
+			{
+				"command" : 10,
+				"file" : 9,
+				"line" : 17,
+				"parent" : 31
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 204
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 204
+			},
+			{
+				"command" : 10,
+				"file" : 12,
+				"line" : 13,
+				"parent" : 55
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 207
+			},
+			{
+				"command" : 10,
+				"file" : 13,
+				"line" : 14,
+				"parent" : 58
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 209
+			},
+			{
+				"command" : 10,
+				"file" : 14,
+				"line" : 14,
+				"parent" : 61
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 211
+			},
+			{
+				"command" : 10,
+				"file" : 15,
+				"line" : 14,
+				"parent" : 64
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 213
+			},
+			{
+				"command" : 10,
+				"file" : 16,
+				"line" : 14,
+				"parent" : 67
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 215
+			},
+			{
+				"command" : 10,
+				"file" : 17,
+				"line" : 13,
+				"parent" : 70
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 217
+			},
+			{
+				"command" : 10,
+				"file" : 18,
+				"line" : 20,
+				"parent" : 73
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 219
+			},
+			{
+				"file" : 22
+			},
+			{
+				"command" : 8,
+				"file" : 22,
+				"line" : 15,
+				"parent" : 221
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 222
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 222
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 222
+			},
+			{
+				"command" : 8,
+				"file" : 11,
+				"line" : 17,
+				"parent" : 52
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 226
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 226
+			},
+			{
+				"command" : 10,
+				"file" : 11,
+				"line" : 20,
+				"parent" : 52
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 79,
+				"parent" : 229
+			},
+			{
+				"file" : 23
+			},
+			{
+				"command" : 8,
+				"file" : 23,
+				"line" : 30,
+				"parent" : 236
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 237
+			},
+			{
+				"command" : 8,
+				"file" : 23,
+				"line" : 31,
+				"parent" : 236
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 239
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 239
+			},
+			{
+				"file" : 24
+			},
+			{
+				"command" : 8,
+				"file" : 24,
+				"line" : 12,
+				"parent" : 242
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 243
+			},
+			{
+				"command" : 7,
+				"file" : 21,
+				"line" : 13,
+				"parent" : 85
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS    /Ob0 /Od /RTC1 -MDd -Zi"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "NNG_ENABLE_IPV6"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "NNG_ENABLE_STATS"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "NNG_HAVE_BUS0"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "NNG_HAVE_CONDVAR=1"
+				},
+				{
+					"backtrace" : 14,
+					"define" : "NNG_HAVE_PAIR0"
+				},
+				{
+					"backtrace" : 17,
+					"define" : "NNG_HAVE_PAIR1"
+				},
+				{
+					"backtrace" : 20,
+					"define" : "NNG_HAVE_PUB0"
+				},
+				{
+					"backtrace" : 23,
+					"define" : "NNG_HAVE_PULL0"
+				},
+				{
+					"backtrace" : 25,
+					"define" : "NNG_HAVE_PUSH0"
+				},
+				{
+					"backtrace" : 28,
+					"define" : "NNG_HAVE_REP0"
+				},
+				{
+					"backtrace" : 30,
+					"define" : "NNG_HAVE_REQ0"
+				},
+				{
+					"backtrace" : 33,
+					"define" : "NNG_HAVE_RESPONDENT0"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "NNG_HAVE_SNPRINTF=1"
+				},
+				{
+					"backtrace" : 38,
+					"define" : "NNG_HAVE_STRNLEN=1"
+				},
+				{
+					"backtrace" : 40,
+					"define" : "NNG_HAVE_SUB0"
+				},
+				{
+					"backtrace" : 42,
+					"define" : "NNG_HAVE_SURVEYOR0"
+				},
+				{
+					"backtrace" : 44,
+					"define" : "NNG_HAVE_TIMESPEC_GET=1"
+				},
+				{
+					"backtrace" : 45,
+					"define" : "NNG_LITTLE_ENDIAN=1"
+				},
+				{
+					"backtrace" : 46,
+					"define" : "NNG_MAX_EXPIRE_THREADS=8"
+				},
+				{
+					"backtrace" : 47,
+					"define" : "NNG_MAX_POLLER_THREADS=8"
+				},
+				{
+					"backtrace" : 48,
+					"define" : "NNG_MAX_TASKQ_THREADS=16"
+				},
+				{
+					"backtrace" : 49,
+					"define" : "NNG_PLATFORM_WINDOWS"
+				},
+				{
+					"backtrace" : 50,
+					"define" : "NNG_PRIVATE"
+				},
+				{
+					"backtrace" : 51,
+					"define" : "NNG_RESOLV_CONCURRENCY=4"
+				},
+				{
+					"backtrace" : 50,
+					"define" : "NNG_STATIC_LIB"
+				},
+				{
+					"backtrace" : 54,
+					"define" : "NNG_SUPP_HTTP"
+				},
+				{
+					"backtrace" : 50,
+					"define" : "NNG_TEST_LIB"
+				},
+				{
+					"backtrace" : 57,
+					"define" : "NNG_TRANSPORT_FDC"
+				},
+				{
+					"backtrace" : 60,
+					"define" : "NNG_TRANSPORT_INPROC"
+				},
+				{
+					"backtrace" : 63,
+					"define" : "NNG_TRANSPORT_IPC"
+				},
+				{
+					"backtrace" : 66,
+					"define" : "NNG_TRANSPORT_TCP"
+				},
+				{
+					"backtrace" : 69,
+					"define" : "NNG_TRANSPORT_TLS"
+				},
+				{
+					"backtrace" : 72,
+					"define" : "NNG_TRANSPORT_UDP"
+				},
+				{
+					"backtrace" : 75,
+					"define" : "NNG_TRANSPORT_WS"
+				},
+				{
+					"backtrace" : 77,
+					"define" : "NNG_TRANSPORT_WSS"
+				},
+				{
+					"backtrace" : 78,
+					"define" : "_CRT_RAND_S"
+				},
+				{
+					"backtrace" : 79,
+					"define" : "_CRT_SECURE_NO_WARNINGS"
+				},
+				{
+					"backtrace" : 80,
+					"define" : "_WIN32_WINNT=0x0600"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 82,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/boost_asio/asio/include"
+				},
+				{
+					"backtrace" : 84,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/nng/src"
+				},
+				{
+					"backtrace" : 86,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/nng/src/testing"
+				},
+				{
+					"backtrace" : 87,
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/nng/include"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "99"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				27,
+				29,
+				32,
+				34,
+				36,
+				38,
+				42,
+				44,
+				46,
+				47,
+				50,
+				52,
+				54,
+				56,
+				58,
+				60,
+				62,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				112,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				123,
+				125,
+				127,
+				129,
+				130,
+				131,
+				132
+			]
+		}
+	],
+	"id" : "nng_testing::@1319e4789cf05fb061de",
+	"name" : "nng_testing",
+	"nameOnDisk" : "nng_testing.lib",
+	"paths" : 
+	{
+		"build" : "external/nng",
+		"source" : "external/nng"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				6,
+				8,
+				10,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				27,
+				29,
+				32,
+				34,
+				36,
+				38,
+				42,
+				44,
+				46,
+				47,
+				50,
+				52,
+				54,
+				56,
+				58,
+				60,
+				62,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				112,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				123,
+				125,
+				127,
+				129,
+				130,
+				131,
+				132
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				2,
+				3,
+				4,
+				5,
+				7,
+				9,
+				11,
+				13,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				28,
+				30,
+				31,
+				33,
+				35,
+				37,
+				39,
+				40,
+				41,
+				43,
+				45,
+				48,
+				49,
+				51,
+				53,
+				55,
+				57,
+				59,
+				61,
+				63,
+				64,
+				65,
+				66,
+				111,
+				113,
+				121,
+				122,
+				124,
+				126,
+				128
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 89,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/nng.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 90,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/nng_legacy.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 92,
+			"path" : "external/nng/include/nng/args.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 94,
+			"path" : "external/nng/include/nng/nng.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 96,
+			"path" : "external/nng/include/nng/http.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 98,
+			"path" : "external/nng/src/core/defs.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 99,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/aio.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 100,
+			"path" : "external/nng/src/core/aio.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 101,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/device.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 102,
+			"path" : "external/nng/src/core/device.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 103,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/dialer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 104,
+			"path" : "external/nng/src/core/dialer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 105,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/sockfd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 106,
+			"path" : "external/nng/src/core/sockfd.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 107,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/file.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 108,
+			"path" : "external/nng/src/core/file.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 109,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/idhash.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"path" : "external/nng/src/core/idhash.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 111,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/init.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 112,
+			"path" : "external/nng/src/core/init.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 113,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/list.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 114,
+			"path" : "external/nng/src/core/list.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 115,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/listener.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 116,
+			"path" : "external/nng/src/core/listener.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 117,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/lmq.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 118,
+			"path" : "external/nng/src/core/lmq.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 119,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/log.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 120,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/message.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 121,
+			"path" : "external/nng/src/core/message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 122,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/msgqueue.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 123,
+			"path" : "external/nng/src/core/msgqueue.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 124,
+			"path" : "external/nng/src/core/nng_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 125,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/options.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 126,
+			"path" : "external/nng/src/core/options.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 127,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/pollable.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 128,
+			"path" : "external/nng/src/core/pollable.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 129,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/panic.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 130,
+			"path" : "external/nng/src/core/panic.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 131,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/pipe.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 132,
+			"path" : "external/nng/src/core/pipe.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 133,
+			"path" : "external/nng/src/core/platform.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 134,
+			"path" : "external/nng/src/core/protocol.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 135,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/reap.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 136,
+			"path" : "external/nng/src/core/reap.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 137,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/refcnt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 138,
+			"path" : "external/nng/src/core/refcnt.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 139,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/sockaddr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 140,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/socket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 141,
+			"path" : "external/nng/src/core/socket.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 142,
+			"path" : "external/nng/src/core/sockimpl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 143,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/stats.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 144,
+			"path" : "external/nng/src/core/stats.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 145,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/stream.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 146,
+			"path" : "external/nng/src/core/stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 147,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/strs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 148,
+			"path" : "external/nng/src/core/strs.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 149,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/taskq.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 150,
+			"path" : "external/nng/src/core/taskq.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 151,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/tcp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 152,
+			"path" : "external/nng/src/core/tcp.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 153,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/thread.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 154,
+			"path" : "external/nng/src/core/thread.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 155,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/core/url.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 156,
+			"path" : "external/nng/src/core/url.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 158,
+			"path" : "external/nng/src/platform/windows/win_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 159,
+			"path" : "external/nng/src/platform/windows/win_ipc.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 160,
+			"path" : "external/nng/src/platform/windows/win_tcp.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 161,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_clock.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 162,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_debug.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 163,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_file.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 164,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_io.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 165,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_ipcconn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 166,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_ipcdial.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 167,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_ipclisten.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 168,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_pipe.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 169,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_rand.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 170,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_resolv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 171,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_sockaddr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 172,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_socketpair.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 173,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_tcp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 174,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_tcpconn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 175,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_tcpdial.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 176,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_tcplisten.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 177,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_thread.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 178,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/platform/windows/win_udp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 180,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/bus0/bus.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 182,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pair0/pair.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 184,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pair1/pair.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 185,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pair1/pair1_poly.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 187,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pipeline0/push.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 189,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pipeline0/pull.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 191,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pubsub0/pub.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 193,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pubsub0/sub.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 194,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/pubsub0/xsub.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 196,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/reqrep0/req.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 197,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/reqrep0/xreq.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 199,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/reqrep0/rep.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 200,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/reqrep0/xrep.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 202,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/survey0/survey.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 203,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/survey0/xsurvey.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 205,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/survey0/respond.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 206,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol/survey0/xrespond.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 208,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/socket/sockfd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 210,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/inproc/inproc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 212,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/ipc/ipc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 214,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/tcp/tcp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 216,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/tls/tls.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 218,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/udp/udp.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 220,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport/ws/websocket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 223,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/protocol.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 224,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/sp/transport.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 225,
+			"path" : "external/nng/src/sp/transport.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 227,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_public.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 228,
+			"path" : "external/nng/src/supplemental/http/http_api.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 230,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_client.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 231,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_chunk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 232,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_conn.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 233,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_msg.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 234,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_schemes.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 235,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/http/http_server.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 238,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/tls/tls_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 240,
+			"path" : "external/nng/src/supplemental/tls/tls_api.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 241,
+			"path" : "external/nng/src/supplemental/tls/tls_engine.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 244,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/websocket/base64.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 245,
+			"path" : "external/nng/src/supplemental/websocket/base64.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 246,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/websocket/sha1.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 247,
+			"path" : "external/nng/src/supplemental/websocket/sha1.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 248,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/supplemental/websocket/websocket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 249,
+			"path" : "external/nng/src/supplemental/websocket/websocket.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 250,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/testing/certs.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 250,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/testing/marry.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 250,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/testing/streams.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 250,
+			"compileGroupIndex" : 0,
+			"path" : "external/nng/src/testing/util.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
