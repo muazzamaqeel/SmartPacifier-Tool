@@ -1,15 +1,7 @@
 C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/muazz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/231.9011.31/bin/ninja/win/x64/ninja.exe -G Ninja -S C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend -B C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug
--- Configuring for NNG version 1.10.0
--- Test zt disabled (unconfigured)
+-- ✅ NNG installed at: C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/install
+-- ✅ Mosquitto installed at: C:/Program Files/mosquitto/devel
+-- ✅ Project source files: src/main.cpp;src/ipc/nng/NNGHandler.cpp;src/ipc/nng/NNGHandler.h;src/communication_layer/mqtt/MyMQTTClient.cpp;src/communication_layer/mqtt/MyMQTTClient.h
 -- Configuring done
-CMake Error at CMakeLists.txt:43 (add_executable):
-  Cannot find source file:
-
-    src/nng_ipc/NNGHandler.cpp
-
-
-CMake Error at CMakeLists.txt:43 (add_executable):
-  No SOURCES given to target: service_backend
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
+-- Generating done
+-- Build files have been written to: C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug
