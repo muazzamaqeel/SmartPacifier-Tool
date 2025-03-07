@@ -30,25 +30,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 75,
+				"line" : 102,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 52,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 59,
+				"line" : 86,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 80,
+				"line" : 108,
 				"parent" : 0
 			},
 			{
@@ -60,13 +54,13 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 51,
+				"line" : 78,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 58,
+				"line" : 85,
 				"parent" : 0
 			}
 		]
@@ -86,15 +80,15 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/boost_asio/asio/include"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external/install/include"
 				},
 				{
-					"backtrace" : 7,
+					"backtrace" : 6,
 					"path" : "C:/Program Files/mosquitto/devel"
 				}
 			],
@@ -130,26 +124,21 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LIBPATH:C:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\external\\install\\lib",
-				"role" : "libraryPath"
-			},
-			{
-				"backtrace" : 3,
 				"fragment" : "-LIBPATH:C:\\PROGRA~1\\MOSQUI~1\\devel",
 				"role" : "libraryPath"
 			},
 			{
-				"backtrace" : 4,
-				"fragment" : "nng.lib",
+				"backtrace" : 3,
+				"fragment" : "C:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\external\\install\\lib\\libnng.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "mosquitto.lib",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "mosquittopp.lib",
 				"role" : "libraries"
 			},
