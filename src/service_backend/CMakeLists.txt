@@ -30,11 +30,12 @@ link_directories("${MOSQUITTO_DEVEL_DIR}")
 # ------------------------------------------------------------------
 set(SOURCES
         src/main.cpp
-        src/nng_ipc/NNGHandler.cpp
-        src/nng_ipc/NNGHandler.h
+        src/ipc/nng/NNGHandler.cpp
+        src/ipc/nng/NNGHandler.h
         src/communication_layer/mqtt/MyMQTTClient.cpp
         src/communication_layer/mqtt/MyMQTTClient.h
-        )
+        src/ipc/nng/NNGHandler.cpp src/ipc/nng/NNGHandler.h src/ipc/nng/NNGHandler.cpp src/ipc/nng/NNGHandler.cpp)
+
 
 # ------------------------------------------------------------------
 # 4) Build the Executable

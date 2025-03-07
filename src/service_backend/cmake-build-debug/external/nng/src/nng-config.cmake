@@ -32,8 +32,8 @@ endmacro()
 
 ####################################################################################
 
-set(NNG_MAJOR_VERSION "2")
-set(NNG_MINOR_VERSION "0")
+set(NNG_MAJOR_VERSION "1")
+set(NNG_MINOR_VERSION "10")
 set(NNG_PATCH_VERSION "0")
 
 set_and_check(NNG_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/include/nng")
