@@ -1,8 +1,8 @@
 # ninja log v5
 2317	2599	7628765999354505	external/nng/CMakeFiles/nng.dir/src/sp/protocol/survey0/respond.c.obj	e3a6b3d43850db2c
-4	877	7628779205625746	build.ninja	a662dd4fd3e0900b
+1	97	7630401951780070	build.ninja	a662dd4fd3e0900b
 825	1115	7628765984482928	external/nng/CMakeFiles/nng.dir/src/platform/windows/win_clock.c.obj	aa0ad65cafcff83c
-4383	5120	7628766024558863	CMakeFiles/service_backend.dir/src/main.cpp.obj	bf6bdf0df6344d38
+8	457	7630034754179170	CMakeFiles/service_backend.dir/src/main.cpp.obj	518088278eac54e9
 4192	4487	7628766018241651	external/nng/CMakeFiles/nng.dir/src/core/pipe.c.obj	fb3825aabfe44a68
 3094	3396	7628766007354320	external/nng/CMakeFiles/nng.dir/src/supplemental/http/http_server.c.obj	750783a7d0b67b53
 589	1024	7626261407065139	service_backend.exe	23999d38c1152c74
@@ -68,7 +68,6 @@
 2643	2925	7628766002631989	external/nng/CMakeFiles/nng.dir/src/sp/transport.c.obj	c5772221d1f9e270
 3377	3484	7628766008212338	external/nng/CMakeFiles/nng.dir/src/supplemental/websocket/sha1.c.obj	e5e4056d7822e563
 3422	3687	7628766010218334	external/nng/CMakeFiles/nng.dir/src/core/device.c.obj	8fab63ba87ab89c2
-13	4499	7627338860445550	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/mqtt_handler.cpp.obj	7ba7fc5e326ff41a
 3602	3885	7628766012228760	external/nng/CMakeFiles/nng.dir/src/core/file.c.obj	b3e0dc13af21d22b
 3968	4257	7628766015955060	external/nng/CMakeFiles/nng.dir/src/core/options.c.obj	ac2ef12e2c07d957
 4521	4773	7628766021121654	external/nng/CMakeFiles/nng.dir/src/nng_legacy.c.obj	cd21c4a479878713
@@ -86,25 +85,11 @@
 7	812	7628765981427977	external/nng/CMakeFiles/nng.dir/src/core/strs.c.obj	7810e4d0a8330ff5
 4263	4574	7628766019113988	external/nng/CMakeFiles/nng.dir/src/core/socket.c.obj	dc7d22243aa2ae23
 25	804	7628765981387973	external/nng/CMakeFiles/nng.dir/src/core/stream.c.obj	464434dc4c66c059
-4529	4625	7627331129111043	CMakeFiles/service_backend.dir/src/nng_handler.cpp.obj	260536e43d47cd57
-4442	4555	7627331128402673	CMakeFiles/service_backend.dir/src/mqtt_handler.cpp.obj	b2600b86a37e98d2
 14	819	7628765981397973	external/nng/CMakeFiles/nng.dir/src/core/taskq.c.obj	d3eebfdf85709349
 4488	4792	7628766021324294	external/nng/CMakeFiles/nng.dir/src/nng.c.obj	79e3b7a2c43bcd60
 4840	5186	7628766024472922	external/nng/nng.dll	660da6733b005225
 4840	5186	7628766024472922	external/nng/nng.lib	660da6733b005225
-5186	5421	7628766026974711	bin/service_backend.exe	3f4eb4965ccf7ff6
-9	80	7627333450388930	CMakeFiles/service_backend.dir/src/mqtt/mqtt_handler.cpp.obj	6126d996b463b8ae
-18	809	7628338002840246	CMakeFiles/service_backend.dir/src/nng_ipc/nng_handler.cpp.obj	85487df128254e04
-4270	4972	7628766023030260	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	f9a4c2d1a6170087
-4387	5111	7628766024472922	CMakeFiles/service_backend.dir/src/nng_ipc/NNGHandler.cpp.obj	74cd934e7be3746c
-1	43	0	clean	60ce698aebe01739
-16	1223	7628779205625746	build.ninja	a662dd4fd3e0900b
-10	1144	7628779218898039	CMakeFiles/service_backend.dir/src/main.cpp.obj	bf6bdf0df6344d38
-3	1149	7628779218958027	CMakeFiles/service_backend.dir/src/nng_ipc/NNGHandler.cpp.obj	74cd934e7be3746c
-15	1153	7628779218988035	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	f9a4c2d1a6170087
-1153	1418	7628779221070995	bin/service_backend.exe	3f4eb4965ccf7ff6
-4	502	7628783778529342	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	f9a4c2d1a6170087
-5	428	7628784336420230	CMakeFiles/service_backend.dir/src/main.cpp.obj	bf6bdf0df6344d38
-428	703	7628784338619655	bin/service_backend.exe	3f4eb4965ccf7ff6
-5	767	7628791411972504	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	f9a4c2d1a6170087
 768	992	7628791413802709	bin/service_backend.exe	3f4eb4965ccf7ff6
+4	462	7630034754219277	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	5fac37d68514c425
+1	43	0	clean	60ce698aebe01739
+1	1220	7630399884744683	CMakeFiles/service_backend.dir/src/ipc/nng/NNGHandler.cpp.obj	3f8e868b672cbf18
