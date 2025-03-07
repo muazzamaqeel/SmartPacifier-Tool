@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_service_backend: phony || CMakeFiles\ser
 
 build CMakeFiles\service_backend.dir\src\main.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\main.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -I"C:\Program Files\mosquitto\devel"
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
@@ -59,7 +59,7 @@ build CMakeFiles\service_backend.dir\src\main.cpp.obj: CXX_COMPILER__service_bac
 
 build CMakeFiles\service_backend.dir\src\ipc\nng\NNGHandler.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\ipc\nng\NNGHandler.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -I"C:\Program Files\mosquitto\devel"
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\ipc\nng
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
@@ -67,7 +67,7 @@ build CMakeFiles\service_backend.dir\src\ipc\nng\NNGHandler.cpp.obj: CXX_COMPILE
 
 build CMakeFiles\service_backend.dir\src\communication_layer\mqtt\MyMQTTClient.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\communication_layer\mqtt\MyMQTTClient.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -I"C:\Program Files\mosquitto\devel"
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\communication_layer\mqtt
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
@@ -85,9 +85,9 @@ build bin\service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMak
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\lib\libnng.a  mosquitto.lib  mosquittopp.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  LINK_PATH = -LIBPATH:C:\PROGRA~1\MOSQUI~1\devel
+  LINK_PATH = -LIBPATH:C:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  POST_BUILD = cd .
+  POST_BUILD = cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/mosquitto.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/mosquittopp.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/libcrypto-3-x64.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/libssl-3-x64.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/cjson.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/pthreadVC3.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/uv.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/websockets.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Strawberry/c/bin/libgcc_s_seh-1.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Strawberry/c/bin/libstdc++-6.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin"
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
   TARGET_FILE = bin\service_backend.exe

@@ -80,8 +80,12 @@ include_directories("${NNG_INSTALL_DIR}/include")
 # ------------------------------------------------------------------------------
 # 4. Mosquitto MQTT Setup
 # ------------------------------------------------------------------------------
-# Adjust this path if needed. Your Mosquitto installation appears under "C:/Program Files/mosquitto/devel".
-set(MOSQUITTO_DEVEL_DIR "C:/Program Files/mosquitto/devel")
+# Use the short path notation to avoid issues with spaces in "Program Files".
+# The Mosquitto header files are in the 'devel' directory.
+set(MOSQUITTO_DEVEL_DIR "C:/Progra~1/mosquitto/devel")
+# The Mosquitto DLLs (and other runtime files) are located in the parent folder.
+set(MOSQUITTO_DLL_DIR "C:/Progra~1/mosquitto")
+
 include_directories("${MOSQUITTO_DEVEL_DIR}")
 link_directories("${MOSQUITTO_DEVEL_DIR}")
 
@@ -104,7 +108,6 @@ add_executable(service_backend ${SOURCES})
 # ------------------------------------------------------------------------------
 # 7. Link Libraries
 # ------------------------------------------------------------------------------
-# Instead of linking by name, we now explicitly link to the static library file.
 target_link_libraries(service_backend PRIVATE
         "${NNG_INSTALL_DIR}/lib/libnng.a"  # Link NNG (static library)
         mosquitto                         # Mosquitto C API
@@ -119,8 +122,47 @@ set_target_properties(service_backend PROPERTIES
         )
 
 # ------------------------------------------------------------------------------
-# 9. Debugging Messages
+# 9. Post-Build: Copy Required DLLs to the Output Directory
 # ------------------------------------------------------------------------------
-message(STATUS "✅ NNG installed at: ${NNG_INSTALL_DIR}")
-message(STATUS "✅ Mosquitto installed at: ${MOSQUITTO_DEVEL_DIR}")
-message(STATUS "✅ Project source files: ${SOURCES}")
+# List the DLLs that your application requires.
+# Adjust the list based on your project’s dependencies.
+set(REQUIRED_DLLS
+        mosquitto.dll
+        mosquittopp.dll
+        libcrypto-3-x64.dll
+        libssl-3-x64.dll
+        cjson.dll
+        pthreadVC3.dll
+        uv.dll
+        websockets.dll
+        libgcc_s_seh-1.dll
+        libstdc++-6.dll
+        )
+
+# Directory for MinGW runtime DLLs (adjust if needed)
+set(MINGW_DLL_DIR "C:/Strawberry/c/bin")
+
+foreach(dll ${REQUIRED_DLLS})
+    if(EXISTS "${MOSQUITTO_DLL_DIR}/${dll}")
+        add_custom_command(TARGET service_backend POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${MOSQUITTO_DLL_DIR}/${dll}"
+                $<TARGET_FILE_DIR:service_backend>
+                )
+    elseif(EXISTS "${MINGW_DLL_DIR}/${dll}")
+        add_custom_command(TARGET service_backend POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${MINGW_DLL_DIR}/${dll}"
+                $<TARGET_FILE_DIR:service_backend>
+                )
+    else()
+        message(WARNING "DLL not found: ${dll}")
+    endif()
+endforeach()
+
+# ------------------------------------------------------------------------------
+# 10. Debugging Messages
+# ------------------------------------------------------------------------------
+message(STATUS "NNG installed at: ${NNG_INSTALL_DIR}")
+message(STATUS "Mosquitto headers installed at: ${MOSQUITTO_DEVEL_DIR}")
+message(STATUS "Project source files: ${SOURCES}")

@@ -1,7 +1,7 @@
 # ninja log v5
 2317	2599	7628765999354505	external/nng/CMakeFiles/nng.dir/src/sp/protocol/survey0/respond.c.obj	e3a6b3d43850db2c
-0	87	7630525765802661	build.ninja	a662dd4fd3e0900b
-1	982	7630512635478443	CMakeFiles/service_backend.dir/src/main.cpp.obj	518088278eac54e9
+1	95	7630536907178750	build.ninja	a662dd4fd3e0900b
+0	444	7630533358966398	CMakeFiles/service_backend.dir/src/main.cpp.obj	3cb3e936f906128b
 825	1115	7628765984482928	external/nng/CMakeFiles/nng.dir/src/platform/windows/win_clock.c.obj	aa0ad65cafcff83c
 3094	3396	7628766007354320	external/nng/CMakeFiles/nng.dir/src/supplemental/http/http_server.c.obj	750783a7d0b67b53
 4192	4487	7628766018241651	external/nng/CMakeFiles/nng.dir/src/core/pipe.c.obj	fb3825aabfe44a68
@@ -85,9 +85,9 @@
 4488	4792	7628766021324294	external/nng/CMakeFiles/nng.dir/src/nng.c.obj	79e3b7a2c43bcd60
 4840	5186	7628766024472922	external/nng/nng.dll	660da6733b005225
 4840	5186	7628766024472922	external/nng/nng.lib	660da6733b005225
-768	992	7628791413802709	bin/service_backend.exe	3f4eb4965ccf7ff6
-14	1004	7630512635724495	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	5fac37d68514c425
+403	679	7630535956550870	bin/service_backend.exe	fd3137f62f09f44
+8	468	7630533359207655	CMakeFiles/service_backend.dir/src/communication_layer/mqtt/MyMQTTClient.cpp.obj	f799c5ea1faaaec9
 1	43	0	clean	60ce698aebe01739
-7	984	7630512635493481	CMakeFiles/service_backend.dir/src/ipc/nng/NNGHandler.cpp.obj	3f8e868b672cbf18
-1	89	7630525765802661	build.ninja	a662dd4fd3e0900b
-0	209	7630525767700334	bin/service_backend.exe	2977c1aabe9e9fc4
+1	403	7630535955261091	CMakeFiles/service_backend.dir/src/ipc/nng/NNGHandler.cpp.obj	89955749fe7ed2d3
+1	94	7630536907178750	build.ninja	a662dd4fd3e0900b
+0	475	7630536908509472	bin/service_backend.exe	74137b8a5296e6b7

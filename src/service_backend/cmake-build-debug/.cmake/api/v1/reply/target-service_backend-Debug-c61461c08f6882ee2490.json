@@ -30,19 +30,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 102,
+				"line" : 106,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 86,
+				"line" : 90,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 108,
+				"line" : 111,
 				"parent" : 0
 			},
 			{
@@ -60,7 +60,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 85,
+				"line" : 89,
 				"parent" : 0
 			}
 		]
@@ -89,7 +89,7 @@
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Program Files/mosquitto/devel"
+					"path" : "C:/Progra~1/mosquitto/devel"
 				}
 			],
 			"language" : "CXX",
@@ -124,7 +124,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LIBPATH:C:\\PROGRA~1\\MOSQUI~1\\devel",
+				"fragment" : "-LIBPATH:C:\\Progra~1\\mosquitto\\devel",
 				"role" : "libraryPath"
 			},
 			{
