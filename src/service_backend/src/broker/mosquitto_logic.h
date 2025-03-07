@@ -1,0 +1,10 @@
+#ifndef SERVICE_BACKEND_MOSQUITTO_LOGIC_H
+#define SERVICE_BACKEND_MOSQUITTO_LOGIC_H
+
+
+class mosquitto_logic {
+
+};
+
+
+#endif //SERVICE_BACKEND_MOSQUITTO_LOGIC_H

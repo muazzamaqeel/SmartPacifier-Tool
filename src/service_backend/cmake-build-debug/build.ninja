@@ -49,29 +49,26 @@ cmake_ninja_workdir = C$:\programming\TeamOrientedProject---Smart-Pacifier\src\s
 
 build cmake_object_order_depends_target_service_backend: phony || CMakeFiles\service_backend.dir
 
-build CMakeFiles\service_backend.dir\src\main.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\main.cpp || cmake_object_order_depends_target_service_backend
+build CMakeFiles\service_backend.dir\main.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\main.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
-  TARGET_PDB = bin\service_backend.pdb
+  TARGET_PDB = service_backend.pdb
 
-build CMakeFiles\service_backend.dir\src\ipc\nng\NNGHandler.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\ipc\nng\NNGHandler.cpp || cmake_object_order_depends_target_service_backend
+build CMakeFiles\service_backend.dir\src\broker\brokercheck_os.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\broker\brokercheck_os.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\ipc\nng
+  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\broker
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
-  TARGET_PDB = bin\service_backend.pdb
+  TARGET_PDB = service_backend.pdb
 
-build CMakeFiles\service_backend.dir\src\communication_layer\mqtt\MyMQTTClient.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\communication_layer\mqtt\MyMQTTClient.cpp || cmake_object_order_depends_target_service_backend
+build CMakeFiles\service_backend.dir\src\broker\mosquitto_logic.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\broker\mosquitto_logic.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\boost_asio\asio\include -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\include -IC:\Progra~1\mosquitto\devel
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\communication_layer\mqtt
+  OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\broker
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
-  TARGET_PDB = bin\service_backend.pdb
+  TARGET_PDB = service_backend.pdb
 
 
 # =============================================================================
@@ -79,44 +76,19 @@ build CMakeFiles\service_backend.dir\src\communication_layer\mqtt\MyMQTTClient.c
 
 
 #############################################
-# Link the executable bin\service_backend.exe
+# Link the executable service_backend.exe
 
-build bin\service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMakeFiles\service_backend.dir\src\main.cpp.obj CMakeFiles\service_backend.dir\src\ipc\nng\NNGHandler.cpp.obj CMakeFiles\service_backend.dir\src\communication_layer\mqtt\MyMQTTClient.cpp.obj | C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\lib\libnng.a
+build service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMakeFiles\service_backend.dir\main.cpp.obj CMakeFiles\service_backend.dir\src\broker\brokercheck_os.cpp.obj CMakeFiles\service_backend.dir\src\broker\mosquitto_logic.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external\install\lib\libnng.a  mosquitto.lib  mosquittopp.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  LINK_PATH = -LIBPATH:C:\Progra~1\mosquitto\devel
+  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/mosquitto.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/mosquittopp.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/libcrypto-3-x64.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/libssl-3-x64.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/cjson.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/pthreadVC3.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/uv.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Progra~1/mosquitto/websockets.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Strawberry/c/bin/libgcc_s_seh-1.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin && cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/Strawberry/c/bin/libstdc++-6.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/bin"
+  POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
-  TARGET_FILE = bin\service_backend.exe
+  TARGET_FILE = service_backend.exe
   TARGET_IMPLIB = service_backend.lib
-  TARGET_PDB = bin\service_backend.pdb
-
-
-#############################################
-# Utility command for package
-
-build CMakeFiles\package.util: CUSTOM_COMMAND all
-  COMMAND = cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cpack.exe --config ./CPackConfig.cmake"
-  DESC = Run CPack packaging tool...
-  pool = console
-  restat = 1
-
-build package: phony CMakeFiles\package.util
-
-
-#############################################
-# Utility command for package_source
-
-build CMakeFiles\package_source.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cpack.exe --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug/CPackSourceConfig.cmake"
-  DESC = Run CPack packaging tool for source...
-  pool = console
-  restat = 1
-
-build package_source: phony CMakeFiles\package_source.util
+  TARGET_PDB = service_backend.pdb
 
 
 #############################################
@@ -144,9 +116,7 @@ build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build service_backend: phony bin\service_backend.exe
-
-build service_backend.exe: phony bin\service_backend.exe
+build service_backend: phony service_backend.exe
 
 # =============================================================================
 # Folder targets.
@@ -156,7 +126,7 @@ build service_backend.exe: phony bin\service_backend.exe
 #############################################
 # Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug
 
-build all: phony bin\service_backend.exe
+build all: phony service_backend.exe
 
 # =============================================================================
 # Built-in targets
@@ -165,14 +135,14 @@ build all: phony bin\service_backend.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\CMakeLists.txt CMakeCache.txt CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-C.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\CMakeLists.txt CMakeCache.txt CMakeFiles\3.25.2\CMakeCCompiler.cmake CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\CMakeLists.txt CMakeCache.txt CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake: phony
+build C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCXXInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeGenericSystem.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeInitializeConfigs.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeLanguageInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeRCInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-C.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Compiler\MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows-MSVC.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\Windows.cmake C$:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\share\cmake-3.25\Modules\Platform\WindowsPaths.cmake C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\CMakeLists.txt CMakeCache.txt CMakeFiles\3.25.2\CMakeCCompiler.cmake CMakeFiles\3.25.2\CMakeCXXCompiler.cmake CMakeFiles\3.25.2\CMakeRCCompiler.cmake CMakeFiles\3.25.2\CMakeSystem.cmake: phony
 
 
 #############################################
