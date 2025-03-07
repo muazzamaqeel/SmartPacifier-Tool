@@ -1,33 +1,32 @@
 cmake_minimum_required(VERSION 3.25)
 project(service_backend)
 
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Set relative path for vcpkg
-set(VCPKG_DIR "${CMAKE_SOURCE_DIR}/external_libs/vcpkg/installed/x64-windows")
+# Show a helpful message for Debug builds
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(STATUS "Debug build - Ensure debug DLLs are present!")
+endif()
 
-# Include Paho MQTT headers
+# Set relative paths for vcpkg
+set(VCPKG_DIR "${CMAKE_SOURCE_DIR}/src/external_libs/vcpkg/installed/x64-windows")
 include_directories(${VCPKG_DIR}/include)
 link_directories(${VCPKG_DIR}/lib)
 
-# Add executable
+# Define the executable
 add_executable(service_backend
         main.cpp
         src/broker/brokercheck_os.cpp
-        src/broker/mosquitto_logic.cpp
+        src/broker/mqtt_subscriber.cpp
         )
 
-# Link against Paho MQTT C++ library
+# Only link the C version of Paho MQTT (No C++ version found)
 target_link_libraries(service_backend
-        paho-mqttpp3
+        paho-mqtt3a
         paho-mqtt3as
+        paho-mqtt3c
+        paho-mqtt3cs
         )
-
-# Copy required DLLs (Windows only)
-if(WIN32)
-    add_custom_command(TARGET service_backend POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${VCPKG_DIR}/bin/paho-mqtt3as.dll
-            ${CMAKE_BINARY_DIR}
-            )
-endif()

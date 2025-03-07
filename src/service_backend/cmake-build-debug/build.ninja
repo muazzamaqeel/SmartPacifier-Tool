@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_service_backend: phony || CMakeFiles\ser
 
 build CMakeFiles\service_backend.dir\main.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\main.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external_libs\vcpkg\installed\x64-windows\include
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\external_libs\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
@@ -59,15 +59,15 @@ build CMakeFiles\service_backend.dir\main.cpp.obj: CXX_COMPILER__service_backend
 
 build CMakeFiles\service_backend.dir\src\broker\brokercheck_os.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\broker\brokercheck_os.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external_libs\vcpkg\installed\x64-windows\include
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\external_libs\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\broker
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
   TARGET_PDB = service_backend.pdb
 
-build CMakeFiles\service_backend.dir\src\broker\mosquitto_logic.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\broker\mosquitto_logic.cpp || cmake_object_order_depends_target_service_backend
+build CMakeFiles\service_backend.dir\src\broker\mqtt_subscriber.cpp.obj: CXX_COMPILER__service_backend_Debug C$:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\broker\mqtt_subscriber.cpp || cmake_object_order_depends_target_service_backend
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi -std:c++17
-  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external_libs\vcpkg\installed\x64-windows\include
+  INCLUDES = -IC:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\external_libs\vcpkg\installed\x64-windows\include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\broker
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
@@ -81,13 +81,13 @@ build CMakeFiles\service_backend.dir\src\broker\mosquitto_logic.cpp.obj: CXX_COM
 #############################################
 # Link the executable service_backend.exe
 
-build service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMakeFiles\service_backend.dir\main.cpp.obj CMakeFiles\service_backend.dir\src\broker\brokercheck_os.cpp.obj CMakeFiles\service_backend.dir\src\broker\mosquitto_logic.cpp.obj
+build service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMakeFiles\service_backend.dir\main.cpp.obj CMakeFiles\service_backend.dir\src\broker\brokercheck_os.cpp.obj CMakeFiles\service_backend.dir\src\broker\mqtt_subscriber.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = paho-mqttpp3.lib  paho-mqtt3as.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  LINK_PATH = -LIBPATH:C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\external_libs\vcpkg\installed\x64-windows\lib
+  LINK_LIBRARIES = paho-mqtt3a.lib  paho-mqtt3as.lib  paho-mqtt3c.lib  paho-mqtt3cs.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  LINK_PATH = -LIBPATH:C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\src\external_libs\vcpkg\installed\x64-windows\lib
   OBJECT_DIR = CMakeFiles\service_backend.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\service_backend\cmake-build-debug && C:\Users\muazz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\231.9011.31\bin\cmake\win\x64\bin\cmake.exe -E copy_if_different C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external_libs/vcpkg/installed/x64-windows/bin/paho-mqtt3as.dll C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/cmake-build-debug"
+  POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\service_backend.dir\
   TARGET_FILE = service_backend.exe

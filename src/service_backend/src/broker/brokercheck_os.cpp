@@ -18,7 +18,6 @@ BrokerCheckOS::BrokerCheckOS() {
     loadConfig();
 }
 
-
 void BrokerCheckOS::loadConfig() {
     std::filesystem::path currentPath = std::filesystem::current_path();
     std::filesystem::path projectRoot = currentPath.parent_path();
@@ -33,8 +32,6 @@ void BrokerCheckOS::loadConfig() {
     configFile.close();
     mosquittoPath = config.value("windows_mosquitto_path", "");
 }
-
-
 
 bool BrokerCheckOS::isMosquittoInstalled() {
 #ifdef OS_WINDOWS
@@ -52,7 +49,7 @@ bool BrokerCheckOS::isMosquittoInstalled() {
 
 bool BrokerCheckOS::isMosquittoRunning() {
 #ifdef OS_WINDOWS
-    return (system("tasklist | findstr mosquitto.exe >nul 2>nul") == 0);
+    return (system("netstat -an | findstr \"1883\" >nul 2>nul") == 0);
 #else
     return (system("pgrep mosquitto > /dev/null") == 0);
 #endif

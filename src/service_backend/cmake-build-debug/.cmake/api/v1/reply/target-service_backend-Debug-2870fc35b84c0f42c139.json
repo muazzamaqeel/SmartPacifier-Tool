@@ -30,25 +30,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 14,
+				"line" : 20,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 11,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 21,
+				"line" : 27,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 10,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -69,7 +69,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/external_libs/vcpkg/installed/x64-windows/include"
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/include"
 				}
 			],
 			"language" : "CXX",
@@ -104,17 +104,27 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LIBPATH:C:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\external_libs\\vcpkg\\installed\\x64-windows\\lib",
+				"fragment" : "-LIBPATH:C:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\src\\external_libs\\vcpkg\\installed\\x64-windows\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "paho-mqttpp3.lib",
+				"fragment" : "paho-mqtt3a.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
 				"fragment" : "paho-mqtt3as.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "paho-mqtt3c.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "paho-mqtt3cs.lib",
 				"role" : "libraries"
 			},
 			{
@@ -160,7 +170,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/broker/mosquitto_logic.cpp",
+			"path" : "src/broker/mqtt_subscriber.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
