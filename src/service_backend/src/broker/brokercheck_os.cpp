@@ -2,7 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
-#include "../../external/nlohmann/json.hpp"
+#include "../external_libs/json/json.hpp"
 #include <filesystem>
 
 std::string BrokerCheckOS::mosquittoPath = "";

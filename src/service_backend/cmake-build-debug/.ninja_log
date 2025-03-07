@@ -1,8 +1,10 @@
 # ninja log v5
-1	971	7630648624538264	CMakeFiles/service_backend.dir/main.cpp.obj	e63160c63e1c1b89
-1950	2290	7630650163022889	service_backend.exe	61900e8cd360c9b2
-1	1950	7630650160095786	CMakeFiles/service_backend.dir/src/mqtt/brokercheck_os.cpp.obj	7376f504a698fab7
 12	967	7630693241294873	CMakeFiles/service_backend.dir/src/broker/mosquitto_logic.cpp.obj	eb47ed5900673802
-7	3162	7630693263916989	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	14461f57379db709
+1894	2126	7630720214442844	service_backend.exe	322b57cfd0d367aa
 1	1054	7630693342346049	CMakeFiles/service_backend.dir/main.cpp.obj	e63160c63e1c1b89
-1055	1302	7630693344273823	service_backend.exe	322b57cfd0d367aa
+1	1950	7630650160095786	CMakeFiles/service_backend.dir/src/mqtt/brokercheck_os.cpp.obj	7376f504a698fab7
+1	1893	7630720212501680	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	14461f57379db709
+7	329	7630729798310388	build.ninja	a662dd4fd3e0900b
+10	589	7630729804442057	CMakeFiles/service_backend.dir/src/broker/mosquitto_logic.cpp.obj	cee2e6ea5423fb77
+1	1069	7630729809246068	CMakeFiles/service_backend.dir/main.cpp.obj	43286e1fac1e470e
+6	1783	7630729816366667	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	ac4d76df51eaf6d5
