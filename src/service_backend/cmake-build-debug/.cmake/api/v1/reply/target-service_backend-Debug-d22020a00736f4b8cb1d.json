@@ -59,10 +59,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi"
+					"fragment" : "-g -fdiagnostics-color=always"
 				},
 				{
-					"fragment" : "-std:c++17"
+					"fragment" : "-std=c++17"
 				}
 			],
 			"includes" : 
@@ -95,40 +95,40 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /Ob0 /Od /RTC1 -MDd -Zi",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LIBPATH:C:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\src\\external_libs\\vcpkg\\installed\\x64-windows\\lib",
+				"fragment" : "-LC:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\src\\external_libs\\vcpkg\\installed\\x64-windows\\lib",
 				"role" : "libraryPath"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "paho-mqtt3a.lib",
+				"fragment" : "-lpaho-mqtt3a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "paho-mqtt3as.lib",
+				"fragment" : "-lpaho-mqtt3as",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "paho-mqtt3c.lib",
+				"fragment" : "-lpaho-mqtt3c",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "paho-mqtt3cs.lib",
+				"fragment" : "-lpaho-mqtt3cs",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
