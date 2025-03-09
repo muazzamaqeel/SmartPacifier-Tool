@@ -19,8 +19,8 @@ link_directories(${VCPKG_DIR}/lib)
 # Define the executable
 add_executable(service_backend
         main.cpp
-        src/broker/brokercheck_os.cpp
-        src/broker/mqtt_subscriber.cpp
+        src/communication_layer/broker/brokercheck_os.cpp
+        src/communication_layer/broker/mqtt_subscriber.cpp
         )
 
 # Only link the C version of Paho MQTT (No C++ version found)

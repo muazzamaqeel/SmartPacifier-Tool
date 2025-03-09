@@ -1,17 +1,12 @@
 # ninja log v5
-2925	3507	7631390432564265	service_backend.exe	5b98bee4d5181a0f
-9	1830	7631390415846665	CMakeFiles/service_backend.dir/main.cpp.obj	af5540bfc4ddb1b5
-2	2924	7631390426768033	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	a9a7392fbeb46577
-15	440	7631390401966681	CMakeFiles/service_backend.dir/src/broker/mqtt_subscriber.cpp.obj	f28fe790f700184
-2	122	7631560927536143	build.ninja	a662dd4fd3e0900b
-1	24	0	clean	60ce698aebe01739
-26	285	7631560927536143	build.ninja	a662dd4fd3e0900b
-14	931	7631560937231697	CMakeFiles/service_backend.dir/src/broker/mqtt_subscriber.cpp.obj	f28fe790f700184
-7	3502	7631560962926143	CMakeFiles/service_backend.dir/main.cpp.obj	af5540bfc4ddb1b5
-1	6090	7631560988803827	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	a9a7392fbeb46577
-6091	7221	7631561000050599	service_backend.exe	5b98bee4d5181a0f
-0	16	0	clean	60ce698aebe01739
-20	1036	7631561660295832	CMakeFiles/service_backend.dir/src/broker/mqtt_subscriber.cpp.obj	f28fe790f700184
 14	3498	7631561684962269	CMakeFiles/service_backend.dir/main.cpp.obj	af5540bfc4ddb1b5
-8	5089	7631561700845665	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	a9a7392fbeb46577
 5089	5858	7631561708523679	service_backend.exe	5b98bee4d5181a0f
+20	1036	7631561660295832	CMakeFiles/service_backend.dir/src/broker/mqtt_subscriber.cpp.obj	f28fe790f700184
+8	5089	7631561700845665	CMakeFiles/service_backend.dir/src/broker/brokercheck_os.cpp.obj	a9a7392fbeb46577
+26	285	7632283344126623	build.ninja	a662dd4fd3e0900b
+0	16	0	clean	60ce698aebe01739
+3	565	7632283344126623	build.ninja	a662dd4fd3e0900b
+4	647	7632283933426541	CMakeFiles/service_backend.dir/src/communication_layer/broker/mqtt_subscriber.cpp.obj	e5b3b5984e66c32f
+16	3033	7632283957285214	CMakeFiles/service_backend.dir/main.cpp.obj	af5540bfc4ddb1b5
+11	4901	7632284077926853	CMakeFiles/service_backend.dir/src/communication_layer/broker/brokercheck_os.cpp.obj	d58c9a3dfd0a46fd
+4901	6068	7632284089579332	service_backend.exe	f9bbd8da92e803f1

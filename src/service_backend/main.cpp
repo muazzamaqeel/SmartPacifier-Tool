@@ -2,8 +2,8 @@
 #include <filesystem>
 #include <thread>
 #include "src/external_libs/vcpkg/downloads/tools/perl/5.40.0.1/c/x86_64-w64-mingw32/include/wrl/client.h"
-#include "src/broker/brokercheck_os.h"
-#include "src/broker/mqtt_subscriber.h"
+#include "src/communication_layer/broker/brokercheck_os.h"
+#include "src/communication_layer/broker/mqtt_subscriber.h"
 
 int main() {
     std::cout << "Current Working Directory: "
