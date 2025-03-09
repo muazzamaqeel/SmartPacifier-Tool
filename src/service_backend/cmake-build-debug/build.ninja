@@ -52,21 +52,21 @@ build cmake_object_order_depends_target_service_backend: phony || CMakeFiles/ser
 build CMakeFiles/service_backend.dir/main.cpp.obj: CXX_COMPILER__service_backend_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/main.cpp || cmake_object_order_depends_target_service_backend
   DEP_FILE = CMakeFiles\service_backend.dir\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=c++17
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/include
+  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/mqtt/vcpkg/installed/x64-windows/include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir
 
 build CMakeFiles/service_backend.dir/src/communication_layer/broker/brokercheck_os.cpp.obj: CXX_COMPILER__service_backend_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/communication_layer/broker/brokercheck_os.cpp || cmake_object_order_depends_target_service_backend
   DEP_FILE = CMakeFiles\service_backend.dir\src\communication_layer\broker\brokercheck_os.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=c++17
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/include
+  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/mqtt/vcpkg/installed/x64-windows/include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\communication_layer\broker
 
 build CMakeFiles/service_backend.dir/src/communication_layer/broker/mqtt_subscriber.cpp.obj: CXX_COMPILER__service_backend_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/communication_layer/broker/mqtt_subscriber.cpp || cmake_object_order_depends_target_service_backend
   DEP_FILE = CMakeFiles\service_backend.dir\src\communication_layer\broker\mqtt_subscriber.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=c++17
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/include
+  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/mqtt/vcpkg/installed/x64-windows/include
   OBJECT_DIR = CMakeFiles\service_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\service_backend.dir\src\communication_layer\broker
 
@@ -81,7 +81,7 @@ build CMakeFiles/service_backend.dir/src/communication_layer/broker/mqtt_subscri
 build service_backend.exe: CXX_EXECUTABLE_LINKER__service_backend_Debug CMakeFiles/service_backend.dir/main.cpp.obj CMakeFiles/service_backend.dir/src/communication_layer/broker/brokercheck_os.cpp.obj CMakeFiles/service_backend.dir/src/communication_layer/broker/mqtt_subscriber.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lpaho-mqtt3a  -lpaho-mqtt3as  -lpaho-mqtt3c  -lpaho-mqtt3cs  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  LINK_PATH = -LC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/lib
+  LINK_PATH = -LC:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/mqtt/vcpkg/installed/x64-windows/lib
   OBJECT_DIR = CMakeFiles\service_backend.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

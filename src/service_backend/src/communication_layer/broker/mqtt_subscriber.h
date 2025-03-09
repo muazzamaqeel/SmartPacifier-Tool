@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include "../../../src/external_libs/vcpkg/packages/paho-mqtt_x64-windows/include/MQTTAsync.h"
-#include "../../../src/external_libs/vcpkg/packages/paho-mqtt_x64-windows/include/MQTTClient.h"
+#include "../../../src/external_libs/mqtt/vcpkg/packages/paho-mqtt_x64-windows/include/MQTTAsync.h"
+#include "../../../src/external_libs/mqtt/vcpkg/packages/paho-mqtt_x64-windows/include/MQTTClient.h"
 
 class MQTTSubscriber {
 public:

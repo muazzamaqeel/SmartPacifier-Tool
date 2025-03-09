@@ -12,7 +12,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 # Set relative paths for vcpkg
-set(VCPKG_DIR "${CMAKE_SOURCE_DIR}/src/external_libs/vcpkg/installed/x64-windows")
+set(VCPKG_DIR "${CMAKE_SOURCE_DIR}/src/external_libs/mqtt/vcpkg/installed/x64-windows")
 include_directories(${VCPKG_DIR}/include)
 link_directories(${VCPKG_DIR}/lib)
 

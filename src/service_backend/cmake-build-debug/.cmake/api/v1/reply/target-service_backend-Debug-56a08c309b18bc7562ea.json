@@ -69,7 +69,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/vcpkg/installed/x64-windows/include"
+					"path" : "C:/programming/TeamOrientedProject---Smart-Pacifier/src/service_backend/src/external_libs/mqtt/vcpkg/installed/x64-windows/include"
 				}
 			],
 			"language" : "CXX",
@@ -104,7 +104,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LC:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\src\\external_libs\\vcpkg\\installed\\x64-windows\\lib",
+				"fragment" : "-LC:\\programming\\TeamOrientedProject---Smart-Pacifier\\src\\service_backend\\src\\external_libs\\mqtt\\vcpkg\\installed\\x64-windows\\lib",
 				"role" : "libraryPath"
 			},
 			{
