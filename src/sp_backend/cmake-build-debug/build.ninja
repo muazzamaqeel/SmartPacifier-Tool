@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/
+cmake_ninja_workdir = C$:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target sp_backend
 
@@ -49,24 +49,24 @@ cmake_ninja_workdir = C$:/programming/TeamOrientedProject---Smart-Pacifier/src/s
 
 build cmake_object_order_depends_target_sp_backend: phony || cmake_object_order_depends_target_paho-mqtt3a-static cmake_object_order_depends_target_paho-mqttpp3-static
 
-build CMakeFiles/sp_backend.dir/src/main.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/main.cpp || cmake_object_order_depends_target_sp_backend
+build CMakeFiles/sp_backend.dir/src/main.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/main.cpp || cmake_object_order_depends_target_sp_backend
   DEP_FILE = CMakeFiles\sp_backend.dir\src\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = CMakeFiles\sp_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\sp_backend.dir\src
 
-build CMakeFiles/sp_backend.dir/src/communication_layer/broker/BrokerCheck.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/communication_layer/broker/BrokerCheck.cpp || cmake_object_order_depends_target_sp_backend
+build CMakeFiles/sp_backend.dir/src/communication_layer/broker/BrokerCheck.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/communication_layer/broker/BrokerCheck.cpp || cmake_object_order_depends_target_sp_backend
   DEP_FILE = CMakeFiles\sp_backend.dir\src\communication_layer\broker\BrokerCheck.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = CMakeFiles\sp_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\sp_backend.dir\src\communication_layer\broker
 
-build CMakeFiles/sp_backend.dir/src/communication_layer/broker/DataRetrieval.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/communication_layer/broker/DataRetrieval.cpp || cmake_object_order_depends_target_sp_backend
+build CMakeFiles/sp_backend.dir/src/communication_layer/broker/DataRetrieval.cpp.obj: CXX_COMPILER__sp_backend_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/communication_layer/broker/DataRetrieval.cpp || cmake_object_order_depends_target_sp_backend
   DEP_FILE = CMakeFiles\sp_backend.dir\src\communication_layer\broker\DataRetrieval.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = CMakeFiles\sp_backend.dir
   OBJECT_FILE_DIR = CMakeFiles\sp_backend.dir\src\communication_layer\broker
 
@@ -93,7 +93,7 @@ build sp_backend.exe: CXX_EXECUTABLE_LINKER__sp_backend_Debug CMakeFiles/sp_back
 # Utility command for package
 
 build CMakeFiles/package.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -105,7 +105,7 @@ build package: phony CMakeFiles/package.util
 # Utility command for package_source
 
 build CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -117,7 +117,7 @@ build package_source: phony CMakeFiles/package_source.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -128,7 +128,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -146,7 +146,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles/install.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -158,7 +158,7 @@ build install: phony CMakeFiles/install.util
 # Utility command for install/local
 
 build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -170,7 +170,7 @@ build install/local: phony CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -179,7 +179,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/CMakeLists.txt
 # =============================================================================
 
 
@@ -187,7 +187,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -199,7 +199,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/package: phony src/external_libs/mqtt
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -211,7 +211,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/package_source: phony src/external_li
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -222,7 +222,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/edit_cache: phony src/external_libs/m
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -240,7 +240,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/list_install_components: phony
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -252,7 +252,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/install: phony src/external_libs/mqtt
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -264,7 +264,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/install/local: phony src/external_lib
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -273,7 +273,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/install/strip: phony src/external_lib
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
 # =============================================================================
 
 
@@ -281,7 +281,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/install/strip: phony src/external_lib
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -293,7 +293,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/package: phony 
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -305,7 +305,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/package_source:
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -316,7 +316,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/edit_cache: pho
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -334,7 +334,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/list_install_co
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -346,7 +346,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/install: phony 
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -358,7 +358,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/install/local: 
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -367,7 +367,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/install/strip: 
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -379,154 +379,154 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/install/strip: 
 
 build cmake_object_order_depends_target_common_obj_static: phony || .
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTTime.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTTime.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTTime.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTTime.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTTime.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProtocolClient.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolClient.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProtocolClient.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolClient.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTProtocolClient.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Clients.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Clients.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Clients.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Clients.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Clients.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/utf-8.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/utf-8.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/utf-8.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/utf-8.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\utf-8.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPacket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacket.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPacket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacket.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTPacket.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPacketOut.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacketOut.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPacketOut.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacketOut.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTPacketOut.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Messages.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Messages.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Messages.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Messages.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Messages.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Tree.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Tree.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Tree.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Tree.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Tree.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Socket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Socket.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Socket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Socket.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Socket.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Log.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Log.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Log.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Log.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Log.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPersistence.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistence.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPersistence.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistence.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTPersistence.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Thread.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Thread.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Thread.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Thread.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Thread.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProtocolOut.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolOut.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProtocolOut.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolOut.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTProtocolOut.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPersistenceDefault.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistenceDefault.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTPersistenceDefault.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistenceDefault.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTPersistenceDefault.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/SocketBuffer.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SocketBuffer.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/SocketBuffer.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SocketBuffer.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\SocketBuffer.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/LinkedList.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/LinkedList.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/LinkedList.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/LinkedList.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\LinkedList.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProperties.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProperties.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTProperties.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProperties.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTProperties.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTReasonCodes.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTReasonCodes.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/MQTTReasonCodes.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTReasonCodes.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\MQTTReasonCodes.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Base64.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Base64.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Base64.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/SHA1.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SHA1.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/SHA1.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SHA1.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\SHA1.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/WebSocket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/WebSocket.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/WebSocket.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/WebSocket.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\WebSocket.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Proxy.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Proxy.c || cmake_object_order_depends_target_common_obj_static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/Proxy.c.obj: C_COMPILER__common_obj_static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Proxy.c || cmake_object_order_depends_target_common_obj_static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\common_obj_static.dir\Proxy.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -549,11 +549,11 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/common_obj_
 
 build cmake_object_order_depends_target_paho-mqtt3c-static: phony || cmake_object_order_depends_target_common_obj_static
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3c-static.dir/MQTTClient.c.obj: C_COMPILER__paho-mqtt3c-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTClient.c || cmake_object_order_depends_target_paho-mqtt3c-static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3c-static.dir/MQTTClient.c.obj: C_COMPILER__paho-mqtt3c-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTClient.c || cmake_object_order_depends_target_paho-mqtt3c-static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3c-static.dir\MQTTClient.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3c-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3c-static.dir
 
@@ -582,19 +582,19 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqt
 
 build cmake_object_order_depends_target_paho-mqtt3a-static: phony || cmake_object_order_depends_target_common_obj_static
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3a-static.dir/MQTTAsync.c.obj: C_COMPILER__paho-mqtt3a-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTAsync.c || cmake_object_order_depends_target_paho-mqtt3a-static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3a-static.dir/MQTTAsync.c.obj: C_COMPILER__paho-mqtt3a-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTAsync.c || cmake_object_order_depends_target_paho-mqtt3a-static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir\MQTTAsync.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3a-static.dir/MQTTAsyncUtils.c.obj: C_COMPILER__paho-mqtt3a-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTAsyncUtils.c || cmake_object_order_depends_target_paho-mqtt3a-static
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/paho-mqtt3a-static.dir/MQTTAsyncUtils.c.obj: C_COMPILER__paho-mqtt3a-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTAsyncUtils.c || cmake_object_order_depends_target_paho-mqtt3a-static
   DEFINES = -DHIGH_PERFORMANCE=1 -DPAHO_MQTT_STATIC=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir\MQTTAsyncUtils.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src -IC:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\paho-mqtt3a-static.dir
 
@@ -623,7 +623,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqt
 
 build cmake_object_order_depends_target_Base64Test: phony || .
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/Base64Test.dir/Base64.c.obj: C_COMPILER__Base64Test_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64.c || cmake_object_order_depends_target_Base64Test
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/Base64Test.dir/Base64.c.obj: C_COMPILER__Base64Test_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64.c || cmake_object_order_depends_target_Base64Test
   DEFINES = -DBASE64_TEST -DHIGH_PERFORMANCE=1 -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\Base64Test.dir\Base64.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -657,7 +657,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64Test.
 
 build cmake_object_order_depends_target_Sha1Test: phony || .
 
-build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/Sha1Test.dir/SHA1.c.obj: C_COMPILER__Sha1Test_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SHA1.c || cmake_object_order_depends_target_Sha1Test
+build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/Sha1Test.dir/SHA1.c.obj: C_COMPILER__Sha1Test_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SHA1.c || cmake_object_order_depends_target_Sha1Test
   DEFINES = -DHIGH_PERFORMANCE=1 -DSHA1_TEST -DWIN32_LEAN_AND_MEAN -D_CRT_SECURE_NO_DEPRECATE
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src\CMakeFiles\Sha1Test.dir\SHA1.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -687,7 +687,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Sha1Test.ex
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -699,7 +699,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/package: ph
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -711,7 +711,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/package_sou
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -722,7 +722,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/edit_cache:
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -740,7 +740,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/list_instal
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -752,7 +752,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/install: ph
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -764,7 +764,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/install/loc
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\externals\paho-mqtt-c\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -773,7 +773,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/install/str
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
 # =============================================================================
 
 
@@ -781,7 +781,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/install/str
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -793,7 +793,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/package: phony src/exter
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -805,7 +805,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/package_source: phony sr
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -816,7 +816,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/edit_cache: phony src/ex
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -834,7 +834,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/list_install_components:
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -846,7 +846,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/install: phony src/exter
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -858,7 +858,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/install/local: phony src
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\include\mqtt && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -867,7 +867,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/install/strip: phony src
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -879,131 +879,131 @@ build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/install/strip: phony src
 
 build cmake_object_order_depends_target_paho-mqttpp3-static: phony || cmake_object_order_depends_target_paho-mqtt3a-static
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/async_client.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/async_client.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/async_client.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/async_client.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\async_client.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/client.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/client.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/client.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/client.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\client.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/connect_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/connect_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/connect_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/connect_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\connect_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/create_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/create_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/create_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/create_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\create_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/disconnect_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/disconnect_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/disconnect_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/disconnect_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\disconnect_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/iclient_persistence.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/iclient_persistence.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/iclient_persistence.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/iclient_persistence.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\iclient_persistence.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/message.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/message.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/message.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/message.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\message.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/properties.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/properties.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/properties.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/properties.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\properties.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/reason_code.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/reason_code.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/reason_code.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/reason_code.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\reason_code.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/response_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/response_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/response_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/response_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\response_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/server_response.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/server_response.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/server_response.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/server_response.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\server_response.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/ssl_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/ssl_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/ssl_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/ssl_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\ssl_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/string_collection.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/string_collection.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/string_collection.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/string_collection.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\string_collection.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/token.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/token.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/token.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/token.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\token.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/topic.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/topic.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/topic.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/topic.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\topic.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
-build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/will_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/will_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
+build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/paho-mqttpp3-static.dir/will_options.cpp.obj: CXX_COMPILER__paho-mqttpp3-static_unscanned_Debug C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/will_options.cpp || cmake_object_order_depends_target_paho-mqttpp3-static
   DEFINES = -D_CRT_SECURE_NO_WARNINGS
   DEP_FILE = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir\will_options.cpp.obj.d
   FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wextra
-  INCLUDES = -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+  INCLUDES = -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include -IC:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
   OBJECT_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
   OBJECT_FILE_DIR = src\external_libs\mqtt\paho.mqtt.cpp\src\CMakeFiles\paho-mqttpp3-static.dir
 
@@ -1028,7 +1028,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a: CXX_STA
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -1040,7 +1040,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/package: phony src/external_libs/
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -1052,7 +1052,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/package_source: phony src/externa
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1063,7 +1063,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/edit_cache: phony src/external_li
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1081,7 +1081,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/list_install_components: phony
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -1093,7 +1093,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/install: phony src/external_libs/
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -1105,7 +1105,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/install/local: phony src/external
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/src/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\src && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -1114,7 +1114,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/install/strip: phony src/external
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
+# C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt
 # =============================================================================
 
 
@@ -1122,7 +1122,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/install/strip: phony src/external
 # Utility command for package
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/package.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/cmake/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackConfig.cmake"
   DESC = Run CPack packaging tool...
   pool = console
   restat = 1
@@ -1134,7 +1134,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/package: phony src/external_lib
 # Utility command for package_source
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/package_source.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CPackSourceConfig.cmake"
   DESC = Run CPack packaging tool for source...
   pool = console
   restat = 1
@@ -1146,7 +1146,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/package_source: phony src/exter
 # Utility command for edit_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -1157,7 +1157,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/edit_cache: phony src/external_
 # Utility command for rebuild_cache
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -BC:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Programming\SmartPacifier-Tool\src\sp_backend -BC:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -1175,7 +1175,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/list_install_components: phony
 # Utility command for install
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/install.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/cmake/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -1187,7 +1187,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/install: phony src/external_lib
 # Utility command for install/local
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/install/local.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/cmake/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -1199,7 +1199,7 @@ build src/external_libs/mqtt/paho.mqtt.cpp/cmake/install/local: phony src/extern
 # Utility command for install/strip
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/external_libs/mqtt/paho.mqtt.cpp/cmake/all
-  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Programming\SmartPacifier-Tool\src\sp_backend\cmake-build-debug\src\external_libs\mqtt\paho.mqtt.cpp\cmake && "C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -1239,49 +1239,49 @@ build sp_backend: phony sp_backend.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug
 
 build all: phony sp_backend.exe src/external_libs/mqtt/paho.mqtt.cpp/all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp
 
 build src/external_libs/mqtt/paho.mqtt.cpp/all: phony src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all src/external_libs/mqtt/paho.mqtt.cpp/src/all src/external_libs/mqtt/paho.mqtt.cpp/cmake/all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake
 
 build src/external_libs/mqtt/paho.mqtt.cpp/cmake/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/all: phony src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src
 
 build src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/all: phony src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/common_obj_static src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3c-static.a src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt
 
 build src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src
+# Folder: C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src
 
 build src/external_libs/mqtt/paho.mqtt.cpp/src/all: phony src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a
 
@@ -1292,14 +1292,14 @@ build src/external_libs/mqtt/paho.mqtt.cpp/src/all: phony src/external_libs/mqtt
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPack.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/exportheader.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Templates/CPackConfig.cmake.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfig.cmake.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/VersionInfo.h.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPack.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/exportheader.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Templates/CPackConfig.cmake.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfig.cmake.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/VersionInfo.h.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPack.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/exportheader.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Templates/CPackConfig.cmake.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfig.cmake.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/VersionInfo.h.in C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeLists.txt C$:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPack.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CPackComponent.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/exportheader.cmake.in C$:/Program$ Files/JetBrains/CLion$ 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Templates/CPackConfig.cmake.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfig.cmake.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/VersionInfo.h.in C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/CMakeLists.txt C$:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
 
 
 #############################################

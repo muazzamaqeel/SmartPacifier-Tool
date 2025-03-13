@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(PahoMqttCpp::paho-mqtt3a-static STATIC IMPORTED)
 
 set_target_properties(PahoMqttCpp::paho-mqtt3a-static PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src"
   INTERFACE_LINK_LIBRARIES "ws2_32;crypt32;rpcrt4"
 )
 
@@ -58,7 +58,7 @@ set_target_properties(PahoMqttCpp::paho-mqtt3a-static PROPERTIES
 add_library(PahoMqttCpp::paho-mqttpp3-static STATIC IMPORTED)
 
 set_target_properties(PahoMqttCpp::paho-mqttpp3-static PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include"
+  INTERFACE_INCLUDE_DIRECTORIES "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/include"
   INTERFACE_LINK_LIBRARIES "PahoMqttCpp::paho-mqtt3a-static;Threads::Threads;ws2_32"
 )
 
@@ -66,14 +66,14 @@ set_target_properties(PahoMqttCpp::paho-mqttpp3-static PROPERTIES
 set_property(TARGET PahoMqttCpp::paho-mqtt3a-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(PahoMqttCpp::paho-mqtt3a-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "C"
-  IMPORTED_LOCATION_DEBUG "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a"
+  IMPORTED_LOCATION_DEBUG "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a"
   )
 
 # Import target "PahoMqttCpp::paho-mqttpp3-static" for configuration "Debug"
 set_property(TARGET PahoMqttCpp::paho-mqttpp3-static APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(PahoMqttCpp::paho-mqttpp3-static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a"
+  IMPORTED_LOCATION_DEBUG "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a"
   )
 
 # This file does not depend on other imported targets which have

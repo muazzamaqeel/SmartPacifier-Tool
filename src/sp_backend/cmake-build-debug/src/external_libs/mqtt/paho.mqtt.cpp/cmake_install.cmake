@@ -1,4 +1,4 @@
-# Install script for directory: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
+# Install script for directory: C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,23 +34,23 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/MinGW/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2024.3.4/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/generated/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/generated/include/")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/cmake_install.cmake")
-  include("C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/cmake_install.cmake")
-  include("C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src/cmake_install.cmake")
-  include("C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake/cmake_install.cmake")
+  include("C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/cmake_install.cmake")
+  include("C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/include/mqtt/cmake_install.cmake")
+  include("C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/src/cmake_install.cmake")
+  include("C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake/cmake_install.cmake")
 
 endif()
 
