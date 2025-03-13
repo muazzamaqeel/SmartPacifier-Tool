@@ -1,0 +1,8 @@
+"C:\Program Files\JetBrains\CLion 2024.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -DCMAKE_C_COMPILER=C:/MinGW/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/MinGW/bin/g++.exe -G Ninja -S C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend -B C:\programming\TeamOrientedProject---Smart-Pacifier\src\sp_backend\cmake-build-debug
+-- Paho C: Bundled
+-- CMake version: 3.30.5
+-- CMake system name: Windows
+-- Timestamp is 2025-03-13T12:04:53Z
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/programming/TeamOrientedProject---Smart-Pacifier/src/sp_backend/cmake-build-debug

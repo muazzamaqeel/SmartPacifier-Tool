@@ -1,0 +1,123 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 204,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 218,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 395,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 408,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3c-static.a"
+			],
+			"targetId" : "paho-mqtt3c-static::@518b0e2cc3b755d8cdaa",
+			"targetIndex" : 4,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a"
+			],
+			"targetId" : "paho-mqtt3a-static::@518b0e2cc3b755d8cdaa",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTAsync.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTClient.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTClientPersistence.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProperties.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTReasonCodes.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTSubscribeOpts.h",
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTExportDeclarations.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/eclipse-paho-mqtt-c",
+			"exportName" : "eclipse-paho-mqtt-cTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "paho-mqtt3c-static::@518b0e2cc3b755d8cdaa",
+					"index" : 4
+				},
+				{
+					"id" : "paho-mqtt3a-static::@518b0e2cc3b755d8cdaa",
+					"index" : 3
+				}
+			],
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/Export/dd175520bdcfdcc5f75bc4f14a6d7fe8/eclipse-paho-mqtt-cConfig.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/eclipse-paho-mqtt-c",
+			"paths" : 
+			[
+				"cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/eclipse-paho-mqtt-cConfigVersion.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src",
+		"source" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src"
+	}
+}
