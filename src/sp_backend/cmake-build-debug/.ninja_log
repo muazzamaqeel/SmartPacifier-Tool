@@ -92,3 +92,5 @@
 8606	10345	7636011685078377	CMakeFiles/sp_backend.dir/src/communication_layer/broker/DataRetrieval.cpp.obj	4dc9eb1df335815d
 9815	10982	7636011697175069	src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a	c14dfb38ff080126
 10982	11917	7636011708726329	sp_backend.exe	21f0f363c71b6ba
+8	1201	7636018993764323	CMakeFiles/sp_backend.dir/src/communication_layer/broker/DataRetrieval.cpp.obj	4dc9eb1df335815d
+1202	2106	7636019005701839	sp_backend.exe	21f0f363c71b6ba

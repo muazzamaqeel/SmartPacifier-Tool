@@ -13,12 +13,13 @@ DataRetrieval::DataRetrieval(const std::string& broker, const std::string& clien
 
 DataRetrieval::~DataRetrieval() {
     try {
-        client_.disconnect()->wait();
+        if (client_.is_connected()) {
+            client_.disconnect()->wait();
+        }
     } catch (const mqtt::exception& exc) {
-        std::cerr << "Error during disconnect: " << exc.what() << std::endl;
+        std::cerr << "Error during disconnect in destructor: " << exc.what() << std::endl;
     }
 }
-
 void DataRetrieval::start() {
     try {
         std::cout << "Connecting to broker..." << std::endl;
@@ -31,11 +32,16 @@ void DataRetrieval::start() {
 
 void DataRetrieval::stop() {
     try {
-        client_.disconnect()->wait();
+        if (client_.is_connected()) {
+            client_.disconnect()->wait();
+            std::cout << "Client disconnected successfully." << std::endl;
+        }
     } catch (const mqtt::exception& exc) {
         std::cerr << "Error disconnecting: " << exc.what() << std::endl;
     }
 }
+
+
 
 // Callback: invoked after a successful connection.
 void DataRetrieval::connected(const std::string& cause) {
