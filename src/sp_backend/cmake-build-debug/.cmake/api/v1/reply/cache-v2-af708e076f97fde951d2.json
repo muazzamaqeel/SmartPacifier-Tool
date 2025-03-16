@@ -1894,6 +1894,18 @@
 			"value" : "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp"
 		},
 		{
+			"name" : "PahoMqttCpp_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for PahoMqttCpp."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/Program Files (x86)/PahoMqttCpp/lib/cmake/PahoMqttCpp"
+		},
+		{
 			"name" : "PahoMqttCpp_IS_TOP_LEVEL",
 			"properties" : 
 			[
