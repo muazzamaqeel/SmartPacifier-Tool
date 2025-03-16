@@ -452,3 +452,73 @@ events:
       Running the CXX compiler's linker: "C:/Program Files/JetBrains/CLion 2024.3.4/bin/mingw/bin/ld.exe" "-v"
       GNU ld (GNU Binutils) 2.40
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt:29 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zmouft"
+      binary: "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zmouft"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zmouft'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_fcebd
+        [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fdiagnostics-color=always -o CMakeFiles/cmTC_fcebd.dir/src.c.obj -c C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zmouft/src.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.4\\bin\\mingw\\bin\\gcc.exe   CMakeFiles/cmTC_fcebd.dir/src.c.obj -o cmTC_fcebd.exe -Wl,--out-implib,libcmTC_fcebd.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake:206 (check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake:263 (_check_cxx_compiler_attribute)"
+      - "C:/Program Files/JetBrains/CLion 2024.3.4/bin/cmake/win/x64/share/cmake-3.30/Modules/GenerateExportHeader.cmake:420 (_test_compiler_has_deprecated)"
+      - "src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt:114 (generate_export_header)"
+    checks:
+      - "Performing Test COMPILER_HAS_DEPRECATED_ATTR"
+    directories:
+      source: "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq"
+      binary: "C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_DEPRECATED_ATTR"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.3.4/bin/ninja/win/x64/ninja.exe" -v cmTC_070c5
+        [1/2] C:\\PROGRA~1\\JETBRA~1\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE -DCOMPILER_HAS_DEPRECATED_ATTR  -std=gnu++17 -fdiagnostics-color=always -o CMakeFiles/cmTC_070c5.dir/src.cxx.obj -c C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq/src.cxx
+        C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq/src.cxx: In function 'int main()':
+        C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq/src.cxx:2:33: warning: 'int somefunc()' is deprecated [-Wdeprecated-declarations]
+            2 |     int main() { return somefunc();}
+              |                         ~~~~~~~~^~
+        C:/Programming/SmartPacifier-Tool/src/sp_backend/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-gphhuq/src.cxx:1:37: note: declared here
+            1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+              |                                     ^~~~~~~~
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\PROGRA~1\\JETBRA~1\\CLION2~1.4\\bin\\mingw\\bin\\G__~1.EXE   CMakeFiles/cmTC_070c5.dir/src.cxx.obj -o cmTC_070c5.exe -Wl,--out-implib,libcmTC_070c5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...
