@@ -1,1 +1,4 @@
 
+[submodule "src/sp_backend/src/external_libs/third_party/vcpkg"]
+	path = src/sp_backend/src/external_libs/third_party/vcpkg
+	url = https://github.com/microsoft/vcpkg.git
