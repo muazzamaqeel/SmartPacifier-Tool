@@ -1,0 +1,90 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 556,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "grpc_csharp_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_objective_c_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_cpp_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_node_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_python_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_php_plugin::@f1eb5bd0194ddabefa03"
+		},
+		{
+			"id" : "grpc_ruby_plugin::@f1eb5bd0194ddabefa03"
+		}
+	],
+	"id" : "plugins::@f1eb5bd0194ddabefa03",
+	"name" : "plugins",
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc",
+		"source" : "src/external_libs/grpc"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "src/external_libs/grpc/CMakeFiles/plugins",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "src/external_libs/grpc/CMakeFiles/plugins.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

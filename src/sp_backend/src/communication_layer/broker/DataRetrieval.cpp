@@ -1,14 +1,12 @@
 #include "DataRetrieval.h"
-#include <iostream>
-#include <chrono>
-#include <thread>
+#include "GlobalMessageQueue.h"
+#include "Logger.h"
 
 DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, const std::string& topic)
-        : topic_(topic), client_(broker, client_id)
-{
-    // Set this object as the callback for connection, message, etc.
+    : topic_(topic), client_(broker, client_id) {
     client_.set_callback(*this);
     connOpts_.set_clean_session(true);
+    Logger::getInstance().log("MQTT client initialized.");
 }
 
 DataRetrieval::~DataRetrieval() {
@@ -17,66 +15,83 @@ DataRetrieval::~DataRetrieval() {
             client_.disconnect()->wait();
         }
     } catch (const mqtt::exception& exc) {
-        std::cerr << "Error during disconnect in destructor: " << exc.what() << std::endl;
+        Logger::getInstance().log("Error during disconnect in destructor: " + std::string(exc.what()));
     }
 }
+
 void DataRetrieval::start() {
     try {
-        std::cout << "Connecting to broker..." << std::endl;
-        // Connect asynchronously. The action listener (this) will be notified.
-        client_.connect(connOpts_, nullptr, *this);
-    } catch (const mqtt::exception& exc) {
-        std::cerr << "Error connecting: " << exc.what() << std::endl;
+        // Synchronously connect
+        client_.connect(connOpts_)->wait();
+        Logger::getInstance().log("MQTT connected to broker.");
+
+        // Subscribe to your topic with QoS=1
+        client_.subscribe(topic_, 1)->wait();
+        Logger::getInstance().log("✅ Subscribed to MQTT topic: " + topic_);
+    }
+    catch (const mqtt::exception& exc) {
+        Logger::getInstance().log("MQTT connection/subscription error: " + std::string(exc.what()));
     }
 }
+
 
 void DataRetrieval::stop() {
     try {
         if (client_.is_connected()) {
             client_.disconnect()->wait();
-            std::cout << "Client disconnected successfully." << std::endl;
+            Logger::getInstance().log("MQTT client disconnected.");
         }
     } catch (const mqtt::exception& exc) {
-        std::cerr << "Error disconnecting: " << exc.what() << std::endl;
+        Logger::getInstance().log("MQTT disconnection error: " + std::string(exc.what()));
     }
 }
 
-
-
-// Callback: invoked after a successful connection.
-void DataRetrieval::connected(const std::string& cause) {
-    std::cout << "Connected to broker." << std::endl;
-    try {
-        std::cout << "Subscribing to topic: " << topic_ << std::endl;
-        // Subscribe to the topic with Quality of Service level 1.
-        client_.subscribe(topic_, 1, nullptr, *this);
-    } catch (const mqtt::exception& exc) {
-        std::cerr << "Error subscribing: " << exc.what() << std::endl;
-    }
-}
-
-// Callback: invoked if the connection is lost.
-void DataRetrieval::connection_lost(const std::string& cause) {
-    std::cout << "Connection lost: " << cause << std::endl;
-}
-
-// Callback: invoked when a message is received.
 void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
-    std::cout << "Message arrived on topic: " << msg->get_topic() << std::endl;
-    std::cout << "Payload: " << msg->to_string() << std::endl;
+    try {
+        Logger::getInstance().log("📩 Incoming MQTT message...");
+
+        if (!msg) {
+            Logger::getInstance().log("⚠️ Received NULL MQTT message, ignoring.");
+            return;
+        }
+
+        std::string topic = msg->get_topic();
+        std::string payload = msg->to_string();
+
+        Logger::getInstance().log("   ├─ Topic: " + (topic.empty() ? "[EMPTY]" : topic));
+        Logger::getInstance().log("   ├─ Payload: " + (payload.empty() ? "[EMPTY]" : payload));
+
+        if (topic.empty()) {
+            Logger::getInstance().log("⚠️ MQTT message has empty topic, ignoring.");
+            return;
+        }
+
+        if (payload.empty()) {
+            Logger::getInstance().log("⚠️ MQTT message has empty payload, ignoring.");
+            return;
+        }
+
+        // Store message in global queue
+        {
+            std::lock_guard<std::mutex> lock(globalMutex);
+            globalQueue.push(payload);
+        }
+
+        // Notify gRPC server
+        globalCV.notify_one();
+        Logger::getInstance().log("✅ Message added to queue and gRPC notified.");
+
+    } catch (const std::exception &e) {
+        Logger::getInstance().log("🔥 Exception in message_arrived(): " + std::string(e.what()));
+    } catch (...) {
+        Logger::getInstance().log("🔥 Unknown Exception in message_arrived()!");
+    }
 }
 
-// Callback: delivery complete (not used for subscribers).
-void DataRetrieval::delivery_complete(mqtt::delivery_token_ptr token) {
-    // Not needed for a subscriber.
-}
 
-// Action listener callback: invoked when an action completes successfully.
-void DataRetrieval::on_success(const mqtt::token& tok) {
-    std::cout << "Operation successful." << std::endl;
-}
 
-// Action listener callback: invoked when an action fails.
-void DataRetrieval::on_failure(const mqtt::token& tok) {
-    std::cerr << "Operation failed." << std::endl;
-}
+void DataRetrieval::connected(const std::string&) {}
+void DataRetrieval::connection_lost(const std::string&) {}
+void DataRetrieval::delivery_complete(mqtt::delivery_token_ptr) {}
+void DataRetrieval::on_success(const mqtt::token&) {}
+void DataRetrieval::on_failure(const mqtt::token&) {}

@@ -1,0 +1,47 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"INSTALL"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/third_party/cares/cares/include/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Devel",
+			"destination" : "include",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/include/ares.h",
+				"src/external_libs/grpc/third_party/cares/cares/include/ares_version.h",
+				"src/external_libs/grpc/third_party/cares/cares/ares_build.h",
+				"src/external_libs/grpc/third_party/cares/cares/include/ares_rules.h",
+				"src/external_libs/grpc/third_party/cares/cares/include/ares_dns.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/cares/cares/include",
+		"source" : "src/external_libs/grpc/third_party/cares/cares/include"
+	}
+}

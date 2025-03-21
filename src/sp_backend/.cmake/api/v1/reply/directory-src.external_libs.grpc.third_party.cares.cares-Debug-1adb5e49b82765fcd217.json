@@ -1,0 +1,84 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"INSTALL"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/third_party/cares/cares/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 623,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 624,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 634,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Devel",
+			"destination" : "lib/cmake/c-ares",
+			"exportName" : "c-ares-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "c-ares::@657037a79b2b3c059266",
+					"index" : 99
+				}
+			],
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/CMakeFiles/Export/e1b1c4e2e08fd55c0020938b7b6a2645/c-ares-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Devel",
+			"destination" : "lib/cmake/c-ares",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/c-ares-config.cmake",
+				"src/external_libs/grpc/third_party/cares/cares/c-ares-config-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Devel",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/libcares.pc"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/cares/cares",
+		"source" : "src/external_libs/grpc/third_party/cares/cares"
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 560,
+				"parent" : 0
+			}
+		]
+	},
+	"id" : "tools_c::@f1eb5bd0194ddabefa03",
+	"name" : "tools_c",
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc",
+		"source" : "src/external_libs/grpc"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

@@ -1,0 +1,62 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"INSTALL"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/third_party/cares/cares/src/lib/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 95,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 98,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Devel",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/lib/libcares.a"
+			],
+			"targetId" : "c-ares::@657037a79b2b3c059266",
+			"targetIndex" : 99,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Library",
+			"destination" : "bin",
+			"isOptional" : true,
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/bin/cares.pdb"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/cares/cares/src/lib",
+		"source" : "src/external_libs/grpc/third_party/cares/cares/src/lib"
+	}
+}

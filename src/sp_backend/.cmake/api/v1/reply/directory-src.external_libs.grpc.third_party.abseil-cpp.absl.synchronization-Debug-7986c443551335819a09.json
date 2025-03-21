@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/abseil-cpp/absl/synchronization",
+		"source" : "src/external_libs/grpc/third_party/abseil-cpp/absl/synchronization"
+	}
+}

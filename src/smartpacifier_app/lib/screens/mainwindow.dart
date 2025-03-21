@@ -1,5 +1,6 @@
 // lib/screens/mainwindow.dart
 import 'package:flutter/material.dart';
+import '../ipc_layer/grpc/gprc_client.dart';
 
 class MainWindow extends StatefulWidget {
   const MainWindow({super.key});
@@ -9,14 +10,27 @@ class MainWindow extends StatefulWidget {
 }
 
 class _MainWindowState extends State<MainWindow> {
-  // Placeholder logs for demonstration
-  final List<String> _logs = [
-    'Log 1: Application started',
-    'Log 2: User clicked a button',
-    'Log 3: BLE device connected',
-    'Log 4: Data received: { temperature: 36.5 }',
-    'Log 5: Application paused',
-  ];
+  final List<String> _logs = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the gRPC client and subscribe to the stream.
+    // Replace 'localhost' with your actual backend IP if needed.
+    MyGrpcClient().init(host: 'localhost', port: 50051).then((_) {
+      // Listen for streamed messages.
+      MyGrpcClient().streamMessages().listen((message) {
+        setState(() {
+          _logs.add("Received: $message");
+        });
+      }, onError: (error) {
+        setState(() {
+          _logs.add("Error: $error");
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +40,7 @@ class _MainWindowState extends State<MainWindow> {
       appBar: AppBar(
         // Dark navy-blue AppBar
         backgroundColor: const Color(0xFF001B3A),
-        title: const Text(
-          '',
-          // White text for contrast
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('Active Monitoring', style: TextStyle(color: Colors.white)),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SafeArea(
@@ -58,9 +68,10 @@ class _MainWindowState extends State<MainWindow> {
                     child: Text(
                       'Active Monitoring',
                       textAlign: TextAlign.center,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.titleLarge?.copyWith(color: Colors.white),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(color: Colors.white),
                     ),
                   ),
                 ),

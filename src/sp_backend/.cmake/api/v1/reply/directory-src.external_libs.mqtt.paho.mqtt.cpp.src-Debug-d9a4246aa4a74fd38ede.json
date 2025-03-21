@@ -1,0 +1,45 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/external_libs/mqtt/paho.mqtt.cpp/src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 156,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/src/libpaho-mqttpp3-static.a"
+			],
+			"targetId" : "paho-mqttpp3-static::@f8c40fcd6b43a959c6e9",
+			"targetIndex" : 136,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/mqtt/paho.mqtt.cpp/src",
+		"source" : "src/external_libs/mqtt/paho.mqtt.cpp/src"
+	}
+}

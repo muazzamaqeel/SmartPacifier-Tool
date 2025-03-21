@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package myservice;
+
+// Defines a service with one streaming RPC method.
+service MyService {
+  rpc StreamMessages(google.protobuf.Empty) returns (stream google.protobuf.StringValue);
+}

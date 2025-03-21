@@ -1,0 +1,723 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "src/external_libs/grpc/third_party/protobuf/libprotobuf-lited.a"
+		}
+	],
+	"backtrace" : 5,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"add_compile_options",
+			"add_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/third_party/protobuf/cmake/libprotobuf-lite.cmake",
+			"src/external_libs/grpc/third_party/protobuf/CMakeLists.txt",
+			"src/external_libs/grpc/third_party/protobuf/cmake/CMakeLists.txt",
+			"CMakeLists.txt",
+			"src/external_libs/grpc/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"file" : 1,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 307,
+				"parent" : 2
+			},
+			{
+				"file" : 0,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 89,
+				"parent" : 4
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 3,
+				"line" : 10,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 133,
+				"parent" : 2
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 4,
+				"line" : 273,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 298,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=c++11 -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-mbmi"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 8,
+					"define" : "GOOGLE_PROTOBUF_CMAKE_BUILD"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "_WIN32_WINNT=0x600"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/protobuf"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "C:/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/protobuf/src"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					5
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31
+			]
+		}
+	],
+	"id" : "libprotobuf-lite::@ab0bae830920d5439980",
+	"name" : "libprotobuf-lite",
+	"nameOnDisk" : "libprotobuf-lited.a",
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/protobuf",
+		"source" : "src/external_libs/grpc/third_party/protobuf/cmake"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/any_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arena.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arenastring.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arenaz_sampler.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/extension_set.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_enum_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_message_tctable_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_message_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/implicit_weak_message.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/inlined_string_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/coded_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/io_win32.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/strtod.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/map.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/message_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/parse_context.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/repeated_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/repeated_ptr_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/bytestream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/common.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/int128.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/status.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/statusor.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/stringpiece.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/stringprintf.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/structurally_valid.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/strutil.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/time.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/wire_format_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/any.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arena.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arena_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arenastring.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/arenaz_sampler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/endian.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/explicitly_constructed.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/extension_set.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/extension_set_inl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_enum_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_message_tctable_decl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_message_tctable_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/generated_message_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/has_bits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/implicit_weak_message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/inlined_string_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/coded_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/io_win32.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/strtod.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/io/zero_copy_stream_impl_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/map.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/map_entry_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/map_field_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/map_type_handler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/message_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/metadata_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/parse_context.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/port.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/repeated_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/repeated_ptr_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/bytestream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/callback.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/casts.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/common.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/hash.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/logging.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/macros.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/map_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/mutex.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/once.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/platform_macros.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/port.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/status.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/stl_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/stringpiece.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/strutil.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/stubs/template_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 5,
+			"path" : "src/external_libs/grpc/third_party/protobuf/src/google/protobuf/wire_format_lite.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

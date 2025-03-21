@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";      // For google.protobuf.Empty
+import "google/protobuf/wrappers.proto";   // For google.protobuf.StringValue (if used)
+
+package myservice;
+
+service MyService {
+    rpc StreamMessages(google.protobuf.Empty) returns (stream google.protobuf.StringValue);
+}

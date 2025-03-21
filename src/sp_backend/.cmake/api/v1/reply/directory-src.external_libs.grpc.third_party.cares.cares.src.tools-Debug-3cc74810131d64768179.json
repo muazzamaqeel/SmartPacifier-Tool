@@ -1,0 +1,81 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"INSTALL"
+		],
+		"files" : 
+		[
+			"src/external_libs/grpc/third_party/cares/cares/src/tools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 53,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Tools",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/bin/ahost.exe"
+			],
+			"targetId" : "ahost::@d7e581bb06477a71fb05",
+			"targetIndex" : 98,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Tools",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/bin/adig.exe"
+			],
+			"targetId" : "adig::@d7e581bb06477a71fb05",
+			"targetIndex" : 97,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Tools",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"src/external_libs/grpc/third_party/cares/cares/bin/acountry.exe"
+			],
+			"targetId" : "acountry::@d7e581bb06477a71fb05",
+			"targetIndex" : 95,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/grpc/third_party/cares/cares/src/tools",
+		"source" : "src/external_libs/grpc/third_party/cares/cares/src/tools"
+	}
+}

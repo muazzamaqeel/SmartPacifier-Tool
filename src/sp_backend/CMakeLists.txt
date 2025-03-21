@@ -1,123 +1,64 @@
 cmake_minimum_required(VERSION 3.30)
 project(sp_backend)
 
-# Disable installation rules to avoid export errors.
-set(CMAKE_SKIP_INSTALL_RULES ON)
-
-# Disable BoringSSL/OPENSSL assembly routines.
-add_definitions(-DBORINGSSL_NO_ASM -DOPENSSL_NO_ASM)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DBORINGSSL_NO_ASM -DOPENSSL_NO_ASM")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBORINGSSL_NO_ASM -DOPENSSL_NO_ASM")
-
-# Set the C++ standard
+# Set the C++ standard.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Lower optimization level in Debug mode and disable aggressive inlining/sibling call optimizations.
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-inline -fno-optimize-sibling-calls")
+# If using MinGW, add the BMI flag to enable __builtin_ctzs.
+if(MINGW)
+    add_compile_options(-mbmi)
+endif()
 
-#
-# ---[ Configure the Paho MQTT C++ submodule ]---
-#
-option(PAHO_WITH_MQTT_C "Build the Paho C library as part of the Paho MQTT C++ build" ON)
-option(PAHO_BUILD_EXAMPLES "Build the Paho MQTT C++ example apps" OFF)
+# Disable installation of protobuf, Abseil, and gRPC targets to avoid export errors.
+set(protobuf_INSTALL OFF CACHE BOOL "Disable installation of protobuf targets" FORCE)
+set(ABSL_ENABLE_INSTALL OFF CACHE BOOL "Disable installation of Abseil targets" FORCE)
+set(gRPC_INSTALL OFF CACHE BOOL "Disable installation of gRPC targets" FORCE)
 
-#
-# ---[ Add the Paho MQTT C++ submodule ]---
-#
+# Use system OpenSSL instead of building BoringSSL.
+set(gRPC_SSL_PROVIDER "package" CACHE STRING "Use system OpenSSL" FORCE)
+
+# (Optional) If CMake cannot automatically locate your OpenSSL, uncomment and adjust the following:
+# set(OPENSSL_ROOT_DIR "C:/msys64/mingw64" CACHE PATH "" FORCE)
+# set(OPENSSL_INCLUDE_DIR "C:/msys64/mingw64/include" CACHE PATH "" FORCE)
+# set(OPENSSL_SSL_LIBRARY "C:/msys64/mingw64/lib/libssl.a" CACHE FILEPATH "" FORCE)
+# set(OPENSSL_CRYPTO_LIBRARY "C:/msys64/mingw64/lib/libcrypto.a" CACHE FILEPATH "" FORCE)
+
+# Force building the bundled Paho C library with paho.mqtt.cpp.
+set(PAHO_WITH_MQTT_C ON CACHE BOOL "Build the Paho C library as part of Paho MQTT C++ build" FORCE)
+set(PAHO_BUILD_EXAMPLES OFF CACHE BOOL "Build the Paho MQTT C++ example apps" FORCE)
+
+# Add the Paho MQTT C++ submodule.
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp)
 
-#
-# ---[ Disable gRPC and Protobuf installation/tests ]---
-#
-set(gRPC_INSTALL OFF CACHE BOOL "Disable gRPC installation" FORCE)
-set(protobuf_INSTALL OFF CACHE BOOL "Disable Protobuf installation" FORCE)
-# Let the submodule build protoc so that it matches the Protobuf library.
-set(protobuf_BUILD_PROTOC ON CACHE BOOL "Enable building protoc" FORCE)
-set(protobuf_BUILD_TESTS OFF CACHE BOOL "Disable building tests" FORCE)
-set(RE2_BUILD_TESTING OFF CACHE BOOL "Disable building re2 tests" FORCE)
-
-#
-# ---[ Add the gRPC submodule ]---
-#
+# Add the gRPC submodule.
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc)
 
-#
-# ---[ (Optional) Force-include <cstdint> for re2/pcre.cc ]---
-#
-# Uncomment if you still encounter int32_t errors in re2.
-# set_source_files_properties(
-#     "${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/re2/util/pcre.cc"
-#     PROPERTIES COMPILE_FLAGS "-include cstdint"
-# )
-
-#
-# ---[ Main Application ]---
-#
+# Add your main application sources.
 add_executable(sp_backend
         ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/BrokerCheck.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/BrokerCheck.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/DataRetrieval.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/DataRetrieval.h
+        src/ipc_layer/grpc/gprc_server.cpp
+        src/ipc_layer/grpc/gprc_server.h
+        src/communication_layer/broker/GlobalMessageQueue.h
+        src/communication_layer/broker/Logger.cpp
+        src/communication_layer/broker/Logger.h
 )
 
+# Set include directories for Paho MQTT and gRPC.
 target_include_directories(sp_backend PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/include
         ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/protobuf/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/protobuf/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/abseil-cpp
 )
 
-target_link_libraries(sp_backend PRIVATE paho-mqttpp3-static)
-
-#
-# ---[ gRPC and Protocol Buffers Integration ]---
-#
-# We let the gRPC submodule build both the Protobuf library and protoc.
-set(Protobuf_INCLUDE_DIRS
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/protobuf/src"
-)
-
-# Specify the proto file directory and file.
-set(PROTO_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/ipc")
-set(PROTO_FILES "${PROTO_SRC_DIR}/sensor_data.proto")
-
-# Specify the output directory for generated files.
-set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
-file(MAKE_DIRECTORY ${GENERATED_DIR})
-
-# Set output directories for code generation.
-set(PROTO_CPP_OUT "${GENERATED_DIR}")
-set(GRPC_CPP_OUT "${GENERATED_DIR}")
-
-add_custom_command(
-        OUTPUT "${GENERATED_DIR}/sensor_data.pb.cc" "${GENERATED_DIR}/sensor_data.pb.h"
-        COMMAND protoc --cpp_out=${PROTO_CPP_OUT} -I ${PROTO_SRC_DIR} ${PROTO_FILES}
-        DEPENDS ${PROTO_FILES}
-        COMMENT "Generating sensor_data protobuf files..."
-)
-
-add_custom_command(
-        OUTPUT "${GENERATED_DIR}/sensor_data.grpc.pb.cc" "${GENERATED_DIR}/sensor_data.grpc.pb.h"
-        COMMAND protoc --grpc_out=${GRPC_CPP_OUT} --plugin=protoc-gen-grpc=$<TARGET_FILE:grpc_cpp_plugin> -I ${PROTO_SRC_DIR} ${PROTO_FILES}
-        DEPENDS ${PROTO_FILES}
-        COMMENT "Generating sensor_data gRPC files..."
-)
-
-set(GENERATED_SRCS
-        "${GENERATED_DIR}/sensor_data.pb.cc"
-        "${GENERATED_DIR}/sensor_data.grpc.pb.cc"
-)
-
-set(GENERATED_HDRS
-        "${GENERATED_DIR}/sensor_data.pb.h"
-        "${GENERATED_DIR}/sensor_data.grpc.pb.h"
-)
-
-target_include_directories(sp_backend PRIVATE ${GENERATED_DIR})
-target_sources(sp_backend PRIVATE ${GENERATED_SRCS})
-
+# Link your executable against the static Paho MQTT C++ and gRPC libraries.
 target_link_libraries(sp_backend PRIVATE
         grpc++
-        protobuf::libprotobuf
+        grpc
+        paho-mqttpp3-static
 )

@@ -1,6 +1,8 @@
 #include "gprc_server.h"
-#include <iostream>
+
 #include <grpcpp/impl/codegen/sync_stream.h>
+
+#include "../../communication_layer/broker/Logger.h"
 
 GrpcService::GrpcService(std::queue<std::string>& queue, std::mutex& mutex, std::condition_variable& cv)
     : grpc::Service(), messageQueue(queue), queueMutex(mutex), queueCV(cv) {}
@@ -8,22 +10,22 @@ GrpcService::GrpcService(std::queue<std::string>& queue, std::mutex& mutex, std:
 grpc::Status GrpcService::StreamMessages(
     grpc::ServerContext* context,
     grpc::ServerWriter<google::protobuf::StringValue>* writer) {
+    try {
+        while (true) {
+            std::unique_lock<std::mutex> lock(queueMutex);
+            queueCV.wait(lock, [this] { return !messageQueue.empty(); });
 
-    while (true) {
-        std::unique_lock<std::mutex> lock(queueMutex);
-        queueCV.wait(lock, [this] { return !messageQueue.empty(); });
+            std::string message = messageQueue.front();
+            messageQueue.pop();
+            lock.unlock();
 
-        if (messageQueue.empty())  // 🚀 Safety check
-            continue;
-
-        std::string message = messageQueue.front();
-        messageQueue.pop();
-        lock.unlock();  // 🚀 Unlock before writing to avoid deadlock
-
-        google::protobuf::StringValue pbMessage;
-        pbMessage.set_value(message);
-        writer->Write(pbMessage);
+            google::protobuf::StringValue pbMessage;
+            pbMessage.set_value(message);
+            writer->Write(pbMessage);
+        }
+    } catch (const std::exception &e) {
+        Logger::getInstance().log("🔥 gRPC ERROR in StreamMessages(): " + std::string(e.what()));
+        return grpc::Status(grpc::StatusCode::UNKNOWN, "Internal server error");
     }
     return grpc::Status::OK;
 }
-
