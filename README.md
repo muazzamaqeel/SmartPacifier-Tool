@@ -19,8 +19,8 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 - Step 1:
 - Building the BackEnd
 
-GRPC
-
+## GTPC
+```json
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
@@ -35,23 +35,4 @@ cmake -G "Ninja" \
   ..
 ninja
 ninja install
-
-MQTT
-
-cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
-git submodule update --init --recursive
-git checkout v1.5.2
-git submodule init
-git submodule update
-cmake -Bbuild -H. -DPAHO_WITH_MQTT_C=ON -DPAHO_BUILD_EXAMPLES=ON
-$ sudo cmake --build build/ --target install
-
-Main Project
-
-cd /c/Programming/SmartPacifier-Tool/src/sp_backend
-rm -rf CMakeCache.txt CMakeFiles cmake-build-debug
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S . -B cmake-build-debug
-cmake --build cmake-build-debug
-cmake-build-debug/sp_backend.exe
-
-
+```
