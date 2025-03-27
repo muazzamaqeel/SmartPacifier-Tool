@@ -20,7 +20,7 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 - Building the BackEnd
 
 ## GTPC
-```json
+```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
