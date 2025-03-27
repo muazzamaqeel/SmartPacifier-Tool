@@ -14,3 +14,44 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 
 
+How to build the Project
+
+Step 1:
+Building the BackEnd
+
+GRPC
+
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+git submodule update --init --recursive
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+mkdir build_grpc
+cd build_grpc
+cmake -G "Ninja" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DgRPC_SSL_PROVIDER=package \
+  -DgRPC_INSTALL=ON \
+  -DgRPC_BUILD_TESTS=OFF \
+  -DCMAKE_INSTALL_PREFIX="C:/local/grpc" \
+  ..
+ninja
+ninja install
+
+MQTT
+
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
+git submodule update --init --recursive
+git checkout v1.5.2
+git submodule init
+git submodule update
+cmake -Bbuild -H. -DPAHO_WITH_MQTT_C=ON -DPAHO_BUILD_EXAMPLES=ON
+$ sudo cmake --build build/ --target install
+
+Main Project
+
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend
+rm -rf CMakeCache.txt CMakeFiles cmake-build-debug
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S . -B cmake-build-debug
+cmake --build cmake-build-debug
+cmake-build-debug/sp_backend.exe
+
+
