@@ -1,4 +1,5 @@
-SmartPacifier-Tool (Version 2) is the evolution of our original prototype, designed to streamline sensor configuration, data acquisition, and analysis across multiple platforms—Android, iOS, Linux, and Windows. Building on the initial .NET-based solution, this version introduces expanded capabilities such as real-time monitoring, MQTT integration, and optional Docker-based data storage.
+# SmartPacifier-Tool (Version 2) 
+This is the evolution of our original prototype, designed to streamline sensor configuration, data acquisition, and analysis across multiple platforms—Android, iOS, Linux, and Windows. Building on the initial .NET-based solution, this version introduces expanded capabilities such as real-time monitoring, MQTT integration, and optional Docker-based data storage.
 
 Whether you’re a researcher or developer, SmartPacifier-Tool offers:
 
@@ -14,10 +15,9 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 
 
-How to build the Project
-
-Step 1:
-Building the BackEnd
+# How to build the Project
+- Step 1:
+- Building the BackEnd
 
 GRPC
 
