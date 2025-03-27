@@ -50,22 +50,20 @@ Pre Requirements:
 
 ## Example
 ```json
-{
-    "UseLocal": true,
-    "Local": {
-        "Host": "localhost:8086",
-        "ApiKey": "example"
-    },
-    "Server": {
-        "Host": "18.195.167.238",
-        "Port": "8086",
-        "Username": "ubuntu",
-        "ApiKey": "example"
-    },
-    "PythonScript": {
-        "FileName": "python1.py"
-    }
-}
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+git submodule update --init --recursive
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+mkdir build_grpc
+cd build_grpc
+cmake -G "Ninja" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DgRPC_SSL_PROVIDER=package \
+  -DgRPC_INSTALL=ON \
+  -DgRPC_BUILD_TESTS=OFF \
+  -DCMAKE_INSTALL_PREFIX="C:/local/grpc" \
+  ..
+ninja
+ninja install
 ```
 2. docker-compose.yml
 - This is where you can see what services we are currently using in our application as external dependencies
