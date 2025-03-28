@@ -1,18 +1,19 @@
 #include "gprc_server.h"
-
 #include <grpcpp/impl/codegen/sync_stream.h>
-
 #include "../../communication_layer/broker/Logger.h"
 
 GrpcService::GrpcService(std::queue<std::string>& queue, std::mutex& mutex, std::condition_variable& cv)
-    : grpc::Service(), messageQueue(queue), queueMutex(mutex), queueCV(cv) {}
+    // Call the base constructor for the generated service class.
+    : myservice::MyService::Service(), messageQueue(queue), queueMutex(mutex), queueCV(cv) {}
 
 grpc::Status GrpcService::StreamMessages(
     grpc::ServerContext* context,
+    const google::protobuf::Empty* /*request*/,
     grpc::ServerWriter<google::protobuf::StringValue>* writer) {
     try {
         while (true) {
             std::unique_lock<std::mutex> lock(queueMutex);
+            // Wait until there is data in the message queue.
             queueCV.wait(lock, [this] { return !messageQueue.empty(); });
 
             std::string message = messageQueue.front();

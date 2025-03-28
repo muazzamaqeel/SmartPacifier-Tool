@@ -8,3 +8,4 @@ package myservice;
 service MyService {
     rpc StreamMessages(google.protobuf.Empty) returns (stream google.protobuf.StringValue);
 }
+

@@ -1,64 +1,56 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.10)
 project(sp_backend)
 
-# Set the C++ standard.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# If using MinGW, add the BMI flag to enable __builtin_ctzs.
 if(MINGW)
     add_compile_options(-mbmi)
 endif()
 
-# Disable installation of protobuf, Abseil, and gRPC targets to avoid export errors.
-set(protobuf_INSTALL OFF CACHE BOOL "Disable installation of protobuf targets" FORCE)
-set(ABSL_ENABLE_INSTALL OFF CACHE BOOL "Disable installation of Abseil targets" FORCE)
-set(gRPC_INSTALL OFF CACHE BOOL "Disable installation of gRPC targets" FORCE)
+# ---[ 1. Remove local gRPC build ]---
+# Do not build the local gRPC submodule since we use the installed version.
+# add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc)
 
-# Use system OpenSSL instead of building BoringSSL.
-set(gRPC_SSL_PROVIDER "package" CACHE STRING "Use system OpenSSL" FORCE)
+# ---[ 2. Find installed gRPC & Protobuf ]---
+# Point CMake to your installed gRPC (and its bundled Protobuf) in C:/local/grpc.
+set(CMAKE_PREFIX_PATH "C:/local/grpc" CACHE PATH "" FORCE)
+set(gRPC_DIR "C:/local/grpc/lib/cmake/grpc" CACHE PATH "" FORCE)
+set(Protobuf_DIR "C:/local/grpc/lib/cmake/protobuf" CACHE PATH "" FORCE)
 
-# (Optional) If CMake cannot automatically locate your OpenSSL, uncomment and adjust the following:
-# set(OPENSSL_ROOT_DIR "C:/msys64/mingw64" CACHE PATH "" FORCE)
-# set(OPENSSL_INCLUDE_DIR "C:/msys64/mingw64/include" CACHE PATH "" FORCE)
-# set(OPENSSL_SSL_LIBRARY "C:/msys64/mingw64/lib/libssl.a" CACHE FILEPATH "" FORCE)
-# set(OPENSSL_CRYPTO_LIBRARY "C:/msys64/mingw64/lib/libcrypto.a" CACHE FILEPATH "" FORCE)
+find_package(Protobuf CONFIG REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
 
-# Force building the bundled Paho C library with paho.mqtt.cpp.
+# ---[ 3. Build Paho from submodule (optional) ]---
 set(PAHO_WITH_MQTT_C ON CACHE BOOL "Build the Paho C library as part of Paho MQTT C++ build" FORCE)
 set(PAHO_BUILD_EXAMPLES OFF CACHE BOOL "Build the Paho MQTT C++ example apps" FORCE)
-
-# Add the Paho MQTT C++ submodule.
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp)
 
-# Add the gRPC submodule.
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc)
-
-# Add your main application sources.
+# ---[ 4. Add your main executable ]---
 add_executable(sp_backend
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/BrokerCheck.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/communication_layer/broker/DataRetrieval.cpp
+        src/main.cpp
+        src/communication_layer/broker/BrokerCheck.cpp
+        src/communication_layer/broker/DataRetrieval.cpp
         src/ipc_layer/grpc/gprc_server.cpp
+        src/ipc_layer/grpc/myservice.pb.cc
+        src/ipc_layer/grpc/myservice.grpc.pb.cc
         src/ipc_layer/grpc/gprc_server.h
         src/communication_layer/broker/GlobalMessageQueue.h
         src/communication_layer/broker/Logger.cpp
         src/communication_layer/broker/Logger.h
 )
 
-# Set include directories for Paho MQTT and gRPC.
+# ---[ 5. Include directories ]---
 target_include_directories(sp_backend PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/include
         ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/protobuf/src
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/protobuf/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc/third_party/abseil-cpp
+        ${Protobuf_INCLUDE_DIRS}  # Use the include directories provided by the installed Protobuf
 )
 
-# Link your executable against the static Paho MQTT C++ and gRPC libraries.
+# ---[ 6. Link libraries ]---
 target_link_libraries(sp_backend PRIVATE
-        grpc++
-        grpc
+        gRPC::grpc++
+        gRPC::grpc
+        protobuf::libprotobuf
         paho-mqttpp3-static
 )
