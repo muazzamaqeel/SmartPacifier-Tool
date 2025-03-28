@@ -306,7 +306,7 @@ class SensorData final :
   std::string* _internal_mutable_sensor_group();
   public:
 
-  // string sensor_payload_type = 4;
+  // bytes sensor_payload_type = 4;
   void clear_sensor_payload_type();
   const std::string& sensor_payload_type() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -1714,7 +1714,7 @@ inline void SensorData::set_allocated_sensor_group(std::string* sensor_group) {
   // @@protoc_insertion_point(field_set_allocated:Protos.SensorData.sensor_group)
 }
 
-// string sensor_payload_type = 4;
+// bytes sensor_payload_type = 4;
 inline void SensorData::clear_sensor_payload_type() {
   _impl_.sensor_payload_type_.ClearToEmpty();
 }
@@ -1726,7 +1726,7 @@ template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
 void SensorData::set_sensor_payload_type(ArgT0&& arg0, ArgT... args) {
  
- _impl_.sensor_payload_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+ _impl_.sensor_payload_type_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:Protos.SensorData.sensor_payload_type)
 }
 inline std::string* SensorData::mutable_sensor_payload_type() {

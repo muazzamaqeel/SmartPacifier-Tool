@@ -8,7 +8,7 @@ message SensorData {
     string pacifier_id = 1;
     string sensor_type = 2;          // For human readability
     string sensor_group = 3;
-    string sensor_payload_type = 4;  // Fully qualified type name
+    bytes sensor_payload_type = 4;  // Fully qualified type name
     map<string, bytes> data_map = 5;
 }
 

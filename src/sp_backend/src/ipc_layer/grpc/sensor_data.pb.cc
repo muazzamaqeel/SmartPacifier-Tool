@@ -267,7 +267,7 @@ const char descriptor_table_protodef_sensor_5fdata_2eproto[] PROTOBUF_SECTION_VA
   "\n\021sensor_data.proto\022\006Protos\"\314\001\n\nSensorDa"
   "ta\022\023\n\013pacifier_id\030\001 \001(\t\022\023\n\013sensor_type\030\002"
   " \001(\t\022\024\n\014sensor_group\030\003 \001(\t\022\033\n\023sensor_pay"
-  "load_type\030\004 \001(\t\0221\n\010data_map\030\005 \003(\0132\037.Prot"
+  "load_type\030\004 \001(\014\0221\n\010data_map\030\005 \003(\0132\037.Prot"
   "os.SensorData.DataMapEntry\032.\n\014DataMapEnt"
   "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\014:\0028\001\"\224\002\n\007I"
   "MUData\022#\n\005gyros\030\001 \003(\0132\024.Protos.IMUData.G"
@@ -485,13 +485,12 @@ const char* SensorData::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         } else
           goto handle_unusual;
         continue;
-      // string sensor_payload_type = 4;
+      // bytes sensor_payload_type = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_sensor_payload_type();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Protos.SensorData.sensor_payload_type"));
         } else
           goto handle_unusual;
         continue;
@@ -567,13 +566,9 @@ uint8_t* SensorData::_InternalSerialize(
         3, this->_internal_sensor_group(), target);
   }
 
-  // string sensor_payload_type = 4;
+  // bytes sensor_payload_type = 4;
   if (!this->_internal_sensor_payload_type().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_sensor_payload_type().data(), static_cast<int>(this->_internal_sensor_payload_type().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Protos.SensorData.sensor_payload_type");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         4, this->_internal_sensor_payload_type(), target);
   }
 
@@ -649,10 +644,10 @@ size_t SensorData::ByteSizeLong() const {
         this->_internal_sensor_group());
   }
 
-  // string sensor_payload_type = 4;
+  // bytes sensor_payload_type = 4;
   if (!this->_internal_sensor_payload_type().empty()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_sensor_payload_type());
   }
 

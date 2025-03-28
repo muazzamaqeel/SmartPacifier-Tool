@@ -63,3 +63,9 @@
 28	4728	7648789496743740	CMakeFiles/sp_backend.dir/src/ipc_layer/grpc/myservice.grpc.pb.cc.obj	ebd6a3935200a35e
 13	4764	7648789496592416	CMakeFiles/sp_backend.dir/src/main.cpp.obj	83435f71a0e470f4
 4764	5901	7648789544103839	sp_backend.exe	22aff5b64a90b20f
+27	2094	7648827368551015	CMakeFiles/sp_backend.dir/src/ipc_layer/grpc/myservice.pb.cc.obj	5a94ea9ab3483773
+35	3831	7648827368632633	CMakeFiles/sp_backend.dir/src/ipc_layer/grpc/sensor_data.pb.cc.obj	e96eb8cbd1eb75ec
+23	4438	7648827368508433	CMakeFiles/sp_backend.dir/src/ipc_layer/grpc/gprc_server.cpp.obj	38b15f5809ec1833
+31	5164	7648827368586163	CMakeFiles/sp_backend.dir/src/ipc_layer/grpc/myservice.grpc.pb.cc.obj	ebd6a3935200a35e
+17	5275	7648827368452897	CMakeFiles/sp_backend.dir/src/main.cpp.obj	83435f71a0e470f4
+5275	6974	7648827421028366	sp_backend.exe	22aff5b64a90b20f
