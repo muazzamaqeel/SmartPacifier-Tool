@@ -1,4 +1,3 @@
-// lib/screens/mainwindow.dart
 import 'package:flutter/material.dart';
 import '../ipc_layer/grpc/gprc_client.dart';
 
@@ -11,24 +10,36 @@ class MainWindow extends StatefulWidget {
 
 class _MainWindowState extends State<MainWindow> {
   final List<String> _logs = [];
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
 
     // Initialize the gRPC client and subscribe to the stream.
-    // Replace 'localhost' with your actual backend IP if needed.
     MyGrpcClient().init(host: 'localhost', port: 50051).then((_) {
-      // Listen for streamed messages.
       MyGrpcClient().streamMessages().listen((message) {
         setState(() {
           _logs.add("Received: $message");
         });
+        _scrollToBottom();
       }, onError: (error) {
         setState(() {
           _logs.add("Error: $error");
         });
+        _scrollToBottom();
       });
+    });
+  }
+
+  void _scrollToBottom() {
+    // Schedule a scroll to the bottom of the ListView
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.jumpTo(
+          _scrollController.position.maxScrollExtent,
+        );
+      }
     });
   }
 
@@ -93,6 +104,7 @@ class _MainWindowState extends State<MainWindow> {
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: ListView.builder(
+                      controller: _scrollController,  // Attach the scroll controller
                       itemCount: _logs.length,
                       itemBuilder: (context, index) {
                         return Padding(
