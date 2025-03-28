@@ -35,31 +35,31 @@ MyService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel,
   : channel_(channel), rpcmethod_StreamMessages_(MyService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::ClientReader< ::google::protobuf::StringValue>* MyService::Stub::StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
-  return ::grpc::internal::ClientReaderFactory< ::google::protobuf::StringValue>::Create(channel_.get(), rpcmethod_StreamMessages_, context, request);
+::grpc::ClientReader< ::myservice::PayloadMessage>* MyService::Stub::StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
+  return ::grpc::internal::ClientReaderFactory< ::myservice::PayloadMessage>::Create(channel_.get(), rpcmethod_StreamMessages_, context, request);
 }
 
-void MyService::Stub::async::StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::google::protobuf::StringValue>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::google::protobuf::StringValue>::Create(stub_->channel_.get(), stub_->rpcmethod_StreamMessages_, context, request, reactor);
+void MyService::Stub::async::StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::myservice::PayloadMessage>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::myservice::PayloadMessage>::Create(stub_->channel_.get(), stub_->rpcmethod_StreamMessages_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::google::protobuf::StringValue>* MyService::Stub::AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::google::protobuf::StringValue>::Create(channel_.get(), cq, rpcmethod_StreamMessages_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::myservice::PayloadMessage>* MyService::Stub::AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::myservice::PayloadMessage>::Create(channel_.get(), cq, rpcmethod_StreamMessages_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::google::protobuf::StringValue>* MyService::Stub::PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::google::protobuf::StringValue>::Create(channel_.get(), cq, rpcmethod_StreamMessages_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::myservice::PayloadMessage>* MyService::Stub::PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::myservice::PayloadMessage>::Create(channel_.get(), cq, rpcmethod_StreamMessages_, context, request, false, nullptr);
 }
 
 MyService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MyService_method_names[0],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< MyService::Service, ::google::protobuf::Empty, ::google::protobuf::StringValue>(
+      new ::grpc::internal::ServerStreamingHandler< MyService::Service, ::google::protobuf::Empty, ::myservice::PayloadMessage>(
           [](MyService::Service* service,
              ::grpc::ServerContext* ctx,
              const ::google::protobuf::Empty* req,
-             ::grpc::ServerWriter<::google::protobuf::StringValue>* writer) {
+             ::grpc::ServerWriter<::myservice::PayloadMessage>* writer) {
                return service->StreamMessages(ctx, req, writer);
              }, this)));
 }
@@ -67,7 +67,7 @@ MyService::Service::Service() {
 MyService::Service::~Service() {
 }
 
-::grpc::Status MyService::Service::StreamMessages(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::grpc::ServerWriter< ::google::protobuf::StringValue>* writer) {
+::grpc::Status MyService::Service::StreamMessages(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::grpc::ServerWriter< ::myservice::PayloadMessage>* writer) {
   (void) context;
   (void) request;
   (void) writer;

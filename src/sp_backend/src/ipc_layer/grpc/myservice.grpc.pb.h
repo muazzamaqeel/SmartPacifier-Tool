@@ -35,44 +35,44 @@ class MyService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::google::protobuf::StringValue>> StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::google::protobuf::StringValue>>(StreamMessagesRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::myservice::PayloadMessage>> StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::myservice::PayloadMessage>>(StreamMessagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>> AsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>>(AsyncStreamMessagesRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>> AsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>>(AsyncStreamMessagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>> PrepareAsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>>(PrepareAsyncStreamMessagesRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>> PrepareAsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>>(PrepareAsyncStreamMessagesRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::google::protobuf::StringValue>* reactor) = 0;
+      virtual void StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::myservice::PayloadMessage>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientReaderInterface< ::google::protobuf::StringValue>* StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>* AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::google::protobuf::StringValue>* PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::myservice::PayloadMessage>* StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>* AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::myservice::PayloadMessage>* PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    std::unique_ptr< ::grpc::ClientReader< ::google::protobuf::StringValue>> StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::google::protobuf::StringValue>>(StreamMessagesRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::myservice::PayloadMessage>> StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::myservice::PayloadMessage>>(StreamMessagesRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>> AsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>>(AsyncStreamMessagesRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>> AsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>>(AsyncStreamMessagesRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>> PrepareAsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>>(PrepareAsyncStreamMessagesRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>> PrepareAsyncStreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>>(PrepareAsyncStreamMessagesRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::google::protobuf::StringValue>* reactor) override;
+      void StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::myservice::PayloadMessage>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -84,9 +84,9 @@ class MyService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientReader< ::google::protobuf::StringValue>* StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) override;
-    ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>* AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::google::protobuf::StringValue>* PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::myservice::PayloadMessage>* StreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) override;
+    ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>* AsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::myservice::PayloadMessage>* PrepareAsyncStreamMessagesRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_StreamMessages_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -95,7 +95,7 @@ class MyService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status StreamMessages(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::grpc::ServerWriter< ::google::protobuf::StringValue>* writer);
+    virtual ::grpc::Status StreamMessages(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::grpc::ServerWriter< ::myservice::PayloadMessage>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_StreamMessages : public BaseClass {
@@ -109,11 +109,11 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStreamMessages(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncWriter< ::google::protobuf::StringValue>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestStreamMessages(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncWriter< ::myservice::PayloadMessage>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
@@ -125,7 +125,7 @@ class MyService final {
    public:
     WithCallbackMethod_StreamMessages() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::google::protobuf::Empty, ::google::protobuf::StringValue>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::google::protobuf::Empty, ::myservice::PayloadMessage>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request) { return this->StreamMessages(context, request); }));
     }
@@ -133,11 +133,11 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::google::protobuf::StringValue>* StreamMessages(
+    virtual ::grpc::ServerWriteReactor< ::myservice::PayloadMessage>* StreamMessages(
       ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_StreamMessages<Service > CallbackService;
@@ -154,7 +154,7 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -171,7 +171,7 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -194,7 +194,7 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -210,10 +210,10 @@ class MyService final {
     WithSplitStreamingMethod_StreamMessages() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::SplitServerStreamingHandler<
-          ::google::protobuf::Empty, ::google::protobuf::StringValue>(
+          ::google::protobuf::Empty, ::myservice::PayloadMessage>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerSplitStreamer<
-                     ::google::protobuf::Empty, ::google::protobuf::StringValue>* streamer) {
+                     ::google::protobuf::Empty, ::myservice::PayloadMessage>* streamer) {
                        return this->StreamedStreamMessages(context,
                          streamer);
                   }));
@@ -222,12 +222,12 @@ class MyService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::google::protobuf::StringValue>* /*writer*/) override {
+    ::grpc::Status StreamMessages(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::grpc::ServerWriter< ::myservice::PayloadMessage>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedStreamMessages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::google::protobuf::Empty,::google::protobuf::StringValue>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedStreamMessages(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::google::protobuf::Empty,::myservice::PayloadMessage>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_StreamMessages<Service > SplitStreamedService;
   typedef WithSplitStreamingMethod_StreamMessages<Service > StreamedService;

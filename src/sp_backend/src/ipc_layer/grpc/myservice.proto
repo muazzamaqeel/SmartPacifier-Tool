@@ -1,11 +1,13 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";      // For google.protobuf.Empty
-import "google/protobuf/wrappers.proto";   // For google.protobuf.StringValue (if used)
+import "google/protobuf/empty.proto";
 
 package myservice;
 
 service MyService {
-    rpc StreamMessages(google.protobuf.Empty) returns (stream google.protobuf.StringValue);
+    rpc StreamMessages(google.protobuf.Empty) returns (stream PayloadMessage);
 }
 
+message PayloadMessage {
+    bytes data = 1;
+}

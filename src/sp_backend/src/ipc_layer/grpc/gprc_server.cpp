@@ -3,13 +3,12 @@
 #include "../../communication_layer/broker/Logger.h"
 
 GrpcService::GrpcService(std::queue<std::string>& queue, std::mutex& mutex, std::condition_variable& cv)
-    // Call the base constructor for the generated service class.
     : myservice::MyService::Service(), messageQueue(queue), queueMutex(mutex), queueCV(cv) {}
 
 grpc::Status GrpcService::StreamMessages(
     grpc::ServerContext* context,
     const google::protobuf::Empty* /*request*/,
-    grpc::ServerWriter<google::protobuf::StringValue>* writer) {
+    grpc::ServerWriter<myservice::PayloadMessage>* writer) {
     try {
         while (true) {
             std::unique_lock<std::mutex> lock(queueMutex);
@@ -20,8 +19,8 @@ grpc::Status GrpcService::StreamMessages(
             messageQueue.pop();
             lock.unlock();
 
-            google::protobuf::StringValue pbMessage;
-            pbMessage.set_value(message);
+            myservice::PayloadMessage pbMessage;
+            pbMessage.set_data(message);
             writer->Write(pbMessage);
         }
     } catch (const std::exception &e) {

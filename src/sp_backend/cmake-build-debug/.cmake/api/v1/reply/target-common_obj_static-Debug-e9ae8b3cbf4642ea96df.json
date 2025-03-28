@@ -1,0 +1,364 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTTime.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTProtocolClient.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Clients.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./utf-8.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTPacket.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTPacketOut.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Messages.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Tree.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Socket.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Log.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTPersistence.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Thread.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTProtocolOut.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTPersistenceDefault.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./SocketBuffer.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./LinkedList.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTProperties.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./MQTTReasonCodes.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Base64.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./SHA1.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./WebSocket.c.obj"
+		},
+		{
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeFiles/common_obj_static.dir/./Proxy.c.obj"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"add_compile_options",
+			"add_definitions",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/CMakeLists.txt",
+			"CMakeLists.txt",
+			"src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 99,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 8,
+				"parent" : 2
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 77,
+				"parent" : 4
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 101,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 49,
+				"parent" : 4
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-mbmi"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "HIGH_PERFORMANCE=1"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "PAHO_MQTT_STATIC=1"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "WIN32_LEAN_AND_MEAN"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "_CRT_SECURE_NO_DEPRECATE"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21
+			]
+		}
+	],
+	"id" : "common_obj_static::@518b0e2cc3b755d8cdaa",
+	"name" : "common_obj_static",
+	"paths" : 
+	{
+		"build" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src",
+		"source" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTTime.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolClient.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Clients.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/utf-8.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPacketOut.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Messages.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Tree.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Socket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Log.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistence.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Thread.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProtocolOut.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTPersistenceDefault.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SocketBuffer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/LinkedList.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTProperties.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/MQTTReasonCodes.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Base64.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/SHA1.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/WebSocket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/Proxy.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

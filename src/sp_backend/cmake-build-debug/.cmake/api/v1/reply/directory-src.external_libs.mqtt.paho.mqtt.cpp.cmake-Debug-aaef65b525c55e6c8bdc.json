@@ -1,0 +1,72 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/PahoMqttCpp",
+			"exportName" : "PahoMqttCpp",
+			"exportTargets" : 
+			[
+				{
+					"id" : "paho-mqtt3a-static::@518b0e2cc3b755d8cdaa",
+					"index" : 3
+				},
+				{
+					"id" : "paho-mqttpp3-static::@f8c40fcd6b43a959c6e9",
+					"index" : 5
+				}
+			],
+			"paths" : 
+			[
+				"src/external_libs/mqtt/paho.mqtt.cpp/cmake/CMakeFiles/Export/2f8db2002028628991436abbf2d5035d/PahoMqttCppTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/PahoMqttCpp",
+			"paths" : 
+			[
+				"cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfig.cmake",
+				"cmake-build-debug/src/external_libs/mqtt/paho.mqtt.cpp/cmake/PahoMqttCppConfigVersion.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/external_libs/mqtt/paho.mqtt.cpp/cmake",
+		"source" : "src/external_libs/mqtt/paho.mqtt.cpp/cmake"
+	}
+}
