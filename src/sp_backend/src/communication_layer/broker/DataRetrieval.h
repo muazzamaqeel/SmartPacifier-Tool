@@ -3,6 +3,7 @@
 
 #include <string>
 #include <mqtt/async_client.h>
+#include <functional>  // Added for std::function
 
 class DataRetrieval : public virtual mqtt::callback, public virtual mqtt::iaction_listener {
 public:
@@ -11,6 +12,9 @@ public:
 
     void start();
     void stop();
+
+    // Added setter for message callback
+    void setMessageCallback(std::function<void(const std::string&)> callback);
 
     void connected(const std::string& cause) override;
     void connection_lost(const std::string& cause) override;
@@ -23,6 +27,9 @@ private:
     std::string topic_;
     mqtt::async_client client_;
     mqtt::connect_options connOpts_;
+
+    // Added member variable for storing the callback
+    std::function<void(const std::string&)> messageCallback_;
 };
 
 #endif // SP_BACKEND_DATARETRIEVAL_H

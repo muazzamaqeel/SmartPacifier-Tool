@@ -31,6 +31,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 #include <google/protobuf/empty.pb.h>
+#include "sensor_data.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_myservice_2eproto
@@ -100,6 +101,11 @@ class PayloadMessage final :
   static const PayloadMessage& default_instance() {
     return *internal_default_instance();
   }
+  enum PayloadCase {
+    kSensorData = 1,
+    PAYLOAD_NOT_SET = 0,
+  };
+
   static inline const PayloadMessage* internal_default_instance() {
     return reinterpret_cast<const PayloadMessage*>(
                &_PayloadMessage_default_instance_);
@@ -178,32 +184,48 @@ class PayloadMessage final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDataFieldNumber = 1,
+    kSensorDataFieldNumber = 1,
   };
-  // bytes data = 1;
-  void clear_data();
-  const std::string& data() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_data(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_data();
-  PROTOBUF_NODISCARD std::string* release_data();
-  void set_allocated_data(std::string* data);
+  // .Protos.SensorData sensor_data = 1;
+  bool has_sensor_data() const;
   private:
-  const std::string& _internal_data() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
-  std::string* _internal_mutable_data();
+  bool _internal_has_sensor_data() const;
   public:
+  void clear_sensor_data();
+  const ::Protos::SensorData& sensor_data() const;
+  PROTOBUF_NODISCARD ::Protos::SensorData* release_sensor_data();
+  ::Protos::SensorData* mutable_sensor_data();
+  void set_allocated_sensor_data(::Protos::SensorData* sensor_data);
+  private:
+  const ::Protos::SensorData& _internal_sensor_data() const;
+  ::Protos::SensorData* _internal_mutable_sensor_data();
+  public:
+  void unsafe_arena_set_allocated_sensor_data(
+      ::Protos::SensorData* sensor_data);
+  ::Protos::SensorData* unsafe_arena_release_sensor_data();
 
+  void clear_payload();
+  PayloadCase payload_case() const;
   // @@protoc_insertion_point(class_scope:myservice.PayloadMessage)
  private:
   class _Internal;
+  void set_has_sensor_data();
+
+  inline bool has_payload() const;
+  inline void clear_has_payload();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+    union PayloadUnion {
+      constexpr PayloadUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::Protos::SensorData* sensor_data_;
+    } payload_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_myservice_2eproto;
@@ -219,56 +241,81 @@ class PayloadMessage final :
 #endif  // __GNUC__
 // PayloadMessage
 
-// bytes data = 1;
-inline void PayloadMessage::clear_data() {
-  _impl_.data_.ClearToEmpty();
+// .Protos.SensorData sensor_data = 1;
+inline bool PayloadMessage::_internal_has_sensor_data() const {
+  return payload_case() == kSensorData;
 }
-inline const std::string& PayloadMessage::data() const {
-  // @@protoc_insertion_point(field_get:myservice.PayloadMessage.data)
-  return _internal_data();
+inline bool PayloadMessage::has_sensor_data() const {
+  return _internal_has_sensor_data();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void PayloadMessage::set_data(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.data_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:myservice.PayloadMessage.data)
+inline void PayloadMessage::set_has_sensor_data() {
+  _impl_._oneof_case_[0] = kSensorData;
 }
-inline std::string* PayloadMessage::mutable_data() {
-  std::string* _s = _internal_mutable_data();
-  // @@protoc_insertion_point(field_mutable:myservice.PayloadMessage.data)
-  return _s;
-}
-inline const std::string& PayloadMessage::_internal_data() const {
-  return _impl_.data_.Get();
-}
-inline void PayloadMessage::_internal_set_data(const std::string& value) {
-  
-  _impl_.data_.Set(value, GetArenaForAllocation());
-}
-inline std::string* PayloadMessage::_internal_mutable_data() {
-  
-  return _impl_.data_.Mutable(GetArenaForAllocation());
-}
-inline std::string* PayloadMessage::release_data() {
-  // @@protoc_insertion_point(field_release:myservice.PayloadMessage.data)
-  return _impl_.data_.Release();
-}
-inline void PayloadMessage::set_allocated_data(std::string* data) {
-  if (data != nullptr) {
-    
+inline ::Protos::SensorData* PayloadMessage::release_sensor_data() {
+  // @@protoc_insertion_point(field_release:myservice.PayloadMessage.sensor_data)
+  if (_internal_has_sensor_data()) {
+    clear_has_payload();
+    ::Protos::SensorData* temp = _impl_.payload_.sensor_data_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.payload_.sensor_data_ = nullptr;
+    return temp;
   } else {
-    
+    return nullptr;
   }
-  _impl_.data_.SetAllocated(data, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.data_.IsDefault()) {
-    _impl_.data_.Set("", GetArenaForAllocation());
+}
+inline const ::Protos::SensorData& PayloadMessage::_internal_sensor_data() const {
+  return _internal_has_sensor_data()
+      ? *_impl_.payload_.sensor_data_
+      : reinterpret_cast< ::Protos::SensorData&>(::Protos::_SensorData_default_instance_);
+}
+inline const ::Protos::SensorData& PayloadMessage::sensor_data() const {
+  // @@protoc_insertion_point(field_get:myservice.PayloadMessage.sensor_data)
+  return _internal_sensor_data();
+}
+inline ::Protos::SensorData* PayloadMessage::unsafe_arena_release_sensor_data() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:myservice.PayloadMessage.sensor_data)
+  if (_internal_has_sensor_data()) {
+    clear_has_payload();
+    ::Protos::SensorData* temp = _impl_.payload_.sensor_data_;
+    _impl_.payload_.sensor_data_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:myservice.PayloadMessage.data)
+}
+inline void PayloadMessage::unsafe_arena_set_allocated_sensor_data(::Protos::SensorData* sensor_data) {
+  clear_payload();
+  if (sensor_data) {
+    set_has_sensor_data();
+    _impl_.payload_.sensor_data_ = sensor_data;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:myservice.PayloadMessage.sensor_data)
+}
+inline ::Protos::SensorData* PayloadMessage::_internal_mutable_sensor_data() {
+  if (!_internal_has_sensor_data()) {
+    clear_payload();
+    set_has_sensor_data();
+    _impl_.payload_.sensor_data_ = CreateMaybeMessage< ::Protos::SensorData >(GetArenaForAllocation());
+  }
+  return _impl_.payload_.sensor_data_;
+}
+inline ::Protos::SensorData* PayloadMessage::mutable_sensor_data() {
+  ::Protos::SensorData* _msg = _internal_mutable_sensor_data();
+  // @@protoc_insertion_point(field_mutable:myservice.PayloadMessage.sensor_data)
+  return _msg;
 }
 
+inline bool PayloadMessage::has_payload() const {
+  return payload_case() != PAYLOAD_NOT_SET;
+}
+inline void PayloadMessage::clear_has_payload() {
+  _impl_._oneof_case_[0] = PAYLOAD_NOT_SET;
+}
+inline PayloadMessage::PayloadCase PayloadMessage::payload_case() const {
+  return PayloadMessage::PayloadCase(_impl_._oneof_case_[0]);
+}
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__

@@ -34,7 +34,6 @@ void DataRetrieval::start() {
     }
 }
 
-
 void DataRetrieval::stop() {
     try {
         if (client_.is_connected()) {
@@ -44,6 +43,10 @@ void DataRetrieval::stop() {
     } catch (const mqtt::exception& exc) {
         Logger::getInstance().log("MQTT disconnection error: " + std::string(exc.what()));
     }
+}
+
+void DataRetrieval::setMessageCallback(std::function<void(const std::string&)> callback) {
+    messageCallback_ = callback;
 }
 
 void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
@@ -71,15 +74,20 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
             return;
         }
 
-        // Store message in global queue
-        {
-            std::lock_guard<std::mutex> lock(globalMutex);
-            globalQueue.push(payload);
+        // If a message callback has been set, call it.
+        if (messageCallback_) {
+            messageCallback_(payload);
+        } else {
+            // Default behavior: Store message in global queue
+            {
+                std::lock_guard<std::mutex> lock(globalMutex);
+                globalQueue.push(payload);
+            }
+            // Notify gRPC server
+            globalCV.notify_one();
         }
 
-        // Notify gRPC server
-        globalCV.notify_one();
-        Logger::getInstance().log("✅ Message added to queue and gRPC notified.");
+        Logger::getInstance().log("✅ Message processed.");
 
     } catch (const std::exception &e) {
         Logger::getInstance().log("🔥 Exception in message_arrived(): " + std::string(e.what()));
@@ -87,8 +95,6 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         Logger::getInstance().log("🔥 Unknown Exception in message_arrived()!");
     }
 }
-
-
 
 void DataRetrieval::connected(const std::string&) {}
 void DataRetrieval::connection_lost(const std::string&) {}

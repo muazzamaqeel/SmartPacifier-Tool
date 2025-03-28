@@ -23,8 +23,9 @@ namespace _pbi = _pb::internal;
 namespace myservice {
 PROTOBUF_CONSTEXPR PayloadMessage::PayloadMessage(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+    /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct PayloadMessageDefaultTypeInternal {
   PROTOBUF_CONSTEXPR PayloadMessageDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -43,10 +44,11 @@ const uint32_t TableStruct_myservice_2eproto::offsets[] PROTOBUF_SECTION_VARIABL
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::myservice::PayloadMessage, _internal_metadata_),
   ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
+  PROTOBUF_FIELD_OFFSET(::myservice::PayloadMessage, _impl_._oneof_case_[0]),
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::myservice::PayloadMessage, _impl_.data_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::myservice::PayloadMessage, _impl_.payload_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::myservice::PayloadMessage)},
@@ -58,19 +60,21 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_myservice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017myservice.proto\022\tmyservice\032\033google/pro"
-  "tobuf/empty.proto\"\036\n\016PayloadMessage\022\014\n\004d"
-  "ata\030\001 \001(\0142R\n\tMyService\022E\n\016StreamMessages"
-  "\022\026.google.protobuf.Empty\032\031.myservice.Pay"
-  "loadMessage0\001b\006proto3"
+  "tobuf/empty.proto\032\021sensor_data.proto\"F\n\016"
+  "PayloadMessage\022)\n\013sensor_data\030\001 \001(\0132\022.Pr"
+  "otos.SensorDataH\000B\t\n\007payload2R\n\tMyServic"
+  "e\022E\n\016StreamMessages\022\026.google.protobuf.Em"
+  "pty\032\031.myservice.PayloadMessage0\001b\006proto3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_myservice_2eproto_deps[1] = {
+static const ::_pbi::DescriptorTable* const descriptor_table_myservice_2eproto_deps[2] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+  &::descriptor_table_sensor_5fdata_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_myservice_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_myservice_2eproto = {
-    false, false, 181, descriptor_table_protodef_myservice_2eproto,
+    false, false, 240, descriptor_table_protodef_myservice_2eproto,
     "myservice.proto",
-    &descriptor_table_myservice_2eproto_once, descriptor_table_myservice_2eproto_deps, 1, 1,
+    &descriptor_table_myservice_2eproto_once, descriptor_table_myservice_2eproto_deps, 2, 1,
     schemas, file_default_instances, TableStruct_myservice_2eproto::offsets,
     file_level_metadata_myservice_2eproto, file_level_enum_descriptors_myservice_2eproto,
     file_level_service_descriptors_myservice_2eproto,
@@ -87,8 +91,37 @@ namespace myservice {
 
 class PayloadMessage::_Internal {
  public:
+  static const ::Protos::SensorData& sensor_data(const PayloadMessage* msg);
 };
 
+const ::Protos::SensorData&
+PayloadMessage::_Internal::sensor_data(const PayloadMessage* msg) {
+  return *msg->_impl_.payload_.sensor_data_;
+}
+void PayloadMessage::set_allocated_sensor_data(::Protos::SensorData* sensor_data) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_payload();
+  if (sensor_data) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(sensor_data));
+    if (message_arena != submessage_arena) {
+      sensor_data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, sensor_data, submessage_arena);
+    }
+    set_has_sensor_data();
+    _impl_.payload_.sensor_data_ = sensor_data;
+  }
+  // @@protoc_insertion_point(field_set_allocated:myservice.PayloadMessage.sensor_data)
+}
+void PayloadMessage::clear_sensor_data() {
+  if (_internal_has_sensor_data()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.payload_.sensor_data_;
+    }
+    clear_has_payload();
+  }
+}
 PayloadMessage::PayloadMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -99,17 +132,21 @@ PayloadMessage::PayloadMessage(const PayloadMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   PayloadMessage* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.data_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.data_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.data_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_data().empty()) {
-    _this->_impl_.data_.Set(from._internal_data(), 
-      _this->GetArenaForAllocation());
+  clear_has_payload();
+  switch (from.payload_case()) {
+    case kSensorData: {
+      _this->_internal_mutable_sensor_data()->::Protos::SensorData::MergeFrom(
+          from._internal_sensor_data());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
   }
   // @@protoc_insertion_point(copy_constructor:myservice.PayloadMessage)
 }
@@ -119,13 +156,11 @@ inline void PayloadMessage::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.data_){}
+      decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
-  _impl_.data_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.data_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  clear_has_payload();
 }
 
 PayloadMessage::~PayloadMessage() {
@@ -139,12 +174,31 @@ PayloadMessage::~PayloadMessage() {
 
 inline void PayloadMessage::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.data_.Destroy();
+  if (has_payload()) {
+    clear_payload();
+  }
 }
 
 void PayloadMessage::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
+
+void PayloadMessage::clear_payload() {
+// @@protoc_insertion_point(one_of_clear_start:myservice.PayloadMessage)
+  switch (payload_case()) {
+    case kSensorData: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.payload_.sensor_data_;
+      }
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = PAYLOAD_NOT_SET;
+}
+
 
 void PayloadMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:myservice.PayloadMessage)
@@ -152,7 +206,7 @@ void PayloadMessage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.data_.ClearToEmpty();
+  clear_payload();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -162,11 +216,10 @@ const char* PayloadMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes data = 1;
+      // .Protos.SensorData sensor_data = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_data();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ctx->ParseMessage(_internal_mutable_sensor_data(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -200,10 +253,11 @@ uint8_t* PayloadMessage::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes data = 1;
-  if (!this->_internal_data().empty()) {
-    target = stream->WriteBytesMaybeAliased(
-        1, this->_internal_data(), target);
+  // .Protos.SensorData sensor_data = 1;
+  if (_internal_has_sensor_data()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::sensor_data(this),
+        _Internal::sensor_data(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -222,13 +276,18 @@ size_t PayloadMessage::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes data = 1;
-  if (!this->_internal_data().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
-        this->_internal_data());
+  switch (payload_case()) {
+    // .Protos.SensorData sensor_data = 1;
+    case kSensorData: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.payload_.sensor_data_);
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
   }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -247,8 +306,15 @@ void PayloadMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_data().empty()) {
-    _this->_internal_set_data(from._internal_data());
+  switch (from.payload_case()) {
+    case kSensorData: {
+      _this->_internal_mutable_sensor_data()->::Protos::SensorData::MergeFrom(
+          from._internal_sensor_data());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -266,13 +332,9 @@ bool PayloadMessage::IsInitialized() const {
 
 void PayloadMessage::InternalSwap(PayloadMessage* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.data_, lhs_arena,
-      &other->_impl_.data_, rhs_arena
-  );
+  swap(_impl_.payload_, other->_impl_.payload_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PayloadMessage::GetMetadata() const {

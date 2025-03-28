@@ -27,6 +27,7 @@
 
 namespace myservice {
 
+// Defines a service with one streaming RPC method.
 class MyService final {
  public:
   static constexpr char const* service_full_name() {
@@ -35,6 +36,7 @@ class MyService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // Streams a custom message (PayloadMessage), which holds a Protos.SensorData.
     std::unique_ptr< ::grpc::ClientReaderInterface< ::myservice::PayloadMessage>> StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::myservice::PayloadMessage>>(StreamMessagesRaw(context, request));
     }
@@ -47,6 +49,7 @@ class MyService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // Streams a custom message (PayloadMessage), which holds a Protos.SensorData.
       virtual void StreamMessages(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::grpc::ClientReadReactor< ::myservice::PayloadMessage>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -95,6 +98,7 @@ class MyService final {
    public:
     Service();
     virtual ~Service();
+    // Streams a custom message (PayloadMessage), which holds a Protos.SensorData.
     virtual ::grpc::Status StreamMessages(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::grpc::ServerWriter< ::myservice::PayloadMessage>* writer);
   };
   template <class BaseClass>

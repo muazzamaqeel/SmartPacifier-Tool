@@ -2,10 +2,6 @@
 #define GRPC_SERVER_H
 
 #include <grpcpp/grpcpp.h>
-#include <grpcpp/server.h>
-#include <grpcpp/server_builder.h>
-#include <grpcpp/server_context.h>
-#include <grpcpp/support/async_stream.h>
 #include <google/protobuf/empty.pb.h>
 #include "myservice.grpc.pb.h"  // Generated from myservice.proto
 #include <queue>

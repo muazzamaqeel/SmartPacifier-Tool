@@ -34,6 +34,7 @@ add_executable(sp_backend
         src/ipc_layer/grpc/gprc_server.cpp
         src/ipc_layer/grpc/myservice.pb.cc
         src/ipc_layer/grpc/myservice.grpc.pb.cc
+        src/ipc_layer/grpc/sensor_data.pb.cc   # <-- Added generated file for sensor_data.proto
         src/ipc_layer/grpc/gprc_server.h
         src/communication_layer/broker/GlobalMessageQueue.h
         src/communication_layer/broker/Logger.cpp
