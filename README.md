@@ -12,7 +12,7 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 
 # Running the SmartPacifier-Tool
-## Step 1: Directory Structure
+## Creating the Directory Structure
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
@@ -21,13 +21,22 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 
 
 # Steps to build the Whole Project
-## Step 2: Building the BackEnd
+## Step 1: Building the BackEnd
 
 ## GRPC
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+
+- Small Bug Fix Steps:
+- Go to the following directory: /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
+- Open File "pcre.h"
+- Search For: #include "util/util.h"
+- One line above add this: #include <cstdint>
+- ![image](https://github.com/user-attachments/assets/0be90673-e826-40ef-8bcf-11b53f9b2ed6)
+
+
 mkdir build_grpc
 cd build_grpc
 cmake -G "Ninja" \
@@ -65,7 +74,7 @@ cmake-build-debug/sp_backend.exe
 
 
 
-## Step 3 - Building the FrontEnd
+## Step 2 - Building the FrontEnd
 ## Main Dart (Flutter)
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
