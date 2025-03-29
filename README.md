@@ -28,7 +28,6 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
-cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 ```
 ### 2: Bug Fix
 - Go to the following directory:
@@ -47,6 +46,7 @@ cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 ```
 ### 3: Build & Install
 ```bash
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 mkdir build_grpc
 cd build_grpc
 cmake -G "Ninja" \
