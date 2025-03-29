@@ -20,16 +20,16 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
 
 
-# Building the Whole Project
-## Step 1: Building the BackEnd
+## Building the Whole Project
+### Step 1: Building the BackEnd
 
-## GRPC 
-### 1: Cloning 
+### GRPC 
+#### 1: Cloning 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 ```
-### 2: Bug Fix
+#### 2: Bug Fix
 - Go to the following directory:
   /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
@@ -44,7 +44,7 @@ git submodule update --init --recursive
 #include "util/util.h"
 #include "re2/stringpiece.h"
 ```
-### 3: Build & Install
+#### 3: Build & Install
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 mkdir build_grpc
@@ -60,7 +60,7 @@ ninja
 ninja install
 ```
 
-## MQTT
+### MQTT
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
 git submodule update --init --recursive
@@ -71,7 +71,7 @@ cmake -Bbuild -H. -DPAHO_WITH_MQTT_C=ON -DPAHO_BUILD_EXAMPLES=ON
 $ sudo cmake --build build/ --target install
 ```
 
-## Main BackEnd (C++) 
+### Main BackEnd (C++) 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend
 rm -rf CMakeCache.txt CMakeFiles cmake-build-debug
@@ -80,8 +80,8 @@ cmake --build cmake-build-debug
 cmake-build-debug/sp_backend.exe
 ```
 
-## Step 2 - Building the FrontEnd
-## Main Dart (Flutter)
+### Step 2 - Building the FrontEnd
+#### Main Dart (Flutter)
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
 flutter run -d windows 
