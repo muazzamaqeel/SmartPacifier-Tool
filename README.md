@@ -28,14 +28,19 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
-
+```
 - Small Bug Fix Steps:
 - Go to the following directory: /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
 - Search For: #include "util/util.h"
 - One line above add this: #include <cstdint>
-- ![image](https://github.com/user-attachments/assets/0be90673-e826-40ef-8bcf-11b53f9b2ed6)
-
+- How it Should look now:
+```c
+#include <cstdint>
+#include "util/util.h"
+#include "re2/stringpiece.h"
+```
+```bash
 
 mkdir build_grpc
 cd build_grpc
