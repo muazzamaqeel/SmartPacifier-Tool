@@ -20,7 +20,7 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
 
 
-# Steps to build the Whole Project
+# Building the Whole Project
 ## Step 1: Building the BackEnd
 
 ## GRPC 
