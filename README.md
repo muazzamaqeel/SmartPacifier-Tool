@@ -31,10 +31,12 @@ git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 ```
 ### 2: Bug Fix
-- Go to the following directory: /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
+- Go to the following directory:
+  /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
 - Search For: #include "util/util.h"
-- One line above add this: #include <cstdint>
+- One line above add this:
+  #include <cstdint>
 - How it Should look now:
 ```c
 #include <cstdint>
