@@ -24,13 +24,13 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ## Step 1: Building the BackEnd
 
 ## GRPC 
-## 1: Cloning 
+### 1: Cloning 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 ```
-## 2: Bug Fix
+### 2: Bug Fix
 - Go to the following directory: /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
 - Search For: #include "util/util.h"
@@ -41,7 +41,7 @@ cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 #include "util/util.h"
 #include "re2/stringpiece.h"
 ```
-## 3: Build & Install
+### 3: Build & Install
 ```bash
 mkdir build_grpc
 cd build_grpc
