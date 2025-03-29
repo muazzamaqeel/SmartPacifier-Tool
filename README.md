@@ -11,8 +11,14 @@ Modular Architecture: Independent services for frontend, backend, and algorithm 
 By combining powerful data handling with a flexible architecture, SmartPacifier-Tool (Version 2) helps researchers, clinicians, and developers push the boundaries of sensor-driven health applications.
 
 
+# Running the SmartPacifier-Tool
 
-
+- Step 1: Directory Structure
+```bash
+mkdir -p /c/Programming
+cd /c/Programming
+git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
+```
 
 
 # How to build the Project
