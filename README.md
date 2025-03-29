@@ -23,13 +23,14 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 # Steps to build the Whole Project
 ## Step 1: Building the BackEnd
 
-## GRPC
+## GRPC 
+## 1 : Cloning 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 ```
-- Small Bug Fix Steps:
+## 2 : Bug Fix
 - Go to the following directory: /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
 - Search For: #include "util/util.h"
@@ -40,8 +41,8 @@ cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 #include "util/util.h"
 #include "re2/stringpiece.h"
 ```
+## Build & Install
 ```bash
-
 mkdir build_grpc
 cd build_grpc
 cmake -G "Ninja" \
@@ -55,9 +56,7 @@ ninja
 ninja install
 ```
 
-
 ## MQTT
-
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
 git submodule update --init --recursive
@@ -76,8 +75,6 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S . -B cmake-build-debug
 cmake --build cmake-build-debug
 cmake-build-debug/sp_backend.exe
 ```
-
-
 
 ## Step 2 - Building the FrontEnd
 ## Main Dart (Flutter)
