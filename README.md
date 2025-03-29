@@ -12,8 +12,7 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 
 # Running the SmartPacifier-Tool
-
-# Step 1: Directory Structure
+## Step 1: Directory Structure
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
@@ -21,9 +20,8 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
 
 
-# How to build the Project
-
-# Step 2: Building the BackEnd
+# Steps to build the Whole Project
+## Step 2: Building the BackEnd
 
 ## GRPC
 ```bash
@@ -67,7 +65,7 @@ cmake-build-debug/sp_backend.exe
 
 
 
-# Step 3 - Building the FrontEnd
+## Step 3 - Building the FrontEnd
 ## Main Dart (Flutter)
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
