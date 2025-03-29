@@ -22,8 +22,7 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 
 
 # How to build the Project
-- Step 1:
-- Building the BackEnd
+- Step 2: Building the BackEnd
 
 ## GRPC
 ```bash
@@ -67,5 +66,8 @@ cmake-build-debug/sp_backend.exe
 
 
 
-- Step 2:
-- Building the FrontEnd
+- Step 3 - Building the FrontEnd
+```bash
+cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
+flutter run -d windows 
+```
