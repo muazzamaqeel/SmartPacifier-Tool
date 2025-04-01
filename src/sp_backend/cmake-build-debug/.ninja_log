@@ -59,3 +59,5 @@
 877	1009	7652233201255010	src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/src/libpaho-mqtt3a-static.a	f1e90c2f4756f84b
 25	4374	7652233192734290	CMakeFiles/sp_backend.dir/src/platform_layer/windows/WindowsPlatformManager.cpp.obj	ef978e116ac8c6b3
 4375	5530	7652233236228962	sp_backend.exe	6900cd89dd18401
+16	1532	7652239692817278	CMakeFiles/sp_backend.dir/src/communication_layer/broker/Logger.cpp.obj	1b3dfbd8ca5a0478
+1533	3526	7652239708012167	sp_backend.exe	6900cd89dd18401

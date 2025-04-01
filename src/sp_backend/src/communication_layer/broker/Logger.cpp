@@ -1,9 +1,13 @@
 #include "Logger.h"
 #include <iostream>
 #include <ctime>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 Logger::Logger() {
-    logFile.open("backend.log", std::ios::out | std::ios::app);  // Open in append mode
+
+    fs::create_directories("logs");
+    logFile.open("logs/backend.log", std::ios::out | std::ios::app);
     if (!logFile.is_open()) {
         std::cerr << "❌ Failed to open log file: backend.log" << std::endl;
     } else {
