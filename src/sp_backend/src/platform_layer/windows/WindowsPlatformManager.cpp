@@ -1,9 +1,9 @@
-
 #include "WindowsPlatformManager.h"
 #include "../../communication_layer/broker/Logger.h"
 #include "../../communication_layer/broker/DataRetrieval.h"
 #include "../../communication_layer/broker/GlobalMessageQueue.h"
 #include "../../ipc_layer/grpc/gprc_server.h"
+#include "../../communication_layer/broker/BrokerCheck.h"
 #include <thread>
 #include <chrono>
 #include <atomic>
@@ -19,7 +19,7 @@ void handleIncomingMqttMessage(const std::string &rawPayload) {
     globalCV.notify_one();
 }
 
-void runMqttClient(std::shared_ptr<DataRetrieval> dataRetrieval) {
+void runMqttClient(const std::shared_ptr<DataRetrieval> &dataRetrieval) {
     Logger::getInstance().log("Starting MQTT... ");
     try {
         dataRetrieval->setMessageCallback(handleIncomingMqttMessage);
@@ -49,6 +49,8 @@ void runGrpcServer() {
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
 
     Logger::getInstance().log("gRPC Server started on " + serverAddress);
+    std::cout << "Mosquitto running: "
+              << (BrokerCheck::isMosquittoRunning() ? "Yes" : "No") << std::endl;
     std::cout << "Press ENTER to shutdown..." << std::endl;
 
     std::thread grpcPollingThread([&]() {
@@ -77,8 +79,14 @@ void runGrpcServer() {
 }
 
 void WindowsPlatformManager::runBackend() {
-    Logger::getInstance().log("Running on Windows");
-    Logger::getInstance().log("Backend is starting...");
+    std::cout << "Running on Windows" << std::endl;
+    std::cout << "Checking if Mosquitto broker is running..." << std::endl;
+    if (!BrokerCheck::isMosquittoRunning()) {
+        std::cout << "Mosquitto is not running. Please start the Mosquitto broker first." << std::endl;
+        return;
+    } else {
+        std::cout << "Mosquitto is running." << std::endl;
+    }
 
     auto dataRetrieval = std::make_shared<DataRetrieval>(
         "tcp://localhost:1883", "DataRetrievalClient", "Pacifier/#"
@@ -88,13 +96,13 @@ void WindowsPlatformManager::runBackend() {
     std::thread grpcThread(runGrpcServer);
 
     std::cin.get(); // wait for shutdown
-    Logger::getInstance().log("Shutting down...");
+    std::cout << "Shutting down..." << std::endl;
     running = false;
 
     mqttThread.join();
     grpcThread.join();
 
-    Logger::getInstance().log("Shutdown complete. Goodbye!");
-    std::cout << "\n Program terminated. Press ENTER to exit...\n";
+    std::cout << "Shutdown complete. Goodbye!" << std::endl;
+    std::cout << "\nProgram terminated. Press ENTER to exit...\n";
     std::cin.get();
 }

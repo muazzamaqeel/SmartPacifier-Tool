@@ -9,9 +9,9 @@ Logger::Logger() {
     fs::create_directories("logs");
     logFile.open("logs/backend.log", std::ios::out | std::ios::app);
     if (!logFile.is_open()) {
-        std::cerr << "❌ Failed to open log file: backend.log" << std::endl;
+        std::cerr << "Failed to open log file: backend.log" << std::endl;
     } else {
-        log("✅ Logger initialized. Logs will be written to backend.log");
+        log("Logger initialized. Logs will be written to backend.log");
     }
 }
 
@@ -33,6 +33,6 @@ void Logger::log(const std::string& message) {
                 << message << std::endl;
         logFile.flush();  // Ensure logs are written immediately
     } else {
-        std::cerr << "❌ Log file is not open!" << std::endl;
+        std::cerr << "Log file is not open!" << std::endl;
     }
 }

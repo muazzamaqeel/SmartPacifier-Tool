@@ -63,3 +63,8 @@
 18	2401	7654816918324245	CMakeFiles/sp_backend.dir/src/communication_layer/broker/DataRetrieval.cpp.obj	bf1982d79b7aa4b8
 23	4335	7654816918378226	CMakeFiles/sp_backend.dir/src/platform_layer/windows/WindowsPlatformManager.cpp.obj	ef978e116ac8c6b3
 4335	6259	7654816961493699	sp_backend.exe	6900cd89dd18401
+30	1695	7654822468770328	CMakeFiles/sp_backend.dir/src/communication_layer/broker/Logger.cpp.obj	1b3dfbd8ca5a0478
+15	3940	7654823036805647	CMakeFiles/sp_backend.dir/src/platform_layer/windows/WindowsPlatformManager.cpp.obj	ef978e116ac8c6b3
+3940	6099	7654823076058220	sp_backend.exe	6900cd89dd18401
+14	3789	7654824562694430	CMakeFiles/sp_backend.dir/src/platform_layer/windows/WindowsPlatformManager.cpp.obj	ef978e116ac8c6b3
+3790	4889	7654824600454542	sp_backend.exe	6900cd89dd18401
