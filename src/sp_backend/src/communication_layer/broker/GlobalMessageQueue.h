@@ -1,8 +1,5 @@
 #ifndef GLOBALMESSAGEQUEUE_H
 #define GLOBALMESSAGEQUEUE_H
-
-
-// In some shared header, e.g. "GlobalMessageQueue.h"
 #pragma once
 #include <queue>
 #include <string>

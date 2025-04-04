@@ -1,5 +1,4 @@
 #include "DataRetrieval.h"
-
 #include <utility>
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
