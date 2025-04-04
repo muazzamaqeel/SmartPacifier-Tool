@@ -9,5 +9,3 @@ endif()
 set(CMAKE_PREFIX_PATH "C:/local/grpc" CACHE PATH "" FORCE)
 set(gRPC_DIR "C:/local/grpc/lib/cmake/grpc" CACHE PATH "" FORCE) 
 set(Protobuf_DIR "C:/local/grpc/lib/cmake/protobuf" CACHE PATH "" FORCE)
-
-# Add any additional Windows-specific settings below.
