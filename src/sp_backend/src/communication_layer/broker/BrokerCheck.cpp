@@ -1,8 +1,8 @@
 #include "BrokerCheck.h"
 #ifdef _WIN32
 #include <windows.h>
-#include <tlhelp32.h>  // For CreateToolhelp32Snapshot, Process32First, etc.
-#include <cstring>     // For _stricmp
+#include <tlhelp32.h>
+#include <cstring>
 #endif
 #include <cstdlib>     // For system() on Linux
 

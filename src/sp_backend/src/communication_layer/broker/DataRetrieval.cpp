@@ -1,4 +1,6 @@
 #include "DataRetrieval.h"
+
+#include <utility>
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
 
@@ -46,7 +48,7 @@ void DataRetrieval::stop() {
 }
 
 void DataRetrieval::setMessageCallback(std::function<void(const std::string&)> callback) {
-    messageCallback_ = callback;
+    messageCallback_ = std::move(callback);
 }
 
 void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {

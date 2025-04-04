@@ -20,7 +20,7 @@ void handleIncomingMqttMessage(const std::string &rawPayload) {
 }
 
 void runMqttClient(std::shared_ptr<DataRetrieval> dataRetrieval) {
-    Logger::getInstance().log("🚀 Starting MQTT...");
+    Logger::getInstance().log("Starting MQTT... ");
     try {
         dataRetrieval->setMessageCallback(handleIncomingMqttMessage);
         dataRetrieval->start();
@@ -28,16 +28,16 @@ void runMqttClient(std::shared_ptr<DataRetrieval> dataRetrieval) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
         dataRetrieval->stop();
-        Logger::getInstance().log("🛑 MQTT stopped.");
+        Logger::getInstance().log("MQTT stopped");
     } catch (const std::exception &e) {
-        Logger::getInstance().log("🔥 MQTT Client Exception: " + std::string(e.what()));
+        Logger::getInstance().log("MQTT Client Exception : " + std::string(e.what()));
     } catch (...) {
-        Logger::getInstance().log("🔥 Unknown MQTT Client Error!");
+        Logger::getInstance().log("Unknown MQTT Client Error!");
     }
 }
 
 void runGrpcServer() {
-    Logger::getInstance().log("✅ gRPC Service initialized.");
+    Logger::getInstance().log("gRPC Service initialized.");
     std::string serverAddress("0.0.0.0:50051");
     GrpcService service(globalQueue, globalMutex, globalCV);
 
@@ -48,8 +48,8 @@ void runGrpcServer() {
     std::unique_ptr<grpc::ServerCompletionQueue> cq = builder.AddCompletionQueue();
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
 
-    Logger::getInstance().log("✅ gRPC Server started on " + serverAddress);
-    std::cout << "🔴 Press ENTER to shutdown..." << std::endl;
+    Logger::getInstance().log("gRPC Server started on " + serverAddress);
+    std::cout << "Press ENTER to shutdown..." << std::endl;
 
     std::thread grpcPollingThread([&]() {
         Logger::getInstance().log("📡 gRPC Completion Queue Polling Started...");
@@ -60,15 +60,15 @@ void runGrpcServer() {
                 if (!ok) break;
             }
         }
-        Logger::getInstance().log("🛑 gRPC Completion Queue stopped.");
+        Logger::getInstance().log("gRPC Completion Queue stopped.");
     });
 
     try {
         server->Wait();
     } catch (const std::exception &e) {
-        Logger::getInstance().log("🔥 gRPC Server Exception: " + std::string(e.what()));
+        Logger::getInstance().log("gRPC Server Exception: " + std::string(e.what()));
     } catch (...) {
-        Logger::getInstance().log("🔥 Unknown gRPC Server Error!");
+        Logger::getInstance().log("Unknown gRPC Server Error!");
     }
 
     running = false;
@@ -77,8 +77,8 @@ void runGrpcServer() {
 }
 
 void WindowsPlatformManager::runBackend() {
-    Logger::getInstance().log("🏁 Running on Windows");
-    Logger::getInstance().log("🛠 Backend is starting...");
+    Logger::getInstance().log("Running on Windows");
+    Logger::getInstance().log("Backend is starting...");
 
     auto dataRetrieval = std::make_shared<DataRetrieval>(
         "tcp://localhost:1883", "DataRetrievalClient", "Pacifier/#"
@@ -88,13 +88,13 @@ void WindowsPlatformManager::runBackend() {
     std::thread grpcThread(runGrpcServer);
 
     std::cin.get(); // wait for shutdown
-    Logger::getInstance().log("🛑 Shutting down...");
+    Logger::getInstance().log("Shutting down...");
     running = false;
 
     mqttThread.join();
     grpcThread.join();
 
-    Logger::getInstance().log("✅ Shutdown complete. Goodbye!");
-    std::cout << "\n🛑 Program terminated. Press ENTER to exit...\n";
+    Logger::getInstance().log("Shutdown complete. Goodbye!");
+    std::cout << "\n Program terminated. Press ENTER to exit...\n";
     std::cin.get();
 }
