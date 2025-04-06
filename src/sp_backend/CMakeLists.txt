@@ -56,13 +56,14 @@ add_executable(sp_backend
         src/communication_layer/broker/Logger.cpp
         src/communication_layer/broker/Logger.h
         src/platform_layer/PlatformManager.h
-        src/platform_layer/linux/LinuxPlatformManager.h
         src/platform_layer/PlatformFactory.h
         src/platform_layer/windows/WindowsPlatformManager.cpp
         src/platform_layer/windows/WindowsPlatformManager.h
         src/communication_layer/CommunicationLayer.cpp
         src/communication_layer/CommunicationLayer.h
         src/communication_layer/I_CommunicationLayer.h
+        src/platform_layer/linux/LinuxPlatformManager.cpp
+        src/platform_layer/linux/LinuxPlatformManager.h
 )
 
 # ---[ 5. Include directories ]---
