@@ -62,7 +62,6 @@ add_executable(sp_backend
         src/platform_layer/windows/WindowsPlatformManager.h
         src/communication_layer/CommunicationLayer.cpp
         src/communication_layer/CommunicationLayer.h
-        src/communication_layer/I_CommunicationLayer.cpp
         src/communication_layer/I_CommunicationLayer.h
 )
 
