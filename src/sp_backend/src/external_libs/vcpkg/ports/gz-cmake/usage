@@ -1,3 +1,0 @@
-The package @PORT@@VERSION_MAJOR@ provides CMake integration:
-
-    find_package(@PORT@@VERSION_MAJOR@ CONFIG REQUIRED)
