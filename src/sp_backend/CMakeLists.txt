@@ -42,7 +42,7 @@ set(PAHO_WITH_MQTT_C ON CACHE BOOL "Build the Paho C library as part of Paho MQT
 set(PAHO_BUILD_EXAMPLES OFF CACHE BOOL "Build the Paho MQTT C++ example apps" FORCE)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp)
 
-# ---[ 4. Add your main executable ]---
+# ---[ 4. Add main executables ]---
 add_executable(sp_backend
         src/main.cpp
         src/communication_layer/broker/BrokerCheck.cpp
@@ -50,7 +50,7 @@ add_executable(sp_backend
         src/ipc_layer/grpc/gprc_server.cpp
         src/ipc_layer/grpc/myservice.pb.cc
         src/ipc_layer/grpc/myservice.grpc.pb.cc
-        src/ipc_layer/grpc/sensor_data.pb.cc   # <-- Generated file for sensor_data.proto
+        src/ipc_layer/grpc/sensor_data.pb.cc                                       #Generated file for sensor_data.proto
         src/ipc_layer/grpc/gprc_server.h
         src/communication_layer/broker/GlobalMessageQueue.h
         src/communication_layer/broker/Logger.cpp
