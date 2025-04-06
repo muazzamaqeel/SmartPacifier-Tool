@@ -3,7 +3,7 @@
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
 
-DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, std::string  topic)
+DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, std::string topic)
     : topic_(std::move(topic)), client_(broker, client_id) {
     client_.set_callback(*this);
     connOpts_.set_clean_session(true);
@@ -22,11 +22,8 @@ DataRetrieval::~DataRetrieval() {
 
 void DataRetrieval::start() {
     try {
-        // Synchronously connect
         client_.connect(connOpts_)->wait();
         Logger::getInstance().log("MQTT connected to broker.");
-
-        // Subscribe to your topic with QoS=1
         client_.subscribe(topic_, 1)->wait();
         Logger::getInstance().log("Subscribed to MQTT topic: " + topic_);
     }
@@ -75,21 +72,17 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
             return;
         }
 
-        // If a message callback has been set, call it.
         if (messageCallback_) {
             messageCallback_(payload);
         } else {
-            // Default behavior: Store message in global queue
             {
                 std::lock_guard<std::mutex> lock(globalMutex);
                 globalQueue.push(payload);
             }
-            // Notify gRPC server
             globalCV.notify_one();
         }
 
         Logger::getInstance().log("Message processed.");
-
     } catch (const std::exception &e) {
         Logger::getInstance().log("Exception in message_arrived(): " + std::string(e.what()));
     } catch (...) {

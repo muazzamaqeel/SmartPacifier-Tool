@@ -1,15 +1,14 @@
-
 #ifndef PLATFORMFACTORY_H
 #define PLATFORMFACTORY_H
 #pragma once
 
 #include <memory>
 #include "PlatformManager.h"
-#include "windows/WindowsPlatformManager.h"
 
 #ifdef _WIN32
+#include "windows/WindowsPlatformManager.h"
 #elif defined(__linux__)
-#include "LinuxPlatformManager.h"
+#include "linux/LinuxPlatformManager.h"
 #endif
 
 inline std::unique_ptr<PlatformManager> createPlatformManager() {
@@ -22,5 +21,4 @@ inline std::unique_ptr<PlatformManager> createPlatformManager() {
 #endif
 }
 
-
-#endif //PLATFORMFACTORY_H
+#endif // PLATFORMFACTORY_H

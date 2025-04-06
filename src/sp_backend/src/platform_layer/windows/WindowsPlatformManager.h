@@ -9,6 +9,4 @@ public:
     void runBackend() override;
 };
 
-
-
-#endif //WINDOWSPLATFORMMANAGER_H
+#endif // WINDOWSPLATFORMMANAGER_H
