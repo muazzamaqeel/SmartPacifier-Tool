@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "sensor_data.proto";  // Import your SensorData definitions
+
+package myservice;
+
+// Defines a service with one streaming RPC method.
+service MyService {
+    // Streams a custom message (PayloadMessage), which holds a Protos.SensorData.
+    rpc StreamMessages(google.protobuf.Empty) returns (stream PayloadMessage);
+}
+
+// A wrapper message that can carry different payloads (here, only sensor_data).
+message PayloadMessage {
+    oneof payload {
+        Protos.SensorData sensor_data = 1;
+    }
+}

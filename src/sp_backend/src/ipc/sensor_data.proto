@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+
+package Protos;
+
+message MinimalSensorData {
+    string pacifier_id = 1;
+}
