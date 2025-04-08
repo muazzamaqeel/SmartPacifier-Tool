@@ -649,3 +649,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 /src/sp_backend/src/external_libs/grpc
+# Ignore CMake and Ninja build directories
+/src/sp_backend/build/
+/src/sp_backend/cmake-build-debug/
