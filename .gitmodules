@@ -1,0 +1,3 @@
+[submodule "src/sp_backend/src/external_libs/grpc"]
+	path = src/sp_backend/src/external_libs/grpc
+	url = https://github.com/grpc/grpc.git
