@@ -4,8 +4,28 @@ project(sp_backend)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(MINGW)
-    add_compile_options(-mbmi)
+# ---[ Platform-Specific Configuration ]---
+# Detect the operating system and include the appropriate platform file.
+if(WIN32)
+    message(STATUS "Configuring for Windows")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/windows/Platform.cmake)
+elseif(UNIX AND NOT APPLE)
+    message(STATUS "Configuring for Linux")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/linux/Platform.cmake)
+elseif(APPLE)
+    # For demonstration, we assume that if IOS is defined then it's iOS; otherwise macOS.
+    if(IOS)
+        message(STATUS "Configuring for iOS")
+        include(${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/ios/Platform.cmake)
+    else()
+        message(STATUS "Configuring for macOS")
+        include(${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/ios/Platform.cmake)
+    endif()
+elseif(ANDROID)
+    message(STATUS "Configuring for Android")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/android/Platform.cmake)
+else()
+    message(FATAL_ERROR "Unsupported platform")
 endif()
 
 # ---[ 1. Remove local gRPC build ]---
@@ -13,11 +33,7 @@ endif()
 # add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/grpc)
 
 # ---[ 2. Find installed gRPC & Protobuf ]---
-# Point CMake to your installed gRPC (and its bundled Protobuf) in C:/local/grpc.
-set(CMAKE_PREFIX_PATH "C:/local/grpc" CACHE PATH "" FORCE)
-set(gRPC_DIR "C:/local/grpc/lib/cmake/grpc" CACHE PATH "" FORCE)
-set(Protobuf_DIR "C:/local/grpc/lib/cmake/protobuf" CACHE PATH "" FORCE)
-
+# Windows-specific paths have been moved to the platform file.
 find_package(Protobuf CONFIG REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
 
@@ -26,7 +42,7 @@ set(PAHO_WITH_MQTT_C ON CACHE BOOL "Build the Paho C library as part of Paho MQT
 set(PAHO_BUILD_EXAMPLES OFF CACHE BOOL "Build the Paho MQTT C++ example apps" FORCE)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp)
 
-# ---[ 4. Add your main executable ]---
+# ---[ 4. Add main executables ]---
 add_executable(sp_backend
         src/main.cpp
         src/communication_layer/broker/BrokerCheck.cpp
@@ -34,11 +50,20 @@ add_executable(sp_backend
         src/ipc_layer/grpc/gprc_server.cpp
         src/ipc_layer/grpc/myservice.pb.cc
         src/ipc_layer/grpc/myservice.grpc.pb.cc
-        src/ipc_layer/grpc/sensor_data.pb.cc   # <-- Added generated file for sensor_data.proto
+        src/ipc_layer/grpc/sensor_data.pb.cc                                       #Generated file for sensor_data.proto
         src/ipc_layer/grpc/gprc_server.h
         src/communication_layer/broker/GlobalMessageQueue.h
         src/communication_layer/broker/Logger.cpp
         src/communication_layer/broker/Logger.h
+        src/platform_layer/PlatformManager.h
+        src/platform_layer/PlatformFactory.h
+        src/platform_layer/windows/WindowsPlatformManager.cpp
+        src/platform_layer/windows/WindowsPlatformManager.h
+        src/communication_layer/CommunicationLayer.cpp
+        src/communication_layer/CommunicationLayer.h
+        src/communication_layer/I_CommunicationLayer.h
+        src/platform_layer/linux/LinuxPlatformManager.cpp
+        src/platform_layer/linux/LinuxPlatformManager.h
 )
 
 # ---[ 5. Include directories ]---

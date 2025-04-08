@@ -1,8 +1,5 @@
 #ifndef GLOBALMESSAGEQUEUE_H
 #define GLOBALMESSAGEQUEUE_H
-
-
-// In some shared header, e.g. "GlobalMessageQueue.h"
 #pragma once
 #include <queue>
 #include <string>
@@ -13,5 +10,4 @@ inline std::queue<std::string> globalQueue;
 inline std::mutex globalMutex;
 inline std::condition_variable globalCV;
 
-
-#endif //GLOBALMESSAGEQUEUE_H
+#endif // GLOBALMESSAGEQUEUE_H
