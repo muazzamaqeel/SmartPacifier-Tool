@@ -1,0 +1,6 @@
+*build*
+vcpkg
+*.pb.*
+.cmake
+.ninja_*
+cmake_install.cmake
