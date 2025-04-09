@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart'; // for debugPrint
+import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
-
-import '../../generated/google/protobuf/empty.pb.dart';
-import '../../generated/myservice.pbgrpc.dart';
+import 'generated/google/protobuf/empty.pb.dart';
+import 'generated/myservice.pbgrpc.dart';
 
 class MyGrpcClient {
   MyGrpcClient._internal();

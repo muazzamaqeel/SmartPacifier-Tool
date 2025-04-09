@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // Added import for MainWindow
-import 'screens/mainwindow.dart';
+import 'screens/main_window/mainwindow.dart';
 
 void main() {
   runApp(const MyApp());
