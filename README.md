@@ -28,6 +28,7 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 git submodule update --init --recursive
+git checkout v1.62.0
 ```
 #### 2: Bug Fix
 - Go to the following directory:
@@ -58,6 +59,13 @@ cmake -G "Ninja" \
   ..
 ninja
 ninja install
+
+#Generating Proto-Files
+protoc -I=src/ipc_layer/grpc \
+  --cpp_out=src/ipc_layer/grpc \
+  --grpc_out=src/ipc_layer/grpc \
+  --plugin=protoc-gen-grpc=/c/local/grpc/bin/grpc_cpp_plugin.exe \
+  src/ipc_layer/grpc/myservice.proto
 ```
 
 ### MQTT
