@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart'; // for debugPrint
 import 'package:grpc/grpc.dart';
-import 'myservice.pbgrpc.dart';
-import 'google/protobuf/empty.pb.dart';
+
+import '../../generated/google/protobuf/empty.pb.dart';
+import '../../generated/myservice.pbgrpc.dart';
 
 class MyGrpcClient {
   MyGrpcClient._internal();
@@ -20,28 +22,33 @@ class MyGrpcClient {
       );
       stub = MyServiceClient(channel);
       isConnected = true;
-      print("✅ gRPC Client connected to $host:$port");
+      debugPrint("gRPC Client connected to $host:$port");
     } catch (e) {
       isConnected = false;
-      print("❌ gRPC Client initialization failed: $e");
+      debugPrint("gRPC Client initialization failed: $e");
     }
   }
 
   Stream<String> streamMessages() async* {
     if (!isConnected) {
-      print("⚠️ gRPC Client is not connected!");
+      debugPrint("gRPC Client is not connected!");
       yield "Error: Not connected to gRPC server.";
       return;
     }
 
     try {
-      print("📡 Streaming messages from gRPC server...");
+      debugPrint("📡 Streaming messages from gRPC server...");
       await for (var response in stub.streamMessages(Empty())) {
-        print("📩 Received: ${response.value}");
-        yield response.value;
+        if (response.hasSensorData()) {
+          debugPrint("Received: ${response.sensorData}");
+          yield response.sensorData.toString();
+        } else {
+          debugPrint("Received unknown payload.");
+          yield "Unknown payload type.";
+        }
       }
     } catch (e) {
-      print("❌ gRPC Stream Error: $e");
+      debugPrint("gRPC Stream Error: $e");
       yield "Error: $e";
     }
   }
@@ -50,9 +57,9 @@ class MyGrpcClient {
     try {
       await channel.shutdown();
       isConnected = false;
-      print("🛑 gRPC Client disconnected.");
+      debugPrint("gRPC Client disconnected.");
     } catch (e) {
-      print("⚠️ gRPC shutdown error: $e");
+      debugPrint("gRPC shutdown error: $e");
     }
   }
 }

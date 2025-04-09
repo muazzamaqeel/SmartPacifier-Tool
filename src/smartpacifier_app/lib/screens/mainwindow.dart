@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
-// Import the generated gRPC stubs and message classes.
-// Adjust the package name if your project name differs.
 import 'package:smartpacifier_app/generated/myservice.pbgrpc.dart';
 import 'package:smartpacifier_app/generated/google/protobuf/empty.pb.dart';
-import 'package:smartpacifier_app/generated/sensor_data.pb.dart';
-// The google/protobuf/empty.pb.dart is imported by myservice.pb.dart automatically.
-
 
 void main() {
   runApp(const MyApp());
 }
 
-/// Main Application widget.
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
  
   @override
   Widget build(BuildContext context) {
@@ -28,9 +22,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// Main window widget that listens to the gRPC stream.
 class MainWindow extends StatefulWidget {
-  const MainWindow({Key? key}) : super(key: key);
+  const MainWindow({super.key});
 
   @override
   State<MainWindow> createState() => _MainWindowState();
