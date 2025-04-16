@@ -1,5 +1,4 @@
-#ifndef SP_BACKEND_BROKERCHECK_H
-#define SP_BACKEND_BROKERCHECK_H
+#pragma once
 
 class BrokerCheck {
 public:
@@ -7,4 +6,3 @@ public:
     static bool isMosquittoRunning();
 };
 
-#endif // SP_BACKEND_BROKERCHECK_H
