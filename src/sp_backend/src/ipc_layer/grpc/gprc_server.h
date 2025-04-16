@@ -18,8 +18,8 @@ public:
     ) override;
 
 private:
-    std::queue<std::string>& messageQueue;
-    std::mutex& queueMutex;
-    std::condition_variable& queueCV;
+    std::queue<std::string>& m_messageQueue;
+    std::mutex& m_queueMutex;
+    std::condition_variable& m_queueCV;
 };
 
