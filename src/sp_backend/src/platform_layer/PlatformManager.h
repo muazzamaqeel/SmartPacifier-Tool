@@ -1,5 +1,3 @@
-#ifndef PLATFORMMANAGER_H
-#define PLATFORMMANAGER_H
 #pragma once
 
 class PlatformManager {
