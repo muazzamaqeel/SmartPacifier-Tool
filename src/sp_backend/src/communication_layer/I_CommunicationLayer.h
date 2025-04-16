@@ -12,4 +12,3 @@ public:
     virtual void stopCommunicationServices() = 0;
 };
 
-#endif // I_COMMUNICATION_LAYER_H
