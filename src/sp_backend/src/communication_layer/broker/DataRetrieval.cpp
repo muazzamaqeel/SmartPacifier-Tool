@@ -3,8 +3,9 @@
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
 
-DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, std::string topic)
-    : topic_(std::move(topic)), client_(broker, client_id) {
+DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, const std::string& topic)
+    : topic_(topic), client_(broker, client_id) {
+
     client_.set_callback(*this);
     connOpts_.set_clean_session(true);
     Logger::getInstance().log("MQTT client initialized.");
