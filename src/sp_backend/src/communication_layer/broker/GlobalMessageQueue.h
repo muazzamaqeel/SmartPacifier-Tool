@@ -8,4 +8,3 @@ inline std::queue<std::string> globalQueue;
 inline std::mutex globalMutex;
 inline std::condition_variable globalCV;
 
-#endif // GLOBALMESSAGEQUEUE_H
