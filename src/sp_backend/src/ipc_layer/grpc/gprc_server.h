@@ -23,4 +23,3 @@ private:
     std::condition_variable& queueCV;
 };
 
-#endif // GRPC_SERVER_H
