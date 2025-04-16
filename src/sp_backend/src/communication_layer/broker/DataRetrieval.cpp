@@ -57,8 +57,9 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
             return;
         }
 
-        std::string topic = msg->get_topic();
-        std::string payload = msg->to_string();
+        auto topic = msg->get_topic();
+        auto payload = msg->to_string();
+
 
         Logger::getInstance().log("   ├─ Topic: " + (topic.empty() ? "[EMPTY]" : topic));
         Logger::getInstance().log("   ├─ Payload: " + (payload.empty() ? "[EMPTY]" : payload));
