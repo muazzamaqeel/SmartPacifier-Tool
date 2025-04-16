@@ -6,4 +6,3 @@ public:
     void runBackend() override;
 };
 
-#endif // LINUXPLATFORMMANAGER_H
