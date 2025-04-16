@@ -21,4 +21,3 @@ inline std::unique_ptr<PlatformManager> createPlatformManager() {
 #endif
 }
 
-#endif // PLATFORMFACTORY_H
