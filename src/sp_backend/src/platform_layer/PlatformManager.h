@@ -6,4 +6,3 @@ public:
     virtual void runBackend() = 0;
 };
 
-#endif // PLATFORMMANAGER_H
