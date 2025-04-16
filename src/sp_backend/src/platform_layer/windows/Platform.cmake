@@ -1,5 +1,5 @@
 # Windows Platform configuration
-message(STATUS "Configuring for Windows platform")
+message(STATUS "Sadly, configuring for Windows platform")
 
 if(MINGW)
     add_compile_options(-mbmi)
