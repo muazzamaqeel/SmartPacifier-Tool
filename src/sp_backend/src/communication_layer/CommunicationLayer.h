@@ -31,4 +31,3 @@ private:
     std::thread grpcThread_;
 };
 
-#endif // COMMUNICATION_LAYER_H
