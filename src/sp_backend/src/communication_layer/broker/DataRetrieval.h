@@ -1,5 +1,5 @@
-#ifndef SP_BACKEND_DATARETRIEVAL_H
-#define SP_BACKEND_DATARETRIEVAL_H
+#pragma once
+
 
 #include <string>
 #include <mqtt/async_client.h>
