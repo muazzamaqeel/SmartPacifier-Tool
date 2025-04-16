@@ -10,7 +10,7 @@ Logger& Logger::getInstance() {
 }
 
 Logger::Logger() {
-    logFile.open("backend.log", std::ios::app);
+    logFile.open("backend.log", std::ios::append);
 }
 
 Logger::~Logger() {
