@@ -1,5 +1,3 @@
-#ifndef GLOBALMESSAGEQUEUE_H
-#define GLOBALMESSAGEQUEUE_H
 #pragma once
 #include <queue>
 #include <string>
