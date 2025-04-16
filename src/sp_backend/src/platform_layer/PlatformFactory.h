@@ -7,6 +7,8 @@
 #include "windows/WindowsPlatformManager.h"
 #elif defined(__linux__)
 #include "linux/LinuxPlatformManager.h"
+#elif
+#error "missing platform manager for current platform"
 #endif
 
 inline std::unique_ptr<PlatformManager> createPlatformManager() {
