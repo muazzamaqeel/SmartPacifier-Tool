@@ -1,5 +1,4 @@
-#ifndef GRPC_SERVER_H
-#define GRPC_SERVER_H
+#pragma once
 
 #include <grpcpp/grpcpp.h>
 #include <google/protobuf/empty.pb.h>
