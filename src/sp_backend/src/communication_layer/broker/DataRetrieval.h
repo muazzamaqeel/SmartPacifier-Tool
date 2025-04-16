@@ -7,7 +7,8 @@
 
 class DataRetrieval : public virtual mqtt::callback, public virtual mqtt::iaction_listener {
 public:
-    DataRetrieval(const std::string& broker, const std::string& client_id, std::string topic);
+    DataRetrieval(const std::string& broker, const std::string& client_id, const std::string& topic);
+
     virtual ~DataRetrieval();
 
     void start();
