@@ -1,5 +1,3 @@
-#ifndef PLATFORMFACTORY_H
-#define PLATFORMFACTORY_H
 #pragma once
 
 #include <memory>
