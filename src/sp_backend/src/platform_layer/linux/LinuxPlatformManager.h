@@ -1,6 +1,3 @@
-#ifndef LINUXPLATFORMMANAGER_H
-#define LINUXPLATFORMMANAGER_H
-
 #pragma once
 #include "../PlatformManager.h"
 
