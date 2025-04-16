@@ -24,10 +24,11 @@ public:
     void on_failure(const mqtt::token& tok) override;
 
 private:
-    std::string topic_;
-    mqtt::async_client client_;
-    mqtt::connect_options connOpts_;
-    std::function<void(const std::string&)> messageCallback_;
+    std::string m_topic;
+    mqtt::async_client m_client;
+    mqtt::connect_options m_connOpts;
+    std::function<void(const std::string&)> m_messageCallback;
+
 };
 
 #endif // SP_BACKEND_DATARETRIEVAL_H
