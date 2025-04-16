@@ -6,7 +6,7 @@ import "sensor_data.proto";  // Import your SensorData definitions
 package myservice;
 
 // Defines a service with one streaming RPC method.
-service MyService {
+service GRPC_backend_server {
     // Streams a custom message (PayloadMessage), which holds a Protos.SensorData.
     rpc StreamMessages(google.protobuf.Empty) returns (stream PayloadMessage);
 }
