@@ -1,6 +1,3 @@
-#ifndef WINDOWSPLATFORMMANAGER_H
-#define WINDOWSPLATFORMMANAGER_H
-
 #pragma once
 #include "../PlatformManager.h"
 
