@@ -18,4 +18,3 @@ private:
     std::ofstream m_logFile;
 };
 
-#endif // LOGGER_H
