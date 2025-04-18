@@ -1,12 +1,7 @@
-#include <CommunicationLayer.h>
-
-#include <chrono>
+#include "CommunicationLayer.h"
 #include <thread>
-#include <iostream>
-#include <string>
-
+#include <chrono>
 #include <grpcpp/grpcpp.h>
-
 #include <broker/Logger.h>
 #include <broker/GlobalMessageQueue.h>
 #include <broker/BrokerCheck.h>
@@ -19,37 +14,28 @@ CommunicationLayer::CommunicationLayer()
         "tcp://localhost:1883",
         "DataRetrievalClient",
         "Pacifier/#"))
-{
-}
+{}
 
 CommunicationLayer::~CommunicationLayer() {
-    CommunicationLayer::stopCommunicationServices();
-    if (mqttThread_.joinable())
-        mqttThread_.join();
-    if (grpcThread_.joinable())
-        grpcThread_.join();
+    stopCommunicationServices();
+    if (mqttThread_.joinable()) mqttThread_.join();
+    if (grpcThread_.joinable()) grpcThread_.join();
 }
 
 void CommunicationLayer::startCommunicationServices() {
     if (!BrokerCheck::isMosquittoRunning()) {
-        Logger::getInstance().log("Mosquitto is not running. Please start the Mosquitto broker first.");
+        Logger::getInstance().log("Please start Mosquitto broker first.");
         return;
-    } else {
-        Logger::getInstance().log("Mosquitto is running.");
     }
+    Logger::getInstance().log("Mosquitto running.");
 
     running_ = true;
-
-    // Set the MQTT message callback to push messages into the global queue.
-    dataRetrieval_->setMessageCallback([](const std::string &payload) {
-        {
-            std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
-            broker::globalQueue.push(payload);
-        }
+    dataRetrieval_->setMessageCallback([](const std::string &msg) {
+        std::lock_guard lock(broker::global_queue_mutex);
+        broker::globalQueue.push(msg);
         broker::cv_global_queue.notify_all();
     });
 
-    // Launch the MQTT and gRPC threads.
     mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
     grpcThread_ = std::thread(&CommunicationLayer::runGrpcServer, this);
 }
@@ -59,53 +45,50 @@ void CommunicationLayer::stopCommunicationServices() {
     dataRetrieval_->stop();
 }
 
-void CommunicationLayer::runMqttClient() const{
+void CommunicationLayer::runMqttClient() const {
     Logger::getInstance().log("Starting MQTT...");
     try {
         dataRetrieval_->start();
-        Logger::getInstance().log("MQTT stopped");
+        Logger::getInstance().log("MQTT stopped.");
     } catch (const std::exception &e) {
-        Logger::getInstance().log("MQTT Client Exception: " + std::string(e.what()));
+        Logger::getInstance().log("MQTT exception: " + std::string(e.what()));
     } catch (...) {
-        Logger::getInstance().log("Unknown MQTT Client Error!");
+        Logger::getInstance().log("Unknown MQTT error.");
     }
 }
 
 void CommunicationLayer::runGrpcServer() {
-    Logger::getInstance().log("gRPC Service initialized.");
-    std::string serverAddress("0.0.0.0:50051");
-    // Instantiate GrpcService (defined in ipc_layer/grpc/gprc_server.h)
+    Logger::getInstance().log("Initializing gRPC...");
+    const std::string addr("0.0.0.0:50051");
     GrpcService service(broker::globalQueue, broker::global_queue_mutex, broker::cv_global_queue);
 
     grpc::ServerBuilder builder;
-    builder.AddListeningPort(serverAddress, grpc::InsecureServerCredentials());
+    builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
     builder.RegisterService(&service);
 
-    std::unique_ptr<grpc::ServerCompletionQueue> cq = builder.AddCompletionQueue();
-    std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
+    // Build server and completion queue locally
+    auto cq = builder.AddCompletionQueue();
+    auto server = builder.BuildAndStart();
+    Logger::getInstance().log("gRPC server listening on " + addr);
 
-    Logger::getInstance().log("gRPC Server started on " + serverAddress);
-    server->Shutdown();
-
-    std::thread grpcPollingThread([&]() {
-        Logger::getInstance().log("gRPC Completion Queue Polling Started...");
-        void* tag;
-        bool ok;
-        while (running_ && cq->Next(&tag, &ok)) {
-            if (!ok)
-                break;
+    // Shutdown watcher: triggers server shutdown when running_ becomes false
+    std::thread shutdownWatcher([&]() {
+        while (running_) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
-        Logger::getInstance().log("gRPC Completion Queue stopped.");
+        server->Shutdown();
+        cq->Shutdown();
     });
 
+    // Block until server shutdown
     try {
         server->Wait();
     } catch (const std::exception &e) {
-        Logger::getInstance().log("gRPC Server Exception: " + std::string(e.what()));
+        Logger::getInstance().log("gRPC exception: " + std::string(e.what()));
     } catch (...) {
-        Logger::getInstance().log("Unknown gRPC Server Error!");
+        Logger::getInstance().log("Unknown gRPC error.");
     }
-    running_ = false;
-    cq->Shutdown();
-    grpcPollingThread.join();
+
+    if (shutdownWatcher.joinable()) shutdownWatcher.join();
+    Logger::getInstance().log("gRPC server stopped.");
 }
