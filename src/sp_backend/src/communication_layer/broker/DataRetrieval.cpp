@@ -66,19 +66,14 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         Logger::getInstance().log("   ├─ Topic: "   + (topic.empty()   ? "[EMPTY]" : topic));
         Logger::getInstance().log("   ├─ Payload: " + (payload.empty() ? "[EMPTY]" : payload));
 
-        if (topic.empty()) {
-            Logger::getInstance().log("MQTT message has empty topic, ignoring.");
-            return;
-        }
-        if (payload.empty()) {
-            Logger::getInstance().log("MQTT message has empty payload, ignoring.");
+        if (topic.empty() || payload.empty()) {
+            Logger::getInstance().log("MQTT message missing topic or payload, ignoring.");
             return;
         }
 
         if (m_messageCallback) {
             m_messageCallback(payload);
         } else {
-            // use your inline globals
             std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
             broker::globalQueue.push(payload);
             broker::cv_global_queue.notify_one();
@@ -93,9 +88,3 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         Logger::getInstance().log("Unknown Exception in message_arrived()!");
     }
 }
-
-void DataRetrieval::connected(const std::string&)               {}
-void DataRetrieval::connection_lost(const std::string&)         {}
-void DataRetrieval::delivery_complete(mqtt::delivery_token_ptr) {}
-void DataRetrieval::on_success(const mqtt::token&)             {}
-void DataRetrieval::on_failure(const mqtt::token&)             {}
