@@ -88,7 +88,5 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
     } catch (const std::exception& e) {
         Logger::getInstance().log(
             "Exception in message_arrived(): " + std::string(e.what()));
-    } catch (...) {
-        Logger::getInstance().log("Unknown Exception in message_arrived()!");
     }
 }
