@@ -2,7 +2,7 @@
 #include "broker/Logger.h"
 #include "broker/GlobalMessageQueue.h"
 #include "broker/BrokerCheck.h"
-#include "../ipc_layer/grpc/gprc_server.h"
+#include "ipc_layer/grpc/gprc_server.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
@@ -36,10 +36,10 @@ void CommunicationLayer::startCommunicationServices() {
     // Set the MQTT message callback to push messages into the global queue.
     dataRetrieval_->setMessageCallback([](const std::string &payload) {
          {
-             std::lock_guard<std::mutex> lock(globalMutex);
+             std::lock_guard<std::mutex> lock(global_queue_mutex);
              globalQueue.push(payload);
          }
-         globalCV.notify_one();
+         cv_global_queue.notify_one();
     });
 
     // Launch the MQTT and gRPC threads.
@@ -72,7 +72,7 @@ void CommunicationLayer::runGrpcServer() {
     Logger::getInstance().log("gRPC Service initialized.");
     std::string serverAddress("0.0.0.0:50051");
     // Instantiate GrpcService (defined in ipc_layer/grpc/gprc_server.h)
-    GrpcService service(globalQueue, globalMutex, globalCV);
+    GrpcService service(globalQueue, global_queue_mutex, cv_global_queue);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(serverAddress, grpc::InsecureServerCredentials());
