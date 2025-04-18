@@ -61,11 +61,8 @@ void CommunicationLayer::stopCommunicationServices() {
 void CommunicationLayer::runMqttClient() const {
     Logger::getInstance().log("Starting MQTT...");
     try {
+        // In Paho async (multi-threaded) mode, start() drives callbacks until stop() is called.
         dataRetrieval_->start();
-        while (running_) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
-        dataRetrieval_->stop();
         Logger::getInstance().log("MQTT stopped");
     } catch (const std::exception &e) {
         Logger::getInstance().log("MQTT Client Exception: " + std::string(e.what()));
@@ -88,7 +85,7 @@ void CommunicationLayer::runGrpcServer() {
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
 
     Logger::getInstance().log("gRPC Server started on " + serverAddress);
-    std::cout << "Press ENTER to shutdown..." << std::endl;
+    Logger::getInstance().log("Press ENTER to shutdown...");
 
     std::thread grpcPollingThread([&]() {
         Logger::getInstance().log("gRPC Completion Queue Polling Started...");
