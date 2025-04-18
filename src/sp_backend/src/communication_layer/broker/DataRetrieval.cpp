@@ -1,5 +1,4 @@
 #include "DataRetrieval.h"
-#include <utility>
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
 
@@ -20,8 +19,7 @@ DataRetrieval::~DataRetrieval() {
             m_client.disconnect()->wait();
         }
     } catch (const mqtt::exception& exc) {
-        Logger::getInstance().log(
-            "Error during disconnect in destructor: " + std::string(exc.what()));
+        Logger::getInstance().log("Destructor disconnect error: " + std::string(exc.what()));
     }
 }
 
@@ -32,8 +30,7 @@ void DataRetrieval::start() {
         m_client.subscribe(m_topic, 1)->wait();
         Logger::getInstance().log("Subscribed to MQTT topic: " + m_topic);
     } catch (const mqtt::exception& exc) {
-        Logger::getInstance().log(
-            "MQTT connection/subscription error: " + std::string(exc.what()));
+        Logger::getInstance().log("Connection/subscription error: " + std::string(exc.what()));
     }
 }
 
@@ -44,8 +41,7 @@ void DataRetrieval::stop() {
             Logger::getInstance().log("MQTT client disconnected.");
         }
     } catch (const mqtt::exception& exc) {
-        Logger::getInstance().log(
-            "MQTT disconnection error: " + std::string(exc.what()));
+        Logger::getInstance().log("Disconnection error: " + std::string(exc.what()));
     }
 }
 
@@ -65,28 +61,19 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         auto topic   = msg->get_topic();
         auto payload = msg->to_string();
 
-        Logger::getInstance().log(
-            "Topic: " + (topic.empty() ? "[EMPTY]" : topic));
-        Logger::getInstance().log(
-            "Payload: " + (payload.empty() ? "[EMPTY]" : payload));
-
         if (topic.empty() || payload.empty()) {
-            Logger::getInstance().log(
-                "MQTT message missing topic or payload, ignoring.");
+            Logger::getInstance().log("Empty topic or payload, ignoring.");
             return;
         }
 
         if (m_messageCallback) {
             m_messageCallback(payload);
         } else {
-            std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
-            broker::globalQueue.push(payload);
-            broker::cv_global_queue.notify_all();
+            broker::globalQueue.push(payload);  // updates
         }
 
         Logger::getInstance().log("Message processed.");
     } catch (const std::exception& e) {
-        Logger::getInstance().log(
-            "Exception in message_arrived(): " + std::string(e.what()));
+        Logger::getInstance().log("message_arrived exception: " + std::string(e.what()));
     }
 }

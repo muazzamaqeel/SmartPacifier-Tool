@@ -1,7 +1,7 @@
 #include "CommunicationLayer.h"
 #include <thread>
-#include <chrono>
 #include <grpcpp/grpcpp.h>
+
 #include <broker/Logger.h>
 #include <broker/GlobalMessageQueue.h>
 #include <broker/BrokerCheck.h>
@@ -30,13 +30,31 @@ void CommunicationLayer::startCommunicationServices() {
     Logger::getInstance().log("Mosquitto running.");
 
     running_ = true;
+
+    // Create and own the gRPC service so it outlives this function
+    grpcService_ = std::make_unique<GrpcService>(broker::globalQueue);
+
+    // Batch‐callback: Forwarding each batch into the service
+
+    //Value 1 means no batching each message is delivered immediately
+    //Value 5 means for example, the call back would wait until 5 messages are queued then send those 5 values at once.
+    constexpr size_t batchSize = 1;
+    broker::globalQueue.setBatchCallback(
+        [this](const std::vector<std::string>& batch) {
+            grpcService_->enqueueBatch(batch);
+        },
+        batchSize
+    );
+
+    // Push incoming MQTT payloads into the MessageQueue
     dataRetrieval_->setMessageCallback([](const std::string &msg) {
-        std::lock_guard lock(broker::global_queue_mutex);
         broker::globalQueue.push(msg);
-        broker::cv_global_queue.notify_all();
     });
 
+    // Start MQTT client thread
     mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
+
+    // Start gRPC server thread
     grpcThread_ = std::thread(&CommunicationLayer::runGrpcServer, this);
 }
 
@@ -52,43 +70,25 @@ void CommunicationLayer::runMqttClient() const {
         Logger::getInstance().log("MQTT stopped.");
     } catch (const std::exception &e) {
         Logger::getInstance().log("MQTT exception: " + std::string(e.what()));
-    } catch (...) {
-        Logger::getInstance().log("Unknown MQTT error.");
     }
 }
 
 void CommunicationLayer::runGrpcServer() {
     Logger::getInstance().log("Initializing gRPC...");
     const std::string addr("0.0.0.0:50051");
-    GrpcService service(broker::globalQueue, broker::global_queue_mutex, broker::cv_global_queue);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
-    builder.RegisterService(&service);
+    builder.RegisterService(grpcService_.get());
 
-    // Build server and completion queue locally
-    auto cq = builder.AddCompletionQueue();
     auto server = builder.BuildAndStart();
     Logger::getInstance().log("gRPC server listening on " + addr);
 
-    // Shutdown watcher: triggers server shutdown when running_ becomes false
-    std::thread shutdownWatcher([&]() {
-        while (running_) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        }
-        server->Shutdown();
-        cq->Shutdown();
-    });
-
-    // Block until server shutdown
     try {
         server->Wait();
     } catch (const std::exception &e) {
         Logger::getInstance().log("gRPC exception: " + std::string(e.what()));
-    } catch (...) {
-        Logger::getInstance().log("Unknown gRPC error.");
     }
 
-    if (shutdownWatcher.joinable()) shutdownWatcher.join();
     Logger::getInstance().log("gRPC server stopped.");
 }
