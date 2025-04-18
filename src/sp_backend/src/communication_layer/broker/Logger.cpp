@@ -24,7 +24,6 @@ Logger::~Logger() {
 void Logger::log(const std::string& message) {
     // lock the member mutex
     std::lock_guard<std::mutex> lock(m_logMutex);
-
     auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     m_logFile << std::ctime(&now) << " - " << message << "\n";
     std::cout << message << std::endl;

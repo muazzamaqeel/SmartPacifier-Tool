@@ -9,7 +9,13 @@
 
 class GrpcService final : public myservice::MyService::Service {
 public:
-    GrpcService(std::queue<std::string>& queue, std::mutex& mutex, std::condition_variable& cv);
+    GrpcService(std::queue<std::string>& queue,
+                std::mutex& mutex,
+                std::condition_variable& cv)
+      : m_messageQueue(queue)
+      , m_queueMutex(mutex)
+      , m_queueCV(cv)
+    {}
 
     grpc::Status StreamMessages(
         grpc::ServerContext* context,
@@ -18,8 +24,7 @@ public:
     ) override;
 
 private:
-    std::queue<std::string>& m_messageQueue;
-    std::mutex& m_queueMutex;
-    std::condition_variable& m_queueCV;
+    std::queue<std::string>&    m_messageQueue;
+    std::mutex&                 m_queueMutex;
+    std::condition_variable&    m_queueCV;
 };
-
