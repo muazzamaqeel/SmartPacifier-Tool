@@ -25,7 +25,7 @@ public:
     void stopCommunicationServices() override;
 
 private:
-    void runMqttClient();
+    void runMqttClient() const;
     void runGrpcServer();
 
     std::atomic<bool> running_;

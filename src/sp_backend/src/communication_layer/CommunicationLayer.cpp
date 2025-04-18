@@ -1,5 +1,3 @@
-// src/sp_backend/src/communication_layer/CommunicationLayer.cpp
-
 #include <CommunicationLayer.h>
 
 #include <chrono>
@@ -14,7 +12,6 @@
 #include <broker/DataRetrieval.h>
 #include <ipc_layer/grpc/gprc_server.h>
 
-// Definition of the constructor (was declared but not defined)
 CommunicationLayer::CommunicationLayer()
   : running_(false)
   , dataRetrieval_(std::make_shared<DataRetrieval>(
@@ -25,7 +22,7 @@ CommunicationLayer::CommunicationLayer()
 }
 
 CommunicationLayer::~CommunicationLayer() {
-    stopCommunicationServices();
+    CommunicationLayer::stopCommunicationServices();
     if (mqttThread_.joinable())
         mqttThread_.join();
     if (grpcThread_.joinable())
@@ -45,10 +42,10 @@ void CommunicationLayer::startCommunicationServices() {
     // Set the MQTT message callback to push messages into the global queue.
     dataRetrieval_->setMessageCallback([](const std::string &payload) {
         {
-            std::lock_guard<std::mutex> lock(global_queue_mutex);
-            globalQueue.push(payload);
+            std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
+            broker::globalQueue.push(payload);
         }
-        cv_global_queue.notify_all();
+        broker::cv_global_queue.notify_all();
     });
 
     // Launch the MQTT and gRPC threads.
@@ -61,7 +58,7 @@ void CommunicationLayer::stopCommunicationServices() {
     dataRetrieval_->stop();
 }
 
-void CommunicationLayer::runMqttClient() {
+void CommunicationLayer::runMqttClient() const {
     Logger::getInstance().log("Starting MQTT...");
     try {
         dataRetrieval_->start();
@@ -81,7 +78,7 @@ void CommunicationLayer::runGrpcServer() {
     Logger::getInstance().log("gRPC Service initialized.");
     std::string serverAddress("0.0.0.0:50051");
     // Instantiate GrpcService (defined in ipc_layer/grpc/gprc_server.h)
-    GrpcService service(globalQueue, global_queue_mutex, cv_global_queue);
+    GrpcService service(broker::globalQueue, broker::global_queue_mutex, broker::cv_global_queue);
 
     grpc::ServerBuilder builder;
     builder.AddListeningPort(serverAddress, grpc::InsecureServerCredentials());
