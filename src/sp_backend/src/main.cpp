@@ -1,5 +1,5 @@
-#include "platform_layer/PlatformFactory.h"
-#include "communication_layer/broker/Logger.h"
+#include <platform_layer/PlatformFactory.h>
+#include <communication_layer/broker/Logger.h>
 #include <exception>
 #include <string>
 
