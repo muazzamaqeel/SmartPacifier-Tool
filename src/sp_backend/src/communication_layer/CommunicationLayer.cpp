@@ -1,3 +1,4 @@
+
 #include <CommunicationLayer.h>
 
 #include <chrono>
@@ -11,11 +12,6 @@
 #include <broker/BrokerCheck.h>
 #include <broker/DataRetrieval.h>
 #include <ipc_layer/grpc/gprc_server.h>
-
-CommunicationLayer::CommunicationLayer() : running_(false) {
-    // Initialize the MQTT client.
-    dataRetrieval_ = std::make_shared<DataRetrieval>("tcp://localhost:1883", "DataRetrievalClient", "Pacifier/#");
-}
 
 CommunicationLayer::~CommunicationLayer() {
     stopCommunicationServices();

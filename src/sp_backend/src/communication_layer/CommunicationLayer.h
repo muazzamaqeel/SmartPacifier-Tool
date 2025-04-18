@@ -4,9 +4,6 @@
 
 #pragma once
 
-
-
-
 #include "I_CommunicationLayer.h"
 #include <atomic>
 #include <thread>
@@ -15,7 +12,14 @@
 
 class CommunicationLayer : public I_CommunicationLayer {
 public:
-    CommunicationLayer();
+    CommunicationLayer()
+      : running_(false)
+      , dataRetrieval_(std::make_shared<DataRetrieval>(
+            "tcp://localhost:1883",
+            "DataRetrievalClient",
+            "Pacifier/#"))
+    {}
+
     ~CommunicationLayer();
 
     void startCommunicationServices() override;
@@ -30,4 +34,3 @@ private:
     std::thread mqttThread_;
     std::thread grpcThread_;
 };
-
