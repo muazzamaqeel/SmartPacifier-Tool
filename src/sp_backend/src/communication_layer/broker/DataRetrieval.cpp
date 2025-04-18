@@ -3,18 +3,21 @@
 #include "GlobalMessageQueue.h"
 #include "Logger.h"
 
-DataRetrieval::DataRetrieval(const std::string& broker, const std::string& client_id, const std::string& topic)
-    : topic_(topic), client_(broker, client_id) {
-
-    client_.set_callback(*this);
-    connOpts_.set_clean_session(true);
+DataRetrieval::DataRetrieval(const std::string& broker,
+                             const std::string& client_id,
+                             const std::string& topic)
+    : m_topic(topic)
+    , m_client(broker, client_id)
+{
+    m_client.set_callback(*this);
+    m_connOpts.set_clean_session(true);
     Logger::getInstance().log("MQTT client initialized.");
 }
 
 DataRetrieval::~DataRetrieval() {
     try {
-        if (client_.is_connected()) {
-            client_.disconnect()->wait();
+        if (m_client.is_connected()) {
+            m_client.disconnect()->wait();
         }
     } catch (const mqtt::exception& exc) {
         Logger::getInstance().log("Error during disconnect in destructor: " + std::string(exc.what()));
@@ -23,10 +26,10 @@ DataRetrieval::~DataRetrieval() {
 
 void DataRetrieval::start() {
     try {
-        client_.connect(connOpts_)->wait();
+        m_client.connect(m_connOpts)->wait();
         Logger::getInstance().log("MQTT connected to broker.");
-        client_.subscribe(topic_, 1)->wait();
-        Logger::getInstance().log("Subscribed to MQTT topic: " + topic_);
+        m_client.subscribe(m_topic, 1)->wait();
+        Logger::getInstance().log("Subscribed to MQTT topic: " + m_topic);
     }
     catch (const mqtt::exception& exc) {
         Logger::getInstance().log("MQTT connection/subscription error: " + std::string(exc.what()));
@@ -35,8 +38,8 @@ void DataRetrieval::start() {
 
 void DataRetrieval::stop() {
     try {
-        if (client_.is_connected()) {
-            client_.disconnect()->wait();
+        if (m_client.is_connected()) {
+            m_client.disconnect()->wait();
             Logger::getInstance().log("MQTT client disconnected.");
         }
     } catch (const mqtt::exception& exc) {
@@ -45,7 +48,7 @@ void DataRetrieval::stop() {
 }
 
 void DataRetrieval::setMessageCallback(std::function<void(const std::string&)> callback) {
-    messageCallback_ = std::move(callback);
+    m_messageCallback = std::move(callback);
 }
 
 void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
@@ -57,43 +60,42 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
             return;
         }
 
-        auto topic = msg->get_topic();
+        auto topic   = msg->get_topic();
         auto payload = msg->to_string();
 
-
-        Logger::getInstance().log("   ├─ Topic: " + (topic.empty() ? "[EMPTY]" : topic));
+        Logger::getInstance().log("   ├─ Topic: "   + (topic.empty()   ? "[EMPTY]" : topic));
         Logger::getInstance().log("   ├─ Payload: " + (payload.empty() ? "[EMPTY]" : payload));
 
         if (topic.empty()) {
             Logger::getInstance().log("MQTT message has empty topic, ignoring.");
             return;
         }
-
         if (payload.empty()) {
             Logger::getInstance().log("MQTT message has empty payload, ignoring.");
             return;
         }
 
-        if (messageCallback_) {
-            messageCallback_(payload);
+        if (m_messageCallback) {
+            m_messageCallback(payload);
         } else {
-            {
-                std::lock_guard<std::mutex> lock(globalMutex);
-                globalQueue.push(payload);
-            }
-            globalCV.notify_one();
+            // use your inline globals
+            std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
+            broker::globalQueue.push(payload);
+            broker::cv_global_queue.notify_one();
         }
 
         Logger::getInstance().log("Message processed.");
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception &e) {
         Logger::getInstance().log("Exception in message_arrived(): " + std::string(e.what()));
-    } catch (...) {
+    }
+    catch (...) {
         Logger::getInstance().log("Unknown Exception in message_arrived()!");
     }
 }
 
-void DataRetrieval::connected(const std::string&) {}
-void DataRetrieval::connection_lost(const std::string&) {}
+void DataRetrieval::connected(const std::string&)               {}
+void DataRetrieval::connection_lost(const std::string&)         {}
 void DataRetrieval::delivery_complete(mqtt::delivery_token_ptr) {}
-void DataRetrieval::on_success(const mqtt::token&) {}
-void DataRetrieval::on_failure(const mqtt::token&) {}
+void DataRetrieval::on_success(const mqtt::token&)             {}
+void DataRetrieval::on_failure(const mqtt::token&)             {}

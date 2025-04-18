@@ -1,6 +1,7 @@
 #include "Logger.h"
 
 #include <iostream>
+#include <fstream>       // for std::ofstream
 #include <chrono>
 #include <ctime>
 
@@ -10,18 +11,21 @@ Logger& Logger::getInstance() {
 }
 
 Logger::Logger() {
-    logFile.open("backend.log", std::ios::append);
+    // use the member m_logFile and correct flag std::ios::app
+    m_logFile.open("backend.log", std::ios::app);
 }
 
 Logger::~Logger() {
-    if (logFile.is_open()) {
-        logFile.close();
+    if (m_logFile.is_open()) {
+        m_logFile.close();
     }
 }
 
 void Logger::log(const std::string& message) {
-    std::lock_guard<std::mutex> lock(logMutex);
+    // lock the member mutex
+    std::lock_guard<std::mutex> lock(m_logMutex);
+
     auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    logFile << std::ctime(&now) << " - " << message << "\n";
+    m_logFile << std::ctime(&now) << " - " << message << "\n";
     std::cout << message << std::endl;
 }
