@@ -81,7 +81,7 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         } else {
             std::lock_guard<std::mutex> lock(broker::global_queue_mutex);
             broker::globalQueue.push(payload);
-            broker::cv_global_queue.notify_one();
+            broker::cv_global_queue.notify_all();
         }
 
         Logger::getInstance().log("Message processed.");
