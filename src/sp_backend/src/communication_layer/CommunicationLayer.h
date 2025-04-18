@@ -1,3 +1,5 @@
+// src/sp_backend/src/communication_layer/CommunicationLayer.h
+
 //
 // Created by Muazzam on 06/04/2025.
 //
@@ -12,15 +14,12 @@
 
 class CommunicationLayer : public I_CommunicationLayer {
 public:
-    CommunicationLayer()
-      : running_(false)
-      , dataRetrieval_(std::make_shared<DataRetrieval>(
-            "tcp://localhost:1883",
-            "DataRetrievalClient",
-            "Pacifier/#"))
-    {}
-
-    ~CommunicationLayer();
+    CommunicationLayer();
+    CommunicationLayer(const CommunicationLayer&) = delete;
+    CommunicationLayer& operator=(const CommunicationLayer&) = delete;
+    CommunicationLayer(CommunicationLayer&&) = delete;
+    CommunicationLayer& operator=(CommunicationLayer&&) = delete;
+    virtual ~CommunicationLayer();
 
     void startCommunicationServices() override;
     void stopCommunicationServices() override;
