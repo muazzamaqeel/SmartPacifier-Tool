@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <string>
 
 #include <grpcpp/grpcpp.h>
 
@@ -58,10 +59,9 @@ void CommunicationLayer::stopCommunicationServices() {
     dataRetrieval_->stop();
 }
 
-void CommunicationLayer::runMqttClient() const {
+void CommunicationLayer::runMqttClient() const{
     Logger::getInstance().log("Starting MQTT...");
     try {
-        // In Paho async (multi-threaded) mode, start() drives callbacks until stop() is called.
         dataRetrieval_->start();
         Logger::getInstance().log("MQTT stopped");
     } catch (const std::exception &e) {
@@ -85,7 +85,7 @@ void CommunicationLayer::runGrpcServer() {
     std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
 
     Logger::getInstance().log("gRPC Server started on " + serverAddress);
-    Logger::getInstance().log("Press ENTER to shutdown...");
+    server->Shutdown();
 
     std::thread grpcPollingThread([&]() {
         Logger::getInstance().log("gRPC Completion Queue Polling Started...");
