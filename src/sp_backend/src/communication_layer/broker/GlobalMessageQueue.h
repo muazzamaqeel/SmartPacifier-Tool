@@ -1,9 +1,9 @@
 #pragma once
 
+#include <condition_variable>
+#include <mutex>
 #include <queue>
 #include <string>
-#include <mutex>
-#include <condition_variable>
 
 namespace broker {
     inline std::queue<std::string>           globalQueue;
