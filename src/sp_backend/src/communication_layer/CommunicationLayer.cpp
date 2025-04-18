@@ -1,14 +1,16 @@
-#include "CommunicationLayer.h"
-#include "broker/Logger.h"
-#include "broker/GlobalMessageQueue.h"
-#include "broker/BrokerCheck.h"
-#include "ipc_layer/grpc/gprc_server.h"
+#include <CommunicationLayer.h>
+
 #include <chrono>
 #include <thread>
 #include <iostream>
+
 #include <grpcpp/grpcpp.h>
 
-#include "broker/DataRetrieval.h"
+#include <broker/Logger.h>
+#include <broker/GlobalMessageQueue.h>
+#include <broker/BrokerCheck.h>
+#include <broker/DataRetrieval.h>
+#include <ipc_layer/grpc/gprc_server.h>
 
 CommunicationLayer::CommunicationLayer() : running_(false) {
     // Initialize the MQTT client.
