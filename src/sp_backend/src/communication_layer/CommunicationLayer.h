@@ -27,7 +27,7 @@ public:
 
 private:
     void runMqttClient() const;
-    void runGrpcServer();
+    void runGrpcServer() const;
 
     std::atomic<bool>                running_;
     std::shared_ptr<DataRetrieval>   dataRetrieval_;

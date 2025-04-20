@@ -17,7 +17,7 @@ CommunicationLayer::CommunicationLayer()
 {}
 
 CommunicationLayer::~CommunicationLayer() {
-    stopCommunicationServices();
+    CommunicationLayer::stopCommunicationServices();
     if (mqttThread_.joinable()) mqttThread_.join();
     if (grpcThread_.joinable()) grpcThread_.join();
 }
@@ -73,7 +73,7 @@ void CommunicationLayer::runMqttClient() const {
     }
 }
 
-void CommunicationLayer::runGrpcServer() {
+void CommunicationLayer::runGrpcServer() const {
     Logger::getInstance().log("Initializing gRPC...");
     const std::string addr("0.0.0.0:50051");
 
