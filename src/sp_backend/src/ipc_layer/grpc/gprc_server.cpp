@@ -3,8 +3,8 @@
 #include <broker/Logger.h>
 
 grpc::Status GrpcService::StreamMessages(
-    grpc::ServerContext* /*context*/,
-    const google::protobuf::Empty* /*request*/,
+    grpc::ServerContext*,
+    const google::protobuf::Empty*,
     grpc::ServerWriter<myservice::PayloadMessage>* writer
 ) {
     try {
