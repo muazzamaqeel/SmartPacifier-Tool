@@ -16,19 +16,19 @@ public:
 
     // Default implementation for both Windows and Linux:
     virtual void runBackend() {
-#ifndef NDEBUG
-        std::cout << "Running on platform" << std::endl;
-#endif
-        CommunicationLayer commLayer;
-        commLayer.startCommunicationServices();
+        #ifndef NDEBUG
+            std::cout << "Running on platform" << std::endl;
+        #endif
+            CommunicationLayer commLayer;
+            commLayer.startCommunicationServices();
 
-#ifndef NDEBUG
-        std::cin.get();
-        std::cout << "Shutting down..." << std::endl;
-        commLayer.stopCommunicationServices();
-        std::cout << "Shutdown complete. Goodbye!" << std::endl;
-        std::cout << "\nProgram terminated. Press ENTER to exit...\n";
-        std::cin.get();
-#endif
+        #ifndef NDEBUG
+            std::cin.get();
+            std::cout << "Shutting down..." << std::endl;
+            commLayer.stopCommunicationServices();
+            std::cout << "Shutdown complete. Goodbye!" << std::endl;
+            std::cout << "\nProgram terminated. Press ENTER to exit...\n";
+            std::cin.get();
+#       endif
     }
 };
