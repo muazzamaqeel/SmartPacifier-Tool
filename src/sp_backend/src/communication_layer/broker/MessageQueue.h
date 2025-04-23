@@ -1,7 +1,3 @@
-//
-// Created by Muazzam on 18/04/2025.
-//
-
 #pragma once
 
 #include <condition_variable>
@@ -17,7 +13,7 @@ namespace broker {
     public:
         using BatchCallback = std::function<void(const std::vector<T>&)>;
 
-        // Push an item; wake any pop() waiters and fire batch callback if threshold met.
+        // Push an item; wake any waiters and fire batch callback if threshold met.
         void push(T item) {
             {
                 std::lock_guard<std::mutex> lk(m_mutex);
@@ -38,12 +34,27 @@ namespace broker {
             }
         }
 
-        // Block until at least one item is available, then pop and return it.
-        T pop() {
+        // Non-blocking pop: returns false immediately if empty
+        bool try_pop(T& out) {
+            std::lock_guard<std::mutex> lk(m_mutex);
+            if (m_queue.empty()) return false;
+            out = std::move(m_queue.front());
+            m_queue.pop();
+            return true;
+        }
+
+        // Blocking pop: wait until an item is available, then pop it
+        void wait_and_pop(T& out) {
             std::unique_lock<std::mutex> lk(m_mutex);
             m_cv.wait(lk, [&]{ return !m_queue.empty(); });
-            T item = std::move(m_queue.front());
+            out = std::move(m_queue.front());
             m_queue.pop();
+        }
+
+        // Original pop left for backward compatibility (blocks until element is present)
+        T pop() {
+            T item;
+            wait_and_pop(item);
             return item;
         }
 
