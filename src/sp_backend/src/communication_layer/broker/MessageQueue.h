@@ -55,11 +55,11 @@ namespace broker {
         }
 
     private:
-        std::queue<T>              queue_;
-        std::mutex                 mutex_;
-        std::condition_variable    cv_;
-        BatchCallback              batchCallback_;
-        size_t                     batchThreshold_ = 1;
+        std::queue<T>              m_queue;
+        std::mutex                 m_mutex;
+        std::condition_variable    m_cv;
+        BatchCallback              m_batchCallback;
+        size_t                     m_batchThreshold = 1;
     };
 
 }
