@@ -1,5 +1,5 @@
 #include "gprc_server.h"
-#include "myservice.pb.h"    // for Protos::SensorData
+#include <myservice.pb.h>
 #include <broker/Logger.h>
 
 grpc::Status GrpcService::StreamMessages(

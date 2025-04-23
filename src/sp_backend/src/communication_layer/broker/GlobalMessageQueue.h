@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MessageQueue.h"
+#include <MessageQueue.h>
 
 namespace broker {
     // single global, thread-safe, blocking queue of strings

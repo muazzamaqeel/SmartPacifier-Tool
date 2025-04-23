@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../PlatformManager.h"
+#include <PlatformManager.h>
 
 class LinuxPlatformManager : public PlatformManager {
 public:

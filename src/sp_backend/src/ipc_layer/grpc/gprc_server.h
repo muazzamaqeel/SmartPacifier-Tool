@@ -2,7 +2,7 @@
 
 #include <grpcpp/grpcpp.h>
 #include <google/protobuf/empty.pb.h>
-#include "myservice.grpc.pb.h"
+#include <myservice.grpc.pb.h>
 #include <broker/MessageQueue.h>
 #include <queue>
 #include <mutex>
