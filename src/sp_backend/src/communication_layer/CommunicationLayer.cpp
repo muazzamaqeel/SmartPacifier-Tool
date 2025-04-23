@@ -1,12 +1,13 @@
-#include "CommunicationLayer.h"
+
+#include <CommunicationLayer.h>
 #include <thread>
 #include <grpcpp/grpcpp.h>
-
 #include <broker/Logger.h>
 #include <broker/GlobalMessageQueue.h>
 #include <broker/BrokerCheck.h>
 #include <broker/DataRetrieval.h>
 #include <ipc_layer/grpc/gprc_server.h>
+
 
 CommunicationLayer::CommunicationLayer()
   : running_(false)
