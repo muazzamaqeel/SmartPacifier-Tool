@@ -31,7 +31,8 @@ private:
 
     std::atomic<bool>                running_;
     std::shared_ptr<DataRetrieval>   dataRetrieval_;
-    std::unique_ptr<GrpcService>     grpcService_;   // updates: owns the service instance
+    // updates: owns the service instance
+    std::unique_ptr<GrpcService>     grpcService_;   
     std::thread                      mqttThread_;
     std::thread                      grpcThread_;
 };
