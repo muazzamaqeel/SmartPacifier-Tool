@@ -1,12 +1,12 @@
 #pragma once
 
+#include <condition_variable>
+#include <mutex>
+#include <queue>
 #include <grpcpp/grpcpp.h>
 #include <google/protobuf/empty.pb.h>
 #include <myservice.grpc.pb.h>
 #include <broker/MessageQueue.h>
-#include <queue>
-#include <mutex>
-#include <condition_variable>
 
 class GrpcService final : public myservice::MyService::Service {
 public:
