@@ -78,3 +78,24 @@ void DataRetrieval::message_arrived(mqtt::const_message_ptr msg) {
         Logger::getInstance().log("message_arrived exception: " + std::string(e.what()));
     }
 }
+
+void DataRetrieval::connected(const std::string& cause) {
+    Logger::getInstance().log("DataRetrieval::connected() called: (cause: " + cause + ")");
+}
+
+void DataRetrieval::connection_lost(const std::string& cause) {
+    Logger::getInstance().log("DataRetrieval::connection_lost() called: (cause: " + cause + ")");
+}
+
+void DataRetrieval::delivery_complete(const mqtt::delivery_token_ptr token) {
+    Logger::getInstance().log("DataRetrieval::delivery_complete() called" "(token id: " + std::to_string(token ? token->get_message_id() : -1) + ")");
+}
+
+void DataRetrieval::on_success(const mqtt::token& tok) {
+    Logger::getInstance().log("DataRetrieval::on_success() called" "(token id: " + std::to_string(tok.get_message_id()) + ")");
+}
+
+void DataRetrieval::on_failure(const mqtt::token& tok) {
+    Logger::getInstance().log("DataRetrieval::on_failure() called" "(token id: " + std::to_string(tok.get_message_id()) + ")");
+}
+

@@ -22,12 +22,12 @@ public:
 
     void setMessageCallback(const std::function<void(const std::string&)>& callback);
 
-    void connected(const std::string&) override {}
-    void connection_lost(const std::string&) override {}
+    void connected(const std::string&) override;
+    void connection_lost(const std::string&) override;
     void message_arrived(mqtt::const_message_ptr msg) override;
-    void delivery_complete(mqtt::delivery_token_ptr) override {}
-    void on_success(const mqtt::token&) override {}
-    void on_failure(const mqtt::token&) override {}
+    void delivery_complete(mqtt::delivery_token_ptr) override;
+    void on_success(const mqtt::token&) override;
+    void on_failure(const mqtt::token&) override;
 
 private:
     std::string m_topic;
