@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <I_CommunicationsLayer.h>
+#include <I_CommunicationLayer.h>
 #include <atomic>
 #include <thread>
 #include <memory>
