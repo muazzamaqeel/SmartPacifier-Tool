@@ -1,4 +1,7 @@
 [submodule "src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp"]
-    path = src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
-    url = https://github.com/eclipse/paho.mqtt.cpp.git
+	path = src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
+	url = https://github.com/eclipse/paho.mqtt.cpp.git
     branch = v1.5.2
+[submodule "src/sp_backend/src/external_libs/grpc"]
+	path = src/sp_backend/src/external_libs/grpc
+	url = https://github.com/grpc/grpc.git
