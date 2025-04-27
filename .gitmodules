@@ -4,6 +4,6 @@
     branch  = v1.5.2
 
 [submodule "src/sp_backend/src/external_libs/grpc"]
-    path    = src/sp_backend/src/external_libs/grpc
-    url     = https://github.com/grpc/grpc.git
+	path = src/sp_backend/src/external_libs/grpc
+	url = https://github.com/grpc/grpc.git
     branch  = v1.62.0
