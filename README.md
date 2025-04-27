@@ -11,26 +11,44 @@ Modular Architecture: Independent services for frontend, backend, and algorithm 
 By combining powerful data handling with a flexible architecture, SmartPacifier-Tool (Version 2) helps researchers, clinicians, and developers push the boundaries of sensor-driven health applications.
 
 
-# Running the SmartPacifier-Tool - 
-## Creating the Directory Structure
+# Running the SmartPacifier-Tool - OS (Windows)
+
+## Building the Whole Project
+### Step 1: Building the BackEnd (For Collaborators)
+```bash
+mkdir -p /c/Programming
+cd /c/Programming
+git clone --recurse-submodules -b <branch_name> \
+  git@github.com:username/SmartPacifier-Tool.git
+```
+
+### Step 1: Building the BackEnd (For Non-Collaborators)
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
 git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
-
-## Building the Whole Project
-### Step 1: Building the BackEnd
-
-### GRPC 
-#### 1: Cloning 
+#### Cloning GRPC & MQTT 
 ```bash
+mkdir -p /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
+git clone https://github.com/grpc/grpc.git grpc
+cd grpc
 git fetch --tags
 git checkout v1.62.0
 git submodule update --init --recursive
+
+mkdir -p /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/
+git clone https://github.com/eclipse/paho.mqtt.cpp.git paho.mqtt.cpp
+cd paho.mqtt.cpp
+git fetch --tags
+git checkout v1.5.2
+git submodule update --init --recursive
 ```
-#### 2: Bug Fix
+
+### Step 2: Building GRPC & MQTT
+#### GRPC (Including - Bug Fix)
 - Go to the following directory:
   /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc/third_party/re2/util
 - Open File "pcre.h"
@@ -45,7 +63,7 @@ git submodule update --init --recursive
 #include "util/util.h"
 #include "re2/stringpiece.h"
 ```
-#### 3: Build & Install
+#### Build & Install
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 mkdir -p build_grpc && cd build_grpc
@@ -61,7 +79,7 @@ ninja
 ninja install
 ```
 
-### MQTT
+#### MQTT
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
 git fetch --tags
