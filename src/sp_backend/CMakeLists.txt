@@ -35,10 +35,9 @@ find_package(Protobuf    CONFIG REQUIRED)
 find_package(gRPC        CONFIG REQUIRED)
 
 # ——————————————————————————————————————————————
-# 4) Build Paho MQTT C++ (with bundled C)
-set(PAHO_WITH_MQTT_C    ON  CACHE BOOL "" FORCE)
-set(PAHO_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp)
+# 4) Find installed Paho MQTT C++
+list(APPEND CMAKE_PREFIX_PATH "C:/local/paho")
+find_package(PahoMqttCpp CONFIG REQUIRED)
 
 # ——————————————————————————————————————————————
 # 5) Locate protoc & grpc_cpp_plugin
@@ -114,15 +113,12 @@ target_include_directories(sp_backend PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer
         ${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/windows
         ${CMAKE_CURRENT_SOURCE_DIR}/src/platform_layer/linux
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/external_libs/mqtt/paho.mqtt.cpp/externals/paho-mqtt-c/include
 )
 
 # ——————————————————————————————————————————————
 # 9) Link libraries
 target_link_libraries(sp_backend PRIVATE
         gRPC::grpc++
-        gRPC::grpc
         protobuf::libprotobuf
-        paho-mqttpp3-static
+        PahoMqttCpp::paho-mqttpp3
 )
