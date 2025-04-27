@@ -11,14 +11,13 @@ Modular Architecture: Independent services for frontend, backend, and algorithm 
 By combining powerful data handling with a flexible architecture, SmartPacifier-Tool (Version 2) helps researchers, clinicians, and developers push the boundaries of sensor-driven health applications.
 
 
-# Running the SmartPacifier-Tool
+# Running the SmartPacifier-Tool - 
 ## Creating the Directory Structure
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
 git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
-
 
 ## Building the Whole Project
 ### Step 1: Building the BackEnd
@@ -27,8 +26,9 @@ git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 #### 1: Cloning 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
-git submodule update --init --recursive
+git fetch --tags
 git checkout v1.62.0
+git submodule update --init --recursive
 ```
 #### 2: Bug Fix
 - Go to the following directory:
@@ -48,40 +48,45 @@ git checkout v1.62.0
 #### 3: Build & Install
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
-mkdir build_grpc
-cd build_grpc
-cmake -G "Ninja" \
+mkdir -p build_grpc && cd build_grpc
+cmake -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DgRPC_SSL_PROVIDER=package \
   -DgRPC_INSTALL=ON \
   -DgRPC_BUILD_TESTS=OFF \
+  -DgRPC_PROTOBUF_PROVIDER=module \
   -DCMAKE_INSTALL_PREFIX="C:/local/grpc" \
   ..
 ninja
 ninja install
-
-#Generating Proto-Files
-protoc -I=src/ipc_layer/grpc \
-  --cpp_out=src/ipc_layer/grpc \
-  --grpc_out=src/ipc_layer/grpc \
-  --plugin=protoc-gen-grpc=/c/local/grpc/bin/grpc_cpp_plugin.exe \
-  src/ipc_layer/grpc/myservice.proto
 ```
 
 ### MQTT
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/mqtt/paho.mqtt.cpp
-git submodule update --init --recursive
+git fetch --tags
 git checkout v1.5.2
-git submodule init
-git submodule update
-cmake -Bbuild -H. -DPAHO_WITH_MQTT_C=ON -DPAHO_BUILD_EXAMPLES=ON
-$ sudo cmake --build build/ --target install
+git submodule update --init --recursive
+mkdir -p build && cd build
+cmake -S .. -B . -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DPAHO_WITH_MQTT_C=ON \
+  -DPAHO_BUILD_EXAMPLES=OFF \
+  -DPAHO_BUILD_SAMPLES=OFF \
+  -DPAHO_BUILD_STATIC=ON \
+  -DCMAKE_INSTALL_PREFIX="C:/local/paho" \
+  -DCMAKE_CXX_FLAGS="-march=native"
+ninja
+ninja install
 ```
 
 ### Main BackEnd (C++) 
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend
+rm -f src/ipc_layer/grpc/*.pb.cc \
+      src/ipc_layer/grpc/*.pb.h \
+      src/ipc_layer/grpc/*.grpc.pb.cc \
+      src/ipc_layer/grpc/*.grpc.pb.h
 rm -rf CMakeCache.txt CMakeFiles cmake-build-debug
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -S . -B cmake-build-debug
 cmake --build cmake-build-debug
