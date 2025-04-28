@@ -1,58 +1,50 @@
-import 'package:grpc/grpc.dart';
-import 'myservice.pbgrpc.dart';
-import 'google/protobuf/empty.pb.dart';
+// lib/ipc_layer/grpc/gprc_client.dart
 
+import 'package:grpc/grpc.dart';
+import '../../generated/myservice.pbgrpc.dart';
+import '../../generated/sensor_data.pb.dart';
+import '../../generated/google/protobuf/empty.pb.dart' as $pb;
+
+/// Singleton gRPC client for MyService.
 class MyGrpcClient {
-  MyGrpcClient._internal();
-  static final MyGrpcClient _instance = MyGrpcClient._internal();
+  MyGrpcClient._();
+  static final MyGrpcClient _instance = MyGrpcClient._();
   factory MyGrpcClient() => _instance;
 
   late MyServiceClient stub;
   late ClientChannel channel;
   bool isConnected = false;
 
+  /// Connects to the server at [host]:[port].
   Future<void> init({String host = '127.0.0.1', int port = 50051}) async {
-    try {
-      channel = ClientChannel(
-        host,
-        port: port,
-        options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-      );
-      stub = MyServiceClient(channel);
-      isConnected = true;
-      print("✅ gRPC Client connected to $host:$port");
-    } catch (e) {
-      isConnected = false;
-      print("❌ gRPC Client initialization failed: $e");
-    }
+    channel = ClientChannel(
+      host,
+      port: port,
+      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+    );
+    stub = MyServiceClient(channel);
+    isConnected = true;
+    print('✅ Connected to $host:$port');
   }
 
-  Stream<String> streamMessages() async* {
+  /// Streams fully parsed SensorData messages.
+  Stream<SensorData> streamSensorData() async* {
     if (!isConnected) {
-      print("⚠️ gRPC Client is not connected!");
-      yield "Error: Not connected to gRPC server.";
-      return;
+      throw StateError('gRPC client not initialized');
     }
 
-    try {
-      print("📡 Streaming messages from gRPC server...");
-      await for (var response in stub.streamMessages(Empty())) {
-        print("📩 Received: ${response.value}");
-        yield response.value;
+    final request = $pb.Empty();
+    await for (final payload in stub.streamMessages(request)) {
+      if (payload.hasSensorData()) {
+        yield payload.sensorData;
       }
-    } catch (e) {
-      print("❌ gRPC Stream Error: $e");
-      yield "Error: $e";
     }
   }
 
+  /// Cleanly shuts down the channel.
   Future<void> shutdown() async {
-    try {
-      await channel.shutdown();
-      isConnected = false;
-      print("🛑 gRPC Client disconnected.");
-    } catch (e) {
-      print("⚠️ gRPC shutdown error: $e");
-    }
+    await channel.shutdown();
+    isConnected = false;
+    print('🛑 Disconnected');
   }
 }

@@ -29,7 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   grpc: ^4.0.1
-  protobuf: 3.1.0
+  protobuf: ^4.0.0
+  protobuf_google: ^1.0.0
   flutter:
     sdk: flutter
 
@@ -47,6 +48,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  protoc_plugin: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

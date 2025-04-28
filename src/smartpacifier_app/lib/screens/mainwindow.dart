@@ -1,99 +1,103 @@
+// lib/screens/mainwindow.dart
+
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc.dart';
-// Import the generated gRPC stubs and message classes.
-// Adjust the package name if your project name differs.
-import 'package:smartpacifier_app/generated/myservice.pbgrpc.dart';
-import 'package:smartpacifier_app/generated/google/protobuf/empty.pb.dart';
-import 'package:smartpacifier_app/generated/sensor_data.pb.dart';
-// The google/protobuf/empty.pb.dart is imported by myservice.pb.dart automatically.
+import '../ipc_layer/grpc/gprc_client.dart';
+import '../generated/sensor_data.pb.dart';
 
-
-void main() {
-  runApp(const MyApp());
-}
-
-/// Main Application widget.
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
- 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SmartPacifier App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MainWindow(),
-    );
-  }
-}
-
-/// Main window widget that listens to the gRPC stream.
 class MainWindow extends StatefulWidget {
   const MainWindow({Key? key}) : super(key: key);
-
   @override
   State<MainWindow> createState() => _MainWindowState();
 }
 
 class _MainWindowState extends State<MainWindow> {
   final List<String> _logs = [];
-  final ScrollController _scrollController = ScrollController();
-
-  late ClientChannel _channel;
-  late MyServiceClient _stub;
+  final _scroll = ScrollController();
+  late final MyGrpcClient _client;
 
   @override
   void initState() {
     super.initState();
-
-    // Connect to your gRPC backend.
-    _channel = ClientChannel(
-      'localhost',
-      port: 50051,
-      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-    );
-    _stub = MyServiceClient(_channel);
-
-    // Subscribe to the StreamMessages RPC.
-    // Note: 'Empty' comes from google/protobuf/empty.proto, which is now available via your generated files.
-    _stub.streamMessages(Empty()).listen(
-      (PayloadMessage payload) {
-        // Check if the sensor_data field is set.
-        if (payload.hasSensorData()) {
-          final sensorData = payload.sensorData;
-          setState(() {
-            _logs.add('Received SensorData: type=${sensorData.sensorType}, id=${sensorData.pacifierId}');
-          });
-        } else {
-          setState(() {
-            _logs.add('Received PayloadMessage with no sensor_data set.');
-          });
-        }
-        _scrollToBottom();
-      },
-      onError: (error) {
-        setState(() {
-          _logs.add('Error: $error');
-        });
-        _scrollToBottom();
-      },
-    );
+    _client = MyGrpcClient();
+    _startStreaming();
   }
 
-  /// Scroll the log view to the bottom.
-  void _scrollToBottom() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) {
-        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  Future<void> _startStreaming() async {
+    try {
+      await _client.init();
+      _client.streamSensorData().listen((sd) {
+        final lines = _formatSensorData(sd);
+        setState(() => _logs.addAll(lines));
+        _scroll.jumpTo(_scroll.position.maxScrollExtent);
+      }, onError: (e) {
+        setState(() => _logs.add('🔴 Stream error: $e'));
+      });
+    } catch (e) {
+      setState(() => _logs.add('🔴 Initialization error: $e'));
+    }
+  }
+
+  /// Unpacks *every* entry in dataMap, but safely.
+  List<String> _formatSensorData(SensorData sd) {
+    final out = <String>[];
+    out.add('── Pacifier=${sd.pacifierId}  type=${sd.sensorType}  group=${sd.sensorGroup} ──');
+
+    if (sd.dataMap.isEmpty) {
+      out.add('  ⚠️ dataMap is empty');
+      return out;
+    }
+
+    // Show which keys & how many bytes arrived
+    sd.dataMap.forEach((key, bytes) {
+      out.add('• key="$key", bytes=${bytes.length}');
+
+      // Now attempt to parse that blob
+      if (sd.sensorType.toLowerCase() == 'imu') {
+        try {
+          final imu = IMUData.fromBuffer(bytes);
+          for (var i = 0; i < imu.accs.length; i++) {
+            final a = imu.accs[i];
+            out.add('    acc[$i]: x=${a.accX}, y=${a.accY}, z=${a.accZ}');
+          }
+          for (var i = 0; i < imu.gyros.length; i++) {
+            final g = imu.gyros[i];
+            out.add('    gyro[$i]: x=${g.gyroX}, y=${g.gyroY}, z=${g.gyroZ}');
+          }
+          for (var i = 0; i < imu.mags.length; i++) {
+            final m = imu.mags[i];
+            out.add('    mag[$i]: x=${m.magX}, y=${m.magY}, z=${m.magZ}');
+          }
+        } catch (e) {
+          out.add('    ❌ IMUData.parse failed: $e');
+        }
+      }
+      else if (sd.sensorType.toLowerCase() == 'ppg') {
+        try {
+          final ppg = PPGData.fromBuffer(bytes);
+          for (var i = 0; i < ppg.leds.length; i++) {
+            final l = ppg.leds[i];
+            out.add('    led[$i]: ${l.led1}, ${l.led2}, ${l.led3}');
+          }
+          for (var i = 0; i < ppg.temperatures.length; i++) {
+            final t = ppg.temperatures[i];
+            out.add('    temp[$i]: ${t.temperature1}');
+          }
+        } catch (e) {
+          out.add('    ❌ PPGData.parse failed: $e');
+        }
+      }
+      else {
+        out.add('    ⚠️ Unknown sensorType="${sd.sensorType}", skipping parse');
       }
     });
+
+    return out;
   }
 
   @override
   void dispose() {
-    _channel.shutdown();
-    _scrollController.dispose();
+    _client.shutdown();
+    _scroll.dispose();
     super.dispose();
   }
 
@@ -101,63 +105,16 @@ class _MainWindowState extends State<MainWindow> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF001B3A),
-        title: const Text('Active Monitoring', style: TextStyle(color: Colors.white)),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Top display area.
-            Expanded(
-              flex: 2,
-              child: Container(
-                margin: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.black, Color(0xFF002F5F)],
-                  ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Active Monitoring',
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ),
-              ),
-            ),
-            // Log/console area.
-            Expanded(
-              flex: 4,
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF001B3A),
-                  border: Border.all(color: Colors.white, width: 1.5),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    itemCount: _logs.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
-                        child: Text(
-                          _logs[index],
-                          style: const TextStyle(fontSize: 14, color: Colors.white),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
+      appBar: AppBar(title: const Text('Active Monitoring')),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: ListView.builder(
+          controller: _scroll,
+          itemCount: _logs.length,
+          itemBuilder: (_, i) => Text(
+            _logs[i],
+            style: const TextStyle(color: Colors.white, fontSize: 12),
+          ),
         ),
       ),
     );
