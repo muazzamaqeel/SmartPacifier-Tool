@@ -1,9 +1,8 @@
 // lib/screens/mainwindow.dart
 
-import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import '../ipc_layer/grpc/gprc_client.dart';
-import '../generated/sensor_data.pb.dart';
 
 class MainWindow extends StatefulWidget {
   const MainWindow({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class MainWindow extends StatefulWidget {
 
 class _MainWindowState extends State<MainWindow> {
   final List<String> _logs = [];
-  final _scroll = ScrollController();
+  final ScrollController _scroll = ScrollController();
   late final MyGrpcClient _client;
 
   @override
@@ -27,26 +26,34 @@ class _MainWindowState extends State<MainWindow> {
     await _client.init();
     _client.streamSensorData().listen(
           (sd) {
-        // 1) Zero-arg writeToJson():
-        final jsonString = sd.writeToJson();
-        final Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+        _logs.add('── pacifier=${sd.pacifierId}  type=${sd.sensorType} ──');
 
-        // 2) Pretty-print if you like:
-        final prettyJson = const JsonEncoder.withIndent('  ').convert(jsonMap);
+        if (sd.dataMap.isEmpty) {
+          _logs.add('  (no data)');
+        } else {
+          sd.dataMap.forEach((key, raw) {
+            final bytes = raw as Uint8List;
+            _logs.add('• $key: ${bytes.length} bytes');
 
-        setState(() {
-          _logs.add('── pacifier=${sd.pacifierId} type=${sd.sensorType} ──');
-          _logs.addAll(prettyJson.split('\n'));
-        });
+            if (bytes.length == 4) {
+              final bd = ByteData.sublistView(bytes);
+              // Interpret both as float32 and int32:
+              final f = bd.getFloat32(0, Endian.little);
+              final i = bd.getInt32(0, Endian.little);
+              _logs.add('    float32 = ${f.toStringAsFixed(3)}, int32 = $i');
+            } else {
+              // For non-4-byte payloads then we use hex:
+              _logs.add('    raw: ${bytes.map((b) => b.toRadixString(16).padLeft(2, "0")).join(" ")}');
+            }
+          });
+        }
 
+        setState(() {});
         _scroll.jumpTo(_scroll.position.maxScrollExtent);
       },
-      onError: (e) {
-        setState(() => _logs.add('🔴 Stream error: $e'));
-      },
+      onError: (e) => setState(() => _logs.add('🔴 Stream error: $e')),
     );
   }
-
 
   @override
   void dispose() {
