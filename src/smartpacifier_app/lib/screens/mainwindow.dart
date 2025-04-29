@@ -6,7 +6,7 @@ import '../ipc_layer/grpc/deserialization.dart';
 import '../../generated/sensor_data.pb.dart';
 
 class MainWindow extends StatefulWidget {
-  const MainWindow({Key? key}) : super(key: key);
+  const MainWindow({super.key});
   @override
   State<MainWindow> createState() => _MainWindowState();
 }
