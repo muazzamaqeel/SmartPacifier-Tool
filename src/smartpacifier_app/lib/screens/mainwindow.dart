@@ -26,29 +26,32 @@ class _MainWindowState extends State<MainWindow> {
     await _client.init();
     _client.streamSensorData().listen(
           (sd) {
-        _logs.add('── pacifier=${sd.pacifierId}  type=${sd.sensorType} ──');
+        final type = sd.sensorType.toLowerCase();
+        _logs.add('── pacifier=${sd.pacifierId}  type=$type ──');
 
         if (sd.dataMap.isEmpty) {
           _logs.add('  (no data)');
         } else {
-          sd.dataMap.forEach((key, raw) {
-            final bytes = raw as Uint8List;
+          sd.dataMap.forEach((key, rawBytes) {
+            final bytes = rawBytes as Uint8List;
             _logs.add('• $key: ${bytes.length} bytes');
 
             if (bytes.length == 4) {
+              // Interpret the 4 raw bytes both as float32 and as int32:
               final bd = ByteData.sublistView(bytes);
-              // Interpret both as float32 and int32:
               final f = bd.getFloat32(0, Endian.little);
               final i = bd.getInt32(0, Endian.little);
               _logs.add('    float32 = ${f.toStringAsFixed(3)}, int32 = $i');
             } else {
-              // For non-4-byte payloads then we use hex:
-              _logs.add('    raw: ${bytes.map((b) => b.toRadixString(16).padLeft(2, "0")).join(" ")}');
+              // Fallback: dump raw hex if it's not exactly 4 bytes
+              final hex = bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join(' ');
+              _logs.add('    raw hex: $hex');
             }
           });
         }
 
         setState(() {});
+        // Auto-scroll to bottom:
         _scroll.jumpTo(_scroll.position.maxScrollExtent);
       },
       onError: (e) => setState(() => _logs.add('🔴 Stream error: $e')),
