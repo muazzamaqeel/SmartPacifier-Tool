@@ -1,8 +1,9 @@
-// lib/screens/mainwindow.dart
-
-import 'dart:typed_data';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 import '../ipc_layer/grpc/gprc_client.dart';
+import '../ipc_layer/grpc/deserialization.dart';
+import '../../generated/sensor_data.pb.dart';
 
 class MainWindow extends StatefulWidget {
   const MainWindow({Key? key}) : super(key: key);
@@ -11,76 +12,87 @@ class MainWindow extends StatefulWidget {
 }
 
 class _MainWindowState extends State<MainWindow> {
-  final List<String> _logs = [];
-  final ScrollController _scroll = ScrollController();
   late final MyGrpcClient _client;
+  StreamSubscription<SensorData>? _sub;
+
+  // dynamic storage: each key → a sliding List<FlSpot>
+  final Map<String, List<FlSpot>> _series = {};
+  int _t = 0;
 
   @override
   void initState() {
     super.initState();
     _client = MyGrpcClient();
-    _startStreaming();
+    _start();
   }
 
-  Future<void> _startStreaming() async {
+  Future<void> _start() async {
     await _client.init();
-    _client.streamSensorData().listen(
-          (sd) {
-        final type = sd.sensorType.toLowerCase();
-        _logs.add('── pacifier=${sd.pacifierId}  type=$type ──');
-
-        if (sd.dataMap.isEmpty) {
-          _logs.add('  (no data)');
-        } else {
-          sd.dataMap.forEach((key, rawBytes) {
-            final bytes = rawBytes as Uint8List;
-            _logs.add('• $key: ${bytes.length} bytes');
-
-            if (bytes.length == 4) {
-              // Interpret the 4 raw bytes both as float32 and as int32:
-              final bd = ByteData.sublistView(bytes);
-              final f = bd.getFloat32(0, Endian.little);
-              final i = bd.getInt32(0, Endian.little);
-              _logs.add('    float32 = ${f.toStringAsFixed(3)}, int32 = $i');
-            } else {
-              // Fallback: dump raw hex if it's not exactly 4 bytes
-              final hex = bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join(' ');
-              _logs.add('    raw hex: $hex');
-            }
-          });
-        }
-
-        setState(() {});
-        // Auto-scroll to bottom:
-        _scroll.jumpTo(_scroll.position.maxScrollExtent);
-      },
-      onError: (e) => setState(() => _logs.add('🔴 Stream error: $e')),
-    );
+    _sub = _client.streamSensorData().listen((sd) {
+      final data = DataDeserializer.parsePayload(sd);
+      setState(() {
+        final t = (_t++).toDouble();
+        data.forEach((k, v) {
+          final list = _series.putIfAbsent(k, () => <FlSpot>[]);
+          list.add(FlSpot(t, v.toDouble()));
+          if (list.length > 50) list.removeAt(0);
+        });
+      });
+    }, onError: (e) {
+      debugPrint('Stream error: $e');
+    });
   }
 
   @override
   void dispose() {
+    _sub?.cancel();
     _client.shutdown();
-    _scroll.dispose();
     super.dispose();
+  }
+
+  Widget _buildChart(String title, List<FlSpot> spots) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Text(title,
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            SizedBox(
+              height: 120,
+              child: LineChart(LineChartData(
+                lineBarsData: [
+                  LineChartBarData(
+                    spots: spots,
+                    isCurved: true,
+                    dotData: FlDotData(show: false),
+                    barWidth: 2,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ],
+                gridData: FlGridData(show: true),
+                titlesData: FlTitlesData(show: false),
+                borderData: FlBorderData(show: false),
+              )),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final charts = _series.keys
+        .map((k) => _buildChart(k.toUpperCase(), _series[k]!))
+        .toList();
+
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(title: const Text('Active Monitoring')),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: ListView.builder(
-          controller: _scroll,
-          itemCount: _logs.length,
-          itemBuilder: (_, i) => Text(
-            _logs[i],
-            style: const TextStyle(color: Colors.white, fontSize: 12),
-          ),
-        ),
-      ),
+      body: SingleChildScrollView(child: Column(children: charts)),
     );
   }
 }

@@ -1,50 +1,34 @@
-// lib/ipc_layer/grpc/gprc_client.dart
-
 import 'package:grpc/grpc.dart';
+
+import '../../generated/google/protobuf/empty.pb.dart';
 import '../../generated/myservice.pbgrpc.dart';
 import '../../generated/sensor_data.pb.dart';
-import '../../generated/google/protobuf/empty.pb.dart' as $pb;
 
-/// Singleton gRPC client for MyService.
+/// Wraps the gRPC stub and unwraps PayloadMessage → SensorData.
 class MyGrpcClient {
-  MyGrpcClient._();
-  static final MyGrpcClient _instance = MyGrpcClient._();
-  factory MyGrpcClient() => _instance;
+  late final ClientChannel _channel;
+  late final MyServiceClient _stub;
 
-  late MyServiceClient stub;
-  late ClientChannel channel;
-  bool isConnected = false;
-
-  /// Connects to the server at [host]:[port].
-  Future<void> init({String host = '127.0.0.1', int port = 50051}) async {
-    channel = ClientChannel(
-      host,
-      port: port,
+  MyGrpcClient() {
+    _channel = ClientChannel(
+      'localhost',
+      port: 50051,
       options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
-    stub = MyServiceClient(channel);
-    isConnected = true;
-    print('✅ Connected to $host:$port');
+    _stub = MyServiceClient(_channel);
   }
 
-  /// Streams fully parsed SensorData messages.
-  Stream<SensorData> streamSensorData() async* {
-    if (!isConnected) {
-      throw StateError('gRPC client not initialized');
-    }
-
-    final request = $pb.Empty();
-    await for (final payload in stub.streamMessages(request)) {
-      if (payload.hasSensorData()) {
-        yield payload.sensorData;
-      }
-    }
+  Future<void> init() async {
+    // any additional startup
   }
 
-  /// Cleanly shuts down the channel.
-  Future<void> shutdown() async {
-    await channel.shutdown();
-    isConnected = false;
-    print('🛑 Disconnected');
+  /// Returns a stream of actual SensorData messages.
+  Stream<SensorData> streamSensorData() {
+    return _stub
+        .streamMessages(Empty())
+        .where((payload) => payload.hasSensorData())
+        .map((payload) => payload.sensorData);
   }
+
+  Future<void> shutdown() => _channel.shutdown();
 }
