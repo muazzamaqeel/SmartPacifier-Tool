@@ -1,30 +1,30 @@
+// lib/ipc_layer/grpc/deserialization.dart
 import 'dart:typed_data';
+import 'package:protobuf/protobuf.dart';
 import '../../generated/sensor_data.pb.dart';
 
-/// Turn every entry in SensorData.dataMap into TWO values:
-///  • a float32 (if it was a 4-byte little-endian float)
-///  • an int32   (if it was a 4-byte little-endian signed int)
-///
-/// This sidesteps all mergeFromBuffer errors.
+/// Turns every 4-byte entry in SensorData.dataMap into a numeric value
+/// (float32 or int32), with no hard-coded names.
 class DataDeserializer {
-  /// Returns a map where each original key K produces:
-  ///   "K_float" → float32
-  ///   "K_int"   →  int32
+  /// Reads the raw bytes as either int32 or float32.
+  /// Returns a map from the exact key in dataMap to its numeric value.
   static Map<String, num> parsePayload(SensorData sd) {
     final out = <String, num>{};
-
-    sd.dataMap.forEach((key, raw) {
-      final bytes = raw as Uint8List;
-      if (bytes.length == 4) {
-        final bd = ByteData.sublistView(bytes);
+    sd.dataMap.forEach((String key, List<int> raw) {
+      if (raw.length == 4) {
+        final bd = ByteData.sublistView(Uint8List.fromList(raw));
+        // decide signed vs float based on: can we parse it as a float?
+        // (you could instead carry a schema somewhere to decide)
+        // here we assume: if the raw bytes interpreted as float is NaN or ±∞,
+        // fall back to int.
         final f = bd.getFloat32(0, Endian.little);
-        final i = bd.getInt32(0, Endian.little);
-        out['${key}_float'] = f;
-        out['${key}_int']   = i;
+        if (f.isFinite) {
+          out[key] = f;
+        } else {
+          out[key] = bd.getInt32(0, Endian.little);
+        }
       }
-      // you can add else‐branch here if you ever store >4 byte blobs
     });
-
     return out;
   }
 }

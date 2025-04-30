@@ -1,33 +1,34 @@
 import 'package:grpc/grpc.dart';
-
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../../generated/myservice.pbgrpc.dart';
-import '../../generated/sensor_data.pb.dart';
+import '../../generated/myservice.pbgrpc.dart' show MyServiceClient, PayloadMessage;
+import '../../generated/sensor_data.pb.dart'   show SensorData;
 
-/// Wraps the gRPC stub and unwraps PayloadMessage → SensorData.
 class MyGrpcClient {
   late final ClientChannel _channel;
   late final MyServiceClient _stub;
 
-  MyGrpcClient() {
+  Future<void> init({
+    String host = '127.0.0.1',
+    int    port = 50051,
+  }) async {
     _channel = ClientChannel(
-      'localhost',
-      port: 50051,
-      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+      host,
+      port: port,
+      options: const ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+      ),
     );
-    _stub = MyServiceClient(_channel);
+    _stub = MyServiceClient(
+      _channel,
+      options: CallOptions(timeout: const Duration(seconds: 30)),
+    );
   }
 
-  Future<void> init() async {
-    // any additional startup
-  }
-
-  /// Returns a stream of actual SensorData messages.
+  /// Now returns *SensorData* directly.
   Stream<SensorData> streamSensorData() {
     return _stub
-        .streamMessages(Empty())
-        .where((payload) => payload.hasSensorData())
-        .map((payload) => payload.sensorData);
+        .streamMessages(Empty())         // Stream<PayloadMessage>
+        .map((pm) => pm.sensorData);     // → Stream<SensorData>
   }
 
   Future<void> shutdown() => _channel.shutdown();
