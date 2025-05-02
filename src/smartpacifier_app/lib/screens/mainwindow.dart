@@ -1,16 +1,12 @@
-// lib/screens/mainwindow.dart
-
 import 'dart:async';
-import 'dart:io' show Platform;
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:grpc/grpc.dart';
 
-import '../generated/myservice.pbgrpc.dart'   show MyServiceClient, PayloadMessage;
-import '../generated/google/protobuf/empty.pb.dart'   show Empty;
-import '../generated/sensor_data.pb.dart'     show SensorData;
+import '../generated/sensor_data.pb.dart' as protos;
+import '../generated/myservice.pbgrpc.dart' show PayloadMessage;
+import '../ipc_layer/grpc/server.dart' show myService;
 
 class MainWindow extends StatefulWidget {
   const MainWindow({Key? key}) : super(key: key);
@@ -19,8 +15,7 @@ class MainWindow extends StatefulWidget {
 }
 
 class _MainWindowState extends State<MainWindow> {
-  late final ClientChannel _channel;
-  late final MyServiceClient _client;
+  late final StreamSubscription<PayloadMessage> _sub;
 
   /// sensorType → groupName → seriesName → spots
   final _buffers = <String, Map<String, Map<String, List<FlSpot>>>>{};
@@ -28,74 +23,43 @@ class _MainWindowState extends State<MainWindow> {
   bool _pendingSetState = false;
 
   final _palette = <Color>[
-    Colors.blue, Colors.red, Colors.green, Colors.orange,
-    Colors.purple, Colors.teal, Colors.amber, Colors.indigo,
-    Colors.cyan, Colors.lime,
+    Colors.blue,
+    Colors.red,
+    Colors.green,
+    Colors.orange,
+    // …
   ];
 
   @override
   void initState() {
     super.initState();
-
-    // Pick correct host for emulator vs-desktop
-    final host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    debugPrint('ℹ️ gRPC host=$host, port=50051');
-
-    _channel = ClientChannel(
-      host,
-      port: 50051,
-      options: const ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
-      ),
-    );
-    _client = MyServiceClient(_channel);
-
-    _startStreaming();
-  }
-
-  Future<void> _startStreaming() async {
-    debugPrint('⏳ Connecting to gRPC stream…');
-    _client.streamMessages(Empty()).listen(
-          (PayloadMessage pm) {
-        debugPrint('✅ got PayloadMessage @ ${DateTime.now()}');
-        if (!pm.hasSensorData()) {
-          debugPrint('   ⚠️ no sensorData');
-          return;
-        }
-        final sd = pm.sensorData;
-        debugPrint('   sensorType=${sd.sensorType}, keys=${sd.dataMap.keys}');
+    _sub = myService.onSensorData.listen(
+          (pm) {
+        if (!pm.hasSensorData()) return;
+        final protos.SensorData sd = pm.sensorData;
         _handleSensorData(sd);
       },
-      onError: (e, st) {
-        debugPrint('❌ Stream error: $e\n$st');
-      },
-      onDone: () {
-        debugPrint('🔒 Stream closed by server');
-      },
-      cancelOnError: false,
+      onError: (e) => debugPrint('❌ server stream error: $e'),
+      onDone: () => debugPrint('🔒 server closed the stream'),
     );
   }
 
-  void _handleSensorData(SensorData sd) {
+  void _handleSensorData(protos.SensorData sd) {
     final t = (_nextX++).toDouble();
     final typeMap = _buffers.putIfAbsent(sd.sensorType, () => {});
 
     sd.dataMap.forEach((key, raw) {
-      final bytes = raw is Uint8List
-          ? raw
-          : Uint8List.fromList(raw);
+      final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
       if (bytes.length != 4) return;
 
       final bd = ByteData.sublistView(bytes);
       num v = bd.getFloat32(0, Endian.little);
-      if (v.isNaN) v = bd.getInt32(0, Endian.little);
+      if (v.isNaN || v.isInfinite) v = bd.getInt32(0, Endian.little);
 
-      final parts = key.split('_');
-      final group = parts.first;       // e.g. "gyro"
-      final seriesName = key;          // full key
-
-      final groupMap = typeMap.putIfAbsent(group, () => {});
-      final series = groupMap.putIfAbsent(seriesName, () => <FlSpot>[]);
+      final group = key.split('_').first;
+      final series = typeMap
+          .putIfAbsent(group, () => <String, List<FlSpot>>{})
+          .putIfAbsent(key, () => <FlSpot>[]);
       series.add(FlSpot(t, v.toDouble()));
       if (series.length > 50) series.removeAt(0);
     });
@@ -111,7 +75,7 @@ class _MainWindowState extends State<MainWindow> {
 
   @override
   void dispose() {
-    _channel.shutdown();
+    _sub.cancel();
     super.dispose();
   }
 
@@ -133,19 +97,13 @@ class _MainWindowState extends State<MainWindow> {
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  type,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text(type,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
               ),
               const Divider(),
-              // One chart per group (e.g. "gyro", "mags", "accs")
-              ...groups.entries.map((entry) {
-                return _buildGroupChart(entry.key, entry.value);
-              }),
+              for (final entry in groups.entries)
+                _buildGroupChart(entry.key, entry.value),
             ],
           );
         },
@@ -154,11 +112,9 @@ class _MainWindowState extends State<MainWindow> {
   }
 
   Widget _buildGroupChart(
-      String groupName,
-      Map<String, List<FlSpot>> seriesMap,
-      ) {
+      String groupName, Map<String, List<FlSpot>> seriesMap) {
     final bars = <LineChartBarData>[];
-    int colorIdx = 0;
+    var colorIdx = 0;
     for (final seriesName in seriesMap.keys) {
       bars.add(LineChartBarData(
         spots: seriesMap[seriesName]!,
@@ -173,25 +129,25 @@ class _MainWindowState extends State<MainWindow> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(groupName, style: const TextStyle(fontWeight: FontWeight.bold)),
+              Text(groupName,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               SizedBox(
                 height: 140,
-                child: LineChart(
-                  LineChartData(
-                    lineBarsData: bars,
-                    gridData: FlGridData(show: true),
-                    titlesData: FlTitlesData(show: false),
-                    borderData: FlBorderData(show: false),
-                  ),
-                ),
+                child: LineChart(LineChartData(
+                  lineBarsData: bars,
+                  gridData: FlGridData(show: true),
+                  titlesData: FlTitlesData(show: false),
+                  borderData: FlBorderData(show: false),
+                )),
               ),
             ],
           ),

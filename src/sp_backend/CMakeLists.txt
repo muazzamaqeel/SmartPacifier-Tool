@@ -96,9 +96,9 @@ add_executable(sp_backend
         src/communication_layer/broker/DataRetrieval.cpp
         src/communication_layer/broker/Logger.cpp
         src/communication_layer/CommunicationLayer.cpp
-        src/ipc_layer/grpc/gprc_server.cpp
         src/platform_layer/windows/WindowsPlatformManager.cpp
         src/platform_layer/linux/LinuxPlatformManager.cpp
+        src/ipc_layer/grpc/grpc_client.cpp
 )
 
 add_dependencies(sp_backend generate_protos)

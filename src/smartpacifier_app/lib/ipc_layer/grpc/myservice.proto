@@ -1,17 +1,14 @@
 syntax = "proto3";
-
-import "google/protobuf/empty.proto";
-import "sensor_data.proto";  // Make sure sensor_data.proto is in your proto include path
-
 package myservice;
 
-// A wrapper message that carries a SensorData message.
-message PayloadMessage {
-  oneof payload {
-    Protos.SensorData sensor_data = 1;
-  }
-}
+import "google/protobuf/empty.proto";
+import "sensor_data.proto";
 
 service MyService {
-  rpc StreamMessages(google.protobuf.Empty) returns (stream PayloadMessage);
+  // Client (C++) will stream PayloadMessage → server (Flutter) and get back Empty when done
+  rpc PublishSensorData(stream PayloadMessage) returns (google.protobuf.Empty);
+}
+
+message PayloadMessage {
+  Protos.SensorData sensor_data = 1;
 }
