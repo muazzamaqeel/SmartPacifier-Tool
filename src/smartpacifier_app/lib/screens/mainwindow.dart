@@ -7,9 +7,11 @@ import 'package:fl_chart/fl_chart.dart';
 import '../generated/sensor_data.pb.dart' as protos;
 import '../generated/myservice.pbgrpc.dart' show PayloadMessage;
 import '../ipc_layer/grpc/server.dart' show myService;
+import 'graphcreation.dart';
 
 class MainWindow extends StatefulWidget {
   const MainWindow({Key? key}) : super(key: key);
+
   @override
   State<MainWindow> createState() => _MainWindowState();
 }
@@ -17,7 +19,7 @@ class MainWindow extends StatefulWidget {
 class _MainWindowState extends State<MainWindow> {
   late final StreamSubscription<PayloadMessage> _sub;
 
-  /// sensorType → groupName → seriesName → spots
+  /// sensorType → groupName → seriesName → list of spots
   final _buffers = <String, Map<String, Map<String, List<FlSpot>>>>{};
   int _nextX = 0;
   bool _pendingSetState = false;
@@ -27,7 +29,12 @@ class _MainWindowState extends State<MainWindow> {
     Colors.red,
     Colors.green,
     Colors.orange,
-    // …
+    Colors.purple,
+    Colors.teal,
+    Colors.amber,
+    Colors.indigo,
+    Colors.cyan,
+    Colors.lime,
   ];
 
   @override
@@ -36,34 +43,57 @@ class _MainWindowState extends State<MainWindow> {
     _sub = myService.onSensorData.listen(
           (pm) {
         if (!pm.hasSensorData()) return;
-        final protos.SensorData sd = pm.sensorData;
-        _handleSensorData(sd);
+        _handleSensorData(pm.sensorData);
       },
-      onError: (e) => debugPrint('❌ server stream error: $e'),
+      onError: (e) => debugPrint('❌ server stream error: \$e'),
       onDone: () => debugPrint('🔒 server closed the stream'),
     );
   }
 
   void _handleSensorData(protos.SensorData sd) {
     final t = (_nextX++).toDouble();
-    final typeMap = _buffers.putIfAbsent(sd.sensorType, () => {});
+
+    // 1) group by sensorType
+    final typeMap = _buffers.putIfAbsent(
+      sd.sensorType,
+          () => <String, Map<String, List<FlSpot>>>{},
+    );
+
+    // 2) group by pacifier (so each stream gets its own card)
+    final groupName = '${sd.sensorGroup}_${sd.pacifierId}';
+    final groupMap = typeMap.putIfAbsent(
+      groupName,
+          () => <String, List<FlSpot>>{},
+    );
 
     sd.dataMap.forEach((key, raw) {
       final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
-      if (bytes.length != 4) return;
-
+      if (bytes.length < 4) return;
       final bd = ByteData.sublistView(bytes);
-      num v = bd.getFloat32(0, Endian.little);
-      if (v.isNaN || v.isInfinite) v = bd.getInt32(0, Endian.little);
 
-      final group = key.split('_').first;
-      final series = typeMap
-          .putIfAbsent(group, () => <String, List<FlSpot>>{})
-          .putIfAbsent(key, () => <FlSpot>[]);
-      series.add(FlSpot(t, v.toDouble()));
-      if (series.length > 50) series.removeAt(0);
+      // single‐value
+      if (bytes.length == 4) {
+        num v = bd.getFloat32(0, Endian.little);
+        if (!v.isFinite) v = bd.getInt32(0, Endian.little);
+        final series = groupMap.putIfAbsent(key, () => <FlSpot>[]);
+        series.add(FlSpot(t, v.toDouble()));
+        if (series.length > 50) series.removeAt(0);
+      }
+      // multi‐value (N floats/ints in one blob)
+      else if (bytes.length % 4 == 0) {
+        final count = bytes.length ~/ 4;
+        for (var i = 0; i < count; i++) {
+          num v = bd.getFloat32(i * 4, Endian.little);
+          if (!v.isFinite) v = bd.getInt32(i * 4, Endian.little);
+          final seriesName = '$key\[$i\]';
+          final series = groupMap.putIfAbsent(seriesName, () => <FlSpot>[]);
+          series.add(FlSpot(t, v.toDouble()));
+          if (series.length > 50) series.removeAt(0);
+        }
+      }
     });
 
+    // throttle rebuilds
     if (!_pendingSetState) {
       _pendingSetState = true;
       Future.microtask(() {
@@ -81,78 +111,12 @@ class _MainWindowState extends State<MainWindow> {
 
   @override
   Widget build(BuildContext context) {
-    final types = _buffers.keys.toList();
+    final sensorTypes = _buffers.keys.toList();
     return Scaffold(
       appBar: AppBar(title: const Text('Active Monitoring')),
-      body: types.isEmpty
+      body: sensorTypes.isEmpty
           ? const Center(child: Text('Waiting for data…'))
-          : ListView.builder(
-        itemCount: types.length,
-        itemBuilder: (ctx, idx) {
-          final type = types[idx];
-          final groups = _buffers[type]!;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(type,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold)),
-              ),
-              const Divider(),
-              for (final entry in groups.entries)
-                _buildGroupChart(entry.key, entry.value),
-            ],
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildGroupChart(
-      String groupName, Map<String, List<FlSpot>> seriesMap) {
-    final bars = <LineChartBarData>[];
-    var colorIdx = 0;
-    for (final seriesName in seriesMap.keys) {
-      bars.add(LineChartBarData(
-        spots: seriesMap[seriesName]!,
-        isCurved: true,
-        dotData: FlDotData(show: false),
-        color: _palette[colorIdx % _palette.length],
-        barWidth: 2,
-      ));
-      colorIdx++;
-    }
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Card(
-        shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        elevation: 2,
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(groupName,
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 8),
-              SizedBox(
-                height: 140,
-                child: LineChart(LineChartData(
-                  lineBarsData: bars,
-                  gridData: FlGridData(show: true),
-                  titlesData: FlTitlesData(show: false),
-                  borderData: FlBorderData(show: false),
-                )),
-              ),
-            ],
-          ),
-        ),
-      ),
+          : GraphCreation.buildGraphs(_buffers, _palette),
     );
   }
 }

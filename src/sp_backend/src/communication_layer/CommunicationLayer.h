@@ -6,10 +6,8 @@
 #include <thread>
 #include <memory>
 
-// Your DataRetrieval lives in the global namespace
-#include <broker/DataRetrieval.h>
-
-#include "ipc_layer/grpc/grpc_client.h"
+#include <broker/DataRetrieval.h>       // your MQTT wrapper
+#include "ipc_layer/grpc/grpc_client.h" // MyGrpcClient
 
 class CommunicationLayer : public I_CommunicationLayer {
 public:
@@ -26,7 +24,7 @@ private:
     void runMqttClient();
 
     std::atomic<bool>                running_;
-    std::shared_ptr<DataRetrieval>   dataRetrieval_;  // <-- global namespace!
+    std::shared_ptr<DataRetrieval>   dataRetrieval_;
     MyGrpcClient                     grpcClient_;
     std::thread                      mqttThread_;
 };
