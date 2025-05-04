@@ -1,5 +1,7 @@
 // File: screens/graphcreation.dart
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -13,7 +15,7 @@ class GraphCreation {
     final children = <Widget>[];
 
     buffers.forEach((sensorType, groups) {
-      // 1) Sensor header (once per sensorType)
+      //Sensor header
       children.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Text(
@@ -22,13 +24,11 @@ class GraphCreation {
         ),
       ));
 
-      // 2) Flatten all groups into one map: seriesName → spots
       final combined = <String, List<FlSpot>>{};
       for (final seriesMap in groups.values) {
         combined.addAll(seriesMap);
       }
 
-      // 3) Bucket by measurement prefix
       final measurementMap = <String, Map<String, List<FlSpot>>>{};
       combined.forEach((seriesName, spots) {
         final measurement = seriesName.split(RegExp(r'[_\[]')).first;
@@ -37,7 +37,7 @@ class GraphCreation {
         [seriesName] = spots;
       });
 
-      // 4) One card per measurement (sorted for consistency)
+      // 4) One card per measurement, sorted for stable order
       final measurements = measurementMap.keys.toList()..sort();
       for (final measurement in measurements) {
         final subSeries = measurementMap[measurement]!;
@@ -62,40 +62,86 @@ class GraphCreation {
       Map<String, List<FlSpot>> seriesMap,
       List<Color> palette,
       ) {
-    // Sort seriesNames so color assignment is stable
+    final allXs = seriesMap.values.expand((spots) => spots.map((s) => s.x));
+    final maxX = allXs.isEmpty ? 0.0 : allXs.reduce(max);
     final seriesNames = seriesMap.keys.toList()..sort();
     final bars = <LineChartBarData>[];
-
     for (var i = 0; i < seriesNames.length; i++) {
       final name = seriesNames[i];
-      final spots = seriesMap[name]!;
+      final originalSpots = seriesMap[name]!;
+      final invertedSpots = originalSpots
+          .map((pt) => FlSpot(maxX - pt.x, pt.y))
+          .toList(growable: false);
+
       bars.add(LineChartBarData(
-        spots: spots,
+        spots: invertedSpots,
         isCurved: true,
         dotData: FlDotData(show: false),
         color: palette[i % palette.length],
-        barWidth: 2,
+        barWidth: 2.5,
       ));
     }
 
+    final legend = Wrap(
+      spacing: 12,
+      runSpacing: 4,
+      children: [
+        for (var i = 0; i < seriesNames.length; i++) ...[
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 10,
+                height: 10,
+                decoration: BoxDecoration(
+                  color: palette[i % palette.length],
+                  shape: BoxShape.circle,
+                ),
+              ),
+              const SizedBox(width: 4),
+              Text(seriesNames[i],
+                  style: const TextStyle(fontSize: 12, height: 1.2)),
+            ],
+          )
+        ]
+      ],
+    );
+
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 2,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // To define the measurement name: For example
-            // "gyro", "mag", "acc", "led", "temperature"
+            // measurement title
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
+            // legend
+            legend,
+            const SizedBox(height: 10),
+            // chart
             SizedBox(
-              height: 140,
+              height: 160,
               child: LineChart(
                 LineChartData(
                   lineBarsData: bars,
-                  gridData: FlGridData(show: true),
+                  gridData: FlGridData(
+                    show: true,
+                    drawVerticalLine: true,
+                    drawHorizontalLine: true,
+                    getDrawingVerticalLine: (_) => FlLine(
+                      color: Colors.grey.withOpacity(0.2),
+                      strokeWidth: 1,
+                      dashArray: [4, 4],
+                    ),
+                    getDrawingHorizontalLine: (_) => FlLine(
+                      color: Colors.grey.withOpacity(0.2),
+                      strokeWidth: 1,
+                      dashArray: [4, 4],
+                    ),
+                  ),
                   titlesData: FlTitlesData(show: false),
                   borderData: FlBorderData(show: false),
                 ),
