@@ -1,4 +1,3 @@
-// File: src/communication_layer/CommunicationLayer.h
 #pragma once
 
 #include "I_CommunicationLayer.h"
@@ -6,8 +5,8 @@
 #include <thread>
 #include <memory>
 
-#include <broker/DataRetrieval.h>       // your MQTT wrapper
-#include "ipc_layer/grpc/grpc_client.h" // MyGrpcClient
+#include <broker/DataRetrieval.h>           // MQTT wrapper
+#include "ipc_layer/grpc/grpc_client.h"     // MyGrpcClient
 
 class CommunicationLayer : public I_CommunicationLayer {
 public:
@@ -21,7 +20,7 @@ public:
     void stopCommunicationServices() override;
 
 private:
-    void runMqttClient();
+    void runMqttClient() const;
 
     std::atomic<bool>                running_;
     std::shared_ptr<DataRetrieval>   dataRetrieval_;
