@@ -78,7 +78,7 @@ void DataRetrieval::onMessageArrived(mqtt::const_message_ptr msg) const {
             m_messageCallback(payload);
         }
         else {
-            broker::globalQueue.push(payload);
+            broker::globalQueue().push(payload);
         }
 
         Logger::getInstance().log("Message processed.");

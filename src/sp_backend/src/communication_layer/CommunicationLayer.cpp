@@ -25,7 +25,7 @@ CommunicationLayer::CommunicationLayer()
 {}
 
 CommunicationLayer::~CommunicationLayer() {
-  CommunicationLayer::stopCommunicationServices();
+  stopCommunicationServices();
   if (mqttThread_.joinable())
     mqttThread_.join();
 }
@@ -167,7 +167,40 @@ void CommunicationLayer::startCommunicationServices() {
   // Launch the MQTT loop
   running_   = true;
   mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
+    stopCommunicationServices();
+    if (mqttThread_.joinable()) mqttThread_.join();
+    if (grpcThread_.joinable()) grpcThread_.join();
 }
+
+void CommunicationLayer::startCommunicationServices() {
+    // instead of checking the process, try an actual MQTT connect
+    if (!BrokerCheck::canConnect("tcp://localhost:1883", "HealthCheckClient")) {
+        Logger::getInstance().log("Cannot reach MQTT broker at tcp://localhost:1883");
+        return;
+    }
+    Logger::getInstance().log("MQTT broker reachable.");
+
+    running_ = true;
+    // Create and own the gRPC service so it outlives this function
+    grpcService_ = std::make_unique<GrpcService>(broker::globalQueue());
+    // Batch‐callback: Forwarding each batch into the service
+    constexpr size_t batchSize = 1;
+    broker::globalQueue().setBatchCallback(
+        [this](const std::vector<std::string>& batch) {
+            grpcService_->enqueueBatch(batch);
+        },
+        batchSize
+    );
+    // Push incoming MQTT payloads into the MessageQueue
+    dataRetrieval_->setMessageCallback([](const std::string &msg) {
+        broker::globalQueue().push(msg);
+    });
+    // Start MQTT client thread
+    mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
+    // Start gRPC server thread
+    grpcThread_ = std::thread(&CommunicationLayer::runGrpcServer, this);
+}
+
 
 void CommunicationLayer::stopCommunicationServices() {
   running_ = false;

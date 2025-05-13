@@ -3,6 +3,8 @@
 #include <MessageQueue.h>
 
 namespace broker {
-    // single global, thread-safe, blocking queue of strings
-    inline MessageQueue<std::string> globalQueue;
+    inline MessageQueue<std::string>& globalQueue() {
+        static MessageQueue<std::string> instance;
+        return instance;
+    }
 }

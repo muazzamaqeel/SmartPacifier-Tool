@@ -18,15 +18,8 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
-git clone --recurse-submodules -b <branch_name> \
-  git@github.com:username/SmartPacifier-Tool.git
-```
+git clone --recurse-submodules https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 
-### Step 1: Building the BackEnd (For Non-Collaborators)
-```bash
-mkdir -p /c/Programming
-cd /c/Programming
-git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
 #### Cloning GRPC & MQTT 
 ```bash
