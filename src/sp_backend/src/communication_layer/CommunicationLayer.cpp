@@ -18,7 +18,7 @@ CommunicationLayer::CommunicationLayer()
 {}
 
 CommunicationLayer::~CommunicationLayer() {
-    CommunicationLayer::stopCommunicationServices();
+    stopCommunicationServices();
     if (mqttThread_.joinable()) mqttThread_.join();
     if (grpcThread_.joinable()) grpcThread_.join();
 }
