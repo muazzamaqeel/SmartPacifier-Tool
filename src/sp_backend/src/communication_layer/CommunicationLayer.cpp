@@ -24,17 +24,17 @@ CommunicationLayer::~CommunicationLayer() {
 }
 
 void CommunicationLayer::startCommunicationServices() {
-    if (!BrokerCheck::isMosquittoRunning()) {
-        Logger::getInstance().log("Please start Mosquitto broker first.");
+    // instead of checking the process, try an actual MQTT connect
+    if (!BrokerCheck::canConnect("tcp://localhost:1883", "HealthCheckClient")) {
+        Logger::getInstance().log("Cannot reach MQTT broker at tcp://localhost:1883");
         return;
     }
-    Logger::getInstance().log("Mosquitto running.");
+    Logger::getInstance().log("MQTT broker reachable.");
+
     running_ = true;
     // Create and own the gRPC service so it outlives this function
     grpcService_ = std::make_unique<GrpcService>(broker::globalQueue());
     // Batch‐callback: Forwarding each batch into the service
-    //Value 1 means no batching each message is delivered immediately
-    //Value 5 means for example, the call back would wait until 5 messages are queued then send those 5 values at once.
     constexpr size_t batchSize = 1;
     broker::globalQueue().setBatchCallback(
         [this](const std::vector<std::string>& batch) {
@@ -51,6 +51,7 @@ void CommunicationLayer::startCommunicationServices() {
     // Start gRPC server thread
     grpcThread_ = std::thread(&CommunicationLayer::runGrpcServer, this);
 }
+
 
 void CommunicationLayer::stopCommunicationServices() {
     running_ = false;
