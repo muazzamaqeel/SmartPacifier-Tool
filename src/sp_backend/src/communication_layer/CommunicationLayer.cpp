@@ -31,10 +31,13 @@ CommunicationLayer::~CommunicationLayer() {
 }
 
 void CommunicationLayer::startCommunicationServices() {
-  if (!BrokerCheck::isMosquittoRunning()) {
-    Logger::getInstance().log("Please start Mosquitto broker first.");
+  if (!BrokerCheck::canConnect("tcp://localhost:1883",
+                               "CommLayerProbeClient",
+                               /*timeoutSeconds*/ 5)) {
+    Logger::getInstance().log("Cannot reach Mosquitto on localhost:1883 — please start it.");
     return;
-  }
+                               }
+
   Logger::getInstance().log("Mosquitto running.");
 
   // Initialize gRPC client
@@ -43,7 +46,7 @@ void CommunicationLayer::startCommunicationServices() {
   // ─── Batching setup ───────────────────────────────────────────────────────────
   // Value 1 = no batching (immediate); 5 = wait for 5 messages, then send as a batch
   constexpr size_t batchSize = 5;
-  broker::globalQueue.setBatchCallback(
+  broker::globalQueue().setBatchCallback(
     [this](const std::vector<std::string>& batch) {
       // For each serialized SensorData in the batch, parse and send via gRPC
       for (const auto& rawMsg : batch) {
@@ -68,7 +71,7 @@ void CommunicationLayer::startCommunicationServices() {
 
     // If already flattened (more than one entry), enqueue directly
     if (sd.data_map_size() != 1) {
-      broker::globalQueue.push(sd.SerializeAsString());
+      broker::globalQueue().push(sd.SerializeAsString());
       Logger::getInstance().log("enqueued pre‑flattened SensorData (" +
                                 std::to_string(sd.data_map_size()) + " entries)");
       return;
@@ -159,7 +162,7 @@ void CommunicationLayer::startCommunicationServices() {
     }
 
     // Enqueue the newly‑flattened message
-    broker::globalQueue.push(sd.SerializeAsString());
+    broker::globalQueue().push(sd.SerializeAsString());
     Logger::getInstance().log("enqueued " + typeName + " (" +
                               std::to_string(sd.data_map_size()) + " entries)");
   });
@@ -169,38 +172,8 @@ void CommunicationLayer::startCommunicationServices() {
   mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
     stopCommunicationServices();
     if (mqttThread_.joinable()) mqttThread_.join();
-    if (grpcThread_.joinable()) grpcThread_.join();
+    //if (grpcThread_.joinable()) grpcThread_.join();
 }
-
-void CommunicationLayer::startCommunicationServices() {
-    // instead of checking the process, try an actual MQTT connect
-    if (!BrokerCheck::canConnect("tcp://localhost:1883", "HealthCheckClient")) {
-        Logger::getInstance().log("Cannot reach MQTT broker at tcp://localhost:1883");
-        return;
-    }
-    Logger::getInstance().log("MQTT broker reachable.");
-
-    running_ = true;
-    // Create and own the gRPC service so it outlives this function
-    grpcService_ = std::make_unique<GrpcService>(broker::globalQueue());
-    // Batch‐callback: Forwarding each batch into the service
-    constexpr size_t batchSize = 1;
-    broker::globalQueue().setBatchCallback(
-        [this](const std::vector<std::string>& batch) {
-            grpcService_->enqueueBatch(batch);
-        },
-        batchSize
-    );
-    // Push incoming MQTT payloads into the MessageQueue
-    dataRetrieval_->setMessageCallback([](const std::string &msg) {
-        broker::globalQueue().push(msg);
-    });
-    // Start MQTT client thread
-    mqttThread_ = std::thread(&CommunicationLayer::runMqttClient, this);
-    // Start gRPC server thread
-    grpcThread_ = std::thread(&CommunicationLayer::runGrpcServer, this);
-}
-
 
 void CommunicationLayer::stopCommunicationServices() {
   running_ = false;
