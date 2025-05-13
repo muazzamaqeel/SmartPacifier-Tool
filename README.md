@@ -18,8 +18,6 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
-git clone --recurse-submodules git@github.com:username/SmartPacifier-Tool.git
-or
 git clone --recurse-submodules https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 
 ```
