@@ -94,11 +94,13 @@ add_executable(sp_backend
         src/main.cpp
         src/communication_layer/broker/BrokerCheck.cpp
         src/communication_layer/broker/DataRetrieval.cpp
-        src/communication_layer/broker/Logger.cpp
+        src/communication_layer/debug/Logger.cpp
         src/communication_layer/CommunicationLayer.cpp
         src/platform_layer/windows/WindowsPlatformManager.cpp
         src/platform_layer/linux/LinuxPlatformManager.cpp
         src/ipc_layer/grpc/grpc_client.cpp
+        src/communication_layer/data_processing/RawData.cpp
+        src/communication_layer/data_processing/DeserializedData.cpp
 )
 
 add_dependencies(sp_backend generate_protos)

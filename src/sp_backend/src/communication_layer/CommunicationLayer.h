@@ -4,13 +4,21 @@
 #include <atomic>
 #include <thread>
 #include <memory>
+#include <string>
 
-#include <broker/DataRetrieval.h>           // MQTT wrapper
-#include "ipc_layer/grpc/grpc_client.h"     // MyGrpcClient
+#include <broker/DataRetrieval.h>
+#include "ipc_layer/grpc/grpc_client.h"
+#include "data_processing/RawData.h"
+#include "data_processing/DeserializedData.h"
 
-class CommunicationLayer : public I_CommunicationLayer {
+class CommunicationLayer final : public I_CommunicationLayer {
 public:
-    CommunicationLayer();
+    enum class Mode {
+        ForwardRaw,        // just verify & push the raw bytes
+        ParseAndFlatten    // fully deserialize, flatten, then push
+    };
+
+    explicit CommunicationLayer(Mode mode = Mode::ParseAndFlatten);
     ~CommunicationLayer() override;
 
     CommunicationLayer(const CommunicationLayer&) = delete;
@@ -22,8 +30,13 @@ public:
 private:
     void runMqttClient() const;
 
-    std::atomic<bool>                running_;
-    std::shared_ptr<DataRetrieval>   dataRetrieval_;
-    MyGrpcClient                     grpcClient_;
-    std::thread                      mqttThread_;
+    std::atomic<bool>              running_;
+    Mode                           mode_;
+    std::shared_ptr<DataRetrieval> dataRetrieval_;
+    MyGrpcClient                   grpcClient_;
+    std::thread                    mqttThread_;
+
+    std::string                    flattenedFilePath_;
+    RawData                        rawData_;
+    DeserializedData               deserializedData_;
 };
