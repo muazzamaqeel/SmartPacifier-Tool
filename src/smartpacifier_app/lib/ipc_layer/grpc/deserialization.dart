@@ -1,5 +1,3 @@
-// File: lib/ipc_layer/data_deserializer.dart
-
 import 'dart:typed_data';
 import '../../generated/sensor_data.pb.dart' as protos;
 

@@ -1,3 +1,5 @@
+// File: lib/screens/mainwindow.dart
+
 import 'dart:async';
 import 'dart:typed_data';
 
@@ -24,17 +26,13 @@ class _MainWindowState extends State<MainWindow> {
   int _nextX = 0;
   bool _pendingSetState = false;
 
+  /// track which pacifier IDs are selected
+  final _selectedPacifiers = <String>{};
+
   final _palette = <Color>[
-    Colors.blue,
-    Colors.red,
-    Colors.green,
-    Colors.orange,
-    Colors.purple,
-    Colors.teal,
-    Colors.amber,
-    Colors.indigo,
-    Colors.cyan,
-    Colors.lime,
+    Colors.blue, Colors.red, Colors.green,
+    Colors.orange, Colors.purple, Colors.teal,
+    Colors.amber, Colors.indigo, Colors.cyan, Colors.lime,
   ];
 
   @override
@@ -45,42 +43,40 @@ class _MainWindowState extends State<MainWindow> {
         if (!pm.hasSensorData()) return;
         _handleSensorData(pm.sensorData);
       },
-      onError: (e) => debugPrint('❌ server stream error: \$e'),
-      onDone: () => debugPrint('🔒 server closed the stream'),
+      onError: (e) => debugPrint('❌ server stream error: $e'),
+      onDone: ()    => debugPrint('🔒 server closed the stream'),
     );
   }
 
   void _handleSensorData(protos.SensorData sd) {
     final t = (_nextX++).toDouble();
 
-    // 1) group by sensorType
+    // 1) sensorType → groupName map
     final typeMap = _buffers.putIfAbsent(
       sd.sensorType,
           () => <String, Map<String, List<FlSpot>>>{},
     );
 
-    // 2) group by pacifier (so each stream gets its own card)
+    // 2) group by pacifier (so each stream gets its own map)
     final groupName = '${sd.sensorGroup}_${sd.pacifierId}';
     final groupMap = typeMap.putIfAbsent(
       groupName,
           () => <String, List<FlSpot>>{},
     );
 
+    // 3) decode each 4-byte or N×4 blob into one or many FlSpots
     sd.dataMap.forEach((key, raw) {
       final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
       if (bytes.length < 4) return;
       final bd = ByteData.sublistView(bytes);
 
-      // single‐value
       if (bytes.length == 4) {
         num v = bd.getFloat32(0, Endian.little);
         if (!v.isFinite) v = bd.getInt32(0, Endian.little);
         final series = groupMap.putIfAbsent(key, () => <FlSpot>[]);
         series.add(FlSpot(t, v.toDouble()));
         if (series.length > 50) series.removeAt(0);
-      }
-      // multi‐value (N floats/ints in one blob)
-      else if (bytes.length % 4 == 0) {
+      } else if (bytes.length % 4 == 0) {
         final count = bytes.length ~/ 4;
         for (var i = 0; i < count; i++) {
           num v = bd.getFloat32(i * 4, Endian.little);
@@ -93,7 +89,7 @@ class _MainWindowState extends State<MainWindow> {
       }
     });
 
-    // throttle rebuilds
+    // throttle setState()
     if (!_pendingSetState) {
       _pendingSetState = true;
       Future.microtask(() {
@@ -111,12 +107,88 @@ class _MainWindowState extends State<MainWindow> {
 
   @override
   Widget build(BuildContext context) {
-    final sensorTypes = _buffers.keys.toList();
+    // collect all pacifiers seen so far
+    final pacifiers = <String>{};
+    for (final typeMap in _buffers.values) {
+      for (final groupName in typeMap.keys) {
+        final parts = groupName.split('_');
+        if (parts.isNotEmpty) pacifiers.add(parts.last);
+      }
+    }
+    final pacifierList = pacifiers.toList()..sort();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Active Monitoring')),
-      body: sensorTypes.isEmpty
-          ? const Center(child: Text('Waiting for data…'))
-          : GraphCreation.buildGraphs(_buffers, _palette),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // ---- multi-select pacifier chips ----
+          if (pacifierList.isNotEmpty)
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                children: pacifierList.map((id) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: FilterChip(
+                      label: Text('Pacifier $id'),
+                      selected: _selectedPacifiers.contains(id),
+                      onSelected: (sel) {
+                        setState(() {
+                          if (sel)   _selectedPacifiers.add(id);
+                          else       _selectedPacifiers.remove(id);
+                        });
+                      },
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+
+          // ---- graphs for each selected pacifier ----
+          Expanded(
+            child: _selectedPacifiers.isEmpty
+                ? const Center(child: Text('Waiting for data…'))
+                : ListView(
+              children: [
+                for (final id in _selectedPacifiers) ...[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
+                    child: Text(
+                      'Pacifier $id',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  // buildGraphs expects sensorType→groupName→series→spots
+                  Builder(builder: (_) {
+                    // filter buffers down to just this pacifier
+                    final filtered = <String, Map<String,
+                        Map<String, List<FlSpot>>>>{};
+                    _buffers.forEach((sensorType, groups) {
+                      final sub = <String, Map<String, List<FlSpot>>>{};
+                      groups.forEach((groupName, series) {
+                        if (groupName.endsWith('_$id')) {
+                          sub[groupName] = series;
+                        }
+                      });
+                      if (sub.isNotEmpty) filtered[sensorType] = sub;
+                    });
+                    return filtered.isEmpty
+                        ? const SizedBox()
+                        : GraphCreation.buildGraphs(
+                        filtered, _palette);
+                  }),
+                ]
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
