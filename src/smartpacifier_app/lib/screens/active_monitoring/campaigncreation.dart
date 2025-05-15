@@ -6,7 +6,6 @@ class CampaignCreation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Campaign')),
       body: const Center(child: Text('Campaign creation UI goes here')),
     );
   }

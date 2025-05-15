@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'ipc_layer/grpc/server.dart';
-import 'screens/app_shell.dart';  // ← point at your new shell
+import 'components/theme/lighttheme.dart';
+import 'components/theme/darktheme.dart';
+import 'screens/app_shell.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // 1️⃣ Start your in‐app gRPC server
   await startGrpcServer(port: 50051);
-
-  // 2️⃣ Launch the Flutter UI
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isDark = false;
+  void _toggleTheme(bool isDark) => setState(() => _isDark = isDark);
 
   @override
-  Widget build(BuildContext context) =>
-      MaterialApp(
-        title: 'SmartPacifier App',
-        theme: ThemeData.from(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: const AppShell(),  // ← use AppShell here instead of MainWindow
-      );
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'SmartPacifier App',
+      theme: _isDark ? darkTheme : lightTheme,
+      home: AppShell(
+        isDark: _isDark,
+        onThemeChanged: _toggleTheme,
+      ),
+    );
+  }
 }

@@ -118,11 +118,9 @@ class _MainWindowState extends State<MainWindow> {
     final pacifierList = pacifiers.toList()..sort();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Active Monitoring')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // ---- multi-select pacifier chips ----
           if (pacifierList.isNotEmpty)
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,

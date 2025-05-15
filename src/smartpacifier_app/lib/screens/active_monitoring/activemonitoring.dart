@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../mainwindow.dart';
 
 class ActiveMonitoring extends StatelessWidget {
-  const ActiveMonitoring({Key? key}) : super(key: key);
+  const ActiveMonitoring({super.key});
 
   @override
   Widget build(BuildContext context) {
