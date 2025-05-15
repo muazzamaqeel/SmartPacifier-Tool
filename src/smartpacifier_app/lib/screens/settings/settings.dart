@@ -1,6 +1,8 @@
+// File: lib/screens/settings/settings.dart
+
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   final bool isDark;
   final ValueChanged<bool> onThemeChanged;
 
@@ -10,7 +12,14 @@ class Settings extends StatelessWidget {
     required this.onThemeChanged,
   });
 
-  void _showThemeDialog(BuildContext context) {
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  bool _notificationsEnabled = true;
+
+  void _showThemeDialog() {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
@@ -19,23 +28,23 @@ class Settings extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<bool>(
-              title: const Text('Light Theme'),
+              title: const Text('Light'),
               value: false,
-              groupValue: isDark,
+              groupValue: widget.isDark,
               onChanged: (v) {
                 if (v != null) {
-                  onThemeChanged(v);
+                  widget.onThemeChanged(v);
                   Navigator.of(context).pop();
                 }
               },
             ),
             RadioListTile<bool>(
-              title: const Text('Dark Theme'),
+              title: const Text('Dark'),
               value: true,
-              groupValue: isDark,
+              groupValue: widget.isDark,
               onChanged: (v) {
                 if (v != null) {
-                  onThemeChanged(v);
+                  widget.onThemeChanged(v);
                   Navigator.of(context).pop();
                 }
               },
@@ -48,63 +57,50 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
-      child: IntrinsicHeight(
-        child: Row(
-          children: [
-            // Left column: Account & Theme stacked
-            Expanded(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // TODO: Account settings
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: const Text('Account'),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () => _showThemeDialog(context),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: const Text('Theme'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(width: 16),
-
-            // Right column: Notifications spans both rows
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  // TODO: Notification settings
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text('Notifications'),
-              ),
-            ),
-          ],
+    final theme = Theme.of(context);
+    return ListView(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      children: [
+        // Header
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Text('Settings', style: theme.textTheme.headlineSmall),
         ),
-      ),
+        const Divider(),
+
+        // Account
+        ListTile(
+          leading: const Icon(Icons.person_outline),
+          title: const Text('Broker Check'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () {
+            // TODO: Navigate to Account screen
+          },
+        ),
+        const Divider(),
+
+        // Theme
+        ListTile(
+          leading: const Icon(Icons.color_lens_outlined),
+          title: const Text('Theme'),
+          subtitle: Text(widget.isDark ? 'Dark' : 'Light'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: _showThemeDialog,
+        ),
+        const Divider(),
+
+        // Notifications
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.notifications_outlined),
+          title: const Text('Enable Notifications'),
+          value: _notificationsEnabled,
+          onChanged: (v) => setState(() => _notificationsEnabled = v),
+        ),
+        const Divider(),
+
+        // You can add more settings here:
+        // e.g. Privacy, About, etc.
+      ],
     );
   }
 }
