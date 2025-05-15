@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ipc_layer/grpc/server.dart';
-import 'screens/mainwindow.dart';
+import 'screens/app_shell.dart';  // ← point at your new shell
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.from(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: const MainWindow(),
+        home: const AppShell(),  // ← use AppShell here instead of MainWindow
       );
 }
