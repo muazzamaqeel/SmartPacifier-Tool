@@ -1,10 +1,10 @@
 // File: lib/screens/app_shell.dart
 
 import 'package:flutter/material.dart';
-import '../components/sidebar/sidebar.dart';
-import 'active_monitoring/activemonitoring.dart';
-import 'active_monitoring/campaigncreation.dart';
-import 'settings/settings.dart';
+import 'sidebar.dart';
+import '../../screens/active_monitoring/activemonitoring.dart';
+import '../../screens/active_monitoring/campaigncreation.dart';
+import '../../screens/settings/settings.dart';
 
 class AppShell extends StatefulWidget {
   final bool isDark;

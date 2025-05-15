@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CampaignCreation extends StatelessWidget {
-  const CampaignCreation({Key? key}) : super(key: key);
+  const CampaignCreation({super.key});
 
   @override
   Widget build(BuildContext context) {

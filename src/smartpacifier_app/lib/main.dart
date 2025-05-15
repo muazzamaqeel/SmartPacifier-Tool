@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'ipc_layer/grpc/server.dart';
 import 'components/theme/lighttheme.dart';
 import 'components/theme/darktheme.dart';
-import 'screens/app_shell.dart';
+import 'components/sidebar/app_shell.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
