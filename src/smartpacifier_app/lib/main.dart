@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isDark = false;
+  bool _isDark = true;
   void _toggleTheme(bool isDark) => setState(() => _isDark = isDark);
 
   @override

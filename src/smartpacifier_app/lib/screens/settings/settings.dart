@@ -64,7 +64,6 @@ class _SettingsState extends State<Settings> {
         // Header
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Text('Settings', style: theme.textTheme.headlineSmall),
         ),
         const Divider(),
 
