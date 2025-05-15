@@ -1,4 +1,4 @@
-// File: lib/screens/1.dart
+// File: lib/screens/active_monitoring/activemonitoring.dart
 
 import 'dart:async';
 import 'dart:typed_data';
@@ -12,7 +12,13 @@ import '../../ipc_layer/grpc/server.dart' show myService;
 import 'graphcreation.dart';
 
 class ActiveMonitoring extends StatefulWidget {
-  const ActiveMonitoring({super.key});
+  /// The backend group this page should display data for.
+  final String clientId;
+
+  const ActiveMonitoring({
+    super.key,
+    required this.clientId,
+  });
 
   @override
   State<ActiveMonitoring> createState() => _ActiveMonitoringState();
@@ -41,7 +47,10 @@ class _ActiveMonitoringState extends State<ActiveMonitoring> {
     _sub = myService.onSensorData.listen(
           (pm) {
         if (!pm.hasSensorData()) return;
-        _handleSensorData(pm.sensorData);
+        final sd = pm.sensorData;
+        // Only process data for this backend client
+        if (sd.sensorGroup != widget.clientId) return;
+        _handleSensorData(sd);
       },
       onError: (e) => debugPrint('❌ server stream error: $e'),
       onDone: ()    => debugPrint('🔒 server closed the stream'),
@@ -134,8 +143,8 @@ class _ActiveMonitoringState extends State<ActiveMonitoring> {
                       selected: _selectedPacifiers.contains(id),
                       onSelected: (sel) {
                         setState(() {
-                          if (sel)   _selectedPacifiers.add(id);
-                          else       _selectedPacifiers.remove(id);
+                          if (sel) _selectedPacifiers.add(id);
+                          else _selectedPacifiers.remove(id);
                         });
                       },
                     ),

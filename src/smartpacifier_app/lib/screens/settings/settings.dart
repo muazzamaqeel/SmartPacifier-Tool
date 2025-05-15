@@ -9,7 +9,7 @@ class Settings extends StatefulWidget {
   const Settings({
     super.key,
     required this.isDark,
-    required this.onThemeChanged,
+    required this.onThemeChanged, required String clientId,
   });
 
   @override

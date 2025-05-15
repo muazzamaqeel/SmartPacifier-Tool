@@ -1,10 +1,11 @@
 // File: lib/screens/app_shell.dart
 
 import 'package:flutter/material.dart';
-import 'sidebar.dart';
+import 'package:smartpacifier_app/components/sidebar/sidebar.dart';
 import '../../screens/active_monitoring/activemonitoring.dart';
 import '../../screens/active_monitoring/campaigncreation.dart';
-import '../../screens/settings/settings.dart';
+import 'package:smartpacifier_app/screens/settings/settings.dart';
+import '../../client_layer/connector.dart';
 
 class AppShell extends StatefulWidget {
   final bool isDark;
@@ -21,25 +22,43 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  SidebarItem _selected = SidebarItem.activeMonitoring;
-  bool _railVisible = false;  // start closed if you like
+  final Connector _connector = Connector();
+  late final Stream<List<String>> _stream;
+  List<String> _clients = [];
+  String? _selectedClient;
+  SidebarItem _selectedItem = SidebarItem.activeMonitoring;
+  bool _railVisible = true;
 
-  Widget _buildPage() {
-    switch (_selected) {
+  @override
+  void initState() {
+    super.initState();
+    _stream = _connector.clientsStream;
+    _stream.listen((list) {
+      setState(() {
+        _clients = list;
+        _selectedClient ??= list.isNotEmpty ? list.first : null;
+      });
+    });
+  }
+
+  Widget _page() {
+    final id = _selectedClient!;
+    switch (_selectedItem) {
       case SidebarItem.activeMonitoring:
-        return const ActiveMonitoring();
+        return ActiveMonitoring(clientId: id);
       case SidebarItem.campaignCreation:
-        return const CampaignCreation();
+        return CampaignCreation(clientId: id);
       case SidebarItem.settings:
         return Settings(
+          clientId: id,
           isDark: widget.isDark,
           onThemeChanged: widget.onThemeChanged,
         );
     }
   }
 
-  String _titleFor(SidebarItem item) {
-    switch (item) {
+  String _title() {
+    switch (_selectedItem) {
       case SidebarItem.activeMonitoring:
         return 'Active Monitoring';
       case SidebarItem.campaignCreation:
@@ -55,26 +74,25 @@ class _AppShellState extends State<AppShell> {
       body: SafeArea(
         child: Row(
           children: [
-            // ← only build the rail when it's visible
-            if (_railVisible) ...[
+            if (_railVisible && _clients.isNotEmpty) ...[
               Sidebar(
-                selectedItem: _selected,
-                onItemSelected: (it) => setState(() => _selected = it),
-                onClose: () => setState(() => _railVisible = false),
+                clients: _clients,
+                selectedClient: _selectedClient,
+                onClientSelected: (c) => setState(() => _selectedClient = c),
+                selectedItem: _selectedItem,
+                onItemSelected: (it) => setState(() => _selectedItem = it),
+                isExtended: true,
+                onToggle: () => setState(() => _railVisible = false),
               ),
-              const VerticalDivider(width: 1, thickness: 1),
+              const VerticalDivider(width: 1),
             ],
-
-            // main content
             Expanded(
               child: Column(
                 children: [
-                  // header bar with toggle when rail is hidden
                   Container(
-                    width: double.infinity,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16, vertical: 12),
-                    color: Theme.of(context).scaffoldBackgroundColor,
+                    alignment: Alignment.centerLeft,
                     child: Row(
                       children: [
                         if (!_railVisible)
@@ -84,19 +102,21 @@ class _AppShellState extends State<AppShell> {
                                 setState(() => _railVisible = true),
                           ),
                         Text(
-                          _titleFor(_selected),
+                          _selectedClient == null
+                              ? 'Waiting for backends…'
+                              : '${_title()} — $_selectedClient',
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ],
                     ),
                   ),
                   const Divider(height: 1),
-
-                  // the selected page
                   Expanded(
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
-                      child: _buildPage(),
+                      child: _selectedClient == null
+                          ? const Center(child: Text('Waiting for backends…'))
+                          : _page(),
                     ),
                   ),
                 ],

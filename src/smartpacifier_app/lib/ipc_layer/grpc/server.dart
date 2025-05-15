@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:grpc/grpc.dart';
 
 // Generated bits
@@ -13,12 +14,18 @@ class MyServiceImpl extends MyServiceBase {
       ServiceCall call,
       Stream<PayloadMessage> request,
       ) async {
-    print('🔔 publishSensorData() invoked');
+    // Read the metadata header (no .first since it's a String)
+    final backendName = call.clientMetadata?['backend-name'] ?? 'unknown_backend';
+
+    debugPrint('🔔 publishSensorData() invoked from $backendName');
     await for (final msg in request) {
-      print('   → got payload.sensorData: ${msg.sensorData}');
+      // Stamp each message’s sensorGroup with the backend name
+      msg.sensorData.sensorGroup = backendName;
+
+      debugPrint('   → [$backendName] got payload.sensorData: ${msg.sensorData}');
       _controller.add(msg);
     }
-    print('🔒 publishSensorData() stream closed');
+    debugPrint('🔒 publishSensorData() stream closed for $backendName');
     return Empty();
   }
 
@@ -30,11 +37,12 @@ final myService = MyServiceImpl();
 
 /// Starts the in‐app server on [port]
 Future<void> startGrpcServer({int port = 50051}) async {
-  final server = Server(
-    [myService],
-    <Interceptor>[],
-    CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+  // Use the new Server.create() API instead of the deprecated constructor
+  final server = await Server.create(
+    services: [myService],
+    interceptors: [],
+    codecRegistry: CodecRegistry(codecs: [GzipCodec(), IdentityCodec()]),
   );
   await server.serve(port: port);
-  print('🚀 gRPC server listening on port $port');
+  debugPrint('🚀 gRPC server listening on port $port');
 }
