@@ -13,7 +13,7 @@ import 'graphcreation.dart';
 
 class ActiveMonitoring extends StatefulWidget {
   final String backend;
-  const ActiveMonitoring({super.key, required this.backend});
+  const ActiveMonitoring({super.key, required this.backend});  // super.key pattern
 
   @override
   State<ActiveMonitoring> createState() => _ActiveMonitoringState();
@@ -23,20 +23,15 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
     with SingleTickerProviderStateMixin {
   StreamSubscription<PayloadMessage>? _sub;
 
-  /// sensorType → groupName → seriesName → list of spots
+  /// Full data buffer: sensorType → groupName → seriesName → list of spots
   final Map<String, Map<String, Map<String, List<FlSpot>>>> _buffers = {};
 
-  /// which pacifier IDs are checked
   final Set<String> _selectedPacifiers = {};
-
-  /// in-app log lines
   final List<String> _logs = [];
 
   late final TabController _tabController;
   int _nextX = 0;
   bool _pendingSetState = false;
-
-  static const int _maxLogs = 200;
 
   final List<Color> _palette = [
     Colors.blue, Colors.red, Colors.green,
@@ -64,20 +59,33 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
   }
 
   void _subscribe() {
-    _sub = Connector().dataStreamFor(widget.backend).listen((pm) {
+    _sub = Connector()
+        .dataStreamFor(widget.backend)
+        .listen((pm) {
       _handleSensorData(pm.sensorData);
 
-      final ts = DateTime.now().toIso8601String();
+      // Log everything
+      final sd = pm.sensorData;
+      final dataMapStr = sd.dataMap.entries.map((e) {
+        final bytes = e.value is Uint8List
+            ? (e.value as Uint8List)
+            : Uint8List.fromList(e.value);
+        return '${e.key}:[${bytes.join(',')}]';
+      }).join(', ');
+
+      final line = '[${DateTime.now().toIso8601String()}] '
+          '[${widget.backend}] pacifier=${sd.pacifierId}, '
+          'type=${sd.sensorType}, group=${sd.sensorGroup}, data={$dataMapStr}';
+
       setState(() {
-        _logs.add('[$ts] Received from ${widget.backend}: '
-            'pacifierId=${pm.sensorData.pacifierId}');
-        if (_logs.length > _maxLogs) _logs.removeAt(0);
+        _logs.add(line);
+        if (_logs.length > 200) _logs.removeAt(0);
       });
     }, onError: (e) {
-      final ts = DateTime.now().toIso8601String();
       setState(() {
-        _logs.add('[$ts] Stream error from ${widget.backend}: $e');
-        if (_logs.length > _maxLogs) _logs.removeAt(0);
+        _logs.add('[${DateTime.now().toIso8601String()}] '
+            'Error from ${widget.backend}: $e');
+        if (_logs.length > 200) _logs.removeAt(0);
       });
     });
   }
@@ -85,14 +93,14 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
   void _handleSensorData(protos.SensorData sd) {
     final t = (_nextX++).toDouble();
 
-    // 1) sensorType → groupName map
-    final typeMap = _buffers.putIfAbsent(sd.sensorType, () => {});
+    // 1) sensorType → groupName → seriesName → spots
+    final typeMap = _buffers.putIfAbsent(sd.sensorType, () => <String, Map<String, List<FlSpot>>>{});
 
-    // 2) groupName key
+    // 2) groupName = "sensorGroup_pacifierId"
     final groupName = '${sd.sensorGroup}_${sd.pacifierId}';
-    final groupMap = typeMap.putIfAbsent(groupName, () => {});
+    final groupMap = typeMap.putIfAbsent(groupName, () => <String, List<FlSpot>>{});
 
-    // 3) decode into FlSpots
+    // 3) decode each dataMap entry into FlSpot lists
     sd.dataMap.forEach((key, raw) {
       final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
       if (bytes.length < 4) return;
@@ -118,7 +126,7 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
       }
     });
 
-    // throttle setState so we don’t rebuild on every spot
+    // Throttle rebuilds
     if (!_pendingSetState) {
       _pendingSetState = true;
       Future.microtask(() {
@@ -137,38 +145,33 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
 
   @override
   Widget build(BuildContext context) {
-    // Build a sorted list of all pacifier IDs we’ve seen
+    // Dynamically gather pacifier IDs from buffer keys
     final pacifierIds = <String>{};
     for (final groups in _buffers.values) {
       for (final groupName in groups.keys) {
         final parts = groupName.split('_');
-        if (parts.isNotEmpty) pacifierIds.add(parts.last);
+        pacifierIds.add(parts.last);
       }
     }
     pacifierIds.removeWhere((id) => id.isEmpty);
     final pacifierList = pacifierIds.toList()
-      ..sort((a, b) =>
-          (int.tryParse(a) ?? 0).compareTo(int.tryParse(b) ?? 0));
+      ..sort((a, b) => int.tryParse(a)!.compareTo(int.tryParse(b)!));
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Active Monitoring — ${widget.backend}'),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Graphs'),
-            Tab(text: 'Logs'),
-          ],
+          tabs: const [Tab(text: 'Graphs'), Tab(text: 'Logs')],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          // ─── GRAPHS TAB ───────────────────────
+          // ────── GRAPHS ───────────────────────────
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Filter chips
               if (pacifierList.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.all(8),
@@ -183,11 +186,9 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                             selected: _selectedPacifiers.contains(id),
                             onSelected: (sel) {
                               setState(() {
-                                if (sel) {
-                                  _selectedPacifiers.add(id);
-                                } else {
-                                  _selectedPacifiers.remove(id);
-                                }
+                                sel
+                                    ? _selectedPacifiers.add(id)
+                                    : _selectedPacifiers.remove(id);
                               });
                             },
                           ),
@@ -197,72 +198,52 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                   ),
                 ),
 
-              // Graph area
               Expanded(
                 child: _selectedPacifiers.isEmpty
-                    ? const Center(
-                  child: Text(
-                    '❗️ No pacifier selected — check a chip above to see its graphs',
-                  ),
-                )
+                    ? const Center(child: Text('Select a chip to show graphs'))
                     : ListView(
-                  children: _selectedPacifiers.map((id) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Header
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 16),
-                          child: Text(
-                            'Pacifier $id',
+                  children: [
+                    for (final id in _selectedPacifiers) ...[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        child: Text('Pacifier $id',
                             style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-
-                        // Build only this pacifier’s graphs
-                        Builder(builder: (_) {
-                          // filtered: sensorType → groupName → seriesMap
-                          final filtered = <String,
-                              Map<String, Map<String, List<FlSpot>>>>{};
-                          _buffers.forEach((sensorType, groups) {
-                            final subGroups =
-                            <String, Map<String, List<FlSpot>>>{};
-                            groups.forEach((groupName, seriesMap) {
-                              if (groupName.endsWith('_$id')) {
-                                subGroups[groupName] = seriesMap;
-                              }
-                            });
-                            if (subGroups.isNotEmpty) {
-                              filtered[sensorType] = subGroups;
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                      Builder(builder: (_) {
+                        // Build the correct 3-level map for buildGraphs:
+                        final filtered =
+                        <String, Map<String, Map<String, List<FlSpot>>>>{};
+                        _buffers.forEach((stype, groups) {
+                          final sub = <String, Map<String, List<FlSpot>>>{};
+                          groups.forEach((gname, series) {
+                            if (gname.endsWith('_$id')) {
+                              sub[gname] = series;
                             }
                           });
+                          if (sub.isNotEmpty) filtered[stype] = sub;
+                        });
 
-                          if (filtered.isEmpty) {
-                            return const SizedBox.shrink();
-                          }
-                          return GraphCreation.buildGraphs(
-                              filtered, _palette);
-                        }),
-                      ],
-                    );
-                  }).toList(),
+                        return filtered.isEmpty
+                            ? const SizedBox()
+                            : GraphCreation.buildGraphs(
+                            filtered, _palette);
+                      }),
+                    ],
+                  ],
                 ),
               ),
             ],
           ),
 
-          // ─── LOGS TAB ────────────────────────
+          // ────── LOGS ────────────────────────────
           ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: _logs.length,
-            itemBuilder: (_, i) => Text(
-              _logs[i],
-              style: const TextStyle(fontSize: 12),
-            ),
+            itemBuilder: (_, i) =>
+                Text(_logs[i], style: const TextStyle(fontSize: 12)),
           ),
         ],
       ),
