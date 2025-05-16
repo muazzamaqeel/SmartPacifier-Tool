@@ -1,5 +1,3 @@
-// File: lib/components/sidebar/sidebar.dart
-
 import 'package:flutter/material.dart';
 import '../../screens/active_monitoring/activemonitoring.dart';
 import '../../screens/active_monitoring/campaigncreation.dart';

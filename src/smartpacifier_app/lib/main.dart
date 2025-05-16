@@ -25,10 +25,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'SmartPacifier App',
       theme: _isDark ? darkTheme : lightTheme,
-      home: AppShell(
-        isDark: _isDark,
-        onThemeChanged: _toggleTheme,
-      ),
+      home: const AppShell(),
     );
   }
 }

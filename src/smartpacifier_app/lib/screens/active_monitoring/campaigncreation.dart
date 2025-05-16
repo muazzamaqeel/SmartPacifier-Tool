@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 
 class CampaignCreation extends StatelessWidget {
-  final String clientId;
-  const CampaignCreation({super.key, required this.clientId});
+  final String backend;
+  const CampaignCreation({Key? key, required this.backend}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create Campaign — $clientId')),
-      body: const Center(child: Text('Campaign creation UI goes here')),
+      appBar: AppBar(title: Text('Create Campaign — $backend')),
+      body: Center(child: Text('Campaign creation UI for $backend')),
     );
   }
 }

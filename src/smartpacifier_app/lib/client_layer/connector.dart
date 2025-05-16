@@ -1,47 +1,38 @@
-// File: client_layer/connector.dart
-
 import 'dart:async';
-import '../ipc_layer/grpc/server.dart' show myService;
-import '../generated/myservice.pbgrpc.dart' show PayloadMessage;
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:smartpacifier_app/ipc_layer/grpc/server.dart' show myService;
+import 'package:smartpacifier_app/generated/myservice.pbgrpc.dart';
 
-/// Discovers backend “clients” via the gRPC sensor stream and broadcasts the current list.
+/// Discovers actual backends by watching incoming stream,
+/// and exposes per-backend filtered data streams.
 class Connector {
   Connector._internal() {
-    _initDetection();
+    // Whenever *any* payload arrives, record its sensorGroup
+    myService.onSensorData.listen((pm) {
+      final name = pm.sensorData.sensorGroup;
+      if (_clients.add(name)) {
+        _ctrl.add(_clients.toList());
+      }
+    }, onError: (e) {
+      debugPrint('❌ Connector got error: $e');
+    });
   }
   static final Connector _instance = Connector._internal();
   factory Connector() => _instance;
 
-  final Set<String> _clients = {};
+  final Set<String> _clients = <String>{};
   final _ctrl = StreamController<List<String>>.broadcast();
 
-  /// Emits whenever the backend list changes.
+  /// Emits the *live* list of backend names as soon as they first send data.
   Stream<List<String>> get clientsStream => _ctrl.stream;
 
-  /// Current snapshot.
+  /// Snapshot of current backends.
   List<String> get clients => List.unmodifiable(_clients);
 
-  void _initDetection() {
-    // Listen to the gRPC sensor stream to detect active backend groups.
-    myService.onSensorData.listen((PayloadMessage msg) {
-      if (!msg.hasSensorData()) return;
-      final group = msg.sensorData.sensorGroup;
-      if (group.isNotEmpty && _clients.add(group)) {
-        _ctrl.add(_clients.toList());
-      }
-    }, onError: (e) {
-      debugPrint('Connector error: $e');
-    });
-  }
-
-  /// Manually add a backend (if needed)
-  void addClient(String name) {
-    if (_clients.add(name)) _ctrl.add(_clients.toList());
-  }
-
-  /// Manually remove a backend (if needed)
-  void removeClient(String name) {
-    if (_clients.remove(name)) _ctrl.add(_clients.toList());
+  /// Stream of only those PayloadMessages whose sensorGroup matches [backendName].
+  Stream<PayloadMessage> dataStreamFor(String backendName) {
+    return myService.onSensorData.where(
+          (pm) => pm.sensorData.sensorGroup == backendName,
+    );
   }
 }

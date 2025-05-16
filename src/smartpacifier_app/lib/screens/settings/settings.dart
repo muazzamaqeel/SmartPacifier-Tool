@@ -1,16 +1,13 @@
-// File: lib/screens/settings/settings.dart
-
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
-  final bool isDark;
-  final ValueChanged<bool> onThemeChanged;
+  /// The backend whose settings we’re editing
+  final String backend;
 
   const Settings({
-    super.key,
-    required this.isDark,
-    required this.onThemeChanged, required String clientId,
-  });
+    Key? key,
+    required this.backend,
+  }) : super(key: key);
 
   @override
   State<Settings> createState() => _SettingsState();
@@ -30,24 +27,14 @@ class _SettingsState extends State<Settings> {
             RadioListTile<bool>(
               title: const Text('Light'),
               value: false,
-              groupValue: widget.isDark,
-              onChanged: (v) {
-                if (v != null) {
-                  widget.onThemeChanged(v);
-                  Navigator.of(context).pop();
-                }
-              },
+              groupValue: false, // remove theme logic or wire in your own
+              onChanged: (_) => Navigator.of(context).pop(),
             ),
             RadioListTile<bool>(
               title: const Text('Dark'),
               value: true,
-              groupValue: widget.isDark,
-              onChanged: (v) {
-                if (v != null) {
-                  widget.onThemeChanged(v);
-                  Navigator.of(context).pop();
-                }
-              },
+              groupValue: false,
+              onChanged: (_) => Navigator.of(context).pop(),
             ),
           ],
         ),
@@ -57,49 +44,44 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return ListView(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      children: [
-        // Header
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        ),
-        const Divider(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings — ${widget.backend}'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        children: [
+          // Broker Check (Account)
+          ListTile(
+            leading: const Icon(Icons.person_outline),
+            title: const Text('Broker Check'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {}, // TODO: navigate if needed
+          ),
+          const Divider(),
 
-        // Account
-        ListTile(
-          leading: const Icon(Icons.person_outline),
-          title: const Text('Broker Check'),
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // TODO: Navigate to Account screen
-          },
-        ),
-        const Divider(),
+          // Theme selector
+          ListTile(
+            leading: const Icon(Icons.color_lens_outlined),
+            title: const Text('Theme'),
+            subtitle: const Text('Light / Dark'), // or reflect actual
+            trailing: const Icon(Icons.chevron_right),
+            onTap: _showThemeDialog,
+          ),
+          const Divider(),
 
-        // Theme
-        ListTile(
-          leading: const Icon(Icons.color_lens_outlined),
-          title: const Text('Theme'),
-          subtitle: Text(widget.isDark ? 'Dark' : 'Light'),
-          trailing: const Icon(Icons.chevron_right),
-          onTap: _showThemeDialog,
-        ),
-        const Divider(),
+          // Notifications toggle
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.notifications_outlined),
+            title: const Text('Enable Notifications'),
+            value: _notificationsEnabled,
+            onChanged: (v) => setState(() => _notificationsEnabled = v),
+          ),
+          const Divider(),
 
-        // Notifications
-        SwitchListTile.adaptive(
-          secondary: const Icon(Icons.notifications_outlined),
-          title: const Text('Enable Notifications'),
-          value: _notificationsEnabled,
-          onChanged: (v) => setState(() => _notificationsEnabled = v),
-        ),
-        const Divider(),
-
-        // You can add more settings here:
-        // e.g. Privacy, About, etc.
-      ],
+          // Add any additional settings here…
+        ],
+      ),
     );
   }
 }
