@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
-  /// The backend whose settings we’re editing
   final String backend;
+  final bool isDark;
+  final ValueChanged<bool> onThemeChanged;
 
   const Settings({
     Key? key,
     required this.backend,
+    required this.isDark,
+    required this.onThemeChanged,
   }) : super(key: key);
 
   @override
@@ -14,7 +17,15 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool _notificationsEnabled = true;
+  late bool _notificationsEnabled;
+  late bool _isDark;
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationsEnabled = true;
+    _isDark = widget.isDark;
+  }
 
   void _showThemeDialog() {
     showDialog(
@@ -27,14 +38,26 @@ class _SettingsState extends State<Settings> {
             RadioListTile<bool>(
               title: const Text('Light'),
               value: false,
-              groupValue: false, // remove theme logic or wire in your own
-              onChanged: (_) => Navigator.of(context).pop(),
+              groupValue: _isDark,
+              onChanged: (v) {
+                if (v != null) {
+                  setState(() => _isDark = v);
+                  widget.onThemeChanged(v);
+                  Navigator.of(context).pop();
+                }
+              },
             ),
             RadioListTile<bool>(
               title: const Text('Dark'),
               value: true,
-              groupValue: false,
-              onChanged: (_) => Navigator.of(context).pop(),
+              groupValue: _isDark,
+              onChanged: (v) {
+                if (v != null) {
+                  setState(() => _isDark = v);
+                  widget.onThemeChanged(v);
+                  Navigator.of(context).pop();
+                }
+              },
             ),
           ],
         ),
@@ -51,26 +74,23 @@ class _SettingsState extends State<Settings> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
-          // Broker Check (Account)
           ListTile(
             leading: const Icon(Icons.person_outline),
             title: const Text('Broker Check'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () {}, // TODO: navigate if needed
+            onTap: () {}, // TODO
           ),
           const Divider(),
 
-          // Theme selector
           ListTile(
             leading: const Icon(Icons.color_lens_outlined),
             title: const Text('Theme'),
-            subtitle: const Text('Light / Dark'), // or reflect actual
+            subtitle: Text(_isDark ? 'Dark' : 'Light'),
             trailing: const Icon(Icons.chevron_right),
             onTap: _showThemeDialog,
           ),
           const Divider(),
 
-          // Notifications toggle
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.notifications_outlined),
             title: const Text('Enable Notifications'),
@@ -79,7 +99,7 @@ class _SettingsState extends State<Settings> {
           ),
           const Divider(),
 
-          // Add any additional settings here…
+          // …any other settings tiles you like…
         ],
       ),
     );

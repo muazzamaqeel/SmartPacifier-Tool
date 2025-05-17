@@ -18,14 +18,20 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isDark = true;
-  void _toggleTheme(bool isDark) => setState(() => _isDark = isDark);
+
+  void _toggleTheme(bool isDark) {
+    setState(() => _isDark = isDark);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SmartPacifier App',
       theme: _isDark ? darkTheme : lightTheme,
-      home: const AppShell(),
+      home: AppShell(
+        isDark: _isDark,
+        onThemeChanged: _toggleTheme,
+      ),
     );
   }
 }

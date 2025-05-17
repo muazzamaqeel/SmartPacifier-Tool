@@ -6,7 +6,14 @@ import 'package:smartpacifier_app/screens/active_monitoring/campaigncreation.dar
 import 'package:smartpacifier_app/screens/settings/settings.dart';
 
 class AppShell extends StatefulWidget {
-  const AppShell({Key? key}) : super(key: key);
+  final bool isDark;
+  final ValueChanged<bool> onThemeChanged;
+
+  const AppShell({
+    Key? key,
+    required this.isDark,
+    required this.onThemeChanged,
+  }) : super(key: key);
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -22,7 +29,6 @@ class _AppShellState extends State<AppShell> {
   @override
   void initState() {
     super.initState();
-    // Listen to live backend list
     _connector.clientsStream.listen((list) {
       setState(() {
         _clients = list;
@@ -41,7 +47,11 @@ class _AppShellState extends State<AppShell> {
       case SidebarItem.campaignCreation:
         return CampaignCreation(backend: _selectedClient!);
       case SidebarItem.settings:
-        return Settings(backend: _selectedClient!);
+        return Settings(
+          backend: _selectedClient!,
+          isDark: widget.isDark,
+          onThemeChanged: widget.onThemeChanged,
+        );
     }
   }
 
@@ -53,7 +63,6 @@ class _AppShellState extends State<AppShell> {
           Sidebar(
             clients: _clients,
             selectedClient: _selectedClient,
-            // When the user taps a client, immediately switch into Active Monitoring
             onClientSelected: (c) => setState(() {
               _selectedClient = c;
               _selectedItem = SidebarItem.activeMonitoring;
