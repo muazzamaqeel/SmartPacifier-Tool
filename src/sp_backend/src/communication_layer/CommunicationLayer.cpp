@@ -56,7 +56,7 @@ void CommunicationLayer::startCommunicationServices() {
     grpcClient_.init("127.0.0.1", 50051);
 
     // batching setup
-    constexpr size_t batchSize = 5;
+    constexpr size_t batchSize = 1;
     broker::globalQueue().setBatchCallback(
       [this](const std::vector<std::string>& batch) {
         for (auto &rawMsg : batch) {

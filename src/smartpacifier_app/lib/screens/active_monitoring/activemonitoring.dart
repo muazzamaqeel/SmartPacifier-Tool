@@ -13,7 +13,7 @@ import 'graphcreation.dart';
 
 class ActiveMonitoring extends StatefulWidget {
   final String backend;
-  const ActiveMonitoring({super.key, required this.backend});  // super.key pattern
+  const ActiveMonitoring({super.key, required this.backend});
 
   @override
   State<ActiveMonitoring> createState() => _ActiveMonitoringState();
@@ -23,7 +23,7 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
     with SingleTickerProviderStateMixin {
   StreamSubscription<PayloadMessage>? _sub;
 
-  /// Full data buffer: sensorType → groupName → seriesName → list of spots
+  /// sensorType → groupName → seriesName → list of spots
   final Map<String, Map<String, Map<String, List<FlSpot>>>> _buffers = {};
 
   final Set<String> _selectedPacifiers = {};
@@ -31,7 +31,6 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
 
   late final TabController _tabController;
   int _nextX = 0;
-  bool _pendingSetState = false;
 
   final List<Color> _palette = [
     Colors.blue, Colors.red, Colors.green,
@@ -64,7 +63,7 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
         .listen((pm) {
       _handleSensorData(pm.sensorData);
 
-      // Log everything
+      // Log each packet
       final sd = pm.sensorData;
       final dataMapStr = sd.dataMap.entries.map((e) {
         final bytes = e.value is Uint8List
@@ -94,13 +93,19 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
     final t = (_nextX++).toDouble();
 
     // 1) sensorType → groupName → seriesName → spots
-    final typeMap = _buffers.putIfAbsent(sd.sensorType, () => <String, Map<String, List<FlSpot>>>{});
+    final typeMap = _buffers.putIfAbsent(
+      sd.sensorType,
+          () => <String, Map<String, List<FlSpot>>>{},
+    );
 
-    // 2) groupName = "sensorGroup_pacifierId"
+    // 2) groupName = "$sensorGroup\_$pacifierId"
     final groupName = '${sd.sensorGroup}_${sd.pacifierId}';
-    final groupMap = typeMap.putIfAbsent(groupName, () => <String, List<FlSpot>>{});
+    final groupMap = typeMap.putIfAbsent(
+      groupName,
+          () => <String, List<FlSpot>>{},
+    );
 
-    // 3) decode each dataMap entry into FlSpot lists
+    // 3) decode bytes → FlSpot series
     sd.dataMap.forEach((key, raw) {
       final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
       if (bytes.length < 4) return;
@@ -126,14 +131,8 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
       }
     });
 
-    // Throttle rebuilds
-    if (!_pendingSetState) {
-      _pendingSetState = true;
-      Future.microtask(() {
-        if (mounted) setState(() {});
-        _pendingSetState = false;
-      });
-    }
+    // ——— IMMEDIATE REDRAW ON EVERY PACKET —————————————————————————
+    if (mounted) setState(() {});
   }
 
   @override
@@ -145,7 +144,7 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
 
   @override
   Widget build(BuildContext context) {
-    // Dynamically gather pacifier IDs from buffer keys
+    // Extract pacifier IDs
     final pacifierIds = <String>{};
     for (final groups in _buffers.values) {
       for (final groupName in groups.keys) {
@@ -162,13 +161,16 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
         title: Text('Active Monitoring — ${widget.backend}'),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [Tab(text: 'Graphs'), Tab(text: 'Logs')],
+          tabs: const [
+            Tab(text: 'Graphs'),
+            Tab(text: 'Logs'),
+          ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          // ────── GRAPHS ───────────────────────────
+          // ─────── GRAPHS ─────────────────────────────────────────
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -186,9 +188,11 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                             selected: _selectedPacifiers.contains(id),
                             onSelected: (sel) {
                               setState(() {
-                                sel
-                                    ? _selectedPacifiers.add(id)
-                                    : _selectedPacifiers.remove(id);
+                                if (sel) {
+                                  _selectedPacifiers.add(id);
+                                } else {
+                                  _selectedPacifiers.remove(id);
+                                }
                               });
                             },
                           ),
@@ -197,7 +201,6 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                     ),
                   ),
                 ),
-
               Expanded(
                 child: _selectedPacifiers.isEmpty
                     ? const Center(child: Text('Select a chip to show graphs'))
@@ -207,15 +210,17 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 8),
-                        child: Text('Pacifier $id',
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Pacifier $id',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       Builder(builder: (_) {
-                        // Build the correct 3-level map for buildGraphs:
-                        final filtered =
-                        <String, Map<String, Map<String, List<FlSpot>>>>{};
+                        // Filter buffers down to this pacifier
+                        final filtered = <String, Map<String, Map<String, List<FlSpot>>>>{};
                         _buffers.forEach((stype, groups) {
                           final sub = <String, Map<String, List<FlSpot>>>{};
                           groups.forEach((gname, series) {
@@ -225,7 +230,6 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
                           });
                           if (sub.isNotEmpty) filtered[stype] = sub;
                         });
-
                         return filtered.isEmpty
                             ? const SizedBox()
                             : GraphCreation.buildGraphs(
@@ -238,7 +242,7 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
             ],
           ),
 
-          // ────── LOGS ────────────────────────────
+          // ─────── LOGS ────────────────────────────────────────────
           ListView.builder(
             padding: const EdgeInsets.all(8),
             itemCount: _logs.length,
