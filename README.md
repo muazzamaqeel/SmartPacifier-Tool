@@ -105,6 +105,14 @@ cmake-build-debug/sp_backend.exe
 ```
 
 ### Step 2 - Building the FrontEnd
+```bash
+protoc \
+  --proto_path=lib/ipc_layer/grpc \
+  --proto_path=lib/generated \
+  --dart_out=grpc:lib/generated \
+  lib/ipc_layer/grpc/sensor_data.proto \
+  lib/ipc_layer/grpc/myservice.proto
+```
 #### Main Dart (Flutter)
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
