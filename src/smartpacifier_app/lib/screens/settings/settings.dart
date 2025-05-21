@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
@@ -65,6 +66,25 @@ class _SettingsState extends State<Settings> {
     );
   }
 
+  Future<void> _checkBroker() async {
+    const host = '127.0.0.1';
+    const port = 1883;
+    try {
+      final socket = await Socket.connect(host, port, timeout: const Duration(seconds: 2));
+      socket.destroy();
+      _showSnackBar('✅ Mosquitto broker is running on $host:$port');
+    } catch (_) {
+      _showSnackBar('❌ No Mosquitto broker found on $host:$port');
+    }
+  }
+
+  void _showSnackBar(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message), duration: const Duration(seconds: 3)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +98,7 @@ class _SettingsState extends State<Settings> {
             leading: const Icon(Icons.person_outline),
             title: const Text('Broker Check'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () {}, // TODO
+            onTap: _checkBroker,
           ),
           const Divider(),
 
@@ -98,8 +118,6 @@ class _SettingsState extends State<Settings> {
             onChanged: (v) => setState(() => _notificationsEnabled = v),
           ),
           const Divider(),
-
-          // …any other settings tiles you like…
         ],
       ),
     );
