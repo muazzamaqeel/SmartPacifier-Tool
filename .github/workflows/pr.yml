@@ -1,53 +1,53 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+#name: .NET
 
-on:
-  push:
-    branches: [ "Staging-Environment", "main-Production-Environment" ]
-  pull_request:
-    branches: [ "Staging-Environment", "main-Production-Environment" ]
-  schedule:
+#on:
+ # push:
+  #  branches: [ "Staging-Environment", "main-Production-Environment" ]
+  #pull_request:
+   # branches: [ "Staging-Environment", "main-Production-Environment" ]
+  #schedule:
     # Runs the workflow every day
-    - cron:  '45 11,11 * * *'
-jobs:
-  build:
+   # - cron:  '45 11,11 * * *'
+#jobs:
+ # build:
 
-    runs-on: windows-latest
+  #  runs-on: windows-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Cache .NET packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/Smart Pacifier - Tool.csproj') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
-    - name: Build
-      run: dotnet build --no-restore
-      working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
+   # steps:
+    #- uses: actions/checkout@v4
+    #- name: Setup .NET
+     # uses: actions/setup-dotnet@v4
+     # with:
+      #  dotnet-version: 8.0.x
+    #- name: Cache .NET packages
+     # uses: actions/cache@v3
+      #with:
+       # path: ~/.nuget/packages
+        #key: ${{ runner.os }}-nuget-${{ hashFiles('**/Smart Pacifier - Tool.csproj') }}
+        #restore-keys: |
+          # ${{ runner.os }}-nuget-
+    #- name: Restore dependencies
+     # run: dotnet restore
+     # working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
+    #- name: Build
+     # run: dotnet build --no-restore
+      #working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
+    #- name: Test
+     # run: dotnet test --no-build --verbosity normal
+      #working-directory: 'Source Code/Front-End/UI (WPF)/Smart Pacifier - Tool/Smart Pacifier - Tool'
 
           # SmartPacifier - TestingFramework (Second Application)
-    - name: Restore dependencies for SmartPacifier - TestingFramework
-      run: dotnet restore
-      working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
+    #- name: Restore dependencies for SmartPacifier - TestingFramework
+     # run: dotnet restore
+      #working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
 
-    - name: Build SmartPacifier - TestingFramework
-      run: dotnet build --no-restore
-      working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
+    #- name: Build SmartPacifier - TestingFramework
+     # run: dotnet build --no-restore
+      #working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
 
-    - name: Test SmartPacifier - TestingFramework
-      run: dotnet test --no-build --verbosity normal
-      working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
+    #- name: Test SmartPacifier - TestingFramework
+     # run: dotnet test --no-build --verbosity normal
+      #working-directory: 'Testing_Integration_Environment/SmartPacifier - TestingFramework'
