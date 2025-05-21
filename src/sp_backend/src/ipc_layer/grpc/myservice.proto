@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package myservice;
+
+import "google/protobuf/empty.proto";
+import "sensor_data.proto";
+
+service MyService{
+    rpc StreamMessages(google.protobuf.Empty)
+            returns (stream PayloadMessage);
+}
+
+message PayloadMessage {
+    oneof payload {
+        Protos.SensorData sensor_data = 1;
+    }
+}

@@ -1,0 +1,9 @@
+# IntelliJ/IDEA
+**/.idea/
+
+# backend log
+src/sp_backend/backend.log
+
+# grpc externals
+src/sp_backend/src/external_libs/grpc/
+
