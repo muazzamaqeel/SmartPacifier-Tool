@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 import '../../client_layer/connector.dart';
@@ -20,7 +21,7 @@ class ActiveMonitoring extends StatefulWidget {
 }
 
 class _ActiveMonitoringState extends State<ActiveMonitoring>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   StreamSubscription<PayloadMessage>? _sub;
 
   /// sensorType → groupName → seriesName → list of spots
@@ -32,16 +33,49 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
   late final TabController _tabController;
   int _nextX = 0;
 
+  // measure inflow rate
+  int _packetCount = 0;
+  final ValueNotifier<double> _hzNotifier = ValueNotifier(0);
+
+  Timer? _hzTimer;
+
+  // ticker for ~60Hz redraw
+  late final Ticker _ticker;
+  bool _needsRebuild = false;
+
   final List<Color> _palette = [
-    Colors.blue, Colors.red, Colors.green,
-    Colors.orange, Colors.purple, Colors.teal,
-    Colors.amber, Colors.indigo, Colors.cyan, Colors.lime,
+    Colors.blue,
+    Colors.red,
+    Colors.green,
+    Colors.orange,
+    Colors.purple,
+    Colors.teal,
+    Colors.amber,
+    Colors.indigo,
+    Colors.cyan,
+    Colors.lime,
   ];
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+
+    // Ticker to rebuild only when needed (~60FPS)
+    _ticker = createTicker((_) {
+      if (_needsRebuild && mounted) {
+        setState(() {
+          _needsRebuild = false;
+        });
+      }
+    })..start();
+
+    // Hz counter: update notifier once/sec
+    _hzTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      _hzNotifier.value = _packetCount.toDouble();
+      _packetCount = 0;
+    });
+
     _subscribe();
   }
 
@@ -53,6 +87,9 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
       _buffers.clear();
       _logs.clear();
       _selectedPacifiers.clear();
+      _packetCount = 0;
+      _hzNotifier.value = 0;
+      _needsRebuild = true;
       _subscribe();
     }
   }
@@ -61,9 +98,16 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
     _sub = Connector()
         .dataStreamFor(widget.backend)
         .listen((pm) {
+      // count packet
+      _packetCount++;
+
+      // process into buffers
       _handleSensorData(pm.sensorData);
 
-      // Log each packet
+      // mark for redraw on next tick
+      _needsRebuild = true;
+
+      // append log
       final sd = pm.sensorData;
       final dataMapStr = sd.dataMap.entries.map((e) {
         final bytes = e.value is Uint8List
@@ -76,36 +120,28 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
           '[${widget.backend}] pacifier=${sd.pacifierId}, '
           'type=${sd.sensorType}, group=${sd.sensorGroup}, data={$dataMapStr}';
 
-      setState(() {
-        _logs.add(line);
-        if (_logs.length > 200) _logs.removeAt(0);
-      });
+      _logs.add(line);
+      if (_logs.length > 200) _logs.removeAt(0);
     }, onError: (e) {
-      setState(() {
-        _logs.add('[${DateTime.now().toIso8601String()}] '
-            'Error from ${widget.backend}: $e');
-        if (_logs.length > 200) _logs.removeAt(0);
-      });
+      _logs.add('[${DateTime.now().toIso8601String()}] '
+          'Error from ${widget.backend}: $e');
+      if (_logs.length > 200) _logs.removeAt(0);
+      _needsRebuild = true;
     });
   }
 
   void _handleSensorData(protos.SensorData sd) {
     final t = (_nextX++).toDouble();
-
-    // 1) sensorType → groupName → seriesName → spots
     final typeMap = _buffers.putIfAbsent(
       sd.sensorType,
           () => <String, Map<String, List<FlSpot>>>{},
     );
-
-    // 2) groupName = "$sensorGroup\_$pacifierId"
     final groupName = '${sd.sensorGroup}_${sd.pacifierId}';
     final groupMap = typeMap.putIfAbsent(
       groupName,
           () => <String, List<FlSpot>>{},
     );
 
-    // 3) decode bytes → FlSpot series
     sd.dataMap.forEach((key, raw) {
       final bytes = raw is Uint8List ? raw : Uint8List.fromList(raw);
       if (bytes.length < 4) return;
@@ -130,26 +166,25 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
         }
       }
     });
-
-    // ——— IMMEDIATE REDRAW ON EVERY PACKET —————————————————————————
-    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
     _sub?.cancel();
+    _ticker.dispose();
+    _hzTimer?.cancel();
+    _hzNotifier.dispose();
     _tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // Extract pacifier IDs
+    // extract pacifier IDs
     final pacifierIds = <String>{};
     for (final groups in _buffers.values) {
-      for (final groupName in groups.keys) {
-        final parts = groupName.split('_');
-        pacifierIds.add(parts.last);
+      for (final g in groups.keys) {
+        pacifierIds.add(g.split('_').last);
       }
     }
     pacifierIds.removeWhere((id) => id.isEmpty);
@@ -159,95 +194,111 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
     return Scaffold(
       appBar: AppBar(
         title: Text('Active Monitoring — ${widget.backend}'),
+        actions: [
+          ValueListenableBuilder<double>(
+            valueListenable: _hzNotifier,
+            builder: (_, hz, __) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Center(
+                child: Text(
+                  '${hz.toStringAsFixed(0)} Hz',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Graphs'),
-            Tab(text: 'Logs'),
-          ],
+          tabs: const [Tab(text: 'Graphs'), Tab(text: 'Logs')],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: [
-          // ─────── GRAPHS ─────────────────────────────────────────
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (pacifierList.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: pacifierList.map((id) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: FilterChip(
-                            label: Text('Pacifier $id'),
-                            selected: _selectedPacifiers.contains(id),
-                            onSelected: (sel) {
-                              setState(() {
-                                if (sel) {
-                                  _selectedPacifiers.add(id);
-                                } else {
-                                  _selectedPacifiers.remove(id);
-                                }
-                              });
-                            },
-                          ),
-                        );
-                      }).toList(),
+          // ───── GRAPHS ─────────────────────────────────────────────
+          RepaintBoundary(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (pacifierList.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: pacifierList.map((id) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: FilterChip(
+                              label: Text('Pacifier $id'),
+                              selected: _selectedPacifiers.contains(id),
+                              onSelected: (sel) {
+                                setState(() {
+                                  sel
+                                      ? _selectedPacifiers.add(id)
+                                      : _selectedPacifiers.remove(id);
+                                });
+                              },
+                            ),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
-                ),
-              Expanded(
-                child: _selectedPacifiers.isEmpty
-                    ? const Center(child: Text('Select a chip to show graphs'))
-                    : ListView(
-                  children: [
-                    for (final id in _selectedPacifiers) ...[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        child: Text(
-                          'Pacifier $id',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                Expanded(
+                  child: _selectedPacifiers.isEmpty
+                      ? const Center(child: Text('Select a chip to show graphs'))
+                      : ListView(
+                    children: [
+                      for (final id in _selectedPacifiers) ...[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          child: Text(
+                            'Pacifier $id',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      Builder(builder: (_) {
-                        // Filter buffers down to this pacifier
-                        final filtered = <String, Map<String, Map<String, List<FlSpot>>>>{};
-                        _buffers.forEach((stype, groups) {
-                          final sub = <String, Map<String, List<FlSpot>>>{};
-                          groups.forEach((gname, series) {
-                            if (gname.endsWith('_$id')) {
-                              sub[gname] = series;
-                            }
+                        Builder(builder: (_) {
+                          final filtered = <String,
+                              Map<String, Map<String, List<FlSpot>>>>{};
+                          _buffers.forEach((stype, groups) {
+                            final sub = <String, Map<String, List<FlSpot>>>{};
+                            groups.forEach((gname, series) {
+                              if (gname.endsWith('_$id')) {
+                                sub[gname] = series;
+                              }
+                            });
+                            if (sub.isNotEmpty) filtered[stype] = sub;
                           });
-                          if (sub.isNotEmpty) filtered[stype] = sub;
-                        });
-                        return filtered.isEmpty
-                            ? const SizedBox()
-                            : GraphCreation.buildGraphs(
-                            filtered, _palette);
-                      }),
+                          return GraphCreation.buildGraphs(
+                            filtered,
+                            _palette,
+                          );
+                        }),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
 
-          // ─────── LOGS ────────────────────────────────────────────
-          ListView.builder(
-            padding: const EdgeInsets.all(8),
-            itemCount: _logs.length,
-            itemBuilder: (_, i) =>
-                Text(_logs[i], style: const TextStyle(fontSize: 12)),
+          // ───── LOGS ────────────────────────────────────────────────
+          RepaintBoundary(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: _logs.length,
+              itemBuilder: (_, i) =>
+                  Text(_logs[i], style: const TextStyle(fontSize: 12)),
+            ),
           ),
         ],
       ),
