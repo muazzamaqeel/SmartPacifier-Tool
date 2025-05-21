@@ -81,7 +81,7 @@ class _HistoricDataState extends State<HistoricData> {
   }
 
   void _parseLines(List<String> lines) {
-    final cols = <String>{'Timestamp', 'Pacifier', 'Type', 'Group'};
+    final cols = <String>{'timestamp', 'pacifier', 'type', 'group'};
     final parsed = <Map<String, String>>[];
 
     for (final line in lines) {
@@ -95,7 +95,8 @@ class _HistoricDataState extends State<HistoricData> {
           : '';
 
       final row = <String, String>{};
-      row['Timestamp'] = ts;
+      row['timestamp'] = ts;
+
       for (final kv in left.split(', ')) {
         final kvp = kv.split('=');
         if (kvp.length == 2) row[kvp[0]] = kvp[1];
@@ -106,7 +107,9 @@ class _HistoricDataState extends State<HistoricData> {
           final m = RegExp(r'([^:\s]+):\[(.*)\]').firstMatch(entry + ']');
           if (m != null) {
             final key = m.group(1)!;
-            final val = m.group(2)!.replaceAll(']', '');
+            var val = m.group(2)!;
+            // strip any trailing ']' or '}'
+            val = val.replaceAll(RegExp(r'[\]\}]+$'), '');
             row[key] = val;
             cols.add(key);
           }
@@ -116,9 +119,9 @@ class _HistoricDataState extends State<HistoricData> {
     }
 
     final ordered = <String>[];
-    ordered.addAll(['Timestamp', 'Pacifier', 'Type', 'Group']);
+    ordered.addAll(['timestamp', 'pacifier', 'type', 'group']);
     ordered.addAll(cols
-        .where((c) => !['Timestamp', 'Pacifier', 'Type', 'Group'].contains(c))
+        .where((c) => !['timestamp', 'pacifier', 'type', 'group'].contains(c))
         .toList()
       ..sort());
 
@@ -135,8 +138,8 @@ class _HistoricDataState extends State<HistoricData> {
   }
 
   void _goToPage(int p) {
-    final total = (_rows.length / _rowsPerPage).ceil().clamp(1, _rows.length);
-    final target = p.clamp(1, total);
+    final totalPages = (_rows.length + _rowsPerPage - 1) ~/ _rowsPerPage;
+    final target = p.clamp(1, totalPages);
     setState(() {
       _currentPage = target;
       _pageInput.text = '$target';
@@ -165,8 +168,9 @@ class _HistoricDataState extends State<HistoricData> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.chevron_left),
-                  onPressed:
-                  _currentPage > 1 ? () => _goToPage(_currentPage - 1) : null,
+                  onPressed: _currentPage > 1
+                      ? () => _goToPage(_currentPage - 1)
+                      : null,
                 ),
                 SizedBox(
                   width: 60,
@@ -213,12 +217,12 @@ class _HistoricDataState extends State<HistoricData> {
                     controller: _horizontalCtrl,
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
-                      headingRowColor:
-                      MaterialStateProperty.all(Colors.grey.shade800),
+                      headingRowColor: MaterialStateProperty.all(
+                          Colors.grey.shade800),
                       columns: _columns
                           .map((c) => DataColumn(
                         label: Text(
-                          c,
+                          c[0].toUpperCase() + c.substring(1),
                           style: const TextStyle(
                               fontWeight: FontWeight.bold),
                         ),
@@ -229,8 +233,8 @@ class _HistoricDataState extends State<HistoricData> {
                           cells: _columns.map((col) {
                             return DataCell(
                               ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                    maxWidth: 150),
+                                constraints:
+                                const BoxConstraints(maxWidth: 150),
                                 child: Text(row[col] ?? ''),
                               ),
                             );
