@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../screens/active_monitoring/activemonitoring.dart';
 import '../../screens/campaign_monitoring/campaigncreation.dart';
+import 'package:smartpacifier_app/screens/historic_data/historicdata.dart';
 import '../../screens/settings/settings.dart';
 
-enum SidebarItem { activeMonitoring, campaignCreation, settings }
+enum SidebarItem { activeMonitoring, campaignCreation, historicData, settings }
 
 class Sidebar extends StatelessWidget {
   final List<String> clients;
@@ -91,6 +92,14 @@ class Sidebar extends StatelessWidget {
                   selected: selectedItem == SidebarItem.campaignCreation,
                   onTap: () => onItemSelected(SidebarItem.campaignCreation),
                 ),
+                const Divider(), // separate Historic Data
+                _tile(
+                  icon: Icons.history,
+                  label: 'Historic Data',
+                  selected: selectedItem == SidebarItem.historicData,
+                  onTap: () => onItemSelected(SidebarItem.historicData),
+                ),
+                const Divider(), // then Settings
                 _tile(
                   icon: Icons.settings_outlined,
                   label: 'Settings',

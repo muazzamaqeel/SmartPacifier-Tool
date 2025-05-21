@@ -3,6 +3,7 @@ import 'package:smartpacifier_app/client_layer/connector.dart';
 import 'package:smartpacifier_app/components/sidebar/sidebar.dart';
 import 'package:smartpacifier_app/screens/active_monitoring/activemonitoring.dart';
 import 'package:smartpacifier_app/screens/campaign_monitoring/campaigncreation.dart';
+import 'package:smartpacifier_app/screens/historic_data/historicdata.dart';
 import 'package:smartpacifier_app/screens/settings/settings.dart';
 
 class AppShell extends StatefulWidget {
@@ -38,6 +39,9 @@ class _AppShellState extends State<AppShell> {
   }
 
   Widget _buildContent() {
+    if (_selectedItem == SidebarItem.historicData) {
+      return const HistoricData();
+    }
     if (_selectedClient == null) {
       return const Center(child: Text('No backend selected'));
     }
@@ -46,6 +50,9 @@ class _AppShellState extends State<AppShell> {
         return ActiveMonitoring(backend: _selectedClient!);
       case SidebarItem.campaignCreation:
         return CampaignCreation(backend: _selectedClient!);
+      case SidebarItem.historicData:
+      // handled above
+        return const SizedBox();
       case SidebarItem.settings:
         return Settings(
           backend: _selectedClient!,
