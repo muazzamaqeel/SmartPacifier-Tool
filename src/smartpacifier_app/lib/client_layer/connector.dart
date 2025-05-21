@@ -26,7 +26,7 @@ class Connector {
     await Future.delayed(const Duration(seconds: 1));
     addClient('C++ BackEnd');
     await Future.delayed(const Duration(seconds: 2));
-    addClient('python_bridge');
+    addClient('Python BackEnd');
   }
 
   /// Call when a new backend appears.

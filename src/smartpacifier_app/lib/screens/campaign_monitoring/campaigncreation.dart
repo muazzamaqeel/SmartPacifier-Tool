@@ -1,5 +1,3 @@
-// lib/screens/active_monitoring/campaigncreation.dart
-
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
@@ -8,10 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 import '../../client_layer/connector.dart';
-import '../../generated/sensor_data.pb.dart' as protos;
-import '../../generated/myservice.pbgrpc.dart' show PayloadMessage;
+import '../../generated/sensor_data.pb.dart';
+import '../../generated/myservice.pbgrpc.dart';
 import '../active_monitoring/graphcreation.dart';
-
 
 class CampaignCreation extends StatefulWidget {
   final String backend;
@@ -23,16 +20,15 @@ class CampaignCreation extends StatefulWidget {
 
 class _CampaignCreationState extends State<CampaignCreation>
     with SingleTickerProviderStateMixin {
-  // —— SETUP MODE ——
   final _campaignController = TextEditingController();
   final _available = <String>{};
   final _selected = <String>{};
   bool _inCampaign = false;
 
-  // —— CAMPAIGN MODE ——
   StreamSubscription<PayloadMessage>? _sub;
   late final TabController _tabs;
   int _nextX = 0;
+
   final _buffers = <String, Map<String, Map<String, List<FlSpot>>>>{};
   final _logs = <String>[];
 
@@ -45,11 +41,11 @@ class _CampaignCreationState extends State<CampaignCreation>
   @override
   void initState() {
     super.initState();
+    _tabs = TabController(length: 2, vsync: this);
     Connector().dataStreamFor(widget.backend).listen((pm) {
       final id = pm.sensorData.pacifierId;
       if (_available.add(id)) setState(() {});
     });
-    _tabs = TabController(length: 2, vsync: this);
   }
 
   void _startCampaign() {
@@ -107,15 +103,13 @@ class _CampaignCreationState extends State<CampaignCreation>
       '[${DateTime.now().toIso8601String()}] pacifier=${sd.pacifierId}, '
           'type=${sd.sensorType}, group=${sd.sensorGroup}, data={$dataMapStr}',
     );
-    if (_logs.length > 200) _logs.removeAt(0);
 
     if (mounted) setState(() {});
   }
 
   void _onError(Object err) {
     _logs.add('[${DateTime.now().toIso8601String()}] Error: $err');
-    if (_logs.length > 200) _logs.removeAt(0);
-    setState(() {});
+    if (mounted) setState(() {});
   }
 
   Future<void> _endCampaign() async {
@@ -125,47 +119,36 @@ class _CampaignCreationState extends State<CampaignCreation>
     final result = await showDialog<String>(
       context: context,
       builder: (ctx) => StatefulBuilder(
-        builder: (ctx2, setInner) {
-          return AlertDialog(
-            title: const Text('Save Campaign Logs'),
-            content: Column(mainAxisSize: MainAxisSize.min, children: [
-              TextField(
-                controller: pathCtrl,
-                decoration: InputDecoration(
-                  labelText: 'Full file path',
-                  hintText: '/home/user/camp.txt or C:\\Logs\\camp.txt',
-                  errorText: errorText,
-                ),
-              ),
-            ]),
-            actions: [
-              TextButton(
-                  onPressed: () => Navigator.pop(ctx2),
-                  child: const Text('Cancel')),
-              ElevatedButton(
-                onPressed: () {
-                  final p = pathCtrl.text.trim();
-                  // validation
-                  if (p.isEmpty || !p.toLowerCase().endsWith('.txt')) {
-                    setInner(() {
-                      errorText = 'Path must end with “.txt”';
-                    });
-                    return;
-                  }
-                  final dir = Directory(p).parent;
-                  if (!dir.existsSync()) {
-                    setInner(() {
-                      errorText = 'Directory does not exist';
-                    });
-                    return;
-                  }
-                  Navigator.pop(ctx2, p);
-                },
-                child: const Text('Save'),
-              ),
-            ],
-          );
-        },
+        builder: (ctx2, setInner) => AlertDialog(
+          title: const Text('Save Campaign Logs'),
+          content: TextField(
+            controller: pathCtrl,
+            decoration: InputDecoration(
+              labelText: 'Full file path',
+              hintText: '/home/user/camp.txt or C:\\Logs\\camp.txt',
+              errorText: errorText,
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx2), child: const Text('Cancel')),
+            ElevatedButton(
+              onPressed: () {
+                final p = pathCtrl.text.trim();
+                if (p.isEmpty || !p.toLowerCase().endsWith('.txt')) {
+                  setInner(() => errorText = 'Path must end with “.txt”');
+                  return;
+                }
+                final dir = Directory(p).parent;
+                if (!dir.existsSync()) {
+                  setInner(() => errorText = 'Directory does not exist');
+                  return;
+                }
+                Navigator.pop(ctx2, p);
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        ),
       ),
     );
 
@@ -173,7 +156,7 @@ class _CampaignCreationState extends State<CampaignCreation>
 
     try {
       final file = File(result);
-      file.writeAsStringSync(_logs.join('\n'));
+      file.writeAsStringSync(_logs.join('\n') + '\n', mode: FileMode.append);
       await _sub?.cancel();
       _sub = null;
       setState(() {
@@ -257,7 +240,6 @@ class _CampaignCreationState extends State<CampaignCreation>
         ]),
       ),
       body: TabBarView(controller: _tabs, children: [
-        // Graphs
         Column(children: [
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -280,19 +262,16 @@ class _CampaignCreationState extends State<CampaignCreation>
               children: pacs.expand((id) {
                 return [
                   Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Text('Pacifier $id',
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                   Builder(builder: (_) {
-                    final filtered = <String,
-                        Map<String, Map<String, List<FlSpot>>>>{};
+                    final filtered = <String, Map<String, Map<String, List<FlSpot>>>>{};
                     _buffers.forEach((stype, groups) {
                       final sub = <String, Map<String, List<FlSpot>>>{};
-                      groups.forEach((g, series) {
-                        if (g.endsWith('_$id')) sub[g] = series;
+                      groups.forEach((gname, series) {
+                        if (gname.endsWith('_$id')) sub[gname] = series;
                       });
                       if (sub.isNotEmpty) filtered[stype] = sub;
                     });
@@ -305,7 +284,6 @@ class _CampaignCreationState extends State<CampaignCreation>
             ),
           ),
         ]),
-        // Logs
         ListView.builder(
           padding: const EdgeInsets.all(8),
           itemCount: _logs.length,
