@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../screens/active_monitoring/activemonitoring.dart';
-import '../../screens/active_monitoring/campaigncreation.dart';
+import '../../screens/campaign_monitoring/campaigncreation.dart';
 import '../../screens/settings/settings.dart';
 
 enum SidebarItem { activeMonitoring, campaignCreation, settings }

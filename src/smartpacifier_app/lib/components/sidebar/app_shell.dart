@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartpacifier_app/client_layer/connector.dart';
 import 'package:smartpacifier_app/components/sidebar/sidebar.dart';
 import 'package:smartpacifier_app/screens/active_monitoring/activemonitoring.dart';
-import 'package:smartpacifier_app/screens/active_monitoring/campaigncreation.dart';
+import 'package:smartpacifier_app/screens/campaign_monitoring/campaigncreation.dart';
 import 'package:smartpacifier_app/screens/settings/settings.dart';
 
 class AppShell extends StatefulWidget {
