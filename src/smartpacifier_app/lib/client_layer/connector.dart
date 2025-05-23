@@ -22,11 +22,13 @@ class Connector {
   List<String> get clients => List.unmodifiable(_clients);
 
   Future<void> _initDetection() async {
-    // TODO: Replace with real discovery (mDNS, REST, etc.)
-    await Future.delayed(const Duration(seconds: 1));
-    addClient('C++ BackEnd');
-    await Future.delayed(const Duration(seconds: 2));
-    addClient('Python BackEnd');
+    // Listen to incoming sensor data and discover backends dynamically
+    myService.onSensorData.listen((pm) {
+      final backend = pm.sensorData.sensorGroup;
+      if (backend.isNotEmpty) {
+        addClient(backend);
+      }
+    });
   }
 
   /// Call when a new backend appears.
