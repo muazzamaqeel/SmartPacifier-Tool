@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'configuration/configextractor.dart';
 
 class Settings extends StatefulWidget {
   final String backend;
@@ -67,8 +68,8 @@ class _SettingsState extends State<Settings> {
   }
 
   Future<void> _checkBroker() async {
-    const host = '127.0.0.1';
-    const port = 1883;
+    final host = ConfigExtractor.host;
+    final port = ConfigExtractor.port;
     try {
       final socket = await Socket.connect(host, port, timeout: const Duration(seconds: 2));
       socket.destroy();

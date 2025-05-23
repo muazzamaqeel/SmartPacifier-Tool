@@ -3,10 +3,13 @@ import 'ipc_layer/grpc/server.dart';
 import 'components/theme/lighttheme.dart';
 import 'components/theme/darktheme.dart';
 import 'components/sidebar/app_shell.dart';
+import 'screens/settings/configuration/configextractor.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await startGrpcServer(port: 50051);
+  await ConfigExtractor.init();
   runApp(const MyApp());
 }
 

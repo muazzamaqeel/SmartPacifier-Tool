@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      sha256: "567c64b3cb4cf82397aac55f4f0cbd3ca20d77c6c03bedbc4ceaddc08904aef7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   fake_async:
     dependency: transitive
     description:
@@ -81,6 +89,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  fl_chart:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: main
+      resolved-ref: "17afdfb7edf6791fc37b8bb26c16974ad963e1af"
+      url: "https://github.com/imaNNeo/fl_chart.git"
+    source: git
+    version: "0.71.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -119,10 +136,10 @@ packages:
     dependency: "direct main"
     description:
       name: grpc
-      sha256: "5b99b7a420937d4361ece68b798c9af8e04b5bc128a7859f2a4be87427694813"
+      sha256: "30e1edae6846b163a64f6d8716e3443980fe1f7d2d1f086f011d24ea186f2582"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.4"
   http:
     dependency: transitive
     description:
@@ -215,10 +232,26 @@ packages:
     dependency: "direct main"
     description:
       name: protobuf
-      sha256: "68645b24e0716782e58948f8467fd42a880f255096a821f9e7d0ec625b00c84d"
+      sha256: "579fe5557eae58e3adca2e999e38f02441d8aa908703854a9e0a0f47fa857731"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "4.1.0"
+  protobuf_google:
+    dependency: "direct main"
+    description:
+      name: protobuf_google
+      sha256: "796ccda56f90ac4415fc515adaff6f1950373e84d1f5283988c96a8b15b9d4be"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
+  protoc_plugin:
+    dependency: "direct dev"
+    description:
+      name: protoc_plugin
+      sha256: "1d163c80b803c5aeec6364cca95edb22d31941e9dbd921463f063660c70a2368"
+      url: "https://pub.dev"
+    source: hosted
+    version: "22.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -304,6 +337,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  yaml:
+    dependency: "direct main"
+    description:
+      name: yaml
+      sha256: b9da305ac7c39faa3f030eccd175340f968459dae4af175130b3fc47e40d76ce
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.3"
 sdks:
   dart: ">=3.7.0 <4.0.0"
-  flutter: ">=3.18.0-18.0.pre.54"
+  flutter: ">=3.27.4"
