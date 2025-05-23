@@ -1,0 +1,23 @@
+# build.yaml (next to pubspec.yaml)
+
+targets:
+  $default:
+    # Your Dart code + all the .proto files in lib/ipc_layer/grpc
+    sources:
+      - $package$
+      - lib/$lib$
+      - lib/ipc_layer/grpc/*.proto
+
+    # Configure protoc_builder for those .proto files
+    builders:
+      protoc_builder:
+        options:
+          # Where your .proto files live (relative to project root)
+          root_dir: "lib/ipc_layer/grpc"
+          # Include path(s) passed to protoc
+          proto_paths:
+            - "lib/ipc_layer/grpc"
+          # Where to drop the generated Dart code
+          out_dir: "lib/generated"
+          # Also generate gRPC stubs (.pbgrpc.dart)
+          grpc: true
