@@ -17,7 +17,7 @@ class MyServiceImpl extends MyServiceBase {
       ) async {
     // Extract backend identifier from metadata
     final backendName = call.clientMetadata?['backend-name'] ?? 'unknown_backend';
-    debugPrint('🔔 publishSensorData() started for $backendName');
+    debugPrint('publishSensorData() started for $backendName');
 
     await for (final msg in request) {
       // Tag the payload with its source
@@ -38,7 +38,7 @@ class MyServiceImpl extends MyServiceBase {
       _controller.add(msg);
     }
 
-    debugPrint('🔒 publishSensorData() completed for $backendName');
+    debugPrint('publishSensorData() completed for $backendName');
     return Empty();
   }
 
@@ -56,5 +56,5 @@ Future<void> startGrpcServer({int port = 50051}) async {
     codecRegistry: CodecRegistry(codecs: [GzipCodec(), IdentityCodec()]),
   );
   await server.serve(port: port);
-  debugPrint('🚀 gRPC server listening on port \$port');
+  debugPrint('gRPC server listening on port \$port');
 }
