@@ -105,15 +105,14 @@ cmake-build-debug/sp_backend.exe
 ```
 
 ### Step 2 - Building the FrontEnd
+#### Terminal 1:
 ```bash
-protoc \
-  --proto_path=lib/ipc_layer/grpc \
-  --proto_path=lib/generated \
-  --dart_out=grpc:lib/generated \
-  lib/ipc_layer/grpc/sensor_data.proto \
-  lib/ipc_layer/grpc/myservice.proto
+rm -rf lib/generated/*.dart
+flutter pub run build_runner clean
+flutter pub run build_runner build --delete-conflicting-outputs
 ```
 #### Main Dart (Flutter)
+#### Terminal 2:
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
 flutter run -d windows 
