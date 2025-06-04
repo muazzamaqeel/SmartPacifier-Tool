@@ -117,3 +117,20 @@ flutter pub run build_runner build --delete-conflicting-outputs
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
 flutter run -d windows 
 ```
+
+# Software Architecture
+
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/a126d5a8-c9c7-4616-a79a-d401f4ead60a)
+
+## Basic Explanation
+
+### Structure
+
+The following represent the name of the directory in which the front-end code is structured:
+
+- **Screen/**: Main UI pages (e.g., Active Monitoring, Campaign, Historic Data, Settings)
+- **IPC_Layer/**: Contains gRPC server/client logic (communication with backend)
+- **Client_Layer/**: Handles backend discovery and live gRPC data stream (via `connector.dart`)
+- **Components/**: Shared UI widgets like Sidebar and theming (e.g., `darktheme.dart`, `sidebar.dart`)
+- **Generated/**: Auto-generated Dart code from Protobuf definitions (`.pb.dart`, `.pbgrpc.dart`)
+
