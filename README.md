@@ -120,11 +120,12 @@ flutter run -d windows
 
 # Software Architecture
 
+## Flutter - FrontEnd
 ![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/6de9fd2c-6198-4d62-a893-bb74330d0fd6)
 
-## Basic Explanation
+### Basic Explanation
 
-### Structure
+#### Structure
 
 The following represent the name of the directory in which the front-end code is structured:
 
