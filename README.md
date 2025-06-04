@@ -105,8 +105,33 @@ cmake-build-debug/sp_backend.exe
 ```
 
 ### Step 2 - Building the FrontEnd
+#### Terminal 1:
+```bash
+rm -rf lib/generated/*.dart
+flutter pub run build_runner clean
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 #### Main Dart (Flutter)
+#### Terminal 2:
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
 flutter run -d windows 
 ```
+
+# Software Architecture
+
+## Flutter - FrontEnd
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/6de9fd2c-6198-4d62-a893-bb74330d0fd6)
+
+### Basic Explanation
+
+#### Structure
+
+The following represent the name of the directory in which the front-end code is structured:
+
+- **Screen/**: Main UI pages (e.g., Active Monitoring, Campaign, Historic Data, Settings)
+- **IPC_Layer/**: Contains gRPC server/client logic (communication with backend)
+- **Client_Layer/**: Handles backend discovery and live gRPC data stream (via `connector.dart`)
+- **Components/**: Shared UI widgets like Sidebar and theming (e.g., `darktheme.dart`, `sidebar.dart`)
+- **Generated/**: Auto-generated Dart code from Protobuf definitions (`.pb.dart`, `.pbgrpc.dart`)
+
