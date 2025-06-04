@@ -120,7 +120,7 @@ flutter run -d windows
 
 # Software Architecture
 
-![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/a126d5a8-c9c7-4616-a79a-d401f4ead60a)
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/6de9fd2c-6198-4d62-a893-bb74330d0fd6)
 
 ## Basic Explanation
 
