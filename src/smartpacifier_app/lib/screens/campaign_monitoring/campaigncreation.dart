@@ -1,3 +1,5 @@
+// File: lib/screens/campaign_monitoring/campaigncreation.dart
+
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
@@ -26,6 +28,7 @@ class _CampaignCreationState extends State<CampaignCreation>
   bool _inCampaign = false;
 
   StreamSubscription<PayloadMessage>? _sub;
+  Timer? _renderTimer;
   late final TabController _tabs;
   int _nextX = 0;
 
@@ -53,9 +56,20 @@ class _CampaignCreationState extends State<CampaignCreation>
     _buffers.clear();
     _logs.clear();
     _nextX = 0;
+
     _sub = Connector()
         .dataStreamFor(widget.backend)
-        .listen(_onData, onError: _onError);
+        .listen(
+      _onData,
+      onError: (e) => _onDoneOrError('Error: $e\nCampaign stopped'),
+      onDone: () => _onDoneOrError('Backend disconnected\nCampaign stopped'),
+    );
+
+    _renderTimer?.cancel();
+    _renderTimer = Timer.periodic(const Duration(milliseconds: 33), (_) {
+      if (mounted) setState(() {});
+    });
+
     setState(() => _inCampaign = true);
   }
 
@@ -83,7 +97,7 @@ class _CampaignCreationState extends State<CampaignCreation>
         num v = bd.getFloat32(0, Endian.little);
         if (!v.isFinite) v = bd.getInt32(0, Endian.little);
         addValue(key, v);
-      } else if (bytes.length % 4 == 0) {
+      } else {
         for (var i = 0; i < bytes.length ~/ 4; i++) {
           num v = bd.getFloat32(i * 4, Endian.little);
           if (!v.isFinite) v = bd.getInt32(i * 4, Endian.little);
@@ -103,13 +117,21 @@ class _CampaignCreationState extends State<CampaignCreation>
       '[${DateTime.now().toIso8601String()}] pacifier=${sd.pacifierId}, '
           'type=${sd.sensorType}, group=${sd.sensorGroup}, data={$dataMapStr}',
     );
-
-    if (mounted) setState(() {});
   }
 
-  void _onError(Object err) {
-    _logs.add('[${DateTime.now().toIso8601String()}] Error: $err');
-    if (mounted) setState(() {});
+  void _onDoneOrError(String message) {
+    _sub?.cancel();
+    _renderTimer?.cancel();
+    if (mounted) {
+      setState(() {
+        _inCampaign = false;
+        _selected.clear();
+        _buffers.clear();
+        _logs.clear();
+      });
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
   }
 
   Future<void> _endCampaign() async {
@@ -155,23 +177,13 @@ class _CampaignCreationState extends State<CampaignCreation>
     if (result == null) return;
 
     try {
-      final file = File(result);
-      file.writeAsStringSync(_logs.join('\n') + '\n', mode: FileMode.append);
-      await _sub?.cancel();
-      _sub = null;
-      setState(() {
-        _inCampaign = false;
-        _selected.clear();
-        _buffers.clear();
-        _logs.clear();
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Logs saved successfully')),
-      );
+      File(result)
+        ..createSync(recursive: true)
+        ..writeAsStringSync(_logs.join('\n') + '\n', mode: FileMode.append);
+      _onDoneOrError('Logs saved, campaign ended');
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Save failed: $e')),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Save failed: $e')));
     }
   }
 
@@ -179,6 +191,7 @@ class _CampaignCreationState extends State<CampaignCreation>
   void dispose() {
     _campaignController.dispose();
     _sub?.cancel();
+    _renderTimer?.cancel();
     _tabs.dispose();
     super.dispose();
   }
@@ -208,16 +221,12 @@ class _CampaignCreationState extends State<CampaignCreation>
                 return FilterChip(
                   label: Text('Pacifier $id'),
                   selected: sel,
-                  onSelected: (_) =>
-                      setState(() => sel ? _selected.remove(id) : _selected.add(id)),
+                  onSelected: (_) => setState(() => sel ? _selected.remove(id) : _selected.add(id)),
                 );
               }).toList(),
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: _startCampaign,
-              child: const Text('Start Campaign'),
-            ),
+            ElevatedButton(onPressed: _startCampaign, child: const Text('Start Campaign')),
           ],
         ),
       );
@@ -234,63 +243,55 @@ class _CampaignCreationState extends State<CampaignCreation>
             style: TextButton.styleFrom(foregroundColor: Colors.red),
           ),
         ],
-        bottom: TabBar(controller: _tabs, tabs: const [
-          Tab(text: 'Graphs'),
-          Tab(text: 'Logs'),
-        ]),
+        bottom: TabBar(controller: _tabs, tabs: const [Tab(text: 'Graphs'), Tab(text: 'Logs')]),
       ),
-      body: TabBarView(controller: _tabs, children: [
-        Column(children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
+      body: TabBarView(
+        controller: _tabs,
+        children: [
+          Column(
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  children: pacs.map((id) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: FilterChip(label: Text('Pacifier $id'), selected: true, onSelected: (_) {}),
+                  )).toList(),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  children: pacs.expand((id) {
+                    return [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        child: Text('Pacifier $id', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      ),
+                      Builder(builder: (_) {
+                        final filtered = <String, Map<String, Map<String, List<FlSpot>>>>{};
+                        _buffers.forEach((stype, groups) {
+                          final sub = <String, Map<String, List<FlSpot>>>{};
+                          groups.forEach((gname, series) {
+                            if (gname.endsWith('_$id')) sub[gname] = series;
+                          });
+                          if (sub.isNotEmpty) filtered[stype] = sub;
+                        });
+                        return GraphCreation.buildGraphs(filtered, _palette);
+                      }),
+                    ];
+                  }).toList(),
+                ),
+              ),
+            ],
+          ),
+          ListView.builder(
             padding: const EdgeInsets.all(8),
-            child: Row(
-              children: pacs.map((id) {
-                return Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: FilterChip(
-                    label: Text('Pacifier $id'),
-                    selected: true,
-                    onSelected: (_) {},
-                  ),
-                );
-              }).toList(),
-            ),
+            itemCount: _logs.length,
+            itemBuilder: (_, i) => Text(_logs[i], style: const TextStyle(fontSize: 12)),
           ),
-          Expanded(
-            child: ListView(
-              children: pacs.expand((id) {
-                return [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Text('Pacifier $id',
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  ),
-                  Builder(builder: (_) {
-                    final filtered = <String, Map<String, Map<String, List<FlSpot>>>>{};
-                    _buffers.forEach((stype, groups) {
-                      final sub = <String, Map<String, List<FlSpot>>>{};
-                      groups.forEach((gname, series) {
-                        if (gname.endsWith('_$id')) sub[gname] = series;
-                      });
-                      if (sub.isNotEmpty) filtered[stype] = sub;
-                    });
-                    return filtered.isEmpty
-                        ? const SizedBox()
-                        : GraphCreation.buildGraphs(filtered, _palette);
-                  }),
-                ];
-              }).toList(),
-            ),
-          ),
-        ]),
-        ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: _logs.length,
-          itemBuilder: (_, i) =>
-              Text(_logs[i], style: const TextStyle(fontSize: 12)),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
