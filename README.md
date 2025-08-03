@@ -195,3 +195,11 @@ The following represent the name of the directory in which the front-end code is
 I also modified an exisiting simulator to generate data for our application
 
 Link: https://github.com/muazzamaqeel/mqtt-simulator
+
+#### Future Improvements
+```txt
+1. Testing and Integrating the appliction on a Linux System
+2. Displaying battery level and signal strength of each pacifier
+3. Adding a sever sync option for long term data storage
+4. Introducing alert system for abnormal sensor values
+```
