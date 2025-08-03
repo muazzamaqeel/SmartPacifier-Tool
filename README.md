@@ -132,7 +132,21 @@ cmake --build cmake-build-debug
 cmake-build-debug/sp_backend.exe
 ```
 
-### Step 2 - Building the FrontEnd
+## Step 2 - Building the FrontEnd
+### Prerequirment - Run the commands on MSY32 MINGW64 Shell
+#### https://docs.flutter.dev/get-started/install/windows/desktop
+```txt
+1.  Under “Get the Flutter SDK”, click "Download the SDK".
+    This downloads a .zip file (e.g., flutter_windows_3.29.2-stable.zip).
+2.  Extract the SDK
+    C:\flutter
+3.  Add Flutter to your system PATH
+    Open Start > Environment Variables → Edit System variables → find Path → click Edit.
+    C:\flutter\bin
+4.  Restart your terminal
+    flutter doctor
+
+```
 #### Terminal 1 (Generating Proto-Files):
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
