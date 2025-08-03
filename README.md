@@ -17,6 +17,24 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 ### Step 1: Building the BackEnd (For Collaborators)
 #### Prerequirment - Run the commands on MSY32 MINGW64 Shell 
 ##### https://www.msys2.org/
+#### Packages Required
+```bash
+# 1) Update the package database and core MSYS2 libs:
+pacman -Syu --noconfirm
+
+# You may need to close & re-open the MSYS2 MinGW-64 shell here.
+
+# 2) Install the exact packages/versions:
+pacman -S --noconfirm \
+  mingw-w64-x86_64-toolchain \
+  mingw-w64-x86_64-git \
+  mingw-w64-x86_64-cmake=3.31.6-1 \
+  mingw-w64-x86_64-ninja=1.12.1-1 \
+  mingw-w64-x86_64-zlib=1.3.1-1 \
+  mingw-w64-x86_64-c-ares=1.34.4-1 \
+  mingw-w64-x86_64-openssl=3.4.1-1
+```
+
 #### Automatically
 ```bash
 mkdir -p /c/Programming
