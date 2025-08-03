@@ -186,3 +186,6 @@ The following represent the name of the directory in which the front-end code is
 - **Components/**: Shared UI widgets like Sidebar and theming (e.g., `darktheme.dart`, `sidebar.dart`)
 - **Generated/**: Auto-generated Dart code from Protobuf definitions (`.pb.dart`, `.pbgrpc.dart`)
 
+## C++ - BackEnd
+
+<img width="1157" height="553" alt="image" src="https://github.com/user-attachments/assets/41ab537c-9e5c-4920-96ce-e4a80fdae244" />
