@@ -188,4 +188,6 @@ The following represent the name of the directory in which the front-end code is
 
 ## C++ - BackEnd
 
-<img width="1157" height="553" alt="image" src="https://github.com/user-attachments/assets/41ab537c-9e5c-4920-96ce-e4a80fdae244" />
+<img width="1172" height="661" alt="image" src="https://github.com/user-attachments/assets/04c1e77a-80c7-4c2d-9cdb-d57ae776db5e" />
+
+
