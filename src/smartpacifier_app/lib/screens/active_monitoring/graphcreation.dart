@@ -1,3 +1,5 @@
+// File: lib/screens/active_monitoring/graphcreation.dart
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -12,7 +14,6 @@ class GraphCreation {
     final children = <Widget>[];
 
     buffers.forEach((sensorType, groups) {
-      // Sensor header
       children.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Text(
@@ -21,7 +22,6 @@ class GraphCreation {
         ),
       ));
 
-      // Flatten all series into measurement buckets
       final combined = <String, List<FlSpot>>{};
       for (final seriesMap in groups.values) {
         combined.addAll(seriesMap);
@@ -59,27 +59,46 @@ class GraphCreation {
       Map<String, List<FlSpot>> seriesMap,
       List<Color> palette,
       ) {
-    // find max X to invert timeline (if desired)
-    final allXs = seriesMap.values.expand((spots) => spots.map((s) => s.x));
+    // 1) Collect & clamp Y values for auto-scaling
+    final rawYs = seriesMap.values.expand((s) => s.map((pt) => pt.y)).toList();
+    double meanY = 0, stdY = 0;
+    if (rawYs.isNotEmpty) {
+      meanY = rawYs.reduce((a, b) => a + b) / rawYs.length;
+      final varSum = rawYs
+          .map((y) => pow(y - meanY, 2))
+          .reduce((a, b) => a + b) /
+          rawYs.length;
+      stdY = sqrt(varSum);
+    }
+    final minClip = meanY - 3 * stdY, maxClip = meanY + 3 * stdY;
+    final clippedYs = rawYs.map((y) => y.clamp(minClip, maxClip)).toList();
+    double minY = clippedYs.isEmpty ? 0 : clippedYs.reduce(min);
+    double maxY = clippedYs.isEmpty ? 1 : clippedYs.reduce(max);
+    final pad = (maxY - minY) * 0.05;
+    final axisMinY = minY - pad, axisMaxY = maxY + pad;
+
+    // 2) Invert X-axis if desired
+    final allXs = seriesMap.values.expand((s) => s.map((pt) => pt.x));
     final maxX = allXs.isEmpty ? 0.0 : allXs.reduce(max);
 
+    // 3) Build each LineChartBarData
     final seriesNames = seriesMap.keys.toList()..sort();
     final bars = <LineChartBarData>[];
 
     for (var i = 0; i < seriesNames.length; i++) {
-      final originalSpots = seriesMap[seriesNames[i]]!;
-      final invertedSpots = originalSpots
-          .map((pt) => FlSpot(maxX - pt.x, pt.y))
+      final orig = seriesMap[seriesNames[i]]!;
+      final processed = orig
+          .map((pt) => FlSpot(maxX - pt.x, pt.y.clamp(minClip, maxClip)))
           .toList(growable: false);
 
       bars.add(LineChartBarData(
-        spots: invertedSpots,
+        spots: processed,
         isCurved: true,
-        curveSmoothness: 0.2,                   // <-- smooth curve
-        dotData: FlDotData(show: false),
+        curveSmoothness: 0.2,
         color: palette[i % palette.length],
-        barWidth: 4.0,                          // <-- bolder line
-        belowBarData: BarAreaData(              // <-- translucent fill
+        barWidth: 4.0,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(
           show: true,
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -93,7 +112,7 @@ class GraphCreation {
       ));
     }
 
-    // simple legend
+    // 4) Legend
     final legend = Wrap(
       spacing: 12,
       runSpacing: 4,
@@ -111,8 +130,7 @@ class GraphCreation {
                 ),
               ),
               const SizedBox(width: 4),
-              Text(seriesNames[i],
-                  style: const TextStyle(fontSize: 12, height: 1.2)),
+              Text(seriesNames[i], style: const TextStyle(fontSize: 12)),
             ],
           )
         ]
@@ -135,6 +153,8 @@ class GraphCreation {
               height: 160,
               child: LineChart(
                 LineChartData(
+                  minY: axisMinY,
+                  maxY: axisMaxY,
                   lineBarsData: bars,
                   gridData: FlGridData(
                     show: true,
@@ -153,6 +173,32 @@ class GraphCreation {
                   ),
                   titlesData: FlTitlesData(show: false),
                   borderData: FlBorderData(show: false),
+
+                  // --- Corrected Tooltip Configuration ---
+                  lineTouchData: LineTouchData(
+                    enabled: true,
+                    touchTooltipData: LineTouchTooltipData(
+                      getTooltipColor: (_) => Colors.black87,
+                      tooltipBorderRadius: BorderRadius.circular(6),
+                      tooltipPadding: const EdgeInsets.all(6),
+                      fitInsideHorizontally: true,
+                      fitInsideVertically: true,
+                      getTooltipItems: (spots) {
+                        return spots.map((spot) {
+                          final name = seriesNames[spot.barIndex];
+                          final y = spot.y.toStringAsFixed(3);
+                          return LineTooltipItem(
+                            '$name: $y',
+                            TextStyle(
+                              color: spot.bar.color,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          );
+                        }).toList();
+                      },
+                    ),
+                  ),
                 ),
               ),
             ),
