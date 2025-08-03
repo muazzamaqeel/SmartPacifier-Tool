@@ -15,6 +15,7 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 ## Building the Whole Project
 ### Step 1: Building the BackEnd (For Collaborators)
+#### Prerequirment - Run the commands on MSY32 MINGW64 Shell 
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
