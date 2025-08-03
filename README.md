@@ -13,8 +13,9 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 # Running the SmartPacifier-Tool - OS (Windows)
 
-## Building the Whole Project (Run the commands on MSY32 MINGW64 Shell)
-### Step 1: Building the BackEnd (For Collaborators)
+## Building the Whole Project
+### Step 1: Building the BackEnd (Run the commands on MSY32 MINGW64 Shell)
+
 #### Prerequirment - Download & Install MSYS2 MINGW64 
 ##### https://www.msys2.org/
 #### Packages Required
@@ -47,6 +48,7 @@ git clone --recurse-submodules https://github.com/muazzamaqeel/SmartPacifier-Too
 ```bash
 git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
+
 ##### GRPC & MQTT
 ```bash
 mkdir -p /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
