@@ -1,7 +1,4 @@
-// File: screens/graphcreation.dart
-
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -15,7 +12,7 @@ class GraphCreation {
     final children = <Widget>[];
 
     buffers.forEach((sensorType, groups) {
-      //Sensor header
+      // Sensor header
       children.add(Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Text(
@@ -24,6 +21,7 @@ class GraphCreation {
         ),
       ));
 
+      // Flatten all series into measurement buckets
       final combined = <String, List<FlSpot>>{};
       for (final seriesMap in groups.values) {
         combined.addAll(seriesMap);
@@ -33,11 +31,10 @@ class GraphCreation {
       combined.forEach((seriesName, spots) {
         final measurement = seriesName.split(RegExp(r'[_\[]')).first;
         measurementMap
-            .putIfAbsent(measurement, () => <String, List<FlSpot>>{})
-        [seriesName] = spots;
+            .putIfAbsent(measurement, () => <String, List<FlSpot>>{})[seriesName] =
+            spots;
       });
 
-      // 4) One card per measurement, sorted for stable order
       final measurements = measurementMap.keys.toList()..sort();
       for (final measurement in measurements) {
         final subSeries = measurementMap[measurement]!;
@@ -62,13 +59,15 @@ class GraphCreation {
       Map<String, List<FlSpot>> seriesMap,
       List<Color> palette,
       ) {
+    // find max X to invert timeline (if desired)
     final allXs = seriesMap.values.expand((spots) => spots.map((s) => s.x));
     final maxX = allXs.isEmpty ? 0.0 : allXs.reduce(max);
+
     final seriesNames = seriesMap.keys.toList()..sort();
     final bars = <LineChartBarData>[];
+
     for (var i = 0; i < seriesNames.length; i++) {
-      final name = seriesNames[i];
-      final originalSpots = seriesMap[name]!;
+      final originalSpots = seriesMap[seriesNames[i]]!;
       final invertedSpots = originalSpots
           .map((pt) => FlSpot(maxX - pt.x, pt.y))
           .toList(growable: false);
@@ -76,12 +75,25 @@ class GraphCreation {
       bars.add(LineChartBarData(
         spots: invertedSpots,
         isCurved: true,
+        curveSmoothness: 0.2,                   // <-- smooth curve
         dotData: FlDotData(show: false),
         color: palette[i % palette.length],
-        barWidth: 2.5,
+        barWidth: 4.0,                          // <-- bolder line
+        belowBarData: BarAreaData(              // <-- translucent fill
+          show: true,
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              palette[i % palette.length].withOpacity(0.3),
+              palette[i % palette.length].withOpacity(0.0),
+            ],
+          ),
+        ),
       ));
     }
 
+    // simple legend
     final legend = Wrap(
       spacing: 12,
       runSpacing: 4,
@@ -115,13 +127,10 @@ class GraphCreation {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // measurement title
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 6),
-            // legend
             legend,
             const SizedBox(height: 10),
-            // chart
             SizedBox(
               height: 160,
               child: LineChart(
