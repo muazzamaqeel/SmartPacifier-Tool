@@ -60,6 +60,7 @@ git submodule update --init --recursive
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 mkdir -p build_grpc && cd build_grpc
+
 cmake -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DgRPC_SSL_PROVIDER=package \
@@ -67,6 +68,7 @@ cmake -G Ninja \
   -DgRPC_BUILD_TESTS=OFF \
   -DgRPC_PROTOBUF_PROVIDER=module \
   -DCMAKE_INSTALL_PREFIX="C:/local/grpc" \
+  -DCMAKE_CXX_FLAGS="-march=native -mbmi" \
   ..
 ninja
 ninja install
