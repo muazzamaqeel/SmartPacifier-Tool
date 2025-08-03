@@ -1,6 +1,6 @@
 #pragma once
 
-#include <broker/Logger.h>
+#include <communication_layer/debug/Logger.h>
 #include <communication_layer/CommunicationLayer.h>
 #include <iostream>
 
@@ -19,16 +19,20 @@ public:
         #ifndef NDEBUG
             std::cout << "Running on platform" << std::endl;
         #endif
-            CommunicationLayer commLayer;
-            commLayer.startCommunicationServices();
+        CommunicationLayer commRaw(CommunicationLayer::Mode::ForwardRaw);
+        commRaw.startCommunicationServices();
 
         #ifndef NDEBUG
             std::cin.get();
             std::cout << "Shutting down..." << std::endl;
-            commLayer.stopCommunicationServices();
+            commRaw.stopCommunicationServices();
             std::cout << "Shutdown complete. Goodbye!" << std::endl;
             std::cout << "\nProgram terminated. Press ENTER to exit...\n";
             std::cin.get();
 #       endif
     }
 };
+
+
+
+

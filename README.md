@@ -1,5 +1,5 @@
 # SmartPacifier-Tool (Version 2) 
-This is the evolution of our original prototype, designed to streamline sensor configuration, data acquisition, and analysis across multiple platforms—Android, iOS, Linux, and Windows. Building on the initial .NET-based solution, this version introduces expanded capabilities such as real-time monitoring, MQTT integration, and optional Docker-based data storage.
+This is the evolution of our original prototype, designed to streamline sensor configuration, data acquisition, and analysis across multiple platforms Android, iOS, Linux, and Windows. Building on the initial .NET-based solution, this version introduces expanded capabilities such as real-time monitoring, MQTT integration, and optional Docker-based data storage.
 
 Whether you’re a researcher or developer, SmartPacifier-Tool offers:
 
@@ -14,14 +14,42 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 # Running the SmartPacifier-Tool - OS (Windows)
 
 ## Building the Whole Project
-### Step 1: Building the BackEnd (For Collaborators)
+### Step 1: Building the BackEnd (Run the commands on MSY32 MINGW64 Shell)
+
+#### Prerequirment - Download & Install MSYS2 MINGW64 
+##### https://www.msys2.org/
+#### Packages Required
+```bash
+# 1) Update the package database and core MSYS2 libs:
+pacman -Syu --noconfirm
+
+# You may need to close & re-open the MSYS2 MinGW-64 shell here.
+
+# 2) Install the exact packages/versions:
+pacman -S --noconfirm \
+  mingw-w64-x86_64-toolchain \
+  mingw-w64-x86_64-git \
+  mingw-w64-x86_64-cmake=3.31.6-1 \
+  mingw-w64-x86_64-ninja=1.12.1-1 \
+  mingw-w64-x86_64-zlib=1.3.1-1 \
+  mingw-w64-x86_64-c-ares=1.34.4-1 \
+  mingw-w64-x86_64-openssl=3.4.1-1
+```
+
+#### Automatically
 ```bash
 mkdir -p /c/Programming
 cd /c/Programming
 git clone --recurse-submodules https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 
 ```
-#### Cloning GRPC & MQTT 
+#### Cloning Manually 
+##### Repo
+```bash
+git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
+```
+
+##### GRPC & MQTT
 ```bash
 mkdir -p /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend/src/external_libs/grpc
@@ -106,9 +134,64 @@ cmake --build cmake-build-debug
 cmake-build-debug/sp_backend.exe
 ```
 
-### Step 2 - Building the FrontEnd
+## Step 2 - Building the FrontEnd (Run the commands on Git-Bash)
+
+### Prerequirment - Download & Install Git-Bash
+#### https://git-scm.com/downloads/win
+```txt
+1.  Download and Install the latest version
+```
+### Prerequirment - Download & Install Flutter
+#### https://docs.flutter.dev/get-started/install/windows/desktop
+```txt
+1.  Under “Get the Flutter SDK”, click "Download the SDK".
+    This downloads a .zip file (e.g., flutter_windows_3.29.2-stable.zip).
+2.  Extract the SDK
+    C:\flutter
+3.  Add Flutter to your system PATH
+    Open Start > Environment Variables → Edit System variables → find Path → click Edit.
+    C:\flutter\bin
+4.  Restart your terminal
+    flutter doctor
+```
+
+#### Terminal 1 (Generating Proto-Files):
+```bash
+cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
+rm -rf lib/generated/*.dart
+flutter pub run build_runner clean
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 #### Main Dart (Flutter)
+#### Terminal 2:
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
 flutter run -d windows 
 ```
+
+# Software Architecture
+
+## Flutter - FrontEnd
+![Untitled Diagram drawio (1)](https://github.com/user-attachments/assets/6de9fd2c-6198-4d62-a893-bb74330d0fd6)
+
+### Basic Explanation
+
+#### Structure
+
+The following represent the name of the directory in which the front-end code is structured:
+
+- **Screen/**: Main UI pages (e.g., Active Monitoring, Campaign, Historic Data, Settings)
+- **IPC_Layer/**: Contains gRPC server/client logic (communication with backend)
+- **Client_Layer/**: Handles backend discovery and live gRPC data stream (via `connector.dart`)
+- **Components/**: Shared UI widgets like Sidebar and theming (e.g., `darktheme.dart`, `sidebar.dart`)
+- **Generated/**: Auto-generated Dart code from Protobuf definitions (`.pb.dart`, `.pbgrpc.dart`)
+
+## C++ - BackEnd
+
+<img width="1172" height="661" alt="image" src="https://github.com/user-attachments/assets/04c1e77a-80c7-4c2d-9cdb-d57ae776db5e" />
+
+
+### Additional Information
+I also modified an exisiting simulator to generate data for our application
+
+Link: https://github.com/muazzamaqeel/mqtt-simulator

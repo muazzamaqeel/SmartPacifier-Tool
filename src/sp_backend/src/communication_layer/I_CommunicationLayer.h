@@ -1,7 +1,3 @@
-//
-// Created by Muazzam on 06/04/2025.
-//
-
 #pragma once
 
 class I_CommunicationLayer {

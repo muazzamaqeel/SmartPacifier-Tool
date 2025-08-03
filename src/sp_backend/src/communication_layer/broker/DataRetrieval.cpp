@@ -1,6 +1,6 @@
 #include "DataRetrieval.h"
-#include "GlobalMessageQueue.h"
-#include "Logger.h"
+#include <GlobalMessageQueue.h>
+#include <communication_layer/debug/Logger.h>
 #include <mqtt/exception.h>
 
 DataRetrieval::DataRetrieval(const std::string& broker,
