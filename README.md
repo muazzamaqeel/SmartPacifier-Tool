@@ -13,9 +13,9 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 
 # Running the SmartPacifier-Tool - OS (Windows)
 
-## Building the Whole Project
+## Building the Whole Project (Run the commands on MSY32 MINGW64 Shell)
 ### Step 1: Building the BackEnd (For Collaborators)
-#### Prerequirment - Run the commands on MSY32 MINGW64 Shell 
+#### Prerequirment - Download & Install MSYS2 MINGW64 
 ##### https://www.msys2.org/
 #### Packages Required
 ```bash
@@ -132,7 +132,13 @@ cmake --build cmake-build-debug
 cmake-build-debug/sp_backend.exe
 ```
 
-## Step 2 - Building the FrontEnd
+## Step 2 - Building the FrontEnd (Run the commands on Git-Bash)
+
+### Prerequirment - Download & Install Git-Bash
+#### https://git-scm.com/downloads/win
+```txt
+1.  Download and Install the latest version
+```
 ### Prerequirment - Download & Install Flutter
 #### https://docs.flutter.dev/get-started/install/windows/desktop
 ```txt
@@ -145,8 +151,8 @@ cmake-build-debug/sp_backend.exe
     C:\flutter\bin
 4.  Restart your terminal
     flutter doctor
-
 ```
+
 #### Terminal 1 (Generating Proto-Files):
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
