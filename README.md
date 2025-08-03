@@ -191,3 +191,7 @@ The following represent the name of the directory in which the front-end code is
 <img width="1172" height="661" alt="image" src="https://github.com/user-attachments/assets/04c1e77a-80c7-4c2d-9cdb-d57ae776db5e" />
 
 
+### Additional Information
+I also modified an exisiting simulator to generate data for our application
+
+Link: https://github.com/muazzamaqeel/mqtt-simulator
