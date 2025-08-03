@@ -133,7 +133,7 @@ cmake-build-debug/sp_backend.exe
 ```
 
 ## Step 2 - Building the FrontEnd
-### Prerequirment - Run the commands on MSY32 MINGW64 Shell
+### Prerequirment - Download & Install Flutter
 #### https://docs.flutter.dev/get-started/install/windows/desktop
 ```txt
 1.  Under “Get the Flutter SDK”, click "Download the SDK".
