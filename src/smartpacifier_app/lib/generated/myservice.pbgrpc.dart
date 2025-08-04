@@ -10,27 +10,27 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'google/protobuf/empty.pb.dart' as $0;
-import 'myservice.pb.dart' as $1;
+import 'myservice.pb.dart' as $0;
+import 'google/protobuf/empty.pb.dart' as $1;
 export 'myservice.pb.dart';
 
 class MyServiceClient extends $grpc.Client {
-  static final _$streamMessages =
-      $grpc.ClientMethod<$0.Empty, $1.PayloadMessage>(
-          '/myservice.MyService/StreamMessages',
-          ($0.Empty value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $1.PayloadMessage.fromBuffer(value));
+  static final _$publishSensorData =
+      $grpc.ClientMethod<$0.PayloadMessage, $1.Empty>(
+          '/myservice.MyService/PublishSensorData',
+          ($0.PayloadMessage value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
 
   MyServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseStream<$1.PayloadMessage> streamMessages($0.Empty request,
+  $grpc.ResponseFuture<$1.Empty> publishSensorData(
+      $async.Stream<$0.PayloadMessage> request,
       {$grpc.CallOptions? options}) {
-    return $createStreamingCall(
-        _$streamMessages, $async.Stream.fromIterable([request]),
-        options: options);
+    return $createStreamingCall(_$publishSensorData, request, options: options)
+        .single;
   }
 }
 
@@ -38,20 +38,15 @@ abstract class MyServiceBase extends $grpc.Service {
   $core.String get $name => 'myservice.MyService';
 
   MyServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.Empty, $1.PayloadMessage>(
-        'StreamMessages',
-        streamMessages_Pre,
-        false,
+    $addMethod($grpc.ServiceMethod<$0.PayloadMessage, $1.Empty>(
+        'PublishSensorData',
+        publishSensorData,
         true,
-        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
-        ($1.PayloadMessage value) => value.writeToBuffer()));
+        false,
+        ($core.List<$core.int> value) => $0.PayloadMessage.fromBuffer(value),
+        ($1.Empty value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$1.PayloadMessage> streamMessages_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.Empty> request) async* {
-    yield* streamMessages(call, await request);
-  }
-
-  $async.Stream<$1.PayloadMessage> streamMessages(
-      $grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.Empty> publishSensorData(
+      $grpc.ServiceCall call, $async.Stream<$0.PayloadMessage> request);
 }

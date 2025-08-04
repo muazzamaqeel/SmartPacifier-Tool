@@ -11,18 +11,8 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'sensor_data.pb.dart' as $2;
 
-enum PayloadMessage_Payload {
-  sensorData, 
-  notSet
-}
-
 class PayloadMessage extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, PayloadMessage_Payload> _PayloadMessage_PayloadByTag = {
-    1 : PayloadMessage_Payload.sensorData,
-    0 : PayloadMessage_Payload.notSet
-  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'myservice'), createEmptyInstance: create)
-    ..oo(0, [1])
     ..aOM<$2.SensorData>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sensorData', subBuilder: $2.SensorData.create)
     ..hasRequiredFields = false
   ;
@@ -57,9 +47,6 @@ class PayloadMessage extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static PayloadMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PayloadMessage>(create);
   static PayloadMessage? _defaultInstance;
-
-  PayloadMessage_Payload whichPayload() => _PayloadMessage_PayloadByTag[$_whichOneof(0)]!;
-  void clearPayload() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $2.SensorData get sensorData => $_getN(0);
