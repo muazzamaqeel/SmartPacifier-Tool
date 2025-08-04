@@ -12,12 +12,9 @@ import 'dart:typed_data' as $typed_data;
 const PayloadMessage$json = const {
   '1': 'PayloadMessage',
   '2': const [
-    const {'1': 'sensor_data', '3': 1, '4': 1, '5': 11, '6': '.Protos.SensorData', '9': 0, '10': 'sensorData'},
-  ],
-  '8': const [
-    const {'1': 'payload'},
+    const {'1': 'sensor_data', '3': 1, '4': 1, '5': 11, '6': '.Protos.SensorData', '10': 'sensorData'},
   ],
 };
 
 /// Descriptor for `PayloadMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List payloadMessageDescriptor = $convert.base64Decode('Cg5QYXlsb2FkTWVzc2FnZRI1CgtzZW5zb3JfZGF0YRgBIAEoCzISLlByb3Rvcy5TZW5zb3JEYXRhSABSCnNlbnNvckRhdGFCCQoHcGF5bG9hZA==');
+final $typed_data.Uint8List payloadMessageDescriptor = $convert.base64Decode('Cg5QYXlsb2FkTWVzc2FnZRIzCgtzZW5zb3JfZGF0YRgBIAEoCzISLlByb3Rvcy5TZW5zb3JEYXRhUgpzZW5zb3JEYXRh');

@@ -21,3 +21,5 @@ targets:
           out_dir: "lib/generated"
           # Also generate the gRPC stubs (.pbgrpc.dart)
           grpc: true
+          # Use the bundled protoc.exe to avoid downloading
+          protoc_binary: "tools/protoc/bin/protoc.exe"

@@ -14,8 +14,7 @@ class SensorData extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pacifierId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sensorType')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sensorGroup')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sensorPayloadType')
-    ..m<$core.String, $core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dataMap', entryClassName: 'SensorData.DataMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OY, packageName: const $pb.PackageName('Protos'))
+    ..m<$core.String, $core.List<$core.int>>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dataMap', entryClassName: 'SensorData.DataMapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OY, packageName: const $pb.PackageName('Protos'))
     ..hasRequiredFields = false
   ;
 
@@ -24,7 +23,6 @@ class SensorData extends $pb.GeneratedMessage {
     $core.String? pacifierId,
     $core.String? sensorType,
     $core.String? sensorGroup,
-    $core.String? sensorPayloadType,
     $core.Map<$core.String, $core.List<$core.int>>? dataMap,
   }) {
     final _result = create();
@@ -36,9 +34,6 @@ class SensorData extends $pb.GeneratedMessage {
     }
     if (sensorGroup != null) {
       _result.sensorGroup = sensorGroup;
-    }
-    if (sensorPayloadType != null) {
-      _result.sensorPayloadType = sensorPayloadType;
     }
     if (dataMap != null) {
       _result.dataMap.addAll(dataMap);
@@ -94,28 +89,19 @@ class SensorData extends $pb.GeneratedMessage {
   void clearSensorGroup() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get sensorPayloadType => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set sensorPayloadType($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasSensorPayloadType() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearSensorPayloadType() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.Map<$core.String, $core.List<$core.int>> get dataMap => $_getMap(4);
+  $core.Map<$core.String, $core.List<$core.int>> get dataMap => $_getMap(3);
 }
 
-class IMUData_Gyro extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.Gyro', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
+class IMUData_gyro extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.gyro', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
     ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gyroX', $pb.PbFieldType.OF)
     ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gyroY', $pb.PbFieldType.OF)
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gyroZ', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
-  IMUData_Gyro._() : super();
-  factory IMUData_Gyro({
+  IMUData_gyro._() : super();
+  factory IMUData_gyro({
     $core.double? gyroX,
     $core.double? gyroY,
     $core.double? gyroZ,
@@ -132,26 +118,26 @@ class IMUData_Gyro extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory IMUData_Gyro.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory IMUData_Gyro.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory IMUData_gyro.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory IMUData_gyro.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  IMUData_Gyro clone() => IMUData_Gyro()..mergeFromMessage(this);
+  IMUData_gyro clone() => IMUData_gyro()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  IMUData_Gyro copyWith(void Function(IMUData_Gyro) updates) => super.copyWith((message) => updates(message as IMUData_Gyro)) as IMUData_Gyro; // ignore: deprecated_member_use
+  IMUData_gyro copyWith(void Function(IMUData_gyro) updates) => super.copyWith((message) => updates(message as IMUData_gyro)) as IMUData_gyro; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static IMUData_Gyro create() => IMUData_Gyro._();
-  IMUData_Gyro createEmptyInstance() => create();
-  static $pb.PbList<IMUData_Gyro> createRepeated() => $pb.PbList<IMUData_Gyro>();
+  static IMUData_gyro create() => IMUData_gyro._();
+  IMUData_gyro createEmptyInstance() => create();
+  static $pb.PbList<IMUData_gyro> createRepeated() => $pb.PbList<IMUData_gyro>();
   @$core.pragma('dart2js:noInline')
-  static IMUData_Gyro getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_Gyro>(create);
-  static IMUData_Gyro? _defaultInstance;
+  static IMUData_gyro getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_gyro>(create);
+  static IMUData_gyro? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.double get gyroX => $_getN(0);
@@ -181,16 +167,16 @@ class IMUData_Gyro extends $pb.GeneratedMessage {
   void clearGyroZ() => clearField(3);
 }
 
-class IMUData_Mag extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.Mag', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
+class IMUData_mag extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.mag', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
     ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'magX', $pb.PbFieldType.OF)
     ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'magY', $pb.PbFieldType.OF)
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'magZ', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
-  IMUData_Mag._() : super();
-  factory IMUData_Mag({
+  IMUData_mag._() : super();
+  factory IMUData_mag({
     $core.double? magX,
     $core.double? magY,
     $core.double? magZ,
@@ -207,26 +193,26 @@ class IMUData_Mag extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory IMUData_Mag.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory IMUData_Mag.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory IMUData_mag.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory IMUData_mag.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  IMUData_Mag clone() => IMUData_Mag()..mergeFromMessage(this);
+  IMUData_mag clone() => IMUData_mag()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  IMUData_Mag copyWith(void Function(IMUData_Mag) updates) => super.copyWith((message) => updates(message as IMUData_Mag)) as IMUData_Mag; // ignore: deprecated_member_use
+  IMUData_mag copyWith(void Function(IMUData_mag) updates) => super.copyWith((message) => updates(message as IMUData_mag)) as IMUData_mag; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static IMUData_Mag create() => IMUData_Mag._();
-  IMUData_Mag createEmptyInstance() => create();
-  static $pb.PbList<IMUData_Mag> createRepeated() => $pb.PbList<IMUData_Mag>();
+  static IMUData_mag create() => IMUData_mag._();
+  IMUData_mag createEmptyInstance() => create();
+  static $pb.PbList<IMUData_mag> createRepeated() => $pb.PbList<IMUData_mag>();
   @$core.pragma('dart2js:noInline')
-  static IMUData_Mag getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_Mag>(create);
-  static IMUData_Mag? _defaultInstance;
+  static IMUData_mag getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_mag>(create);
+  static IMUData_mag? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.double get magX => $_getN(0);
@@ -256,16 +242,16 @@ class IMUData_Mag extends $pb.GeneratedMessage {
   void clearMagZ() => clearField(3);
 }
 
-class IMUData_Acc extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.Acc', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
+class IMUData_acc extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData.acc', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
     ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accX', $pb.PbFieldType.OF)
     ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accY', $pb.PbFieldType.OF)
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accZ', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
-  IMUData_Acc._() : super();
-  factory IMUData_Acc({
+  IMUData_acc._() : super();
+  factory IMUData_acc({
     $core.double? accX,
     $core.double? accY,
     $core.double? accZ,
@@ -282,26 +268,26 @@ class IMUData_Acc extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory IMUData_Acc.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory IMUData_Acc.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory IMUData_acc.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory IMUData_acc.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  IMUData_Acc clone() => IMUData_Acc()..mergeFromMessage(this);
+  IMUData_acc clone() => IMUData_acc()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  IMUData_Acc copyWith(void Function(IMUData_Acc) updates) => super.copyWith((message) => updates(message as IMUData_Acc)) as IMUData_Acc; // ignore: deprecated_member_use
+  IMUData_acc copyWith(void Function(IMUData_acc) updates) => super.copyWith((message) => updates(message as IMUData_acc)) as IMUData_acc; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static IMUData_Acc create() => IMUData_Acc._();
-  IMUData_Acc createEmptyInstance() => create();
-  static $pb.PbList<IMUData_Acc> createRepeated() => $pb.PbList<IMUData_Acc>();
+  static IMUData_acc create() => IMUData_acc._();
+  IMUData_acc createEmptyInstance() => create();
+  static $pb.PbList<IMUData_acc> createRepeated() => $pb.PbList<IMUData_acc>();
   @$core.pragma('dart2js:noInline')
-  static IMUData_Acc getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_Acc>(create);
-  static IMUData_Acc? _defaultInstance;
+  static IMUData_acc getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IMUData_acc>(create);
+  static IMUData_acc? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.double get accX => $_getN(0);
@@ -333,17 +319,17 @@ class IMUData_Acc extends $pb.GeneratedMessage {
 
 class IMUData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IMUData', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
-    ..pc<IMUData_Gyro>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gyros', $pb.PbFieldType.PM, subBuilder: IMUData_Gyro.create)
-    ..pc<IMUData_Mag>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mags', $pb.PbFieldType.PM, subBuilder: IMUData_Mag.create)
-    ..pc<IMUData_Acc>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accs', $pb.PbFieldType.PM, subBuilder: IMUData_Acc.create)
+    ..pc<IMUData_gyro>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gyros', $pb.PbFieldType.PM, subBuilder: IMUData_gyro.create)
+    ..pc<IMUData_mag>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mags', $pb.PbFieldType.PM, subBuilder: IMUData_mag.create)
+    ..pc<IMUData_acc>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accs', $pb.PbFieldType.PM, subBuilder: IMUData_acc.create)
     ..hasRequiredFields = false
   ;
 
   IMUData._() : super();
   factory IMUData({
-    $core.Iterable<IMUData_Gyro>? gyros,
-    $core.Iterable<IMUData_Mag>? mags,
-    $core.Iterable<IMUData_Acc>? accs,
+    $core.Iterable<IMUData_gyro>? gyros,
+    $core.Iterable<IMUData_mag>? mags,
+    $core.Iterable<IMUData_acc>? accs,
   }) {
     final _result = create();
     if (gyros != null) {
@@ -379,25 +365,25 @@ class IMUData extends $pb.GeneratedMessage {
   static IMUData? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<IMUData_Gyro> get gyros => $_getList(0);
+  $core.List<IMUData_gyro> get gyros => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<IMUData_Mag> get mags => $_getList(1);
+  $core.List<IMUData_mag> get mags => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.List<IMUData_Acc> get accs => $_getList(2);
+  $core.List<IMUData_acc> get accs => $_getList(2);
 }
 
-class PPGData_Led extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PPGData.Led', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
+class PPGData_led extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PPGData.led', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'led1', $pb.PbFieldType.O3, protoName: 'led_1')
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'led2', $pb.PbFieldType.O3, protoName: 'led_2')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'led3', $pb.PbFieldType.O3, protoName: 'led_3')
     ..hasRequiredFields = false
   ;
 
-  PPGData_Led._() : super();
-  factory PPGData_Led({
+  PPGData_led._() : super();
+  factory PPGData_led({
     $core.int? led1,
     $core.int? led2,
     $core.int? led3,
@@ -414,26 +400,26 @@ class PPGData_Led extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory PPGData_Led.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PPGData_Led.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory PPGData_led.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PPGData_led.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  PPGData_Led clone() => PPGData_Led()..mergeFromMessage(this);
+  PPGData_led clone() => PPGData_led()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PPGData_Led copyWith(void Function(PPGData_Led) updates) => super.copyWith((message) => updates(message as PPGData_Led)) as PPGData_Led; // ignore: deprecated_member_use
+  PPGData_led copyWith(void Function(PPGData_led) updates) => super.copyWith((message) => updates(message as PPGData_led)) as PPGData_led; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static PPGData_Led create() => PPGData_Led._();
-  PPGData_Led createEmptyInstance() => create();
-  static $pb.PbList<PPGData_Led> createRepeated() => $pb.PbList<PPGData_Led>();
+  static PPGData_led create() => PPGData_led._();
+  PPGData_led createEmptyInstance() => create();
+  static $pb.PbList<PPGData_led> createRepeated() => $pb.PbList<PPGData_led>();
   @$core.pragma('dart2js:noInline')
-  static PPGData_Led getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PPGData_Led>(create);
-  static PPGData_Led? _defaultInstance;
+  static PPGData_led getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PPGData_led>(create);
+  static PPGData_led? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.int get led1 => $_getIZ(0);
@@ -463,64 +449,64 @@ class PPGData_Led extends $pb.GeneratedMessage {
   void clearLed3() => clearField(3);
 }
 
-class PPGData_Temperature extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PPGData.Temperature', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
-    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'temperature', $pb.PbFieldType.OF)
+class PPGData_temperature extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PPGData.temperature', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
+    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'temperature1', $pb.PbFieldType.OF, protoName: 'temperature_1')
     ..hasRequiredFields = false
   ;
 
-  PPGData_Temperature._() : super();
-  factory PPGData_Temperature({
-    $core.double? temperature,
+  PPGData_temperature._() : super();
+  factory PPGData_temperature({
+    $core.double? temperature1,
   }) {
     final _result = create();
-    if (temperature != null) {
-      _result.temperature = temperature;
+    if (temperature1 != null) {
+      _result.temperature1 = temperature1;
     }
     return _result;
   }
-  factory PPGData_Temperature.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PPGData_Temperature.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory PPGData_temperature.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PPGData_temperature.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  PPGData_Temperature clone() => PPGData_Temperature()..mergeFromMessage(this);
+  PPGData_temperature clone() => PPGData_temperature()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PPGData_Temperature copyWith(void Function(PPGData_Temperature) updates) => super.copyWith((message) => updates(message as PPGData_Temperature)) as PPGData_Temperature; // ignore: deprecated_member_use
+  PPGData_temperature copyWith(void Function(PPGData_temperature) updates) => super.copyWith((message) => updates(message as PPGData_temperature)) as PPGData_temperature; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static PPGData_Temperature create() => PPGData_Temperature._();
-  PPGData_Temperature createEmptyInstance() => create();
-  static $pb.PbList<PPGData_Temperature> createRepeated() => $pb.PbList<PPGData_Temperature>();
+  static PPGData_temperature create() => PPGData_temperature._();
+  PPGData_temperature createEmptyInstance() => create();
+  static $pb.PbList<PPGData_temperature> createRepeated() => $pb.PbList<PPGData_temperature>();
   @$core.pragma('dart2js:noInline')
-  static PPGData_Temperature getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PPGData_Temperature>(create);
-  static PPGData_Temperature? _defaultInstance;
+  static PPGData_temperature getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PPGData_temperature>(create);
+  static PPGData_temperature? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.double get temperature => $_getN(0);
+  $core.double get temperature1 => $_getN(0);
   @$pb.TagNumber(1)
-  set temperature($core.double v) { $_setFloat(0, v); }
+  set temperature1($core.double v) { $_setFloat(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTemperature() => $_has(0);
+  $core.bool hasTemperature1() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTemperature() => clearField(1);
+  void clearTemperature1() => clearField(1);
 }
 
 class PPGData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PPGData', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Protos'), createEmptyInstance: create)
-    ..pc<PPGData_Led>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leds', $pb.PbFieldType.PM, subBuilder: PPGData_Led.create)
-    ..pc<PPGData_Temperature>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'temperatures', $pb.PbFieldType.PM, subBuilder: PPGData_Temperature.create)
+    ..pc<PPGData_led>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leds', $pb.PbFieldType.PM, subBuilder: PPGData_led.create)
+    ..pc<PPGData_temperature>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'temperatures', $pb.PbFieldType.PM, subBuilder: PPGData_temperature.create)
     ..hasRequiredFields = false
   ;
 
   PPGData._() : super();
   factory PPGData({
-    $core.Iterable<PPGData_Led>? leds,
-    $core.Iterable<PPGData_Temperature>? temperatures,
+    $core.Iterable<PPGData_led>? leds,
+    $core.Iterable<PPGData_temperature>? temperatures,
   }) {
     final _result = create();
     if (leds != null) {
@@ -553,9 +539,9 @@ class PPGData extends $pb.GeneratedMessage {
   static PPGData? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<PPGData_Led> get leds => $_getList(0);
+  $core.List<PPGData_led> get leds => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<PPGData_Temperature> get temperatures => $_getList(1);
+  $core.List<PPGData_temperature> get temperatures => $_getList(1);
 }
 
