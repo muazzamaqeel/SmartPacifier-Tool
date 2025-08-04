@@ -202,9 +202,11 @@ The following represent the name of the directory in which the front-end code is
 
 
 ### Additional Information
-I also modified an exisiting simulator to generate data for our application
 
-Link: https://github.com/muazzamaqeel/mqtt-simulator
+- [User Manual](documentation/UserManual.md)
+
+- I also modified an exisiting simulator to generate data for our application
+- Link: https://github.com/muazzamaqeel/mqtt-simulator
 
 #### Future Improvements
 ```txt
