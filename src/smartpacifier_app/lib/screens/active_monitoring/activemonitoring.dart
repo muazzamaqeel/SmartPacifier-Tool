@@ -197,9 +197,6 @@ class _ActiveMonitoringState extends State<ActiveMonitoring>
             builder: (_, hz, __) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Center(
-                child: Text('Msgs/s: ${hz.toStringAsFixed(0)}',
-                    style: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w500)),
               ),
             ),
           ),
