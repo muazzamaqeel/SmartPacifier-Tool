@@ -46,6 +46,8 @@ git clone --recurse-submodules https://github.com/muazzamaqeel/SmartPacifier-Too
 #### Cloning Manually 
 ##### Repo
 ```bash
+mkdir -p /c/Programming
+cd /c/Programming
 git clone https://github.com/muazzamaqeel/SmartPacifier-Tool.git
 ```
 
