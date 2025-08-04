@@ -156,7 +156,15 @@ cmake-build-debug/sp_backend.exe
 4.  Restart your terminal
     flutter doctor
 ```
+### Running FrontEnd Automatically
+Inisde "C:\Programming\SmartPacifier-Tool\src\smartpacifier_app"
 
+Double Click "Application.bat"
+
+<img width="784" height="31" alt="image" src="https://github.com/user-attachments/assets/a6d98627-3716-4258-b5d6-eb576bd1a89c" />
+ 
+
+### Running FrontEnd Manually 
 #### Terminal 1 (Generating Proto-Files):
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/smartpacifier_app
