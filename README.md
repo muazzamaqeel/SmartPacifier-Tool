@@ -17,23 +17,12 @@ By combining powerful data handling with a flexible architecture, SmartPacifier-
 ### Step 1: Building the BackEnd (Run the commands on MSY32 MINGW64 Shell)
 
 #### Prerequirment - Download & Install MSYS2 MINGW64 
-##### https://www.msys2.org/
+##### Note: This version uses specific package versions that are only compatible with our build.
+##### [https://www.msys2.org/](https://drive.google.com/drive/folders/1B2wKH_AKPsve7_uybrZwgyIwxfosgOzy?usp=sharing)
+
 #### Packages Required
 ```bash
-# 1) Update the package database and core MSYS2 libs:
-pacman -Syu --noconfirm
-
-# You may need to close & re-open the MSYS2 MinGW-64 shell here.
-
-# 2) Install the exact packages/versions:
-pacman -S --noconfirm \
-  mingw-w64-x86_64-toolchain \
-  mingw-w64-x86_64-git \
-  mingw-w64-x86_64-cmake=3.31.6-1 \
-  mingw-w64-x86_64-ninja=1.12.1-1 \
-  mingw-w64-x86_64-zlib=1.3.1-1 \
-  mingw-w64-x86_64-c-ares=1.34.4-1 \
-  mingw-w64-x86_64-openssl=3.4.1-1
+pacman -S mingw-w64-x86_64-openssl
 ```
 
 #### Automatically
@@ -124,6 +113,20 @@ ninja install
 ```
 
 ### Main BackEnd (C++) 
+
+```bash
+cd /c/Programming/SmartPacifier-Tool/src/sp_backend
+rm -f src/ipc_layer/grpc/*.pb.cc \
+      src/ipc_layer/grpc/*.pb.h \
+      src/ipc_layer/grpc/*.grpc.pb.cc \
+      src/ipc_layer/grpc/*.grpc.pb.h
+rm -rf CMakeCache.txt CMakeFiles cmake-build-debug
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENSSL_ROOT_DIR=/mingw64 -DOPENSSL_INCLUDE_DIR=/mingw64/include -DOPENSSL_LIBRARIES=/mingw64/lib -DCMAKE_PREFIX_PATH=/mingw64 -S . -B cmake-build-debug
+cmake --build cmake-build-debug
+./cmake-build-debug/sp_backend.exe
+```
+
+Older Version:
 ```bash
 cd /c/Programming/SmartPacifier-Tool/src/sp_backend
 rm -f src/ipc_layer/grpc/*.pb.cc \
